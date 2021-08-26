@@ -1,0 +1,61 @@
+.Login{
+    font-family: Poppins,Helvetica,"sans-serif";
+}
+.formDiv {
+    background-color: #efefef;
+    width: 30vw;
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px;
+    margin-top: 25vh;
+    padding: 20px 0;
+}
+.formDiv form{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 100%;
+}
+.formDiv h3{
+    color: #555;
+    text-align: center;
+    margin-bottom: 35px;
+}
+.inputDiv{
+    margin-bottom: 10px;
+}
+.inputDiv input{
+    display: block;
+    width: 70%;
+    margin: 5px auto 20px auto;
+    padding: 5px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: none;
+    outline: 0;
+    background-color: transparent;
+    border-bottom: 2px solid #0463ca;
+    font-size:14px;
+}
+.inputDiv input:focus{
+    border: none;
+    outline: 0;
+    border-bottom: 2px solid #0463ca;
+}
+.inputDiv label{
+    font-size: 14px;
+    font-weight: bold;
+    color: #3894f7;
+    margin-left:58px;
+}
+.inputDiv button{
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: none;
+    background-color: #0463ca;
+    color: #fff;
+    padding: 7px 17px;
+    border-radius: 2px;
+    margin-left: 58px;
+}
