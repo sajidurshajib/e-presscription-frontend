@@ -1,6 +1,6 @@
 import classes from './Login.module.css'
 
-const Login = ()=>{
+const Login = () => {
     return (
         <div className={classes.Login}>
             <div className={classes.formDiv}>
@@ -8,16 +8,14 @@ const Login = ()=>{
                 <form action="">
                     <div className={classes.inputDiv}>
                         <label htmlFor="email">Email:</label>
-                        <input id="email" type="email" placeholder="jhon@doe.com"/>    
+                        <input id="email" type="email" placeholder="jhon@doe.com" />
                     </div>
                     <div className={classes.inputDiv}>
                         <label htmlFor="password">Password:</label>
-                        <input id="password" type="password" placeholder="*******"/>
+                        <input id="password" type="password" placeholder="*******" />
                     </div>
                     <div className={classes.inputDiv}>
-                        <button type="submit">
-                            Login
-                        </button>
+                        <button type="submit">Login</button>
                     </div>
                 </form>
             </div>
