@@ -1,11 +1,26 @@
-import './App.css'
-import Home from './pages/Home'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import HomePage from './pages/HomePage'
+import LoginPage from './pages/LoginPage'
+import RegisterPage from './pages/RegisterPage'
 
-const App = ()=>{
+const App = () => {
     return (
         <div>
-            <Home />
+            {/* Router */}
+            <Router>
+                <Switch>
+                    <Route exact={true} path="/">
+                        <HomePage />
+                    </Route>
+                    <Route path="/login">
+                        <LoginPage />
+                    </Route>
+                    <Route path="/register">
+                        <RegisterPage />
+                    </Route>
+                </Switch>
+            </Router>
         </div>
     )
 }
-export default App;
+export default App
