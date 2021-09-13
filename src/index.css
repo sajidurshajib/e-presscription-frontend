@@ -1,0 +1,13 @@
+:root {
+    --primary: #426ff3;
+    --secondary: #a3b7f5;
+    --dark: #2e3047;
+    --grey: #43455c;
+    --light-grey: #8e92b9;
+}
+body {
+    margin: 0;
+}
+.container {
+    width: 960px;
+}
