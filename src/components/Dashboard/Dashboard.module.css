@@ -1,0 +1,11 @@
+.Dashboard {
+    display: grid;
+    grid-template-columns: minmax(0, 250px) auto;
+}
+.minimize {
+    grid-template-columns: minmax(0, 50px) auto;
+}
+
+h2 {
+    color: var(--primary);
+}
