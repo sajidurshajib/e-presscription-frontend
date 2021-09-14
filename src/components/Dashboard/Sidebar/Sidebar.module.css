@@ -1,0 +1,57 @@
+.Sidebar {
+    height: 100vh;
+    border-right: 1px solid var(--light-grey);
+}
+.doc {
+    padding-top: 30px;
+}
+.docImg {
+    width: 120px;
+    height: 120px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    margin: 0 auto;
+    border: 4px solid var(--light-grey);
+}
+.doc h3 {
+    text-align: center;
+    color: var(--primary);
+    margin-bottom: 0;
+}
+.doc p {
+    text-align: center;
+    margin-top: 5px;
+    color: var(--grey);
+}
+.doc hr {
+    background-color: var(--light-grey);
+    border: none;
+    height: 1px;
+    width: 80%;
+    margin-left: 10%;
+}
+
+.nav {
+    list-style: none;
+    padding: 0;
+    overflow: hidden;
+}
+.nav li {
+    font-size: 14px;
+    padding: 5px 0 5px 80px;
+    color: var(--dark-blue);
+    transition: 100ms;
+    position: relative;
+}
+.nav li svg {
+    position: absolute;
+    top: 7px;
+    left: 50px;
+    font-size: 16px;
+}
+.nav li:hover {
+    background-color: var(--light-grey);
+    cursor: pointer;
+    transform: scale(1.1);
+}
