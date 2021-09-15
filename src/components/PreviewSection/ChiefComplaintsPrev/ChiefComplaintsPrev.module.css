@@ -1,0 +1,27 @@
+.ChiefComplaintsPrev {
+    padding-left: 25px;
+}
+.ChiefComplaintsPrev h3 {
+    margin-bottom: 10px;
+    color: var(--primary);
+}
+.ChiefComplaintsPrev ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0 0 0 25px;
+}
+.ChiefComplaintsPrev ul li {
+    font-size: 14px;
+    position: relative;
+}
+.ChiefComplaintsPrev ul li::before {
+    position: absolute;
+    left: -20px;
+    top: 5px;
+    content: '';
+    width: 10px;
+    height: 5px;
+    /* border-left: 2px solid var(--primary); */
+    border-bottom: 2px solid var(--dark-blue);
+    transform: rotate(315deg);
+}

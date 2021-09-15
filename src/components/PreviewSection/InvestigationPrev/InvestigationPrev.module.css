@@ -1,0 +1,20 @@
+.InvestigationPrev {
+    padding-left: 25px;
+}
+.InvestigationPrev h3 {
+    margin-bottom: 10px;
+    color: var(--primary);
+}
+.InvestigationPrev h4 {
+    margin-bottom: 5px;
+    margin-top: 10px;
+    color: var(--dark-blue);
+}
+.InvestigationPrev ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.InvestigationPrev ul li {
+    font-size: 14px;
+}
