@@ -1,0 +1,22 @@
+.Nav {
+    overflow: hidden;
+    border-bottom: 1px solid var(--light-grey);
+}
+.Nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    float: right;
+    margin-right: 50px;
+}
+.Nav ul li {
+    float: left;
+    margin: 10px 25px;
+}
+.Nav ul li a {
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}
