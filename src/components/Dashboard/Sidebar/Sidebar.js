@@ -2,6 +2,7 @@ import {
     faClosedCaptioning,
     faHistory,
     faSearchPlus,
+    faStethoscope,
     faCommentMedical,
     faCalendarAlt,
     faPrescription,
@@ -22,7 +23,7 @@ const Sidebar = () => {
             </div>
 
             <ul className={classes.nav}>
-                <li>
+                <li className={classes.active}>
                     <FontAwesomeIcon icon={faClosedCaptioning} />
                     Chief Complaints
                 </li>
@@ -32,11 +33,19 @@ const Sidebar = () => {
                 </li>
                 <li>
                     <FontAwesomeIcon icon={faUserCheck} />
-                    On-examination
+                    On-Examination
                 </li>
                 <li>
                     <FontAwesomeIcon icon={faSearchPlus} />
                     Investigation
+                </li>
+                <li>
+                    <FontAwesomeIcon icon={faStethoscope} />
+                    Diagnosis
+                </li>
+                <li>
+                    <FontAwesomeIcon icon={faPrescription} />
+                    Medicine
                 </li>
                 <li>
                     <FontAwesomeIcon icon={faCommentMedical} />
@@ -44,11 +53,7 @@ const Sidebar = () => {
                 </li>
                 <li>
                     <FontAwesomeIcon icon={faCalendarAlt} />
-                    Next Follow up{' '}
-                </li>
-                <li>
-                    <FontAwesomeIcon icon={faPrescription} />
-                    Medicine
+                    Next Follow up
                 </li>
             </ul>
         </div>
