@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
-import PatientPage from './pages/PatientPage'
+import PatientsPage from './pages/PatientsPage'
 import RegisterPage from './pages/RegisterPage'
 
 const App = () => {
@@ -14,7 +14,7 @@ const App = () => {
                         <HomePage />
                     </Route>
                     <Route path="/patient">
-                        <PatientPage />
+                        <PatientsPage />
                     </Route>
                     <Route path="/login">
                         <LoginPage />
