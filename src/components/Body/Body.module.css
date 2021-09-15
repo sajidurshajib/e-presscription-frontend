@@ -1,0 +1,11 @@
+.Body {
+    display: grid;
+    grid-template-columns: minmax(0, 40%) minmax(0, 60%);
+    height: 100%;
+}
+.Body > div {
+    overflow-y: auto;
+}
+.Body > div:first-child {
+    border-right: 1px solid var(--light-grey);
+}
