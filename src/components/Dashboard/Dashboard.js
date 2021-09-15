@@ -1,4 +1,5 @@
-// import { Link } from 'react-router-dom'
+import Body from '../Body/Body'
+import Nav from '../Nav/Nav'
 import classes from './Dashboard.module.css'
 import Sidebar from './Sidebar/Sidebar'
 
@@ -8,9 +9,8 @@ const Dashboard = () => {
             {/* <div className={`${classes.Dashboard} ${classes.minimize}`}> */}
             <Sidebar />
             <div>
-                {/* <h2>Dashboard</h2>
-                <Link to="/">Home</Link>
-                <Link to="/login">Login</Link> */}
+                <Nav />
+                <Body />
             </div>
         </div>
     )
