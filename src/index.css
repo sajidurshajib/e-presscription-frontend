@@ -2,13 +2,34 @@
 :root {
     --primary: #088bff;
     --dark: #333;
-    --dark-blue: #031b4e;
+    --blue: #5b47fb;
+    --dark-blue: #23395d;
     --grey: #7987a1;
-    --light-grey: #cdd4e0;
+    --light-grey: #dee3ec;
+    --red: #f44336;
 }
 body {
     margin: 0;
     font-family: Poppins;
+}
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--light-grey);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--grey);
 }
 .container {
     width: 960px;
