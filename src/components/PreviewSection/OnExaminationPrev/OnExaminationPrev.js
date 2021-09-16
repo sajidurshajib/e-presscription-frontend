@@ -1,21 +1,29 @@
+import { useState } from 'react'
 import classes from './OnExaminationPrev.module.css'
 
 const OnExaminationPrev = () => {
+    const [toggle, setToggle] = useState(true)
+
     return (
         <div className={classes.OnExaminationPrev}>
-            <h3>On-Examination</h3>
-            <ul>
-                <li>BP: 83</li>
-                <li>Pulse: 80</li>
-                <li>Temp:</li>
-                <li>Sp02:</li>
-                <li>RBS Heart:</li>
-                <li>Lungs:</li>
-                <li>Abd:</li>
-                <li>Anaemia:</li>
-                <li>Jaundice:</li>
-                <li>Demo:</li>
-            </ul>
+            <h3 onClick={() => setToggle(!toggle)} className={toggle ? classes.toggle : null}>
+                On-Examination
+            </h3>
+            {toggle ? (
+                <>
+                    <ul>
+                        <li>
+                            BP <span>: 83</span>
+                        </li>
+                        <li>
+                            Pulse <span>: 80</span>
+                        </li>
+                        <li>
+                            Temp <span>: 98</span>
+                        </li>
+                    </ul>
+                </>
+            ) : null}
         </div>
     )
 }
