@@ -1,0 +1,96 @@
+.HistoryPrev .historyChildH {
+    margin: 10px 0 0 20px;
+    color: var(--dark-blue);
+    display: inline-block;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    cursor: pointer;
+}
+.historyChildH::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: 5px solid var(--dark-blue);
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid transparent;
+    position: absolute;
+    right: -17px;
+    top: 12px;
+    display: none;
+}
+.historyChildH::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid var(--dark-blue);
+    border-left: 5px solid transparent;
+    position: absolute;
+    right: -17px;
+    top: 6px;
+}
+.toggle::before {
+    display: block;
+}
+.toggle::after {
+    display: none;
+}
+.HistoryPrev .historyli {
+    list-style-type: none;
+    margin: 10px 0 0 20px;
+    padding: 0 0 0 25px;
+}
+.HistoryPrev .historyli li {
+    font-size: 14px;
+    position: relative;
+}
+.HistoryPrev .historyli li::before {
+    position: absolute;
+    left: -15px;
+    top: -12px;
+    content: '';
+    width: 10px;
+    height: 100%;
+    border-left: 1px solid var(--grey);
+    border-bottom: 1px solid var(--grey);
+}
+
+.combrth {
+    color: var(--dark-blue);
+    margin: 20px 0 5px 20px;
+}
+.combrt {
+    list-style-type: none;
+    margin-top: 0;
+    margin-left: 30px;
+    padding: 0;
+}
+.combrt li {
+    list-style: none;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 28px;
+    color: var(--dark-blue);
+    position: relative;
+}
+.combrt li span {
+    position: absolute;
+    top: 4px;
+    left: 200px;
+    text-align: center;
+    font-size: 14px;
+    border: 2px solid var(--dark-blue);
+    color: var(--dark-blue);
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    line-height: 16px;
+}
+.red {
+    border: 2px solid var(--red) !important;
+    color: var(--red) !important;
+}
