@@ -1,3 +1,4 @@
+import InputSection from '../InputSection/InputSection'
 import PreviewSection from '../PreviewSection/PreviewSection'
 import classes from './Body.module.css'
 
@@ -7,7 +8,9 @@ const Body = () => {
             <div>
                 <PreviewSection />
             </div>
-            <div></div>
+            <div>
+                <InputSection />
+            </div>
         </div>
     )
 }
