@@ -13,7 +13,7 @@ const DiagnosisPrev = () => {
                 <>
                     <div className={classes.diagnosis}>
                         <div className={classes.probable}>
-                            <h4>Probable</h4>
+                            <h4>Probable Dx</h4>
                             <p>
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum iure sit nam fuga ullam.
                                 Autem similique, laudantium et totam repudiandae consequuntur nisi odit alias, earum
@@ -21,7 +21,7 @@ const DiagnosisPrev = () => {
                             </p>
                         </div>
                         <div className={classes.confirmatory}>
-                            <h4>Confirmatory</h4>
+                            <h4>Confirmatory Dx</h4>
                             <p>
                                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe rerum ea eum distinctio
                                 earum illo mollitia doloremque dolor temporibus molestiae.
