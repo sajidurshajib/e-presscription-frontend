@@ -13,25 +13,31 @@ body {
     margin: 0;
     font-family: Poppins;
 }
-/* width */
 ::-webkit-scrollbar {
     width: 5px;
 }
-
-/* Track */
 ::-webkit-scrollbar-track {
     background: #f1f1f1;
 }
-
-/* Handle */
 ::-webkit-scrollbar-thumb {
     background: var(--light-grey);
 }
-
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: var(--grey);
 }
-.container {
-    width: 960px;
+
+/* Input type design  */
+input[type='text'] {
+    border: 1px solid var(--light-grey);
+    color: var(--dark-blue);
+    outline: 0;
+    display: block;
+    width: 80%;
+    border-radius: 2px;
+    font-size: 14px;
+    padding: 5px;
+}
+input[type='text']:active,
+input[type='text']:focus {
+    border: 1px solid var(--primary);
 }
