@@ -1,3 +1,5 @@
+import { faPrescription, faSignInAlt, faSignOutAlt, faUserInjured, faUserPlus } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
 import classes from './Nav.module.css'
 
@@ -6,16 +8,34 @@ const Nav = () => {
         <div className={classes.Nav}>
             <ul>
                 <li>
-                    <Link to="/">Home</Link>
+                    <Link to="/">
+                        <FontAwesomeIcon icon={faPrescription} />
+                        ePrescription
+                    </Link>
                 </li>
                 <li>
-                    <Link to="/patients">Patients</Link>
+                    <Link to="/patients">
+                        <FontAwesomeIcon icon={faUserInjured} />
+                        Patients
+                    </Link>
                 </li>
                 <li>
-                    <Link to="/register">Register</Link>
+                    <Link to="/register">
+                        <FontAwesomeIcon icon={faUserPlus} />
+                        Register
+                    </Link>
                 </li>
                 <li>
-                    <Link to="/login">Login</Link>
+                    <Link to="/login">
+                        <FontAwesomeIcon icon={faSignInAlt} />
+                        Login
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/login">
+                        <FontAwesomeIcon icon={faSignOutAlt} />
+                        Logout
+                    </Link>
                 </li>
             </ul>
         </div>
