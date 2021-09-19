@@ -13,6 +13,18 @@ body {
     margin: 0;
     font-family: Poppins;
 }
+h1,
+h2,
+h3 {
+    color: var(--primary);
+}
+h4,
+h5 {
+    color: var(--dark);
+}
+p {
+    color: var(--dark);
+}
 ::-webkit-scrollbar {
     width: 5px;
 }
@@ -28,16 +40,37 @@ body {
 
 /* Input type design  */
 input[type='text'] {
-    border: 1px solid var(--light-grey);
+    border: none;
+    border: 1px solid var(--primary);
+    border-radius: 4px;
     color: var(--dark-blue);
     outline: 0;
     display: block;
-    width: 80%;
+    width: 100%;
+    box-sizing: border-box;
     border-radius: 2px;
     font-size: 14px;
-    padding: 5px;
+    font-family: Poppins;
+    font-weight: 400;
+    padding: 10px;
+    transition: 200ms;
+}
+input[type='text']::placeholder {
+    color: var(--primary);
 }
 input[type='text']:active,
 input[type='text']:focus {
-    border: 1px solid var(--primary);
+    border-bottom: 1px solid var(--primary);
+    box-shadow: 0 5px 5px var(--light-grey);
 }
+/* input[type='text'] + label {
+    position: relative;
+    top: -55px;
+    left: 15px;
+    background: var(--white);
+    padding: 0 5px;
+    font-size: 14px;
+    color: var(--primary);
+    transition: 300ms;
+    pointer-events: none;
+} */
