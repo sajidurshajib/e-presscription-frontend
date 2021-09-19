@@ -1,8 +1,10 @@
+import classes from './ChiefComplaintsInp.module.css'
+
 const ChiefComplaintsInp = () => {
     return (
-        <div>
+        <div className={classes.ChiefComplaintsInp}>
             <h3>Chief Complaints</h3>
-            <input type="text" />
+            <input type="text" placeholder="Search and Input" />
         </div>
     )
 }
