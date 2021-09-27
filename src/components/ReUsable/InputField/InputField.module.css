@@ -1,0 +1,47 @@
+.InputField {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+.InputField input {
+    border: none;
+    outline: 0;
+    box-sizing: border-box;
+    padding: 25px 10px 5px 10px;
+    width: 100%;
+    background: var(--light-grey);
+}
+.InputField label {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border-bottom: 2px solid var(--grey);
+    pointer-events: none;
+}
+.InputField label::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: -100%;
+    width: 100%;
+    height: 3px;
+    background: var(--primary);
+    transition: 500ms;
+}
+.InputField label span {
+    position: absolute;
+    left: 10px;
+    bottom: 5px;
+    font-size: 14px;
+    transition: 200ms;
+    color: var(--grey);
+}
+.InputField input:focus + label span,
+.InputField input:valid + label span {
+    bottom: 22px;
+    font-size: 12px;
+}
+.InputField input:focus + label::after {
+    left: 0;
+}
