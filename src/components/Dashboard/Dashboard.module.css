@@ -3,7 +3,10 @@
     grid-template-columns: minmax(0, 250px) auto;
 }
 .minimize {
-    grid-template-columns: minmax(0, 50px) auto;
+    grid-template-columns: minmax(0, 0) auto;
+}
+.minimize > div:first-child {
+    visibility: hidden;
 }
 
 h2 {
