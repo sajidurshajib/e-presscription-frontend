@@ -9,7 +9,7 @@
     box-sizing: border-box;
     padding: 25px 10px 5px 10px;
     width: 100%;
-    background: var(--light-grey);
+    background: var(--light);
 }
 .InputField label {
     position: absolute;
