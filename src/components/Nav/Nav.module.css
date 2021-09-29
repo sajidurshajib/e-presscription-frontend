@@ -2,6 +2,16 @@
     overflow: hidden;
     border-bottom: 1px solid var(--light-grey);
 }
+.alignLeft svg {
+    color: var(--light-grey);
+    margin: 10px 0;
+    font-size: 28px;
+    cursor: pointer;
+}
+.alignLeft svg:hover {
+    color: var(--secondary);
+}
+
 .Nav ul {
     list-style-type: none;
     margin: 0;
