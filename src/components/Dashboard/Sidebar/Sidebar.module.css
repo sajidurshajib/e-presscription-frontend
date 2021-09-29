@@ -1,7 +1,10 @@
 .Sidebar {
     height: 100vh;
     border-right: 1px solid var(--light-grey);
-    padding-top: 30px;
+}
+.epLogo img {
+    display: block;
+    margin: 20px auto;
 }
 .docImg {
     width: 120px;

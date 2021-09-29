@@ -13,6 +13,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useContext } from 'react'
 import { FieldContext } from '../../../allContext'
 import docImg from '../../../assets/img/doc.png'
+import epLogo from '../../../assets/img/logo.png'
 import classes from './Sidebar.module.css'
 
 const Sidebar = () => {
@@ -20,6 +21,9 @@ const Sidebar = () => {
 
     return (
         <div className={classes.Sidebar}>
+            <div className={classes.epLogo}>
+                <img src={epLogo} alt="" width="200px" />
+            </div>
             <div className={classes.doc}>
                 <div className={classes.docImg} style={{ backgroundImage: 'url(' + docImg + ')' }}></div>
                 <h3>Demo Doctor</h3>
