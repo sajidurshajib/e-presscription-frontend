@@ -1,13 +1,18 @@
-import { Suspense } from 'react'
+import { Suspense, useReducer } from 'react'
+import { SidebarContext } from '../allContext'
 import Dashboard from '../components/Dashboard/Dashboard'
+import { sidebarState, sidebarReducer } from '../reducer/SidebarReducer'
 
 const EprescriptionPage = () => {
+    const [stateSidebar, dispatchSidebar] = useReducer(sidebarReducer, sidebarState)
     return (
         <div>
-            {/* added lazy loading */}
-            <Suspense fallback={<div>Loading...</div>}>
-                <Dashboard />
-            </Suspense>
+            <SidebarContext.Provider value={{ state: stateSidebar, dispatch: dispatchSidebar }}>
+                {/* added lazy loading */}
+                <Suspense fallback={<div>Loading...</div>}>
+                    <Dashboard />
+                </Suspense>
+            </SidebarContext.Provider>
         </div>
     )
 }
