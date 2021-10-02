@@ -50,3 +50,16 @@
     border-bottom: 2px solid var(--dark-blue);
     transform: rotate(315deg);
 }
+.ChiefComplaintsPrev ul li span {
+    margin-left: 5px;
+    font-size: 11px;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    border-radius: 2px;
+    padding: 0 5px;
+    display: none;
+}
+.ChiefComplaintsPrev ul li:hover span {
+    display: inline-block;
+    cursor: pointer;
+}
