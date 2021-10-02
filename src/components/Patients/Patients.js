@@ -1,10 +1,15 @@
+import { useReducer } from 'react'
+import { SidebarContext } from '../../allContext'
+import { sidebarState, sidebarReducer } from '../../reducer/SidebarReducer'
 import Nav from '../Nav/Nav'
 
 const Patients = () => {
+    const [stateSidebar, dispatchSidebar] = useReducer(sidebarReducer, sidebarState)
     return (
         <div>
-            <Nav />
-            <h2>Patient</h2>
+            <SidebarContext.Provider value={{ state: stateSidebar, dispatch: dispatchSidebar }}>
+                <Nav />
+            </SidebarContext.Provider>
         </div>
     )
 }
