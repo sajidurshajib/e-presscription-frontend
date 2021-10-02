@@ -1,36 +1,47 @@
 import {
     faAlignLeft,
+    faHome,
     faPrescription,
     faSignInAlt,
     faSignOutAlt,
-    faUserInjured,
     faUserPlus,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { SidebarContext } from '../../allContext'
+import epLogo from '../../assets/img/logo.png'
 import classes from './Nav.module.css'
 
 const Nav = () => {
+    let location = useLocation()
+
     const { state, dispatch } = useContext(SidebarContext)
     let h = state.expand ? 'hide' : 'unhide'
+
     return (
         <div className={classes.Nav}>
-            <span className={classes.alignLeft} onClick={() => dispatch({ type: h })}>
-                <FontAwesomeIcon icon={faAlignLeft} />
-            </span>
+            {location.pathname === '/ep' ? (
+                <span className={classes.alignLeft} onClick={() => dispatch({ type: h })}>
+                    <FontAwesomeIcon icon={faAlignLeft} />
+                </span>
+            ) : (
+                <Link to="/">
+                    <img src={epLogo} alt="" />
+                </Link>
+            )}
+
             <ul>
                 <li>
                     <Link to="/">
-                        <FontAwesomeIcon icon={faPrescription} />
-                        ePrescription
+                        <FontAwesomeIcon icon={faHome} />
+                        Home
                     </Link>
                 </li>
                 <li>
-                    <Link to="/patients">
-                        <FontAwesomeIcon icon={faUserInjured} />
-                        Patients
+                    <Link to="/ep">
+                        <FontAwesomeIcon icon={faPrescription} />
+                        ePrescription
                     </Link>
                 </li>
                 <li>

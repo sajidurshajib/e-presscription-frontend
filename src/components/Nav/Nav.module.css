@@ -12,6 +12,10 @@
     color: var(--secondary);
 }
 
+.Nav img {
+    width: 150px;
+    padding: 10px 0 0 60px;
+}
 .Nav ul {
     list-style-type: none;
     margin: 0;
