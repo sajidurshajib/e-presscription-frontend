@@ -1,13 +1,18 @@
+.Suggestion {
+    position: relative;
+}
 .Suggestion ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     width: 100%;
+    background: var(--white);
     box-shadow: 1px 5px 10px var(--light-grey);
     border: 1px solid var(--light-grey);
     border-radius: 2px;
-    position: relative;
+    position: absolute;
+    z-index: 1000;
     top: -15px;
 }
 .Suggestion ul li {
