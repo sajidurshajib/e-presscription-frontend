@@ -1,0 +1,53 @@
+.OnExaminationInp {
+    padding: 30px;
+}
+
+.Inp {
+    width: 40%;
+    margin-bottom: 15px;
+    position: relative;
+}
+.Inp input {
+    border: none;
+    outline: 0;
+    border-bottom: 2px solid var(--primary);
+    background: var(--light);
+    padding: 15px 5px 0 5px;
+}
+.Inp label {
+    font-size: 12px;
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    color: var(--grey);
+    pointer-events: none;
+    transition: 300ms;
+}
+.Inp input:focus + label,
+.Inp input:valid + label {
+    bottom: 20px;
+    font-size: 10px;
+}
+
+.addField {
+    width: 40%;
+    position: relative;
+    top: 10px;
+}
+.addField input {
+    border: 1px solid var(--primary);
+    border-radius: 2px;
+    padding: 5px;
+}
+.addField button {
+    position: absolute;
+    top: 1px;
+    right: 55px;
+    border: none;
+    border-left: 1px solid var(--primary);
+    padding: 5px;
+    cursor: pointer;
+}
+.addField input:focus {
+    outline: 0;
+}
