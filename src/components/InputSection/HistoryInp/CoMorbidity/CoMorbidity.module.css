@@ -1,0 +1,50 @@
+.CoMorbidity h3 {
+    margin-bottom: 5px;
+    color: var(--dark-blue);
+}
+
+.check {
+    margin-bottom: 10px;
+}
+.check input,
+.check label {
+    cursor: pointer;
+}
+.check input[type='checkbox'] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+.check label {
+    font-size: 14px;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    position: relative;
+    left: 20px;
+}
+.check label::before {
+    position: absolute;
+    content: '';
+    background: var(--dark-blue);
+    height: 2px;
+    width: 10px;
+    left: -22px;
+    top: 9px;
+}
+.check label::after {
+    position: absolute;
+    content: '';
+    background: var(--red);
+    height: 10px;
+    width: 2px;
+    left: -18px;
+    top: 5px;
+    display: none;
+}
+.check input:checked + label::before {
+    background: var(--red);
+}
+.check input:checked + label::after {
+    display: block;
+}
