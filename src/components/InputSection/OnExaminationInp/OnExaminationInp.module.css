@@ -13,6 +13,8 @@
     border-bottom: 2px solid var(--primary);
     background: var(--light);
     padding: 15px 5px 0 5px;
+    width: 100%;
+    box-sizing: border-box;
 }
 .Inp label {
     font-size: 12px;
@@ -33,16 +35,22 @@
     width: 40%;
     position: relative;
     top: 10px;
-}
-.addField input {
     border: 1px solid var(--primary);
     border-radius: 2px;
+    overflow: hidden;
+}
+.addField input {
+    border: none;
+    border-radius: 2px;
     padding: 5px;
+    width: 80%;
 }
 .addField button {
     position: absolute;
-    top: 1px;
-    right: 55px;
+    width: 20%;
+    top: 0;
+    right: 0;
+    height: 100%;
     border: none;
     border-left: 1px solid var(--primary);
     padding: 5px;
