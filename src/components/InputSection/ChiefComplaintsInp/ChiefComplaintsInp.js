@@ -18,7 +18,6 @@ const ChiefComplaintsInp = () => {
                 />
             ) : null}
 
-            {/* {text.length !== 0 ? <Suggestion arr={arr} setText={setText} /> : null} */}
         </div>
     )
 }
