@@ -1,0 +1,24 @@
+.TextField form {
+    position: relative;
+    margin-bottom: 30px;
+}
+.TextField form label {
+    position: absolute;
+    left: 20px;
+    top: -12px;
+    background-color: var(--white);
+    padding: 0 5px;
+    color: var(--primary);
+    font-weight: 500;
+}
+.TextField form textarea {
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid var(--primary);
+    border-radius: 2px;
+    color: var(--dark-blue);
+}
+.TextField form textarea:focus {
+    outline: 0;
+    border: 1px solid var(--secondary);
+}
