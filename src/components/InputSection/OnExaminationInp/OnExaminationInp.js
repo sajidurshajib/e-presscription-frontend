@@ -1,26 +1,30 @@
 import { Fragment, useState } from 'react'
+import Suggestion from '../../ReUsable/Suggestion/Suggestion'
 import AddField from './AddField'
 import classes from './OnExaminationInp.module.css'
 
 const OnExaminationInp = () => {
-    let arr = [
-        { id: 1, name: 'BP', value: '' },
-        { id: 2, name: 'Pulse', value: '' },
-        { id: 3, name: 'Temp', value: '' },
-    ]
+    let arr = []
+    let sgg = ['bp', 'np']
 
     const [onExam, setOnExam] = useState(arr)
-    const [add, setAdd] = useState('')
+    const [suggestion, setSuggestion] = useState('')
 
     const addData = (e) => {
         e.preventDefault()
 
         let a = onExam
-        let b = { id: a[a.length - 1].id + 1, name: add, value: '' }
+        let b
+        if (a.length === 0) {
+            b = { id: 1, name: suggestion, value: '' }
+        } else {
+            b = { id: a[a.length - 1].id + 1, name: suggestion, value: '' }
+        }
+
         a.push(b)
 
         setOnExam([...a])
-        setAdd('')
+        setSuggestion('')
     }
 
     return (
@@ -35,7 +39,13 @@ const OnExaminationInp = () => {
                     </Fragment>
                 )
             })}
-            <AddField addData={addData} add={add} setAdd={setAdd} />
+            <AddField addData={addData} add={suggestion} setAdd={setSuggestion} />
+            {suggestion ? (
+                <Suggestion
+                    arr={sgg.filter((val) => val.toLocaleLowerCase().includes(suggestion.toLowerCase()))}
+                    setText={setSuggestion}
+                />
+            ) : null}
         </div>
     )
 }
