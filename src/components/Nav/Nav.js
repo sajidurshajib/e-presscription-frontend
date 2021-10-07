@@ -1,11 +1,4 @@
-import {
-    faAlignLeft,
-    faHome,
-    faPrescription,
-    faSignInAlt,
-    faSignOutAlt,
-    faUserPlus,
-} from '@fortawesome/free-solid-svg-icons'
+import { faAlignLeft, faPrescription, faSignInAlt, faSignOutAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useContext } from 'react'
 import { Link, useLocation } from 'react-router-dom'
@@ -21,7 +14,8 @@ const Nav = () => {
 
     return (
         <div className={classes.Nav}>
-            {location.pathname === '/ep' ? (
+            {/* e-prescription logo */}
+            {location.pathname === '/' ? (
                 <span className={classes.alignLeft} onClick={() => dispatch({ type: h })}>
                     <FontAwesomeIcon icon={faAlignLeft} />
                 </span>
@@ -34,12 +28,6 @@ const Nav = () => {
             <ul>
                 <li>
                     <Link to="/">
-                        <FontAwesomeIcon icon={faHome} />
-                        Home
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/ep">
                         <FontAwesomeIcon icon={faPrescription} />
                         ePrescription
                     </Link>
