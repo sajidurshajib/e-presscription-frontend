@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import EprescriptionPage from './pages/EprescriptionPage'
-import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 
@@ -11,9 +10,6 @@ const App = () => {
             <Router>
                 <Switch>
                     <Route exact={true} path="/">
-                        <HomePage />
-                    </Route>
-                    <Route path="/ep">
                         <EprescriptionPage />
                     </Route>
                     <Route path="/login">
