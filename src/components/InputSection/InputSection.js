@@ -4,6 +4,7 @@ import ChiefComplaintsInp from './ChiefComplaintsInp/ChiefComplaintsInp'
 import DiagnosisInp from './DiagnosisInp/DiagnosisInp'
 import HistoryInp from './HistoryInp/HistoryInp'
 import InvestigationInp from './InvestigationInp/InvestigationInp'
+import MedicineInpOut from './MedicineInpOut/MedicineInpOut'
 import OnExaminationInp from './OnExaminationInp/OnExaminationInp'
 
 const InputSection = () => {
@@ -15,6 +16,7 @@ const InputSection = () => {
             {state.field === 'history' ? <HistoryInp /> : null}
             {state.field === 'investigation' ? <InvestigationInp /> : null}
             {state.field === 'onexam' ? <OnExaminationInp /> : null}
+            {state.field === 'medicine' ? <MedicineInpOut /> : null}
         </div>
     )
 }
