@@ -17,7 +17,6 @@ const ChiefComplaintsInp = () => {
                     setText={setText}
                 />
             ) : null}
-
         </div>
     )
 }
