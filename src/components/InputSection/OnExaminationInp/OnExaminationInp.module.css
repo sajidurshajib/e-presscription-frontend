@@ -1,7 +1,9 @@
 .OnExaminationInp {
     padding: 30px;
 }
-
+.wrapper {
+    width: 40%;
+}
 .Inp {
     width: 40%;
     margin-bottom: 15px;
