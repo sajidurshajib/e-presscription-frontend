@@ -1,17 +1,25 @@
-.InputMedicine input {
+.InputMedicine {
     box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid var(--primary);
+    padding: 15px 5px;
+}
+.InputMedicine input {
+    /* box-sizing: border-box;
     margin-bottom: 10px;
     padding: 5px;
     margin: 5px;
-    border: 1px solid var(--primary);
+    border: 1px solid var(--primary); */
 }
 .formWrap {
-    display: grid;
-    grid-template-columns: repeat(2, 50%);
+    box-sizing: border-box;
 }
-.doses {
+.timeWrap {
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 33%));
+    grid-template-columns: repeat(5, minmax(0, 20%));
+    gap: 10px;
+    margin-bottom: 10px;
 }
 .remark {
     width: 100%;

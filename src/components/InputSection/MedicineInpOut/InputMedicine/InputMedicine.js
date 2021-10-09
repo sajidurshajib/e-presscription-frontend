@@ -1,3 +1,5 @@
+import InputField from '../../../ReUsable/InputField/InputField'
+import InputNumber from '../../../ReUsable/InputNumber/InputNumber'
 import classes from './InputMedicine.module.css'
 
 const InputMedicine = ({ setMedicine }) => {
@@ -5,19 +7,19 @@ const InputMedicine = ({ setMedicine }) => {
         <div className={classes.InputMedicine}>
             <form>
                 <div className={classes.formWrap}>
-                    <input name="name" type="text" placeholder="Medicine" />
-                    <div className={classes.doses}>
-                        <input type="number" />
-                        <input type="number" />
-                        <input type="number" />
+                    <InputField label="Medicine name" />
+                    <div className={classes.timeWrap}>
+                        <InputNumber label="Morning" />
+                        <InputNumber label="Evening" />
+                        <InputNumber label="Night" />
+                        <select name="beforeAfter" id="">
+                            <option value="after">After meal</option>
+                            <option value="before">Before meal</option>
+                        </select>
+                        <InputNumber label="Day" />
                     </div>
-                    <select name="beforeAfter" id="">
-                        <option value="before">Before meal</option>
-                        <option value="after">After meal</option>
-                    </select>
-                    <input type="number" />
                 </div>
-                <input type="text" className={classes.remark} />
+                <InputField label="Remark" />
             </form>
         </div>
     )
