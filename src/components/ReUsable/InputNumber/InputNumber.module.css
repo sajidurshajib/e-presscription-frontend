@@ -1,0 +1,25 @@
+.InputNumber {
+    position: relative;
+}
+.InputNumber form {
+    display: flex;
+    justify-content: center;
+}
+.InputNumber input[type='number'] {
+    border: none;
+    outline: 0;
+    box-sizing: border-box;
+    padding: 25px 10px 5px 10px;
+    width: 100%;
+    background: var(--light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.InputNumber input + label {
+    position: absolute;
+    font-size: 12px;
+    top: 5px;
+    color: var(--grey);
+}
