@@ -1,24 +1,61 @@
+.TextField {
+    overflow: hidden;
+}
 .TextField form {
     position: relative;
-    margin-bottom: 30px;
+    margin: 30px 0;
 }
 .TextField form label {
     position: absolute;
-    left: 20px;
-    top: -12px;
-    background-color: var(--white);
+    left: 0;
+    top: -30px;
     padding: 0 5px;
     color: var(--primary);
-    font-weight: 500;
+    font-size: 16px;
 }
 .TextField form textarea {
     box-sizing: border-box;
     padding: 10px;
-    border: 1px solid var(--primary);
-    border-radius: 2px;
+    border: none;
+    background: var(--light);
     color: var(--dark-blue);
+    resize: none;
+    width: 100%;
+    position: relative;
 }
-.TextField form textarea:focus {
+.TextField textarea + span {
+    height: 2px;
+    width: 100%;
+    background: var(--grey2);
+    position: absolute;
+    bottom: 36px;
+    left: 0;
+}
+.TextField textarea + span::after {
+    position: absolute;
+    left: -100%;
+    content: '';
+    height: 3px;
+    width: 100%;
+    background: var(--primary);
+    transition: 200ms;
+}
+.TextField textarea:focus {
     outline: 0;
-    border: 1px solid var(--secondary);
+}
+.TextField textarea:focus + span::after,
+.TextField textarea:valid + span::after {
+    left: 0;
+}
+
+.TextField button {
+    display: block;
+    border: none;
+    background: var(--primary);
+    color: var(--white);
+    border-radius: 2px;
+    padding: 7px 20px;
+}
+.TextField button:hover {
+    cursor: pointer;
 }
