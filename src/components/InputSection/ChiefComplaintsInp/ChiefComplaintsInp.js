@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import InputField from '../../ReUsable/InputField/InputField'
 import Suggestion from '../../ReUsable/Suggestion/Suggestion'
+import TextField from '../../ReUsable/TextField/TextField'
 import classes from './ChiefComplaintsInp.module.css'
 
 const ChiefComplaintsInp = () => {
@@ -9,7 +9,9 @@ const ChiefComplaintsInp = () => {
 
     return (
         <div className={classes.ChiefComplaintsInp}>
-            <InputField text={text} setText={setText} label="Chief Complaints" />
+            {/* <InputField text={text} setText={setText} label="Chief Complaints" /> */}
+
+            <TextField text={text} setText={setText} label="Chief Complaints" />
 
             {text ? (
                 <Suggestion
