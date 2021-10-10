@@ -1,5 +1,6 @@
 .InputNumber {
     position: relative;
+    border-bottom: 2px solid var(--grey2);
 }
 .InputNumber form {
     display: flex;
@@ -9,17 +10,34 @@
     border: none;
     outline: 0;
     box-sizing: border-box;
-    padding: 25px 10px 5px 10px;
+    padding: 20px 10px 10px 10px;
     width: 100%;
     background: var(--light);
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
 }
+.InputNumber input[type='number']::-webkit-outer-spin-button,
+.InputNumber input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 .InputNumber input + label {
     position: absolute;
     font-size: 12px;
-    top: 5px;
+    top: 14px;
     color: var(--grey);
+    pointer-events: none;
+    transition: 200ms;
+}
+.InputNumber input:focus + label,
+.InputNumber input:valid + label {
+    font-size: 10px;
+    top: 2px;
+    color: var(--primary);
 }
