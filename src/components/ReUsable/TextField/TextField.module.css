@@ -55,7 +55,9 @@
     color: var(--white);
     border-radius: 2px;
     padding: 7px 20px;
+    transition: 300ms;
 }
 .TextField button:hover {
     cursor: pointer;
+    background: var(--secondary);
 }
