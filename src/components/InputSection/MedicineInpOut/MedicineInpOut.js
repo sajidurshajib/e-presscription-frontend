@@ -8,8 +8,8 @@ const MedicineInpOut = () => {
 
     return (
         <div className={classes.MedicineInpOut}>
-            <PreviewMedicine medicine={medicine} />
             <InputMedicine setMedicine={setMedicine} />
+            <PreviewMedicine medicine={medicine} />
         </div>
     )
 }
