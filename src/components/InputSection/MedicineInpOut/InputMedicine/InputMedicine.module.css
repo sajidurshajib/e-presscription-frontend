@@ -1,15 +1,8 @@
 .InputMedicine {
     box-sizing: border-box;
     border-radius: 5px;
-    border: 1px solid var(--primary);
-    padding: 15px 5px;
-}
-.InputMedicine input {
-    /* box-sizing: border-box;
-    margin-bottom: 10px;
-    padding: 5px;
-    margin: 5px;
-    border: 1px solid var(--primary); */
+    border: 2px solid var(--primary);
+    padding: 20px 25px;
 }
 .formWrap {
     box-sizing: border-box;
@@ -23,4 +16,19 @@
 }
 .remark {
     width: 100%;
+}
+.InputMedicine button {
+    display: block;
+    border: none;
+    outline: 0;
+    background: var(--secondary);
+    color: var(--white);
+    border-radius: 2px;
+    padding: 7px 20px;
+    margin: 0 auto;
+    min-width: 150px;
+}
+.InputMedicine button {
+    cursor: pointer;
+    box-shadow: 2px 2px 5px var(--grey2);
 }
