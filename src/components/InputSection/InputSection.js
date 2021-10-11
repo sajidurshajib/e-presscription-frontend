@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import { FieldContext } from '../../allContext'
+import Submit from '../Submit/Submit'
 import ChiefComplaintsInp from './ChiefComplaintsInp/ChiefComplaintsInp'
 import DiagnosisInp from './DiagnosisInp/DiagnosisInp'
 import HistoryInp from './HistoryInp/HistoryInp'
@@ -17,6 +18,7 @@ const InputSection = () => {
             {state.field === 'investigation' ? <InvestigationInp /> : null}
             {state.field === 'onexam' ? <OnExaminationInp /> : null}
             {state.field === 'medicine' ? <MedicineInpOut /> : null}
+            <Submit />
         </div>
     )
 }
