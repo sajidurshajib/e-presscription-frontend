@@ -18,8 +18,6 @@ export const fieldReducer = (state, action) => {
             return { field: 'advice' }
         case 'next':
             return { field: 'next' }
-        case 'template':
-            return { field: 'template' }
         default:
             return state
     }
