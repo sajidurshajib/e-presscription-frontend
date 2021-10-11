@@ -1,0 +1,37 @@
+.NextFollowUpInpOut {
+    padding: 30px;
+    width: 30%;
+    gap: 15px;
+}
+
+.NextFollowUpInpOut .date input {
+    outline: 0;
+    cursor: pointer;
+    border: 1px solid var(--primary);
+    padding: 15px;
+    border-radius: 2px;
+    background: var(--light);
+    color: var(--grey);
+}
+.NextFollowUpInpOut .date input:focus {
+    outline: 0;
+}
+::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+}
+.NextFollowUpInpOut .days {
+    border: 1px solid var(--primary);
+    border-radius: 2px;
+}
+.days div {
+    border: none;
+}
+
+.NextFollowUpInpOut button {
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    background: var(--white);
+    border-radius: 2px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
