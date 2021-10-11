@@ -12,9 +12,11 @@
     --white: #fff;
     --red: #f44336;
 }
+* {
+    font-family: Poppins;
+}
 body {
     margin: 0;
-    font-family: Poppins;
 }
 h1,
 h2,
