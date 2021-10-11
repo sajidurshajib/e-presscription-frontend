@@ -7,12 +7,11 @@ import {
     faCalendarAlt,
     faUserCheck,
     faPills,
-    faCopy,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useContext } from 'react'
 import { FieldContext } from '../../../allContext'
-import docImg from '../../../assets/img/doc.png'
+import docImg from '../../../assets/img/docstock.jpg'
 import epLogo from '../../../assets/img/logo.png'
 import classes from './Sidebar.module.css'
 
@@ -26,7 +25,7 @@ const Sidebar = () => {
             </div>
             <div className={classes.doc}>
                 <div className={classes.docImg} style={{ backgroundImage: 'url(' + docImg + ')' }}></div>
-                <h3>Demo Doctor</h3>
+                <h3>Rashadul Islam</h3>
                 <p>Medicine Specialist</p>
                 <hr />
             </div>
@@ -79,12 +78,6 @@ const Sidebar = () => {
                     className={state.field === 'next' ? classes.active : null}>
                     <FontAwesomeIcon icon={faCalendarAlt} />
                     Next Follow up
-                </li>
-                <li
-                    onClick={() => dispatch({ type: 'template' })}
-                    className={state.field === 'template' ? classes.active : null}>
-                    <FontAwesomeIcon icon={faCopy} />
-                    Template
                 </li>
             </ul>
         </div>
