@@ -14,6 +14,9 @@
     position: absolute;
     z-index: 1000;
     top: -15px;
+    min-height: 20px;
+    max-height: 160px;
+    overflow-y: scroll;
 }
 .Suggestion ul li {
     font-size: 14px;

@@ -5,10 +5,10 @@ const Suggestion = ({ arr, setText }) => {
         <div className={classes.Suggestion}>
             {arr.length !== 0 ? (
                 <ul>
-                    {arr.map((v, i) => {
+                    {arr.map((value) => {
                         return (
-                            <li key={i} onClick={() => setText(v)}>
-                                {v}
+                            <li key={value.id} onClick={() => setText(value.name)}>
+                                {value.name}
                             </li>
                         )
                     })}
