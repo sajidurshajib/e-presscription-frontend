@@ -15,22 +15,24 @@ const HistoryInp = () => {
 
     return (
         <div className={classes.HistoryInp}>
-            <InputField text={personal} setText={setPersonal} label="Personal History" />
-            {personal.length !== 0 ? <Suggestion arr={arr} setText={setPersonal} /> : null}
+            <div className={classes.wrap}>
+                <InputField text={personal} setText={setPersonal} label="Personal History" />
+                {personal.length !== 0 ? <Suggestion arr={arr} setText={setPersonal} /> : null}
 
-            <InputField text={professional} setText={setProfessional} label="Professional History" />
-            {professional.length !== 0 ? <Suggestion arr={arr} setText={setProfessional} /> : null}
+                <InputField text={professional} setText={setProfessional} label="Professional History" />
+                {professional.length !== 0 ? <Suggestion arr={arr} setText={setProfessional} /> : null}
 
-            <InputField text={family} setText={setFamily} label="Family History" />
-            {family.length !== 0 ? <Suggestion arr={arr} setText={setFamily} /> : null}
+                <InputField text={family} setText={setFamily} label="Family History" />
+                {family.length !== 0 ? <Suggestion arr={arr} setText={setFamily} /> : null}
 
-            <InputField text={drug} setText={setDrug} label="Drug History" />
-            {drug.length !== 0 ? <Suggestion arr={arr} setText={setDrug} /> : null}
+                <InputField text={drug} setText={setDrug} label="Drug History" />
+                {drug.length !== 0 ? <Suggestion arr={arr} setText={setDrug} /> : null}
 
-            <InputField text={medical} setText={setMedical} label="Medical History" />
-            {medical.length !== 0 ? <Suggestion arr={arr} setText={setMedical} /> : null}
+                <InputField text={medical} setText={setMedical} label="Medical History" />
+                {medical.length !== 0 ? <Suggestion arr={arr} setText={setMedical} /> : null}
 
-            <CoMorbidity />
+                <CoMorbidity />
+            </div>
         </div>
     )
 }
