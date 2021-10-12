@@ -13,15 +13,7 @@ const TextField = ({ label, text, setText }) => {
         <div className={classes.TextField}>
             <form onSubmit={(e) => onSubmit(e)}>
                 <label htmlFor="">{label}</label>
-                <textarea
-                    name=""
-                    id=""
-                    cols="50"
-                    rows={count + 1}
-                    value={text}
-                    onChange={(e) => setText(e.target.value)}
-                    required
-                />
+                <textarea cols="50" rows={count + 1} value={text} onChange={(e) => setText(e.target.value)} required />
                 <span></span>
                 <button type="submit">submit</button>
             </form>
