@@ -1,22 +1,33 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import InputField from '../../ReUsable/InputField/InputField'
 import Suggestion from '../../ReUsable/Suggestion/Suggestion'
 import classes from './InvestigationInp.module.css'
 
 const InvestigationInp = () => {
     const [text, setText] = useState('')
-    let arr = ['Fever for 7 days', 'Body Ache', 'Common cold']
+    const [tests, setTests] = useState('')
+
+    useEffect(() => {
+        const funFetch = async () => {
+            try {
+                const response = await fetch(`/tests?search=${text}&page_size=10`)
+                if (response.ok) {
+                    const data = await response.json()
+                    setTests(data)
+                }
+            } catch (err) {}
+        }
+        if (text !== '') {
+            funFetch()
+        }
+    }, [text, setTests])
 
     return (
         <div className={classes.InvestigationInp}>
-            <InputField text={text} setText={setText} label="Investigation" />
-
-            {text ? (
-                <Suggestion
-                    arr={arr.filter((val) => val.toLocaleLowerCase().includes(text.toLowerCase()))}
-                    setText={setText}
-                />
-            ) : null}
+            <div className={classes.wrap}>
+                <InputField text={text} setText={setText} label="Investigation" />
+                {text ? <Suggestion arr={tests} setText={setText} /> : null}
+            </div>
         </div>
     )
 }
