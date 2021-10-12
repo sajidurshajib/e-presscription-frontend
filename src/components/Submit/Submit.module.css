@@ -9,7 +9,7 @@
     font-size: 12px;
     cursor: pointer;
     font-weight: 600;
-    box-shadow: 0 0 5px var(--grey2);
+    box-shadow: 0 2px 2px var(--grey2);
 }
 .Submit button:focus {
     outline: 0;
