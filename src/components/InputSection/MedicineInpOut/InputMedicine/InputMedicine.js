@@ -1,7 +1,6 @@
 import DropDown from '../../../ReUsable/DropDown/DropDown'
 import InputField from '../../../ReUsable/InputField/InputField'
 import InputNumber from '../../../ReUsable/InputNumber/InputNumber'
-// import TextField from '../../../ReUsable/TextField/TextField'
 import classes from './InputMedicine.module.css'
 
 const InputMedicine = ({ setMedicine }) => {
@@ -23,7 +22,6 @@ const InputMedicine = ({ setMedicine }) => {
                         <InputNumber label="Day" />
                     </div>
                 </div>
-                {/* <TextField /> */}
                 <InputField label="Remark" />
                 <button>Submit</button>
             </form>
