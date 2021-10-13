@@ -1,0 +1,42 @@
+.PreviewMedicine h4 {
+    color: var(--primary);
+}
+.medicine {
+    border: 1px solid var(--primary);
+    border-radius: 2px;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    width: 65%;
+    position: relative;
+}
+.medicine p {
+    font-size: 12px;
+    margin: 2px 0;
+}
+.medicine p span {
+    margin: 0 10px;
+}
+.medicine p:first-child {
+    font-weight: 500;
+    margin: 6px 0;
+}
+.btn {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+.btn button {
+    display: block;
+    font-size: 11px;
+    padding: 2px 6px;
+    min-width: 80px;
+    margin-top: 5px;
+    cursor: pointer;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+}
+.btn button:nth-child(2) {
+    background: var(--primary);
+    color: var(--white);
+}
