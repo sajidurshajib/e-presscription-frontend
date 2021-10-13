@@ -12,7 +12,7 @@ const InvestigationPrev = () => {
             {toggle ? (
                 <>
                     <ul>
-                        <li>CVC</li>
+                        <li>CBC</li>
                         <li>X-Ray</li>
                         <li>Urine R/E</li>
                         <li>Urine C/S</li>
