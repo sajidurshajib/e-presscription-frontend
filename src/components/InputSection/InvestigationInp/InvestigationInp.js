@@ -27,6 +27,7 @@ const InvestigationInp = () => {
             <div className={classes.wrap}>
                 <InputField text={text} setText={setText} label="Investigation" />
                 {text ? <Suggestion arr={tests} setText={setText} /> : null}
+                <button type="submit">Submit</button>
             </div>
         </div>
     )
