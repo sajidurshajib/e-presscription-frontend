@@ -1,22 +1,19 @@
-// import AdvicePrev from './AdvicePrev/AdvicePrev'
 import ChiefComplaintsPrev from './ChiefComplaintsPrev/ChiefComplaintsPrev'
 import DiagnosisPrev from './DiagnosisPrev/DiagnosisPrev'
 import HistoryPrev from './HistoryPrev/HistoryPrev'
 import InvestigationPrev from './InvestigationPrev/InvestigationPrev'
-// import NextFollowUpPrev from './NextFollowUpPrev/NextFollowUpPrev'
 import OnExaminationPrev from './OnExaminationPrev/OnExaminationPrev'
+import classes from './PreviewSection.module.css'
 
 const PreviewSection = () => {
     return (
-        <div>
+        <div className={classes.PreviewSection}>
+            <h3>Preview</h3>
             <ChiefComplaintsPrev />
             <HistoryPrev />
             <OnExaminationPrev />
             <InvestigationPrev />
             <DiagnosisPrev />
-            {/* 
-            <NextFollowUpPrev />
-            <AdvicePrev /> */}
         </div>
     )
 }

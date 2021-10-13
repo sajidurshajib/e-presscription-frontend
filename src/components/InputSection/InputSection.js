@@ -5,6 +5,7 @@ import AdviceInpOut from './AdviceInpOut/AdviceInpOut'
 import ChiefComplaintsInp from './ChiefComplaintsInp/ChiefComplaintsInp'
 import DiagnosisInp from './DiagnosisInp/DiagnosisInp'
 import HistoryInp from './HistoryInp/HistoryInp'
+import classes from './InputSection.module.css'
 import InvestigationInp from './InvestigationInp/InvestigationInp'
 import MedicineInpOut from './MedicineInpOut/MedicineInpOut'
 import NextFollowUpInpOut from './NextFollowUpInpOut/NextFollowUpInpOut'
@@ -13,7 +14,8 @@ import OnExaminationInp from './OnExaminationInp/OnExaminationInp'
 const InputSection = () => {
     const { state } = useContext(FieldContext)
     return (
-        <div>
+        <div className={classes.InputSection}>
+            <h3>Input</h3>
             {state.field === 'chief' ? <ChiefComplaintsInp /> : null}
             {state.field === 'diagnosis' ? <DiagnosisInp /> : null}
             {state.field === 'history' ? <HistoryInp /> : null}
