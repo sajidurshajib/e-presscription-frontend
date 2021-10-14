@@ -2,23 +2,23 @@ import ExamField from './ExamField/ExamField'
 import classes from './OnExaminationInp.module.css'
 
 const OnExaminationInp = () => {
-    let arr = []
-    let sgg = [
-        'Anaemia',
-        'Jaundice',
-        'Cyanosis',
-        'Blood Pressure',
-        'Pulse',
-        'Heart',
-        'Lungs',
-        'Heart rate',
-        'Respiratory Rate',
-        'Oedema',
-        'Hair Distribution',
-        'Height',
-        'Weight',
-        'Temperature',
-    ]
+    // let arr = []
+    // let sgg = [
+    //     'Anaemia',
+    //     'Jaundice',
+    //     'Cyanosis',
+    //     'Blood Pressure',
+    //     'Pulse',
+    //     'Heart',
+    //     'Lungs',
+    //     'Heart rate',
+    //     'Respiratory Rate',
+    //     'Oedema',
+    //     'Hair Distribution',
+    //     'Height',
+    //     'Weight',
+    //     'Temperature',
+    // ]
 
     return (
         <div className={classes.OnExaminationInp}>
