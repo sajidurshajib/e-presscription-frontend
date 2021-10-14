@@ -7,13 +7,13 @@ const ExamField = ({ name }) => {
             {/* Anaemia */}
             {name === 'anaemia' ? (
                 <Fragment>
-                    <div className={classes.wrap}>
+                    <div className={classes.wrap1}>
                         <p>Anaemia : </p>
                         <select>
                             <option value="-">-</option>
                             <option value="+">+</option>
                         </select>
-                        <input type="text" placeholder="Remark" />
+                        <input type="text" placeholder="Remark" required />
                     </div>
                 </Fragment>
             ) : null}
@@ -21,13 +21,13 @@ const ExamField = ({ name }) => {
             {/* Jaundice */}
             {name === 'jaundice' ? (
                 <Fragment>
-                    <div className={classes.wrap}>
+                    <div className={classes.wrap1}>
                         <p>Jaundice : </p>
                         <select>
                             <option value="-">-</option>
                             <option value="+">+</option>
                         </select>
-                        <input type="text" placeholder="Remark" />
+                        <input type="text" placeholder="Remark" required />
                     </div>
                 </Fragment>
             ) : null}
@@ -35,13 +35,13 @@ const ExamField = ({ name }) => {
             {/* Cyanois */}
             {name === 'cyanosis' ? (
                 <Fragment>
-                    <div className={classes.wrap}>
+                    <div className={classes.wrap1}>
                         <p>Cyanosis : </p>
                         <select>
                             <option value="-">-</option>
                             <option value="+">+</option>
                         </select>
-                        <input type="text" placeholder="Remark" />
+                        <input type="text" placeholder="Remark" required />
                     </div>
                 </Fragment>
             ) : null}
@@ -49,10 +49,10 @@ const ExamField = ({ name }) => {
             {/* Blood Pressure*/}
             {name === 'bloodpressure' ? (
                 <Fragment>
-                    <div className={classes.wrap}>
+                    <div className={classes.wrap4}>
                         <p>Blood Pressure :</p>
-                        <input type="number" name="" id="" />/
-                        <input type="number" name="" id="" />
+                        <input type="number" placeholder="Systolic" required />/
+                        <input type="number" placeholder="Diastolic" required />
                         <p>mm of Hg</p>
                     </div>
                 </Fragment>
@@ -61,9 +61,9 @@ const ExamField = ({ name }) => {
             {/* Pluse*/}
             {name === 'pulse' ? (
                 <Fragment>
-                    <div className={classes.wrap}>
+                    <div className={classes.wrap2}>
                         <p>Pulse :</p>
-                        <input type="number" name="" id="" />
+                        <input type="number" name="" id="" required />
                         <p>beats/min</p>
                     </div>
                 </Fragment>
@@ -74,7 +74,7 @@ const ExamField = ({ name }) => {
                 <Fragment>
                     <div className={classes.wrap}>
                         <p>Heart :</p>
-                        <input type="text" />
+                        <input type="text" required />
                     </div>
                 </Fragment>
             ) : null}
@@ -83,8 +83,8 @@ const ExamField = ({ name }) => {
             {name === 'lungs' ? (
                 <Fragment>
                     <div className={classes.wrap}>
-                        <p>Heart :</p>
-                        <input type="text" />
+                        <p>Lungs :</p>
+                        <input type="text" required />
                     </div>
                 </Fragment>
             ) : null}
@@ -92,9 +92,9 @@ const ExamField = ({ name }) => {
             {/* Heart rate*/}
             {name === 'heartrate' ? (
                 <Fragment>
-                    <div className={classes.wrap}>
+                    <div className={classes.wrap2}>
                         <p>Heart rate:</p>
-                        <input type="number" />
+                        <input type="number" required />
                         <p>beats/min</p>
                     </div>
                 </Fragment>
@@ -103,9 +103,9 @@ const ExamField = ({ name }) => {
             {/* Respiratory rate*/}
             {name === 'respiratory' ? (
                 <Fragment>
-                    <div className={classes.wrap}>
+                    <div className={classes.wrap2}>
                         <p>Respiratory rate:</p>
-                        <input type="number" />
+                        <input type="number" required />
                         <p>breaths/min</p>
                     </div>
                 </Fragment>
@@ -114,13 +114,13 @@ const ExamField = ({ name }) => {
             {/* Odema*/}
             {name === 'odema' ? (
                 <Fragment>
-                    <div className={classes.wrap}>
+                    <div className={classes.wrap1}>
                         <p>Odema : </p>
                         <select>
                             <option value="-">-</option>
                             <option value="+">+</option>
                         </select>
-                        <input type="text" placeholder="Remark" />
+                        <input type="text" placeholder="Remark" required />
                     </div>
                 </Fragment>
             ) : null}
@@ -128,22 +128,22 @@ const ExamField = ({ name }) => {
             {/* Weight*/}
             {name === 'weight' ? (
                 <Fragment>
-                    <div className={classes.wrap}>
+                    <div className={classes.wrap2}>
                         <p>Weight : </p>
-                        <input type="number" />
+                        <input type="number" required />
                         <p>Kg</p>
                     </div>
                 </Fragment>
             ) : null}
 
-            {/* Weight*/}
-            {name === 'weight' ? (
+            {/* Height*/}
+            {name === 'height' ? (
                 <Fragment>
-                    <div className={classes.wrap}>
+                    <div className={classes.wrap5}>
                         <p>Height : </p>
-                        <input type="number" />
+                        <input type="number" required />
                         <p>Feet</p>
-                        <input type="number" />
+                        <input type="number" required />
                         <p>Inch</p>
                     </div>
                 </Fragment>
@@ -152,12 +152,12 @@ const ExamField = ({ name }) => {
             {/* Temp*/}
             {name === 'temp' ? (
                 <Fragment>
-                    <div className={classes.wrap}>
+                    <div className={classes.wrap3}>
                         <p>Temp : </p>
-                        <input type="number" />
+                        <input type="number" required />
                         <select>
-                            <option value="f">f</option>
-                            <option value="c">c</option>
+                            <option value="f"> F &deg; </option>
+                            <option value="c"> C &deg;</option>
                         </select>
                     </div>
                 </Fragment>
@@ -166,9 +166,9 @@ const ExamField = ({ name }) => {
             {/* RBS*/}
             {name === 'rbs' ? (
                 <Fragment>
-                    <div className={classes.wrap}>
-                        <p>Temp : </p>
-                        <input type="number" />
+                    <div className={classes.wrap2}>
+                        <p>RBS : </p>
+                        <input type="number" required />
                         <p>mmol/L</p>
                     </div>
                 </Fragment>
