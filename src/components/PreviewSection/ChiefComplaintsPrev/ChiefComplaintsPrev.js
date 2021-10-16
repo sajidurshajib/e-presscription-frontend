@@ -12,9 +12,11 @@ const ChiefComplaintsPrev = () => {
 
     return (
         <div className={classes.ChiefComplaintsPrev}>
-            <h3 onClick={() => setToggle(!toggle)} className={toggle ? classes.toggle : null}>
-                Chief Complaints
-            </h3>
+            {stateChief.cc.length !== 0 ? (
+                <h3 onClick={() => setToggle(!toggle)} className={toggle ? classes.toggle : null}>
+                    Chief Complaints
+                </h3>
+            ) : null}
             {editValue !== null ? <EditAndDelete editValue={setEditValue} value={editValue} /> : null}
             {toggle ? (
                 <ul>
