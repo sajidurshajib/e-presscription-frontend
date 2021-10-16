@@ -1,8 +1,11 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { Investigation } from '../../../allContext'
 import classes from './InvestigationPrev.module.css'
 
 const InvestigationPrev = () => {
     const [toggle, setToggle] = useState(true)
+
+    const { stateInvestigation } = useContext(Investigation)
 
     return (
         <div className={classes.InvestigationPrev}>
@@ -12,10 +15,9 @@ const InvestigationPrev = () => {
             {toggle ? (
                 <>
                     <ul>
-                        <li>CBC</li>
-                        <li>X-Ray</li>
-                        <li>Urine R/E</li>
-                        <li>Urine C/S</li>
+                        {stateInvestigation.inv.map((v, i) => {
+                            return <li key={i}>{v}</li>
+                        })}
                     </ul>
                 </>
             ) : null}
