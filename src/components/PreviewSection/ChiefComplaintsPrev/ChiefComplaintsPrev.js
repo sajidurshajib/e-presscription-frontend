@@ -1,4 +1,6 @@
+import { useContext } from 'react'
 import { useState } from 'react'
+import { ChiefComplaints } from '../../../allContext'
 import EditAndDelete from '../EditAndDelete/EditAndDelete'
 import classes from './ChiefComplaintsPrev.module.css'
 
@@ -6,7 +8,7 @@ const ChiefComplaintsPrev = () => {
     const [toggle, setToggle] = useState(true)
     const [editValue, setEditValue] = useState(null)
 
-    const demo = ['Fever for 7 days', 'Body Ache', 'Common Cold', 'Sore Throat']
+    const { stateChief } = useContext(ChiefComplaints)
 
     return (
         <div className={classes.ChiefComplaintsPrev}>
@@ -16,13 +18,18 @@ const ChiefComplaintsPrev = () => {
             {editValue !== null ? <EditAndDelete editValue={setEditValue} value={editValue} /> : null}
             {toggle ? (
                 <ul>
-                    {demo.map((v, i) => {
-                        return (
-                            <li key={i}>
-                                {v} <span onClick={() => setEditValue({ v, i })}>Edit</span>
-                            </li>
-                        )
-                    })}
+                    {stateChief.cc.length !== 0
+                        ? stateChief.cc
+                              .replace(/\n+$/, '')
+                              .split('\n')
+                              .map((v, i) => {
+                                  return (
+                                      <li key={i}>
+                                          {v} <span onClick={() => setEditValue({ v, i })}>Edit</span>
+                                      </li>
+                                  )
+                              })
+                        : null}
                 </ul>
             ) : null}
         </div>
