@@ -4,3 +4,17 @@
 .ChiefComplaintsInp h3 {
     margin-top: 0;
 }
+.ChiefComplaintsInp button {
+    display: block;
+    border: none;
+    background: var(--primary);
+    color: var(--white);
+    border-radius: 2px;
+    padding: 7px 20px;
+    transition: 300ms;
+    margin-top: 15px;
+}
+.ChiefComplaintsInp button:hover {
+    cursor: pointer;
+    background: var(--secondary);
+}

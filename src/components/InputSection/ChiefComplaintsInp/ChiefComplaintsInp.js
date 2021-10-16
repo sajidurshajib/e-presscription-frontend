@@ -1,12 +1,16 @@
 import { useState, useEffect } from 'react'
+import { useContext } from 'react'
+import { ChiefComplaints } from '../../../allContext'
 import { lastLine } from '../../../utils/Lines'
 import Suggestion from '../../ReUsable/Suggestion/Suggestion'
 import TextField from '../../ReUsable/TextField/TextField'
 import classes from './ChiefComplaintsInp.module.css'
 
 const ChiefComplaintsInp = () => {
+    const { stateChief, dispatchChief } = useContext(ChiefComplaints)
+
     const [text, setText] = useState('')
-    const [cc, setCc] = useState('')
+    const [cc, setCc] = useState([])
 
     const concatSet = (conc) => {
         let lastIndex = text.lastIndexOf('\n')
@@ -30,7 +34,16 @@ const ChiefComplaintsInp = () => {
         if (lastLine(text)) {
             funFetch()
         }
-    }, [text, setCc])
+    }, [text, cc, setCc])
+
+    const submit = (e) => {
+        e.preventDefault()
+        dispatchChief({
+            type: 'input',
+            payload: stateChief.cc === [] ? text : stateChief.cc.concat('\n' + text),
+        })
+        setText('')
+    }
 
     // Return
     return (
@@ -38,6 +51,7 @@ const ChiefComplaintsInp = () => {
             <TextField text={text} setText={setText} label="Chief Complaints" />
 
             {lastLine(text) ? <Suggestion arr={cc} setText={concatSet} /> : null}
+            <button onClick={submit}>Submit</button>
         </div>
     )
 }
