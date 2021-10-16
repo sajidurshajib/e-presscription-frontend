@@ -15,7 +15,6 @@ const TextField = ({ label, text, setText }) => {
                 <label htmlFor="">{label}</label>
                 <textarea cols="50" rows={count + 1} value={text} onChange={(e) => setText(e.target.value)} required />
                 <span></span>
-                <button type="submit">submit</button>
             </form>
         </div>
     )

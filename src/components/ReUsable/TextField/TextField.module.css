@@ -3,7 +3,7 @@
 }
 .TextField form {
     position: relative;
-    margin: 30px 0;
+    margin: 30px 0 0 0;
 }
 .TextField form label {
     position: absolute;
@@ -28,7 +28,7 @@
     width: 100%;
     background: var(--grey2);
     position: absolute;
-    bottom: 54px;
+    bottom: 5px;
     left: 0;
 }
 .TextField textarea + span::after {
@@ -46,19 +46,4 @@
 .TextField textarea:focus + span::after,
 .TextField textarea:valid + span::after {
     left: 0;
-}
-
-.TextField button {
-    display: block;
-    border: none;
-    background: var(--primary);
-    color: var(--white);
-    border-radius: 2px;
-    padding: 7px 20px;
-    transition: 300ms;
-    margin-top: 15px;
-}
-.TextField button:hover {
-    cursor: pointer;
-    background: var(--secondary);
 }
