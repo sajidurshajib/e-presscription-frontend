@@ -3,7 +3,6 @@ import classes from './InputField.module.css'
 const InputField = ({ text, setText, label }) => {
     const onSubmit = (e) => {
         e.preventDefault()
-        setText('')
     }
 
     return (
