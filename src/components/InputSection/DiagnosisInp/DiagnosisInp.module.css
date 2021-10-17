@@ -1,3 +1,18 @@
 .DiagnosisInp {
     padding: 30px;
 }
+.DiagnosisInp button {
+    display: block;
+    border: none;
+    background: var(--primary);
+    color: var(--white);
+    border-radius: 2px;
+    padding: 7px 20px;
+    transition: 300ms;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+.DiagnosisInp button:hover {
+    cursor: pointer;
+    background: var(--secondary);
+}
