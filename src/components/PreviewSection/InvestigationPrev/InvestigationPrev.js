@@ -9,9 +9,11 @@ const InvestigationPrev = () => {
 
     return (
         <div className={classes.InvestigationPrev}>
-            <h3 onClick={() => setToggle(!toggle)} className={toggle ? classes.toggle : null}>
-                Investigation
-            </h3>
+            {stateInvestigation.inv.length !== 0 ? (
+                <h3 onClick={() => setToggle(!toggle)} className={toggle ? classes.toggle : null}>
+                    Investigation
+                </h3>
+            ) : null}
             {toggle ? (
                 <>
                     <ul>
