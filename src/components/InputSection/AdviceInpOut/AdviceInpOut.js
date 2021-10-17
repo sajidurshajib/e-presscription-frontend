@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+import { useContext } from 'react/cjs/react.development'
+import { Advice } from '../../../allContext'
 import { lastLine } from '../../../utils/Lines'
 import Suggestion from '../../ReUsable/Suggestion/Suggestion'
 import TextField from '../../ReUsable/TextField/TextField'
@@ -8,6 +10,8 @@ import AdvicePrev from './AdvicePrev/AdvicePrev'
 const AdviceInpOut = () => {
     const [text, setText] = useState('')
     const [advice, setAdvice] = useState('')
+
+    const { stateAdvice, dispatchAdvice } = useContext(Advice)
 
     const concatSet = (conc) => {
         let lastIndex = text.lastIndexOf('\n')
@@ -33,6 +37,17 @@ const AdviceInpOut = () => {
         }
     }, [text, setAdvice])
 
+    const adviceSubmit = (e) => {
+        e.preventDefault()
+        if (text.length !== 0) {
+            dispatchAdvice({
+                type: 'input',
+                payload: stateAdvice.adv.length !== 0 ? stateAdvice.adv.concat('\n' + text) : text,
+            })
+            setText('')
+        }
+    }
+
     //Return
     return (
         <div className={classes.AdviceInpOut}>
@@ -40,7 +55,9 @@ const AdviceInpOut = () => {
                 <TextField text={text} setText={setText} label="Advice" />
 
                 {lastLine(text) ? <Suggestion arr={advice} setText={concatSet} /> : null}
-                <AdvicePrev advice={text} />
+                <button onClick={adviceSubmit}>Submit</button>
+
+                <AdvicePrev advice={stateAdvice.adv} />
             </div>
         </div>
     )
