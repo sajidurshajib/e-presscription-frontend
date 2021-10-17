@@ -8,7 +8,7 @@ import Personal from './HistoryPrevChild/Personal'
 import Professional from './HistoryPrevChild/Professional'
 
 const HistoryPrev = () => {
-    const [toggle, setToggle] = useState(true)
+    const [toggle, setToggle] = useState(false)
     return (
         <div className={classes.HistoryPrev}>
             <h3 onClick={() => setToggle(!toggle)} className={toggle ? classes.toggle : null}>

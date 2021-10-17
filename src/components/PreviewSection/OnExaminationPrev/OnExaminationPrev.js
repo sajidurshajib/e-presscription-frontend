@@ -2,7 +2,7 @@ import { useState } from 'react'
 import classes from './OnExaminationPrev.module.css'
 
 const OnExaminationPrev = () => {
-    const [toggle, setToggle] = useState(true)
+    const [toggle, setToggle] = useState(false)
 
     return (
         <div className={classes.OnExaminationPrev}>
