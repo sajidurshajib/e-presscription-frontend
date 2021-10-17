@@ -1,34 +1,37 @@
-import { useState } from 'react'
+import { useState, useContext, Fragment } from 'react'
+import { Diagnosis } from '../../../allContext'
 import classes from './DiagnosisPrev.module.css'
 
 const DiagnosisPrev = () => {
     const [toggle, setToggle] = useState(true)
 
+    const { stateDiagnosis } = useContext(Diagnosis)
+
     return (
         <div className={classes.DiagnosisPrev}>
-            <h3 onClick={() => setToggle(!toggle)} className={toggle ? classes.toggle : null}>
-                Diagnosis
-            </h3>
+            {stateDiagnosis.probable.length !== 0 || stateDiagnosis.confirmatory.length !== 0 ? (
+                <h3 onClick={() => setToggle(!toggle)} className={toggle ? classes.toggle : null}>
+                    Diagnosis
+                </h3>
+            ) : null}
             {toggle ? (
-                <>
+                <Fragment>
                     <div className={classes.diagnosis}>
-                        <div className={classes.probable}>
-                            <h4>Probable Dx</h4>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum iure sit nam fuga ullam.
-                                Autem similique, laudantium et totam repudiandae consequuntur nisi odit alias, earum
-                                dolorum, maxime mollitia veritatis quo!
-                            </p>
-                        </div>
-                        <div className={classes.confirmatory}>
-                            <h4>Confirmatory Dx</h4>
-                            <p>
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe rerum ea eum distinctio
-                                earum illo mollitia doloremque dolor temporibus molestiae.
-                            </p>
-                        </div>
+                        {stateDiagnosis.probable.length !== 0 ? (
+                            <div className={classes.probable}>
+                                <h4>Probable Dx</h4>
+                                <p>{stateDiagnosis.probable}</p>
+                            </div>
+                        ) : null}
+
+                        {stateDiagnosis.confirmatory.length !== 0 ? (
+                            <div className={classes.confirmatory}>
+                                <h4>Confirmatory Dx</h4>
+                                <p>{stateDiagnosis.confirmatory}</p>
+                            </div>
+                        ) : null}
                     </div>
-                </>
+                </Fragment>
             ) : null}
         </div>
     )
