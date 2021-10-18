@@ -12,17 +12,19 @@ const NextFollowUpInpOut = () => {
 
     const numCheck = (num) => {
         if (num > 1) {
-            return 's'
+            return 's '
         } else {
-            return ''
+            return ' '
         }
     }
 
     const submitNext = (e) => {
         e.preventDefault()
-        let n = ` ${months !== 0 ? months + ' month' + numCheck(months) : ''} ${
+
+        let n = `${months !== 0 ? months + ' month' + numCheck(months) : ''}${
             weeks !== 0 ? weeks + ' week' + numCheck(weeks) : ''
-        } ${days !== 0 ? days + ' day' + numCheck(days) : ''}`
+        }${days !== 0 ? days + ' day' + numCheck(days) : ''}`
+
         dispatchNext({ type: 'input', payload: n })
     }
 
