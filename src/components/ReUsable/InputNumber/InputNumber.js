@@ -4,7 +4,7 @@ const InputNumber = ({ label, num, setNum }) => {
     return (
         <div className={classes.InputNumber}>
             <form>
-                <input type="number" value={num} onChange={(e) => setNum(e.target.value)} required />
+                <input type="number" value={num} onChange={(e) => setNum(parseInt(e.target.value))} required />
                 <label>{label}</label>
             </form>
         </div>
