@@ -36,7 +36,7 @@ const NextFollowUpInpOut = () => {
                 <InputNumber label="Months" num={months} setNum={setMonths} />
             </div>
             <button onClick={submitNext}>Set</button>
-            <p className={classes.nextP}>{stateNext.nxt}</p>
+            {stateNext.nxt.length !== 0 ? <p className={classes.nextP}>{stateNext.nxt}</p> : null}
         </div>
     )
 }
