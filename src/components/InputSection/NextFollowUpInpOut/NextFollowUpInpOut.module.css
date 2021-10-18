@@ -1,37 +1,35 @@
 .NextFollowUpInpOut {
     padding: 30px;
-    width: 30%;
+    width: 80%;
     gap: 15px;
 }
-
-.NextFollowUpInpOut .date input {
-    outline: 0;
-    cursor: pointer;
-    border: 1px solid var(--primary);
-    padding: 15px;
-    border-radius: 2px;
-    background: var(--light);
-    color: var(--grey);
-}
-.NextFollowUpInpOut .date input:focus {
-    outline: 0;
-}
-::-webkit-calendar-picker-indicator {
-    cursor: pointer;
-}
 .NextFollowUpInpOut .days {
-    border: 1px solid var(--primary);
-    border-radius: 2px;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
 }
-.days div {
+.NextFollowUpInpOut button {
+    display: block;
     border: none;
+    background: var(--primary);
+    color: var(--white);
+    border-radius: 2px;
+    padding: 7px 20px;
+    transition: 300ms;
+    margin-top: 15px;
+}
+.NextFollowUpInpOut button:hover {
+    cursor: pointer;
+    background: var(--secondary);
 }
 
-.NextFollowUpInpOut button {
-    border: 1px solid var(--primary);
+.nextP {
+    font-size: 14px;
+    font-weight: 500;
     color: var(--primary);
-    background: var(--white);
-    border-radius: 2px;
-    margin-bottom: 15px;
-    cursor: pointer;
+    border: 1px solid var(--primary);
+    padding: 5px 15px;
+    display: inline-block;
+    border-radius: 4px;
+    margin-top: 30px;
 }
