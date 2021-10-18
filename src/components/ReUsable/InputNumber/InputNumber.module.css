@@ -1,12 +1,17 @@
 .InputNumber {
     position: relative;
     border-bottom: 2px solid var(--grey2);
+    transition: 200ms;
 }
+.InputNumber:hover {
+    border-bottom: 2px solid var(--primary);
+}
+
 .InputNumber form {
     display: flex;
     justify-content: center;
 }
-.InputNumber input[type='number'] {
+.InputNumber > form > input[type='number'] {
     border: none;
     outline: 0;
     box-sizing: border-box;
@@ -30,7 +35,7 @@
 .InputNumber input + label {
     position: absolute;
     font-size: 12px;
-    top: 14px;
+    top: 16px;
     color: var(--grey);
     pointer-events: none;
     transition: 200ms;

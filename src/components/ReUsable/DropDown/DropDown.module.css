@@ -20,6 +20,9 @@
 .DropDown select:focus {
     outline: 0;
 }
+.DropDown select:hover {
+    border-bottom: 2px solid var(--primary);
+}
 .DropDown select + span {
     position: absolute;
     width: 0;
