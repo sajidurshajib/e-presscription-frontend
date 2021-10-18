@@ -1,9 +1,10 @@
 import { useReducer } from 'react'
-import { ChiefComplaints, Investigation, Diagnosis, Advice } from '../../allContext'
+import { ChiefComplaints, Investigation, Diagnosis, Advice, Next } from '../../allContext'
 import { adviceState, adviceReducer } from '../../reducer/adviceReducer'
 import { chiefState, chiefReducer } from '../../reducer/chiefReducer'
 import { diagnosisReducer, diagnosisState } from '../../reducer/diagnosisReducer'
 import { investigationReducer, investigationState } from '../../reducer/investigationReducer'
+import { nextReducer, nextState } from '../../reducer/nextReducer'
 import InputSection from '../InputSection/InputSection'
 import PreviewSection from '../PreviewSection/PreviewSection'
 import classes from './Body.module.css'
@@ -13,6 +14,7 @@ const Body = () => {
     const [stateInvestigation, dispatchInvestigation] = useReducer(investigationReducer, investigationState)
     const [stateDiagnosis, dispatchDiagnosis] = useReducer(diagnosisReducer, diagnosisState)
     const [stateAdvice, dispatchAdvice] = useReducer(adviceReducer, adviceState)
+    const [stateNext, dispatchNext] = useReducer(nextReducer, nextState)
     return (
         <div className={classes.Body}>
             <ChiefComplaints.Provider value={{ stateChief, dispatchChief }}>
@@ -24,9 +26,11 @@ const Body = () => {
                         </div>
                         {/* Context only for Input Field */}
                         <Advice.Provider value={{ stateAdvice, dispatchAdvice }}>
-                            <div>
-                                <InputSection />
-                            </div>
+                            <Next.Provider value={{ stateNext, dispatchNext }}>
+                                <div>
+                                    <InputSection />
+                                </div>
+                            </Next.Provider>
                         </Advice.Provider>
                         {/* Context only for Input Field */}
                         {/* {Context Wrapper} */}
