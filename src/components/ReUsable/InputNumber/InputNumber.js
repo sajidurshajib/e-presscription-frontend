@@ -1,10 +1,10 @@
 import classes from './InputNumber.module.css'
 
-const InputNumber = ({ label }) => {
+const InputNumber = ({ label, num, setNum }) => {
     return (
         <div className={classes.InputNumber}>
             <form>
-                <input type="number" required />
+                <input type="number" value={num} onChange={(e) => setNum(e.target.value)} required />
                 <label>{label}</label>
             </form>
         </div>

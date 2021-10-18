@@ -1,7 +1,6 @@
 .InputNumber {
     position: relative;
     border-bottom: 2px solid var(--grey2);
-    transition: 200ms;
 }
 .InputNumber:hover {
     border-bottom: 2px solid var(--primary);
