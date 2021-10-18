@@ -42,7 +42,10 @@ const AdviceInpOut = () => {
         if (text.length !== 0) {
             dispatchAdvice({
                 type: 'input',
-                payload: stateAdvice.adv.length !== 0 ? stateAdvice.adv.concat('\n' + text) : text,
+                payload:
+                    stateAdvice.adv.length !== 0
+                        ? stateAdvice.adv.concat('\n' + text).replace(/\n*$/, '')
+                        : text.replace(/\n*$/, ''),
             })
             setText('')
         }
