@@ -7,9 +7,9 @@ const TextField = ({ label, text, setText }) => {
     return (
         <div className={classes.TextField}>
             <form>
-                <label htmlFor="">{label}</label>
-                <textarea cols="50" rows={count + 1} value={text} onChange={(e) => setText(e.target.value)} required />
+                <textarea cols="50" rows={count} value={text} onChange={(e) => setText(e.target.value)} required />
                 <span></span>
+                <label htmlFor="">{label}</label>
             </form>
         </div>
     )
