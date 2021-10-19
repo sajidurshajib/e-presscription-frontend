@@ -156,8 +156,8 @@ const ExamField = ({ name }) => {
                         <p>Temp : </p>
                         <input type="number" required />
                         <select>
-                            <option value="f"> F &deg; </option>
-                            <option value="c"> C &deg;</option>
+                            <option value="f"> &deg; F </option>
+                            <option value="c"> &deg; C </option>
                         </select>
                     </div>
                 </Fragment>
