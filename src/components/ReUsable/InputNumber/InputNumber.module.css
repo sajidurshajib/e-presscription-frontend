@@ -6,11 +6,11 @@
     border-bottom: 2px solid var(--primary);
 }
 
-.InputNumber form {
+.InputNumber .wrap {
     display: flex;
     justify-content: center;
 }
-.InputNumber > form > input[type='number'] {
+.InputNumber > .wrap > input[type='number'] {
     border: none;
     outline: 0;
     box-sizing: border-box;
