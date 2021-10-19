@@ -2,5 +2,40 @@
     padding: 30px;
 }
 .wrap {
-    width: 70%;
+    width: 80%;
+}
+.wrap h4 {
+    color: var(--dark-blue);
+    margin: 20px 0;
+    cursor: pointer;
+    position: relative;
+    padding-left: 15px;
+}
+.wrap h4::after {
+    position: absolute;
+    content: '';
+    width: 0;
+    height: 0;
+    left: 0;
+    top: 8px;
+    border-left: 7px solid var(--dark-blue);
+    border-top: 5px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 5px solid transparent;
+}
+.wrap > button,
+.btn {
+    display: block;
+    border: none;
+    background: var(--primary);
+    color: var(--white);
+    border-radius: 2px;
+    padding: 5px 15px;
+    transition: 300ms;
+    margin-top: 15px;
+}
+.wrap > button:hover,
+.btn:hover {
+    cursor: pointer;
+    background: var(--secondary);
 }

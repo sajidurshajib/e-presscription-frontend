@@ -1,14 +1,16 @@
 import { useState } from 'react'
-import InputField from '../../../ReUsable/InputField/InputField'
 import Suggestion from '../../../ReUsable/Suggestion/Suggestion'
+import TextField from '../../../ReUsable/TextField/TextField'
+import classes from '../HistoryInp.module.css'
 
 const Drug = () => {
     const [drug, setDrug] = useState('')
     const arr = []
     return (
         <div>
-            <InputField text={drug} setText={setDrug} label="Drug History" />
+            <TextField text={drug} setText={setDrug} label="Drug History" />
             {drug.length !== 0 ? <Suggestion arr={arr} setText={setDrug} /> : null}
+            <button className={classes.btn}>Submit</button>
         </div>
     )
 }
