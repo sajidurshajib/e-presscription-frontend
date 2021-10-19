@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import classes from './CoMorbidity.module.css'
 
 const CoMorbidity = () => {
+    const [htn, setHtn] = useState('')
     return (
         <div className={classes.CoMorbidity}>
             <h3>
@@ -8,24 +10,24 @@ const CoMorbidity = () => {
             </h3>
             <div className={classes.wrapper}>
                 <div className={classes.check}>
-                    <input type="checkbox" id="htn" />
-                    <label htmlFor="htn">Hypertension (HTN)</label>
-                    <input type="text" placeholder="HTN" />
+                    <p>Hypertension (HTN)</p>
+                    <button>+/-</button>
+                    <input type="text" />
                 </div>
                 <div className={classes.check}>
-                    <input type="checkbox" id="dm" />
-                    <label htmlFor="dm">Diabetes (DM)</label>
-                    <input type="text" placeholder="DM" />
+                    <p>Diabetes (DM)</p>
+                    <button>+/-</button>
+                    <input type="text" />
                 </div>
                 <div className={classes.check}>
-                    <input type="checkbox" id="tb" />
-                    <label htmlFor="tb">Tuberculosis (TB)</label>
-                    <input type="text" placeholder="TB" />
+                    <p>Tuberculosis (TB)</p>
+                    <button>+/-</button>
+                    <input type="text" />
                 </div>
                 <div className={classes.check}>
-                    <input type="checkbox" id="as" />
-                    <label htmlFor="as">Asthma</label>
-                    <input type="text" placeholder="Asthma" />
+                    <p>Asthma</p>
+                    <button>+/-</button>
+                    <input type="text" />
                 </div>
             </div>
         </div>

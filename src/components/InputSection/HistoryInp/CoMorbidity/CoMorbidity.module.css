@@ -9,68 +9,33 @@
     right: 80px;
 }
 .check {
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     position: relative;
+    display: grid;
+    grid-template-columns: 35% 20% 45%;
+    gap: 10px;
+    align-items: baseline;
 }
-.check input,
-.check label {
-    cursor: pointer;
-}
-.check input[type='checkbox'] {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-}
-.check label {
+.check p {
     font-size: 14px;
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    /* position: relative; */
-    width: 1500px;
+    font-weight: 500;
+    color: var(--dark-blue);
 }
-.check label::before {
-    position: absolute;
-    content: '';
-    background: var(--dark-blue);
-    height: 2px;
-    width: 10px;
-    right: 250px;
-    top: 9px;
-}
-.check label::after {
-    position: absolute;
-    content: '';
-    background: var(--red);
-    height: 10px;
-    width: 2px;
-    right: 254px;
-    top: 5px;
-    display: none;
-}
-.check input:checked + label::before {
-    background: var(--red);
-}
-.check input:checked + label::after {
-    display: block;
-}
-
-.check input[type='text'] {
-    width: 40%;
-    position: absolute;
-    top: -7px;
-    right: 0;
-    cursor: initial;
-    border: none;
-    border-bottom: 2px solid var(--grey2);
+.check > button {
+    display: inline-block;
+    width: 50px;
+    border: 1px solid var(--primary);
+    border-radius: 2px;
+    font-size: 12px;
+    cursor: pointer;
+    color: var(--primary);
     background: var(--light);
-    padding: 5px 15px;
-    transition: 200ms;
 }
-.check input[type='text']::placeholder {
-    color: var(--grey);
+.check > button:hover {
+    background: var(--primary);
+    color: var(--white);
 }
-.check input[type='text']:focus {
-    outline: 0;
-    border-bottom: 2px solid var(--primary);
+.check > input {
+    font-size: 12px;
+    padding: 5px;
 }
