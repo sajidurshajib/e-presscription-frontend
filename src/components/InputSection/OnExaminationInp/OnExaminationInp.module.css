@@ -1,3 +1,14 @@
 .OnExaminationInp {
     padding: 30px;
 }
+.OnExaminationInp button {
+    border: none;
+    border-radius: 2px;
+    background: var(--primary);
+    color: var(--white);
+    cursor: pointer;
+    font-size: 12px;
+    padding: 7px 25px;
+    width: 30%;
+    margin: 30px 0 0 20%;
+}
