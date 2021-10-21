@@ -32,6 +32,11 @@
     grid-template-columns: 20% 20% 2% 20% 38%;
     gap: 5px;
 }
+.wrap4 span {
+    position: relative;
+    top: 10px;
+    color: var(--grey);
+}
 .wrap5 {
     display: grid;
     grid-template-columns: 20% 20% 5% 20% 35%;
