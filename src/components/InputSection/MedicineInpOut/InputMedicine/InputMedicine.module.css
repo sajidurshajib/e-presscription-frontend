@@ -1,7 +1,7 @@
 .InputMedicine {
     box-sizing: border-box;
     border-radius: 5px;
-    border: 2px solid var(--primary);
+    /* border: 2px solid var(--primary); */
     padding: 20px 25px;
 }
 .formWrap {
