@@ -9,17 +9,25 @@
     right: 80px;
 }
 .check {
-    margin-bottom: 5px;
+    margin: 2px 0;
     position: relative;
     display: grid;
     grid-template-columns: 35% 20% 45%;
-    gap: 10px;
+    gap: 5px;
     align-items: baseline;
 }
 .check p {
     font-size: 14px;
     font-weight: 500;
     color: var(--dark-blue);
+    position: relative;
+}
+.check > p > span {
+    position: relative;
+    top: -10px;
+    right: -5px;
+    font-size: 16px;
+    color: var(--primary);
 }
 .check > button {
     display: inline-block;
