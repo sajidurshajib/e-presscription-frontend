@@ -34,13 +34,13 @@ const ChiefComplaintsInp = () => {
         if (lastLine(text)) {
             funFetch()
         }
-    }, [text, cc, setCc])
+    }, [text, setCc])
 
     const submit = (e) => {
         e.preventDefault()
         dispatchChief({
             type: 'input',
-            payload: stateChief.cc === [] ? text : stateChief.cc.concat('\n' + text),
+            payload: stateChief.cc.length === 0 ? text : stateChief.cc.concat('\n' + text),
         })
         setText('')
     }
