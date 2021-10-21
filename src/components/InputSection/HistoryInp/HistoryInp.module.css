@@ -10,6 +10,7 @@
     cursor: pointer;
     position: relative;
     padding-left: 15px;
+    display: block;
 }
 .wrap h4::after {
     position: absolute;

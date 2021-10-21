@@ -6,6 +6,7 @@ import Family from './HistorySingle/Family'
 import Medical from './HistorySingle/Medical'
 import Personal from './HistorySingle/Personal'
 import Professional from './HistorySingle/Professional'
+import Vaccination from './HistorySingle/Vaccination'
 
 const HistoryInp = () => {
     const [hfield, setHfield] = useState(1)
@@ -17,6 +18,7 @@ const HistoryInp = () => {
                 {hfield === 3 ? <Family /> : <h4 onClick={() => setHfield(3)}>Family History</h4>}
                 {hfield === 4 ? <Drug /> : <h4 onClick={() => setHfield(4)}>Drug History</h4>}
                 {hfield === 5 ? <Medical /> : <h4 onClick={() => setHfield(5)}>Medical History</h4>}
+                {hfield === 6 ? <Vaccination /> : <h4 onClick={() => setHfield(6)}>Vaccination History</h4>}
 
                 <CoMorbidity />
             </div>
