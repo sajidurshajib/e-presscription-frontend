@@ -2,13 +2,17 @@
     padding: 30px;
 }
 .wrap {
-    width: 70%;
+    display: grid;
+    grid-template-columns: 80% 20%;
+    align-items: flex-end;
+    gap: 5px;
 }
 .wrap button {
     color: var(--white);
     background: var(--primary);
-    padding: 7px 20px;
+    padding: 10px 30px;
     border: none;
     border-radius: 2px;
     cursor: pointer;
+    margin-bottom: 5px;
 }
