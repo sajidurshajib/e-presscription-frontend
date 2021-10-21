@@ -10,7 +10,7 @@
     left: 0;
     top: 5px;
     padding: 0 5px;
-    color: var(--primary);
+    color: var(--grey);
     font-size: 16px;
     transition: 200ms;
     pointer-events: none;
@@ -52,4 +52,5 @@
 .TextField textarea:focus ~ label:nth-of-type(1),
 .TextField textarea:valid ~ label:nth-of-type(1) {
     top: -30px;
+    color: var(--primary);
 }
