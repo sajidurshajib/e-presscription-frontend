@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, Fragment } from 'react'
 import { Investigation } from '../../../allContext'
 import classes from './InvestigationPrev.module.css'
 
@@ -15,13 +15,15 @@ const InvestigationPrev = () => {
                 </h3>
             ) : null}
             {toggle ? (
-                <>
+                <Fragment>
                     <ul>
-                        {stateInvestigation.inv.map((v, i) => {
-                            return <li key={i}>{v}</li>
-                        })}
+                        {stateInvestigation.inv.length !== 0
+                            ? stateInvestigation.inv.split('\n').map((v, i) => {
+                                  return <li key={i}>{v}</li>
+                              })
+                            : null}
                     </ul>
-                </>
+                </Fragment>
             ) : null}
         </div>
     )
