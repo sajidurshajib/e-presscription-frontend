@@ -4,20 +4,30 @@ import TextField from '../../ReUsable/TextField/TextField'
 import classes from './DiagnosisInp.module.css'
 
 const DiagnosisInp = () => {
-    const { dispatchDiagnosis } = useContext(Diagnosis)
+    const { stateDiagnosis, dispatchDiagnosis } = useContext(Diagnosis)
 
     const [probable, setProbable] = useState('')
     const [confirm, setConfirm] = useState('')
 
     const probableSubmit = (e) => {
         e.preventDefault()
-        dispatchDiagnosis({ type: 'prbl', payload: probable })
+        dispatchDiagnosis({
+            type: 'prbl',
+            payload: stateDiagnosis.probable.length !== 0 ? stateDiagnosis.probable.concat('\n' + probable) : probable,
+        })
+        setProbable('')
     }
 
     const confirmSubmit = (e) => {
         e.preventDefault()
-        dispatchDiagnosis({ type: 'cnf', payload: confirm })
+        dispatchDiagnosis({
+            type: 'cnf',
+            payload:
+                stateDiagnosis.confirmatory.length !== 0 ? stateDiagnosis.confirmatory.concat('\n' + confirm) : confirm,
+        })
+        setConfirm('')
     }
+
     return (
         <div className={classes.DiagnosisInp}>
             <TextField label={'Probable Dx'} text={probable} setText={setProbable} />
