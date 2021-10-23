@@ -48,11 +48,9 @@ const InvestigationInp = () => {
 
     return (
         <div className={classes.InvestigationInp}>
-            <div className={classes.wrap}>
-                <TextField text={text} setText={setText} label="Investigation" />
-                {lastLine(text) ? <Suggestion arr={tests} setText={concatSet} /> : null}
-                <button onClick={submit}>Submit</button>
-            </div>
+            <TextField text={text} setText={setText} label="Investigation" />
+            {lastLine(text) ? <Suggestion arr={tests} setText={concatSet} /> : null}
+            <button onClick={submit}>Submit</button>
         </div>
     )
 }
