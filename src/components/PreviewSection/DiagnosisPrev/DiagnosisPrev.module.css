@@ -30,8 +30,13 @@
     top: 6px !important;
 }
 
-.DiagnosisPrev p {
+.DiagnosisPrev ol {
+    margin: 0;
+    padding: 0 15px;
+}
+.DiagnosisPrev ol li {
     font-size: 12px;
+    margin: 5px 0;
     text-align: justify;
 }
 

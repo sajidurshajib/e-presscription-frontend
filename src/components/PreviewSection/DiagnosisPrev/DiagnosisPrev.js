@@ -7,6 +7,9 @@ const DiagnosisPrev = () => {
 
     const { stateDiagnosis } = useContext(Diagnosis)
 
+    let prob = stateDiagnosis.probable.split('\n')
+    let conf = stateDiagnosis.confirmatory.split('\n')
+
     return (
         <div className={classes.DiagnosisPrev}>
             {stateDiagnosis.probable.length !== 0 || stateDiagnosis.confirmatory.length !== 0 ? (
@@ -20,14 +23,24 @@ const DiagnosisPrev = () => {
                         {stateDiagnosis.probable.length !== 0 ? (
                             <div className={classes.probable}>
                                 <h4>Probable Dx</h4>
-                                <p>{stateDiagnosis.probable}</p>
+
+                                <ol>
+                                    {prob.map((v, i) => {
+                                        return <li key={i}>{v}</li>
+                                    })}
+                                </ol>
                             </div>
                         ) : null}
 
                         {stateDiagnosis.confirmatory.length !== 0 ? (
                             <div className={classes.confirmatory}>
                                 <h4>Confirmatory Dx</h4>
-                                <p>{stateDiagnosis.confirmatory}</p>
+
+                                <ol>
+                                    {conf.map((v, i) => {
+                                        return <li key={i}>{v}</li>
+                                    })}
+                                </ol>
                             </div>
                         ) : null}
                     </div>
