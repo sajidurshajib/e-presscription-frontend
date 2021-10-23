@@ -13,7 +13,10 @@ const DiagnosisInp = () => {
         e.preventDefault()
         dispatchDiagnosis({
             type: 'prbl',
-            payload: stateDiagnosis.probable.length !== 0 ? stateDiagnosis.probable.concat('\n' + probable) : probable,
+            payload:
+                stateDiagnosis.probable.length !== 0
+                    ? stateDiagnosis.probable.concat('\n' + probable).replace(/\n*$/, '')
+                    : probable.replace(/\n*$/, ''),
         })
         setProbable('')
     }
@@ -23,7 +26,9 @@ const DiagnosisInp = () => {
         dispatchDiagnosis({
             type: 'cnf',
             payload:
-                stateDiagnosis.confirmatory.length !== 0 ? stateDiagnosis.confirmatory.concat('\n' + confirm) : confirm,
+                stateDiagnosis.confirmatory.length !== 0
+                    ? stateDiagnosis.confirmatory.concat('\n' + confirm).replace(/\n*$/, '')
+                    : confirm.replace(/\n*$/, ''),
         })
         setConfirm('')
     }
