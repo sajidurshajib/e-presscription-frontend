@@ -9,9 +9,9 @@ const CoMorbidity = () => {
 
     return (
         <div className={classes.CoMorbidity}>
-            <h3>
+            <h4>
                 Co-Morbidity <span>Remark</span>
-            </h3>
+            </h4>
             <div className={classes.wrapper}>
                 <div className={classes.check}>
                     <p>

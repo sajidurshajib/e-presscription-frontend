@@ -2,7 +2,7 @@
     padding: 30px;
 }
 .wrap {
-    width: 80%;
+    width: 90%;
 }
 .wrap h4 {
     color: var(--dark-blue);
@@ -11,6 +11,7 @@
     position: relative;
     padding-left: 15px;
     display: block;
+    font-weight: 400;
 }
 .wrap h4::after {
     position: absolute;
