@@ -8,7 +8,7 @@ const ExamField = ({ name }) => {
             {name === 'bloodpressure' ? (
                 <Fragment>
                     <div className={classes.wrap4}>
-                        <p>Blood Pressure :</p>
+                        <p>Blood Pressure (BP) :</p>
                         <input type="number" placeholder="Systolic" required />
                         <span>/</span>
                         <input type="number" placeholder="Diastolic" required />

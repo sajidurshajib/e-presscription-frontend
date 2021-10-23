@@ -9,27 +9,27 @@
 
 .wrap {
     display: grid;
-    grid-template-columns: 20% 40% 20% 20%;
+    grid-template-columns: 25% 40% 20% 15%;
     gap: 5px;
 }
 .wrap1 {
     display: grid;
-    grid-template-columns: 20% 10% 70%;
+    grid-template-columns: 25% 10% 65%;
     gap: 5px;
 }
 .wrap2 {
     display: grid;
-    grid-template-columns: 20% 20% 60%;
+    grid-template-columns: 25% 20% 55%;
     gap: 5px;
 }
 .wrap3 {
     display: grid;
-    grid-template-columns: 20% 20% 20% 40%;
+    grid-template-columns: 25% 20% 20% 35%;
     gap: 5px;
 }
 .wrap4 {
     display: grid;
-    grid-template-columns: 20% 20% 2% 20% 38%;
+    grid-template-columns: 25% 20% 2% 20% 33%;
     gap: 5px;
 }
 .wrap4 span {
@@ -39,7 +39,7 @@
 }
 .wrap5 {
     display: grid;
-    grid-template-columns: 20% 20% 5% 20% 35%;
+    grid-template-columns: 25% 20% 5% 20% 30%;
     gap: 5px;
 }
 
@@ -83,8 +83,13 @@ select {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='grey' height='20' viewBox='0 0 20 20' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position-x: 90%;
+    background-position-y: 7px;
     width: 100%;
     padding-left: 40%;
+    position: relative;
 }
 select:focus {
     outline: 0;
