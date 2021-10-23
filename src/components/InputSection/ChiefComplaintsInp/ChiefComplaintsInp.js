@@ -4,6 +4,7 @@ import { ChiefComplaints } from '../../../allContext'
 import { lastLine } from '../../../utils/Lines'
 import Suggestion from '../../ReUsable/Suggestion/Suggestion'
 import TextField from '../../ReUsable/TextField/TextField'
+import ToolTip from '../../ReUsable/ToolTip/ToolTip'
 import classes from './ChiefComplaintsInp.module.css'
 
 const ChiefComplaintsInp = () => {
@@ -49,6 +50,9 @@ const ChiefComplaintsInp = () => {
     return (
         <div className={classes.ChiefComplaintsInp}>
             <TextField text={text} setText={setText} label="Chief Complaints" />
+            <div className={classes.tool}>
+                <ToolTip tip="Chief Complaints lorem ipsu dolor sit amet" />
+            </div>
 
             {lastLine(text) ? <Suggestion arr={cc} setText={concatSet} /> : null}
             <button onClick={submit}>Submit</button>

@@ -1,5 +1,6 @@
 .ChiefComplaintsInp {
-    padding: 15px 30px;
+    padding: 15px 80px 15px 30px;
+    position: relative;
 }
 .ChiefComplaintsInp button {
     display: block;
@@ -14,4 +15,9 @@
 .ChiefComplaintsInp button:hover {
     cursor: pointer;
     background: var(--secondary);
+}
+.tool {
+    position: absolute;
+    right: 20px;
+    top: 60px;
 }
