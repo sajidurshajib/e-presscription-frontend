@@ -1,6 +1,7 @@
 .Nav {
     overflow: hidden;
     border-bottom: 1px solid var(--light-grey);
+    width: 100%;
 }
 .alignLeft svg {
     color: var(--light-grey);
