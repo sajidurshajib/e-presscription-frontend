@@ -3,14 +3,23 @@
     grid-template-columns: minmax(0, 250px) auto;
     position: relative;
 }
+
 .minimize > div:nth-child(2) {
     position: absolute;
     animation: left 300ms;
     left: 0;
+    width: 100%;
 }
 .minimize > div:first-child {
     animation: op 300ms;
     opacity: 0;
+}
+
+.maximize {
+    position: absolute;
+    animation: right 300ms;
+    right: inherit;
+    width: 100%;
 }
 h2 {
     color: var(--primary);
@@ -18,10 +27,10 @@ h2 {
 
 @keyframes right {
     100% {
-        left: 0;
+        right: 0;
     }
     0% {
-        left: 250px;
+        right: 250px;
     }
 }
 @keyframes left {

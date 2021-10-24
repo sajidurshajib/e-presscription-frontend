@@ -10,7 +10,7 @@ const Dashboard = () => {
     const { state } = useContext(SidebarContext)
     const [stateField, dispatchField] = useReducer(fieldReducer, fieldState)
     return (
-        <div className={`${classes.Dashboard} ${state.expand === false ? classes.minimize : ''}`}>
+        <div className={`${classes.Dashboard} ${state.expand === false ? classes.minimize : classes.maximize}`}>
             <FieldContext.Provider value={{ state: stateField, dispatch: dispatchField }}>
                 <Sidebar />
                 <div>
