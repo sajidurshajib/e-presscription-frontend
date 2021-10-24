@@ -1,5 +1,6 @@
 .AdviceInpOut {
     padding: 30px;
+    position: relative;
 }
 .wrap {
     width: 80%;
@@ -17,4 +18,10 @@
 .AdviceInpOut button:hover {
     cursor: pointer;
     background: var(--secondary);
+}
+
+.tool {
+    position: absolute;
+    right: 90px;
+    top: 70px;
 }

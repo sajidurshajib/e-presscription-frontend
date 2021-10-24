@@ -4,6 +4,7 @@ import { Advice } from '../../../allContext'
 import { lastLine } from '../../../utils/Lines'
 import Suggestion from '../../ReUsable/Suggestion/Suggestion'
 import TextField from '../../ReUsable/TextField/TextField'
+import ToolTip from '../../ReUsable/ToolTip/ToolTip'
 import classes from './AdviceInpOut.module.css'
 import AdvicePrev from './AdvicePrev/AdvicePrev'
 
@@ -56,6 +57,9 @@ const AdviceInpOut = () => {
         <div className={classes.AdviceInpOut}>
             <div className={classes.wrap}>
                 <TextField text={text} setText={setText} label="Advice" />
+                <div className={classes.tool}>
+                    <ToolTip tip="Chief Complaints lorem ipsu dolor sit amet" />
+                </div>
 
                 {lastLine(text) ? <Suggestion arr={advice} setText={concatSet} /> : null}
                 <button onClick={adviceSubmit}>Submit</button>
