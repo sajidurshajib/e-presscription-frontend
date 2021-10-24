@@ -1,9 +1,10 @@
-.PreviewSection > h3 {
+.PreviewSection h3 {
     margin: 0;
     padding: 0;
     color: var(--primary);
     padding-left: 30px;
     position: relative;
+    font-size: 16px;
 }
 .PreviewSection > h3::after {
     content: '';
