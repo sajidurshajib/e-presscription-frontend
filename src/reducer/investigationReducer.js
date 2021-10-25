@@ -1,11 +1,16 @@
-export const investigationState = { inv: [] }
+import { EpGetStorage, EpSetStorage, EpDefStorage } from '../utils/EpLocalStorage'
+
+//Set state as default storage value
+export const investigationState = EpDefStorage('investigation', { inv: [] })
 
 export const investigationReducer = (state, action) => {
     switch (action.type) {
         case 'input':
-            return { inv: action.payload }
+            EpSetStorage('investigation', { inv: action.payload })
+            return JSON.parse(EpGetStorage('investigation'))
         case 'remove':
-            return { inv: [] }
+            EpDefStorage('investigation', { inv: [] })
+            return JSON.parse(EpGetStorage('investigation'))
         default:
             return state
     }
