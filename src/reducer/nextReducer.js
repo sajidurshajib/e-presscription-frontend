@@ -1,11 +1,16 @@
-export const nextState = { nxt: '' }
+import { EpGetStorage, EpSetStorage, EpDefStorage } from '../utils/EpLocalStorage'
+
+//Set state as default storage value
+export const nextState = EpDefStorage('next', { nxt: '' })
 
 export const nextReducer = (state, action) => {
     switch (action.type) {
         case 'input':
-            return { nxt: action.payload }
+            EpSetStorage('next', { nxt: action.payload })
+            return JSON.parse(EpGetStorage('next'))
         case 'remove':
-            return { nxt: '' }
+            EpDefStorage('next', { nxt: '' })
+            return JSON.parse(EpDefStorage('next'))
         default:
             return state
     }
