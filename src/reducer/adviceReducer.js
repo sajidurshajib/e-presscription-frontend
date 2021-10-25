@@ -1,11 +1,16 @@
-export const adviceState = { adv: '' }
+import { EpGetStorage, EpSetStorage, EpDefStorage } from '../utils/EpLocalStorage'
+
+//Set state as default storage value
+export const adviceState = EpDefStorage('advice', { adv: '' })
 
 export const adviceReducer = (state, action) => {
     switch (action.type) {
         case 'input':
-            return { adv: action.payload }
+            EpSetStorage('advice', { adv: action.payload })
+            return JSON.parse(EpGetStorage('advice'))
         case 'remove':
-            return { adv: '' }
+            EpDefStorage('advice', { adv: '' })
+            return JSON.parse(EpGetStorage('advice'))
         default:
             return state
     }
