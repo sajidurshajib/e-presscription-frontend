@@ -1,7 +1,7 @@
 import { Suspense, useReducer } from 'react'
 import { SidebarContext } from '../allContext'
 import Dashboard from '../components/Dashboard/Dashboard'
-import { sidebarState, sidebarReducer } from '../reducer/SidebarReducer'
+import { sidebarState, sidebarReducer } from '../reducer/sidebarReducer'
 
 const EprescriptionPage = () => {
     const [stateSidebar, dispatchSidebar] = useReducer(sidebarReducer, sidebarState)
