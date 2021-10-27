@@ -1,11 +1,39 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { History } from '../../../../allContext'
 import classes from './CoMorbidity.module.css'
 
 const CoMorbidity = () => {
-    const [htn, setHtn] = useState(false)
-    const [dm, setDm] = useState(false)
-    const [tb, setTb] = useState(false)
-    const [asm, setAsm] = useState(false)
+    const [htn, setHtn] = useState({ check: false, title: '', remark: '' })
+    const [dm, setDm] = useState({ check: false, title: '', remark: '' })
+    const [tb, setTb] = useState({ check: false, title: '', remark: '' })
+    const [asm, setAsm] = useState({ check: false, title: '', remark: '' })
+
+    const { dispatchCoMorbidity } = useContext(History)
+
+    const res = [
+        htn.check ? { name: 'htn', title: 'Hypertension (HTN)', remark: htn.remark } : null,
+        dm.check ? { name: 'dm', title: 'Diabetes (DM)', remark: dm.remark } : null,
+        tb.check ? { name: 'tb', title: 'Tuberculosis (TB)', remark: tb.remark } : null,
+        asm.check ? { name: 'asm', title: 'Asthma', remark: asm.remark } : null,
+    ]
+
+    let resFilter = res.filter((el) => {
+        return el != null
+    })
+
+    const submit = (e) => {
+        e.preventDefault()
+
+        dispatchCoMorbidity({
+            type: 'input',
+            payload: resFilter,
+        })
+
+        setHtn({ check: false, title: '', remark: '' })
+        setDm({ check: false, title: '', remark: '' })
+        setTb({ check: false, title: '', remark: '' })
+        setAsm({ check: false, title: '', remark: '' })
+    }
 
     return (
         <div className={classes.CoMorbidity}>
@@ -15,32 +43,41 @@ const CoMorbidity = () => {
             <div className={classes.wrapper}>
                 <div className={classes.check}>
                     <p>
-                        Hypertension (HTN)<span>{htn ? '+' : null}</span>
+                        Hypertension (HTN)<span>{htn.check ? '+' : null}</span>
                     </p>
-                    <button onClick={() => setHtn(!htn)}>+/-</button>
-                    {htn ? <input type="text" /> : null}
+                    <button onClick={() => setHtn({ check: !htn.check, remark: htn.remark })}>+/-</button>
+                    {htn.check ? (
+                        <input onChange={(e) => setHtn({ check: htn.check, remark: e.target.value })} type="text" />
+                    ) : null}
                 </div>
                 <div className={classes.check}>
                     <p>
-                        Diabetes (DM)<span>{dm ? '+' : null}</span>
+                        Diabetes (DM)<span>{dm.check ? '+' : null}</span>
                     </p>
-                    <button onClick={() => setDm(!dm)}>+/-</button>
-                    {dm ? <input type="text" /> : null}
+                    <button onClick={() => setDm({ check: !dm.check, remark: dm.remark })}>+/-</button>
+                    {dm.check ? (
+                        <input onChange={(e) => setDm({ check: dm.check, remark: e.target.value })} type="text" />
+                    ) : null}
                 </div>
                 <div className={classes.check}>
                     <p>
-                        Tuberculosis (TB)<span>{tb ? '+' : null}</span>
+                        Tuberculosis (TB)<span>{tb.check ? '+' : null}</span>
                     </p>
-                    <button onClick={() => setTb(!tb)}>+/-</button>
-                    {tb ? <input type="text" /> : null}
+                    <button onClick={() => setTb({ check: !tb.check, remark: tb.remark })}>+/-</button>
+                    {tb.check ? (
+                        <input onChange={(e) => setTb({ check: tb.check, remark: e.target.value })} type="text" />
+                    ) : null}
                 </div>
                 <div className={classes.check}>
                     <p>
-                        Asthma<span>{asm ? '+' : null}</span>
+                        Asthma<span>{asm.check ? '+' : null}</span>
                     </p>
-                    <button onClick={() => setAsm(!asm)}>+/-</button>
-                    {asm ? <input type="text" /> : null}
+                    <button onClick={() => setAsm({ check: !asm.check, remark: asm.remark })}>+/-</button>
+                    {asm.check ? (
+                        <input onChange={(e) => setAsm({ check: asm.check, remark: e.target.value })} type="text" />
+                    ) : null}
                 </div>
+                <button onClick={submit}>Submit</button>
             </div>
         </div>
     )

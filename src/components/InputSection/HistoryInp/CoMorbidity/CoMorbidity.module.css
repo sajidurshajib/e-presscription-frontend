@@ -8,6 +8,22 @@
     position: absolute;
     right: 100px;
 }
+.CoMorbidity > .wrapper > button {
+    display: inline-block;
+    border: 1px solid var(--primary);
+    border-radius: 2px;
+    font-size: 12px;
+    padding: 7px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    color: var(--light);
+    background: var(--primary);
+}
+.CoMorbidity > .wrapper > button:hover {
+    background: var(--secondary);
+    color: var(--white);
+}
+
 .check {
     margin: 0 10px;
     position: relative;
