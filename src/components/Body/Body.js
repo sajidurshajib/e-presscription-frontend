@@ -6,6 +6,7 @@ import { diagnosisReducer, diagnosisState } from '../../reducer/diagnosisReducer
 import { investigationReducer, investigationState } from '../../reducer/investigationReducer'
 import { nextReducer, nextState } from '../../reducer/nextReducer'
 import { personalHistoryReducer, personalHistoryState } from '../../reducer/personalHistoryReducer'
+import { professionalHistoryReducer, professionallHistoryState } from '../../reducer/professionalHistoryReducer'
 import InputSection from '../InputSection/InputSection'
 import PreviewSection from '../PreviewSection/PreviewSection'
 import classes from './Body.module.css'
@@ -17,8 +18,17 @@ const Body = () => {
     const [stateAdvice, dispatchAdvice] = useReducer(adviceReducer, adviceState)
     const [stateNext, dispatchNext] = useReducer(nextReducer, nextState)
     const [statePersonalHistory, dispatchPersonalHistory] = useReducer(personalHistoryReducer, personalHistoryState)
+    const [stateProfessionalHistory, dispatchProfessionalHistory] = useReducer(
+        professionalHistoryReducer,
+        professionallHistoryState
+    )
 
-    const history = { statePersonalHistory, dispatchPersonalHistory }
+    const history = {
+        statePersonalHistory,
+        dispatchPersonalHistory,
+        stateProfessionalHistory,
+        dispatchProfessionalHistory,
+    }
 
     return (
         <div className={classes.Body}>
