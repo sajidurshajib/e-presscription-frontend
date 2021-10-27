@@ -2,6 +2,7 @@ import { useReducer } from 'react'
 import { ChiefComplaints, History, Investigation, Diagnosis, Advice, Next } from '../../allContext'
 import { adviceState, adviceReducer } from '../../reducer/adviceReducer'
 import { chiefState, chiefReducer } from '../../reducer/chiefReducer'
+import { coMorbidityReducer, coMorbidityState } from '../../reducer/coMorbidityReducer'
 import { diagnosisReducer, diagnosisState } from '../../reducer/diagnosisReducer'
 import { drugHistoryReducer, drugHistoryState } from '../../reducer/drugHistoryReducer'
 import { familyHistoryReducer, familyHistoryState } from '../../reducer/familyHistoryReducer'
@@ -33,6 +34,7 @@ const Body = () => {
         vaccinationHistoryReducer,
         vaccinationHistoryState
     )
+    const [stateCoMorbidity, dispatchCoMorbidity] = useReducer(coMorbidityReducer, coMorbidityState)
 
     const history = {
         statePersonalHistory,
@@ -47,6 +49,8 @@ const Body = () => {
         dispatchMedicalHistory,
         stateVaccinationHistory,
         dispatchVaccinationHistory,
+        stateCoMorbidity,
+        dispatchCoMorbidity,
     }
 
     return (
