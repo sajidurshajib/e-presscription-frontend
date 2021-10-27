@@ -3,6 +3,7 @@ import { ChiefComplaints, History, Investigation, Diagnosis, Advice, Next } from
 import { adviceState, adviceReducer } from '../../reducer/adviceReducer'
 import { chiefState, chiefReducer } from '../../reducer/chiefReducer'
 import { diagnosisReducer, diagnosisState } from '../../reducer/diagnosisReducer'
+import { drugHistoryReducer, drugHistoryState } from '../../reducer/drugHistoryReducer'
 import { familyHistoryReducer, familyHistoryState } from '../../reducer/familyHistoryReducer'
 import { investigationReducer, investigationState } from '../../reducer/investigationReducer'
 import { nextReducer, nextState } from '../../reducer/nextReducer'
@@ -24,6 +25,7 @@ const Body = () => {
         professionallHistoryState
     )
     const [stateFamilyHistory, dispatchFamilyHistory] = useReducer(familyHistoryReducer, familyHistoryState)
+    const [stateDrugHistory, dispatchDrugHistory] = useReducer(drugHistoryReducer, drugHistoryState)
 
     const history = {
         statePersonalHistory,
@@ -32,6 +34,8 @@ const Body = () => {
         dispatchProfessionalHistory,
         stateFamilyHistory,
         dispatchFamilyHistory,
+        stateDrugHistory,
+        dispatchDrugHistory,
     }
 
     return (
