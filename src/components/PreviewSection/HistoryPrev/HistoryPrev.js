@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { Fragment, useContext, useState } from 'react'
+import { History } from '../../../allContext'
 import classes from './HistoryPrev.module.css'
 import CoMorbidity from './HistoryPrevChild/CoMorbiditry'
 import Drug from './HistoryPrevChild/Drug'
@@ -10,13 +11,34 @@ import Vaccination from './HistoryPrevChild/Vaccination'
 
 const HistoryPrev = () => {
     const [toggle, setToggle] = useState(true)
+    const {
+        statePersonalHistory,
+        stateProfessionalHistory,
+        stateFamilyHistory,
+        stateDrugHistory,
+        stateMedicalHistory,
+        stateVaccinationHistory,
+        stateCoMorbidity,
+    } = useContext(History)
+
+    const AllLength =
+        statePersonalHistory.personal.length +
+        stateProfessionalHistory.professional.length +
+        stateFamilyHistory.family.length +
+        stateMedicalHistory.medical.length +
+        stateVaccinationHistory.vaccination.length +
+        stateDrugHistory.drug.length +
+        stateCoMorbidity.coMorbidity.length
+
     return (
         <div className={classes.HistoryPrev}>
-            <h3 onClick={() => setToggle(!toggle)} className={toggle ? classes.toggle : null}>
-                History
-            </h3>
+            {AllLength ? (
+                <h3 onClick={() => setToggle(!toggle)} className={toggle ? classes.toggle : null}>
+                    History
+                </h3>
+            ) : null}
             {toggle ? (
-                <>
+                <Fragment>
                     <Personal />
                     <CoMorbidity />
                     <Professional />
@@ -24,7 +46,7 @@ const HistoryPrev = () => {
                     <Drug />
                     <Medical />
                     <Vaccination />
-                </>
+                </Fragment>
             ) : null}
         </div>
     )

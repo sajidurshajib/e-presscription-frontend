@@ -77,20 +77,3 @@
     color: var(--dark-blue);
     position: relative;
 }
-.combrt li span {
-    position: absolute;
-    top: 4px;
-    left: 200px;
-    text-align: center;
-    font-size: 14px;
-    border: 2px solid var(--dark-blue);
-    color: var(--dark-blue);
-    border-radius: 50%;
-    width: 15px;
-    height: 15px;
-    line-height: 16px;
-}
-.red {
-    border: 2px solid var(--red) !important;
-    color: var(--red) !important;
-}
