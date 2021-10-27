@@ -10,6 +10,7 @@ import { medicalHistoryReducer, medicalHistoryState } from '../../reducer/medica
 import { nextReducer, nextState } from '../../reducer/nextReducer'
 import { personalHistoryReducer, personalHistoryState } from '../../reducer/personalHistoryReducer'
 import { professionalHistoryReducer, professionallHistoryState } from '../../reducer/professionalHistoryReducer'
+import { vaccinationHistoryReducer, vaccinationHistoryState } from '../../reducer/vaccinationHistoryReducer'
 import InputSection from '../InputSection/InputSection'
 import PreviewSection from '../PreviewSection/PreviewSection'
 import classes from './Body.module.css'
@@ -28,6 +29,10 @@ const Body = () => {
     const [stateFamilyHistory, dispatchFamilyHistory] = useReducer(familyHistoryReducer, familyHistoryState)
     const [stateDrugHistory, dispatchDrugHistory] = useReducer(drugHistoryReducer, drugHistoryState)
     const [stateMedicalHistory, dispatchMedicalHistory] = useReducer(medicalHistoryReducer, medicalHistoryState)
+    const [stateVaccinationHistory, dispatchVaccinationHistory] = useReducer(
+        vaccinationHistoryReducer,
+        vaccinationHistoryState
+    )
 
     const history = {
         statePersonalHistory,
@@ -40,6 +45,8 @@ const Body = () => {
         dispatchDrugHistory,
         stateMedicalHistory,
         dispatchMedicalHistory,
+        stateVaccinationHistory,
+        dispatchVaccinationHistory,
     }
 
     return (
