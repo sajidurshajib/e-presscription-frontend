@@ -6,6 +6,7 @@ import Family from './HistoryPrevChild/Family'
 import Medical from './HistoryPrevChild/Medical'
 import Personal from './HistoryPrevChild/Personal'
 import Professional from './HistoryPrevChild/Professional'
+import Vaccination from './HistoryPrevChild/Vaccination'
 
 const HistoryPrev = () => {
     const [toggle, setToggle] = useState(true)
@@ -17,11 +18,12 @@ const HistoryPrev = () => {
             {toggle ? (
                 <>
                     <Personal />
+                    <CoMorbidity />
                     <Professional />
                     <Family />
                     <Drug />
                     <Medical />
-                    <CoMorbidity />
+                    <Vaccination />
                 </>
             ) : null}
         </div>
