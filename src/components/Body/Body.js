@@ -1,10 +1,11 @@
 import { useReducer } from 'react'
-import { ChiefComplaints, Investigation, Diagnosis, Advice, Next } from '../../allContext'
+import { ChiefComplaints, History, Investigation, Diagnosis, Advice, Next } from '../../allContext'
 import { adviceState, adviceReducer } from '../../reducer/adviceReducer'
 import { chiefState, chiefReducer } from '../../reducer/chiefReducer'
 import { diagnosisReducer, diagnosisState } from '../../reducer/diagnosisReducer'
 import { investigationReducer, investigationState } from '../../reducer/investigationReducer'
 import { nextReducer, nextState } from '../../reducer/nextReducer'
+import { personalHistoryReducer, personalHistoryState } from '../../reducer/personalHistoryReducer'
 import InputSection from '../InputSection/InputSection'
 import PreviewSection from '../PreviewSection/PreviewSection'
 import classes from './Body.module.css'
@@ -15,25 +16,31 @@ const Body = () => {
     const [stateDiagnosis, dispatchDiagnosis] = useReducer(diagnosisReducer, diagnosisState)
     const [stateAdvice, dispatchAdvice] = useReducer(adviceReducer, adviceState)
     const [stateNext, dispatchNext] = useReducer(nextReducer, nextState)
+    const [statePersonalHistory, dispatchPersonalHistory] = useReducer(personalHistoryReducer, personalHistoryState)
+
+    const history = { statePersonalHistory, dispatchPersonalHistory }
+
     return (
         <div className={classes.Body}>
             <ChiefComplaints.Provider value={{ stateChief, dispatchChief }}>
                 <Investigation.Provider value={{ stateInvestigation, dispatchInvestigation }}>
                     <Diagnosis.Provider value={{ stateDiagnosis, dispatchDiagnosis }}>
-                        {/* {Context Wrapper} */}
-                        <div>
-                            <PreviewSection />
-                        </div>
-                        {/* Context only for Input Field */}
-                        <Advice.Provider value={{ stateAdvice, dispatchAdvice }}>
-                            <Next.Provider value={{ stateNext, dispatchNext }}>
-                                <div>
-                                    <InputSection />
-                                </div>
-                            </Next.Provider>
-                        </Advice.Provider>
-                        {/* Context only for Input Field */}
-                        {/* {Context Wrapper} */}
+                        <History.Provider value={history}>
+                            {/* {Context Wrapper} */}
+                            <div>
+                                <PreviewSection />
+                            </div>
+                            {/* Context only for Input Field */}
+                            <Advice.Provider value={{ stateAdvice, dispatchAdvice }}>
+                                <Next.Provider value={{ stateNext, dispatchNext }}>
+                                    <div>
+                                        <InputSection />
+                                    </div>
+                                </Next.Provider>
+                            </Advice.Provider>
+                            {/* Context only for Input Field */}
+                            {/* {Context Wrapper} */}
+                        </History.Provider>
                     </Diagnosis.Provider>
                 </Investigation.Provider>
             </ChiefComplaints.Provider>
