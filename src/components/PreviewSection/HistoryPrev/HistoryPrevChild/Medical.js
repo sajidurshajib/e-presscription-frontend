@@ -1,24 +1,32 @@
-import { useState } from 'react'
+import { useState, useContext, Fragment } from 'react'
+import { History } from '../../../../allContext'
 import classes from './HistoryPrevChild.module.css'
 
 const Medical = () => {
     const [toggle, setToggle] = useState(true)
+    const { stateMedicalHistory } = useContext(History)
     return (
         <div className={classes.HistoryPrev}>
-            <h4
-                className={toggle ? classes.historyChildH : `${classes.historyChildH} ${classes.toggle}`}
-                onClick={() => setToggle(!toggle)}>
-                Medical history
-            </h4>
+            {stateMedicalHistory.medical.length !== 0 ? (
+                <h4
+                    className={toggle ? classes.historyChildH : `${classes.historyChildH} ${classes.toggle}`}
+                    onClick={() => setToggle(!toggle)}>
+                    Medical history
+                </h4>
+            ) : null}
             {toggle ? (
-                <>
-                    <ul className={classes.historyli}>
-                        <li>Demo exist</li>
-                        <li>Demo problem</li>
-                        <li>Demo exist</li>
-                        <li>Demo problem</li>
-                    </ul>
-                </>
+                <Fragment>
+                    {stateMedicalHistory.medical.length !== 0 ? (
+                        <ul className={classes.historyli}>
+                            {stateMedicalHistory.medical
+                                .replace(/\n+$/, '')
+                                .split('\n')
+                                .map((v, i) => {
+                                    return <li key={i}>{v}</li>
+                                })}
+                        </ul>
+                    ) : null}
+                </Fragment>
             ) : null}
         </div>
     )
