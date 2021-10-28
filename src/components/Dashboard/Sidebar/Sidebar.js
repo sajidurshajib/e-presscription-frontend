@@ -25,7 +25,7 @@ const Sidebar = () => {
             </div>
             <div className={classes.doc}>
                 <div className={classes.docImg} style={{ backgroundImage: 'url(' + docImg + ')' }}></div>
-                <h3>Rashadul Islam</h3>
+                <h3>Dr. Rashadul Islam</h3>
                 <p>Medicine Specialist</p>
                 <hr />
             </div>
