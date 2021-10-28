@@ -1,32 +1,60 @@
 import { Fragment, useState } from 'react'
-import ExamField from './ExamField/ExamField'
+import Anaemia from './ExamField/Anaemia'
+import BloodPressure from './ExamField/BloodPressure'
+import Bmi from './ExamField/Bmi'
+import Custom from './ExamField/Custom'
+import Cyanois from './ExamField/Cyanois'
+import Heart from './ExamField/Heart'
+import HeartRate from './ExamField/HeartRate'
+import Height from './ExamField/Height'
+import Jaundice from './ExamField/Jaundice'
+import Lungs from './ExamField/Lungs'
+import Oedema from './ExamField/Oedema'
+import Pulse from './ExamField/Pulse'
+import Rbs from './ExamField/Rbs'
+import Respiratory from './ExamField/Respiratory'
+import Temp from './ExamField/Temp'
+import Weight from './ExamField/Weight'
 import classes from './OnExaminationInp.module.css'
 
 const OnExaminationInp = () => {
     const [more, setMore] = useState(false)
+
+    let onExamData = {}
+    const [onExamination, setOnExamination] = useState(onExamData)
+
+    const setDataFun = (obj) => {
+        setOnExamination({ ...onExamination, ...obj })
+    }
+
     return (
         <div className={classes.OnExaminationInp}>
-            <ExamField name="bloodpressure" />
-            <ExamField name="pulse" />
-            <ExamField name="temp" />
-            <ExamField name="rbs" />
-            <ExamField name="heart" />
-            <ExamField name="lungs" />
-            <ExamField name="weight" />
+            <BloodPressure setData={setDataFun} />
+            <Pulse setData={setDataFun} />
+            <Temp setData={setDataFun} />
+            <Rbs setData={setDataFun} />
+            <Heart setData={setDataFun} />
+            <Lungs setData={setDataFun} />
+            <Weight setData={setDataFun} />
 
             {more ? (
                 <Fragment>
-                    <ExamField name="anaemia" />
-                    <ExamField name="jaundice" />
-                    <ExamField name="cyanosis" />
-                    <ExamField name="heartrate" />
-                    <ExamField name="respiratory" />
-                    <ExamField name="oedema" />
-                    <ExamField name="height" />
+                    <Anaemia setData={setDataFun} />
+                    <Jaundice setData={setDataFun} />
+                    <Cyanois setData={setDataFun} />
+                    <HeartRate setData={setDataFun} />
+                    <Respiratory setData={setDataFun} />
+                    <Oedema setData={setDataFun} />
+                    <Height setData={setDataFun} />
+                    <Bmi setData={setDataFun} />
+                    <Custom setData={setDataFun} />
                 </Fragment>
             ) : null}
 
-            <button onClick={() => setMore(!more)}>See {more ? 'less' : 'more'}</button>
+            <div className={classes.btnWrapper}>
+                <button onClick={() => setMore(!more)}>See {more ? 'less' : 'more'}</button>
+                <button>Submit</button>
+            </div>
         </div>
     )
 }
