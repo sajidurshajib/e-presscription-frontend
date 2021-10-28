@@ -1,0 +1,27 @@
+import { useState, useEffect } from 'react'
+import classes from './ExamField.module.css'
+
+const Respiratory = ({ setData }) => {
+    const [respiratory, setRespiratory] = useState({ respiratory: 0 })
+    useEffect(() => {
+        if (respiratory.respiratory !== 0) {
+            setData(respiratory)
+        }
+    }, [respiratory])
+    return (
+        <div className={classes.ExamField}>
+            <div className={classes.wrap2}>
+                <p>Respiratory rate:</p>
+                <input
+                    value={respiratory.respiratory}
+                    onChange={(e) => setRespiratory({ respiratory: parseInt(e.target.value) })}
+                    type="number"
+                    required
+                />
+                <p>breaths/min</p>
+            </div>
+        </div>
+    )
+}
+
+export default Respiratory
