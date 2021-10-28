@@ -5,11 +5,11 @@ const PreviewMedicine = () => {
         <div className={classes.PreviewMedicine}>
             <h4>Preview Medicine</h4>
             <div className={classes.medicine}>
-                <p>Napa | Tab | 500mg</p>
+                <p>Tab | Flexi | 100mg</p>
                 <p>
                     1 + 0 + 1 <span>|</span> After Meal <span>|</span> 25 days
                 </p>
-                <p>Take it before half an hour goig to bed.</p>
+                <p>Take it after half an hour of meal.</p>
 
                 <div className={classes.btn}>
                     <button>Edit</button>
@@ -18,11 +18,11 @@ const PreviewMedicine = () => {
             </div>
 
             <div className={classes.medicine}>
-                <p>Napa | Tab | 500mg</p>
+                <p>Cap | Sergel | 20mg</p>
                 <p>
-                    1 + 0 + 1 <span>|</span> After Meal <span>|</span> 25 days
+                    1 + 0 + 1 <span>|</span> Before Meal <span>|</span> 25 days
                 </p>
-                <p>Take it before half an hour goig to bed.</p>
+                <p>Before half an hour of meal.</p>
 
                 <div className={classes.btn}>
                     <button>Edit</button>
