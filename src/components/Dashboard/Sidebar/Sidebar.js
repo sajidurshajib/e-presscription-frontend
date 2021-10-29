@@ -80,6 +80,7 @@ const Sidebar = () => {
                     Next Follow up
                 </li>
             </ul>
+            <button>Generate Prescription</button>
         </div>
     )
 }

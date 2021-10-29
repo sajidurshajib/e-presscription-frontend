@@ -2,6 +2,22 @@
     height: 100vh;
     border-right: 1px solid var(--light-grey);
 }
+.Sidebar > button {
+    border: none;
+    border-radius: 50px;
+    background: var(--primary);
+    color: var(--white);
+    padding: 5px 15px;
+    font-size: 12px;
+    font-weight: 500;
+    display: block;
+    margin: 25px 0 10px 32px;
+    cursor: pointer;
+    transition: 200ms;
+}
+.Sidebar > button:hover {
+    transform: scale(1.1);
+}
 .epLogo img {
     display: block;
     margin: 20px auto;
