@@ -1,5 +1,4 @@
-import { Fragment, useState } from 'react'
-import { useContext } from 'react/cjs/react.development'
+import { Fragment, useState, useContext } from 'react'
 import { History } from '../../../../allContext'
 import classes from './HistoryPrevChild.module.css'
 
