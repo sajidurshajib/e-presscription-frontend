@@ -1,5 +1,5 @@
 import { useReducer } from 'react'
-import { ChiefComplaints, History, Investigation, Diagnosis, Advice, Next } from '../../allContext'
+import { ChiefComplaints, History, Investigation, Diagnosis, Advice, Next, OnExamination } from '../../allContext'
 import { adviceState, adviceReducer } from '../../reducer/adviceReducer'
 import { chiefState, chiefReducer } from '../../reducer/chiefReducer'
 import { coMorbidityReducer, coMorbidityState } from '../../reducer/coMorbidityReducer'
@@ -9,6 +9,7 @@ import { familyHistoryReducer, familyHistoryState } from '../../reducer/familyHi
 import { investigationReducer, investigationState } from '../../reducer/investigationReducer'
 import { medicalHistoryReducer, medicalHistoryState } from '../../reducer/medicalHistoryReducer'
 import { nextReducer, nextState } from '../../reducer/nextReducer'
+import { onExaminationReducer, onExaminationState } from '../../reducer/onExaminationReducer'
 import { personalHistoryReducer, personalHistoryState } from '../../reducer/personalHistoryReducer'
 import { professionalHistoryReducer, professionallHistoryState } from '../../reducer/professionalHistoryReducer'
 import { vaccinationHistoryReducer, vaccinationHistoryState } from '../../reducer/vaccinationHistoryReducer'
@@ -35,6 +36,7 @@ const Body = () => {
         vaccinationHistoryState
     )
     const [stateCoMorbidity, dispatchCoMorbidity] = useReducer(coMorbidityReducer, coMorbidityState)
+    const [stateOnExamination, dispatchOnExamination] = useReducer(onExaminationReducer, onExaminationState)
 
     const history = {
         statePersonalHistory,
@@ -58,22 +60,24 @@ const Body = () => {
             <ChiefComplaints.Provider value={{ stateChief, dispatchChief }}>
                 <Investigation.Provider value={{ stateInvestigation, dispatchInvestigation }}>
                     <Diagnosis.Provider value={{ stateDiagnosis, dispatchDiagnosis }}>
-                        <History.Provider value={history}>
-                            {/* {Context Wrapper} */}
-                            <div>
-                                <PreviewSection />
-                            </div>
-                            {/* Context only for Input Field */}
-                            <Advice.Provider value={{ stateAdvice, dispatchAdvice }}>
-                                <Next.Provider value={{ stateNext, dispatchNext }}>
-                                    <div>
-                                        <InputSection />
-                                    </div>
-                                </Next.Provider>
-                            </Advice.Provider>
-                            {/* Context only for Input Field */}
-                            {/* {Context Wrapper} */}
-                        </History.Provider>
+                        <OnExamination.Provider value={{ stateOnExamination, dispatchOnExamination }}>
+                            <History.Provider value={history}>
+                                {/* {Context Wrapper} */}
+                                <div>
+                                    <PreviewSection />
+                                </div>
+                                {/* Context only for Input Field */}
+                                <Advice.Provider value={{ stateAdvice, dispatchAdvice }}>
+                                    <Next.Provider value={{ stateNext, dispatchNext }}>
+                                        <div>
+                                            <InputSection />
+                                        </div>
+                                    </Next.Provider>
+                                </Advice.Provider>
+                                {/* Context only for Input Field */}
+                                {/* {Context Wrapper} */}
+                            </History.Provider>
+                        </OnExamination.Provider>
                     </Diagnosis.Provider>
                 </Investigation.Provider>
             </ChiefComplaints.Provider>
