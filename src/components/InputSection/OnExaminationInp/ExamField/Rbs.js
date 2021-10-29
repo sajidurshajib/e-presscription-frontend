@@ -7,7 +7,7 @@ const Rbs = ({ setData }) => {
         if (rbs.rbs !== 0) {
             setData(rbs)
         }
-    }, [rbs])
+    }, [rbs, setData])
 
     return (
         <div className={classes.ExamField}>

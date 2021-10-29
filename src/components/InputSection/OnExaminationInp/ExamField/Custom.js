@@ -7,7 +7,7 @@ const Custom = ({ setData }) => {
         if (custom.custom.length) {
             setData(custom)
         }
-    }, [custom])
+    }, [custom, setData])
     return (
         <div className={classes.ExamField}>
             <div className={classes.wrap}>

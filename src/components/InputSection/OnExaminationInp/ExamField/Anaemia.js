@@ -7,7 +7,7 @@ const Anaemia = ({ setData }) => {
         if (anaemia.sign === '+') {
             setData({ anaemia })
         }
-    }, [anaemia])
+    }, [anaemia, setData])
     return (
         <div className={classes.ExamField}>
             <div className={classes.wrap1}>

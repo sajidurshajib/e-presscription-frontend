@@ -7,7 +7,7 @@ const Weight = ({ setData }) => {
         if (weight.value !== 0) {
             setData({ weight })
         }
-    }, [weight])
+    }, [weight, setData])
     return (
         <div className={classes.ExamField}>
             <div className={classes.wrap3}>

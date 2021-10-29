@@ -20,11 +20,12 @@ import classes from './OnExaminationInp.module.css'
 const OnExaminationInp = () => {
     const [more, setMore] = useState(false)
 
-    let onExamData = {}
-    const [onExamination, setOnExamination] = useState(onExamData)
+    let oe = {}
+    // const [onExamination, setOnExamination] = useState(oe)
 
     const setDataFun = (obj) => {
-        setOnExamination({ ...onExamination, ...obj })
+        // setOnExamination({ ...onExamination, ...obj })
+        oe = { ...oe, ...obj }
     }
 
     return (

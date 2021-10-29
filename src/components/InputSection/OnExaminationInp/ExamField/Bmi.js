@@ -7,7 +7,7 @@ const Bmi = ({ setData }) => {
         if (bmi.bmi.length !== 0) {
             setData(bmi)
         }
-    }, [bmi])
+    }, [bmi, setData])
     return (
         <div className={classes.ExamField}>
             <div className={classes.wrap}>

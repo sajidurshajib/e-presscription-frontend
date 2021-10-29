@@ -7,7 +7,7 @@ const HeartRate = ({ setData }) => {
         if (heartRate.heartRate !== 0) {
             setData(heartRate)
         }
-    }, [heartRate])
+    }, [heartRate, setData])
     return (
         <div className={classes.ExamField}>
             <div className={classes.wrap2}>

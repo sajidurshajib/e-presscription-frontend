@@ -9,7 +9,7 @@ const BloodPressure = ({ setData }) => {
         if (bloodPressure.systolic !== 0 && bloodPressure.diastolic !== 0) {
             setData({ bloodPressure })
         }
-    }, [bloodPressure])
+    }, [bloodPressure, setData])
 
     return (
         <div className={classes.ExamField}>

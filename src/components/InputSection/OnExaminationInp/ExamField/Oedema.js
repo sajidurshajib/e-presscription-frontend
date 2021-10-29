@@ -7,7 +7,7 @@ const Oedema = ({ setData }) => {
         if (oedema.sign === '+') {
             setData({ oedema })
         }
-    }, [oedema])
+    }, [oedema, setData])
     return (
         <div className={classes.ExamField}>
             <div className={classes.wrap1}>

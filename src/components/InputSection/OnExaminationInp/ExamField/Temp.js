@@ -8,7 +8,7 @@ const Temp = ({ setData }) => {
         if (temp.value !== 0) {
             setData({ temp })
         }
-    }, [temp])
+    }, [temp, setData])
 
     return (
         <div className={classes.ExamField}>

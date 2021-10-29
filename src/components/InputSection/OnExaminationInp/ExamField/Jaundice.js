@@ -7,7 +7,7 @@ const Jaundice = ({ setData }) => {
         if (jaundice.sign === '+') {
             setData({ jaundice })
         }
-    }, [jaundice])
+    }, [jaundice, setData])
     return (
         <div className={classes.ExamField}>
             <div className={classes.wrap1}>

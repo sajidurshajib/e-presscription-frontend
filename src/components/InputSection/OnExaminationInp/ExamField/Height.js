@@ -11,7 +11,7 @@ const Height = ({ setData }) => {
         if (height.feet !== 0 && height.inch !== 0) {
             setData({ height })
         }
-    }, [height])
+    }, [height, setData])
 
     return (
         <div className={classes.ExamField}>

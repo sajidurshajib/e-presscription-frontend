@@ -7,7 +7,7 @@ const Cyanois = ({ setData }) => {
         if (cyanosis.sign === '+') {
             setData({ cyanosis })
         }
-    }, [cyanosis])
+    }, [cyanosis, setData])
     return (
         <div className={classes.ExamField}>
             <div className={classes.wrap1}>

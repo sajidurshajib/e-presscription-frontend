@@ -7,7 +7,7 @@ const Heart = ({ setData }) => {
         if (heart.heart.length !== 0) {
             setData(heart)
         }
-    }, [heart])
+    }, [heart, setData])
     return (
         <div className={classes.ExamField}>
             <div className={classes.wrap}>

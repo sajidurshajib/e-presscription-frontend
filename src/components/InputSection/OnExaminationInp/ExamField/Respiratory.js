@@ -7,7 +7,7 @@ const Respiratory = ({ setData }) => {
         if (respiratory.respiratory !== 0) {
             setData(respiratory)
         }
-    }, [respiratory])
+    }, [respiratory, setData])
     return (
         <div className={classes.ExamField}>
             <div className={classes.wrap2}>

@@ -8,7 +8,7 @@ const Pulse = ({ setData }) => {
         if (pulse.pulse !== 0) {
             setData(pulse)
         }
-    }, [pulse])
+    }, [pulse, setData])
     return (
         <div className={classes.ExamField}>
             <div className={classes.wrap2}>
