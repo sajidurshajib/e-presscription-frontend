@@ -1,4 +1,5 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useState, useContext } from 'react'
+import { OnExamination } from '../../../allContext'
 import Anaemia from './ExamField/Anaemia'
 import BloodPressure from './ExamField/BloodPressure'
 import Bmi from './ExamField/Bmi'
@@ -19,6 +20,7 @@ import classes from './OnExaminationInp.module.css'
 
 const OnExaminationInp = () => {
     const [more, setMore] = useState(false)
+    const { dispatchOnExamination } = useContext(OnExamination)
 
     let oe = {}
     // const [onExamination, setOnExamination] = useState(oe)
@@ -26,6 +28,10 @@ const OnExaminationInp = () => {
     const setDataFun = (obj) => {
         // setOnExamination({ ...onExamination, ...obj })
         oe = { ...oe, ...obj }
+    }
+
+    const submit = () => {
+        dispatchOnExamination({ type: 'input', payload: oe })
     }
 
     return (
@@ -54,7 +60,7 @@ const OnExaminationInp = () => {
 
             <div className={classes.btnWrapper}>
                 <button onClick={() => setMore(!more)}>See {more ? 'less' : 'more'}</button>
-                <button>Submit</button>
+                <button onClick={submit}>Submit</button>
             </div>
         </div>
     )
