@@ -10,3 +10,5 @@ export const Diagnosis = createContext()
 export const Advice = createContext()
 export const Next = createContext()
 export const OnExamination = createContext()
+
+export const PatientInfo = createContext()
