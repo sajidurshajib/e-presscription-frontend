@@ -2,7 +2,7 @@
     height: 100vh;
     border-right: 1px solid var(--light-grey);
 }
-.Sidebar > button {
+.Sidebar > a > button {
     border: none;
     border-radius: 50px;
     background: var(--primary);
@@ -15,7 +15,11 @@
     cursor: pointer;
     transition: 200ms;
 }
-.Sidebar > button:hover {
+.Sidebar > a {
+    color: var(--white);
+    text-decoration: none;
+}
+.Sidebar > a > button:hover {
     transform: scale(1.1);
     background: var(--secondary);
 }

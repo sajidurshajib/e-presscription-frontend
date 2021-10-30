@@ -10,6 +10,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useContext } from 'react'
+import { Link } from 'react-router-dom'
 import { FieldContext } from '../../../allContext'
 import docImg from '../../../assets/img/docstock.jpg'
 import epLogo from '../../../assets/img/logo.png'
@@ -80,7 +81,9 @@ const Sidebar = () => {
                     Next Follow up
                 </li>
             </ul>
-            <button>Create Prescription</button>
+            <Link to="/ep">
+                <button>Create Prescription</button>
+            </Link>
         </div>
     )
 }
