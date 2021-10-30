@@ -33,9 +33,9 @@ const NextFollowUpInpOut = () => {
             <h3>Next Follow up</h3>
 
             <div className={classes.days}>
-                <InputNumber label="Days" num={days} setNum={setDays} />
-                <InputNumber label="Weeks" num={weeks} setNum={setWeeks} />
-                <InputNumber label="Months" num={months} setNum={setMonths} />
+                <InputNumber label="Days" setNum={setDays} />
+                <InputNumber label="Weeks" setNum={setWeeks} />
+                <InputNumber label="Months" setNum={setMonths} />
             </div>
             <button onClick={submitNext}>Set</button>
             {stateNext.nxt.length !== 0 ? <p className={classes.nextP}>{stateNext.nxt}</p> : null}
