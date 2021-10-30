@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react'
-import { useContext } from 'react/cjs/react.development'
+import { useState, useEffect, useContext } from 'react'
 import { Advice } from '../../../allContext'
 import { lastLine } from '../../../utils/Lines'
 import Suggestion from '../../ReUsable/Suggestion/Suggestion'
