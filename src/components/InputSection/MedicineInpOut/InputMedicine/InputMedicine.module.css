@@ -32,11 +32,17 @@
 .formWrap {
     box-sizing: border-box;
 }
+.formWrap > div {
+    margin-bottom: 10px;
+}
 .typeWrap {
     width: 100%;
     display: grid;
     grid-template-columns: minmax(0, 15%) minmax(0, 15%) minmax(0, 70%);
     gap: 10px;
+}
+.typeWrap > div {
+    margin-bottom: 10px;
 }
 .timeWrap {
     width: 100%;

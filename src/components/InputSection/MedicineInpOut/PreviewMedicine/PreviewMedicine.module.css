@@ -1,14 +1,22 @@
 .PreviewMedicine h4 {
+    margin-left: 30px;
     color: var(--primary);
 }
 .medicine {
-    border: 1px solid var(--primary);
-    border-radius: 2px;
+    /* border: 1px solid var(--primary); */
+    box-shadow: 2px 1px 5px var(--grey2);
+    border-radius: 4px;
     padding: 5px 10px;
+    min-height: 100px;
     box-sizing: border-box;
+    margin-left: 25px;
     margin-bottom: 20px;
     width: 65%;
     position: relative;
+    transition: 200ms;
+}
+.medicine:hover {
+    box-shadow: 2px 1px 10px var(--grey2);
 }
 .medicine p {
     font-size: 12px;
@@ -24,7 +32,7 @@
 .btn {
     position: absolute;
     right: 10px;
-    bottom: 10px;
+    top: 10px;
 }
 .btn button {
     display: block;
