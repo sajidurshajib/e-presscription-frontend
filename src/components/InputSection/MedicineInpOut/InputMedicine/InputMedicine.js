@@ -14,6 +14,11 @@ const InputMedicine = ({ setMedicine }) => {
             <form>
                 <div className={classes.formWrap}>
                     <InputField label="Medicine name" />
+                    <div className={classes.typeWrap}>
+                        <InputField label="Form" />
+                        <InputField label="Strength" />
+                        <InputField label="Generic name" />
+                    </div>
                     <div className={classes.timeWrap}>
                         <InputNumber label="Morning" />
                         <InputNumber label="Evening" />

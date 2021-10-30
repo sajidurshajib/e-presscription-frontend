@@ -1,11 +1,42 @@
 .InputMedicine {
     box-sizing: border-box;
     border-radius: 5px;
-    /* border: 2px solid var(--primary); */
-    padding: 20px 25px;
+    padding: 5px 25px;
 }
+.InputMedicine input {
+    padding: 15px 5px 5px 10px;
+    font-size: 12px;
+}
+.InputMedicine label span {
+    font-size: 12px;
+}
+.InputMedicine input:focus + label span,
+.InputMedicine input:valid + label span {
+    font-size: 10px;
+}
+.InputMedicine .formWrap input[type='number'] {
+    padding: 17px 10px 5px 10px;
+    font-size: 12px;
+}
+.InputMedicine .formWrap input[type='number'] + label {
+    top: 16px;
+}
+.InputMedicine .formWrap input:focus + label,
+.InputMedicine .formWrap input:valid + label {
+    top: 2px;
+}
+.InputMedicine .formWrap select {
+    font-size: 12px;
+}
+
 .formWrap {
     box-sizing: border-box;
+}
+.typeWrap {
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 15%) minmax(0, 15%) minmax(0, 70%);
+    gap: 10px;
 }
 .timeWrap {
     width: 100%;
