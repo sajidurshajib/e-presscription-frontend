@@ -1,9 +1,9 @@
 import classes from './DropDown.module.css'
 
-const DropDown = ({ arr }) => {
+const DropDown = ({ arr, drop, setDrop }) => {
     return (
         <div className={classes.DropDown}>
-            <select name="" id="">
+            <select value={drop} onChange={(e) => setDrop(e.target.value)}>
                 {arr.map((v, i) => {
                     return (
                         <option key={i} value={v.value}>
