@@ -30,14 +30,6 @@ const Nav = () => {
             <PatientInfo.Provider value={{ statePatient, dispatchPatient }}>
                 <Patient />
             </PatientInfo.Provider>
-            {/* <ul>
-                <li>
-                    <Link to="/">
-                        <FontAwesomeIcon icon={faPrescription} />
-                        ePrescription
-                    </Link>
-                </li>
-            </ul> */}
         </div>
     )
 }
