@@ -17,20 +17,12 @@ const OnExaminationPrev = () => {
             {toggle ? (
                 <Fragment>
                     <ul>
-                        {undef(stateOnExamination.onexam.bloodPressure.systolic) ? (
+                        {/* Blood Pressure preview */}
+                        {!undef(stateOnExamination.onexam.bloodPressure.systolic) ? (
                             <li>
                                 BP <span>{stateOnExamination.onexam.bloodPressure.systolic}</span>
                             </li>
                         ) : null}
-                        <li>
-                            BP <span>: 83</span>
-                        </li>
-                        <li>
-                            Pulse <span>: 80</span>
-                        </li>
-                        <li>
-                            Temp <span>: 98</span>
-                        </li>
                     </ul>
                 </Fragment>
             ) : null}
