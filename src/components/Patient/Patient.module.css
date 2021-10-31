@@ -5,11 +5,13 @@
 }
 .Patient > div > input {
     padding: 5px;
+    background: var(--light-grey);
 }
 .Patient > div > select {
     padding-left: 5px;
     font-size: 12px;
     color: var(--dark-grey);
+    background: var(--light-grey);
 }
 .Patient > div > input:valid,
 select {
@@ -17,12 +19,12 @@ select {
 }
 .wrap1 {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 50%));
+    grid-template-columns: minmax(0, 60%) minmax(0, 20%) minmax(0, 20%);
     gap: 10px;
     margin-bottom: 5px;
 }
 .wrap2 {
     display: grid;
-    grid-template-columns: minmax(0, 15%) minmax(0, 15%) minmax(0, 70%);
+    grid-template-columns: minmax(0, 40%) minmax(0, 60%);
     gap: 10px;
 }
