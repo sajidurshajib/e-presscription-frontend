@@ -1,34 +1,120 @@
+import { useState, useEffect, useContext } from 'react'
+import { Medicine } from '../../../../allContext'
 import DropDown from '../../../ReUsable/DropDown/DropDown'
 import InputField from '../../../ReUsable/InputField/InputField'
 import InputNumber from '../../../ReUsable/InputNumber/InputNumber'
+import SuggestionMedicine from '../Suggestion/SuggestionMedicine'
 import classes from './InputMedicine.module.css'
 
-const InputMedicine = ({ setMedicine }) => {
+const InputMedicine = () => {
+    const { stateMedicine, dispatchMedicine } = useContext(Medicine)
+
     const option = [
-        { name: 'After Meal', value: 'after' },
-        { name: 'Before Meal', value: 'before' },
+        { name: 'After Meal', value: true },
+        { name: 'Before Meal', value: false },
     ]
+
+    const [arr, setArr] = useState([])
+    const [medicineObj, setMedicineObj] = useState({ name: '' })
+
+    const [id, setId] = useState(0)
+    const [medicine, setMedicine] = useState('')
+    const [form, setForm] = useState('')
+    const [strength, setStrength] = useState('')
+    const [generic, setGeneric] = useState('')
+
+    const [morning, setMorning] = useState('')
+    const [evening, setEvening] = useState('')
+    const [night, setNight] = useState('')
+    const [after, setAfter] = useState(true)
+
+    const [day, setDay] = useState('')
+    const [remark, setRemark] = useState('')
+
+    useEffect(() => {
+        //Fetch from Api
+        const funFetch = async () => {
+            try {
+                const response = await fetch(`/medicines?search=${medicine}&page_size=10`)
+                if (response.ok) {
+                    const data = await response.json()
+                    setArr(data)
+                }
+            } catch (err) {}
+        }
+        if (medicine.length !== 0) {
+            funFetch()
+        }
+        //Medicine name set from object
+
+        if (medicineObj.name && medicineObj.name !== medicine) {
+            setId(medicineObj.id)
+            setMedicine(medicineObj.name)
+            setForm(medicineObj.form)
+            setStrength(medicineObj.strength)
+            setGeneric(medicineObj.generic)
+            setMedicineObj({ ...medicineObj, name: '' })
+        }
+    }, [medicineObj, medicine])
+
+    const submit = (e) => {
+        e.preventDefault()
+        dispatchMedicine({
+            type: 'input',
+            payload: [
+                ...stateMedicine.medicine,
+                {
+                    id,
+                    name: medicine,
+                    form,
+                    strength,
+                    generic,
+                    doses: morning + '+' + evening + '+' + night,
+                    after,
+                    day,
+                    remark,
+                },
+            ],
+        })
+        setId(0)
+        setMedicine('')
+        setForm('')
+        setStrength('')
+        setGeneric('')
+        setMorning('')
+        setEvening('')
+        setNight('')
+        setAfter(true)
+        setDay('')
+        setRemark('')
+    }
 
     return (
         <div className={classes.InputMedicine}>
             <form>
                 <div className={classes.formWrap}>
-                    <InputField label="Medicine name" />
+                    <InputField text={medicine} setText={setMedicine} label="Medicine name" />
+                    {medicine.length !== 0 ? (
+                        arr.length !== 0 && !arr.some((obj) => obj.id === id) ? (
+                            <SuggestionMedicine objArr={arr} setObj={setMedicineObj} />
+                        ) : null
+                    ) : null}
+
                     <div className={classes.typeWrap}>
-                        <InputField label="Form" />
-                        <InputField label="Strength" />
-                        <InputField label="Generic name" />
+                        <InputField text={form} setText={setForm} label="Form" />
+                        <InputField text={strength} setText={setStrength} label="Strength" />
+                        <InputField text={generic} setText={setGeneric} label="Generic name" />
                     </div>
                     <div className={classes.timeWrap}>
-                        <InputNumber label="Morning" />
-                        <InputNumber label="Evening" />
-                        <InputNumber label="Night" />
-                        <DropDown arr={option} />
-                        <InputNumber label="Day" />
+                        <InputNumber num={morning} setNum={setMorning} label="Morning" />
+                        <InputNumber num={evening} setNum={setEvening} label="Evening" />
+                        <InputNumber num={night} setNum={setNight} label="Night" />
+                        <DropDown drop={after} setDrop={setAfter} arr={option} />
+                        <InputNumber text={day} setNum={setDay} label="Day" />
                     </div>
                 </div>
-                <InputField label="Remark" />
-                <button>Submit</button>
+                <InputField text={remark} setText={setRemark} label="Remark" />
+                <button onClick={submit}>Submit</button>
             </form>
         </div>
     )
