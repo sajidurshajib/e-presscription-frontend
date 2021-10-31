@@ -4,7 +4,7 @@ import { undef } from '../../../utils/TypeCheck'
 import classes from './OnExaminationPrev.module.css'
 
 const OnExaminationPrev = () => {
-    const [toggle, setToggle] = useState(false)
+    const [toggle, setToggle] = useState(true)
     const { stateOnExamination } = useContext(OnExamination)
 
     return (
@@ -18,7 +18,7 @@ const OnExaminationPrev = () => {
                 <Fragment>
                     <ul>
                         {/* Blood Pressure preview */}
-                        {!undef(stateOnExamination.onexam.bloodPressure.systolic) ? (
+                        {!undef(stateOnExamination.onexam.bloodPressure) ? (
                             <li>
                                 BP <span>{stateOnExamination.onexam.bloodPressure.systolic}</span>
                             </li>

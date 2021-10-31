@@ -18,7 +18,10 @@ const BloodPressure = ({ setData }) => {
                 <input
                     value={bloodPressure.systolic}
                     onChange={(e) =>
-                        setBloodPressure({ systolic: parseInt(e.target.value), diastolic: bloodPressure.diastolic })
+                        setBloodPressure({
+                            systolic: parseInt(e.target.value) || 0,
+                            diastolic: bloodPressure.diastolic,
+                        })
                     }
                     type="number"
                     placeholder="Systolic"
@@ -28,7 +31,7 @@ const BloodPressure = ({ setData }) => {
                 <input
                     value={bloodPressure.diastolic}
                     onChange={(e) =>
-                        setBloodPressure({ systolic: bloodPressure.systolic, diastolic: parseInt(e.target.value) })
+                        setBloodPressure({ systolic: bloodPressure.systolic, diastolic: parseInt(e.target.value) || 0 })
                     }
                     type="number"
                     placeholder="Diastolic"

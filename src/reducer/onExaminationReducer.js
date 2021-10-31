@@ -1,7 +1,7 @@
 import { EpGetStorage, EpSetStorage, EpDefStorage } from '../utils/EpLocalStorage'
 
 //Set state as default storage value
-export const onExaminationState = EpDefStorage('onExamination', { onexam: '' })
+export const onExaminationState = EpDefStorage('onexam', { onexam: '' })
 
 export const onExaminationReducer = (state, action) => {
     switch (action.type) {
