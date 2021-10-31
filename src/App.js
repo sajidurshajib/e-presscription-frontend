@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import EPrescription from './pages/EPrescription'
+import EPrescriptionPDF from './pages/EPrescriptionPDF'
 import EprescriptionPage from './pages/EprescriptionPage'
 
 const App = () => {
@@ -12,7 +12,7 @@ const App = () => {
                         <EprescriptionPage />
                     </Route>
                     <Route path="/ep">
-                        <EPrescription />
+                        <EPrescriptionPDF />
                     </Route>
                 </Switch>
             </Router>
