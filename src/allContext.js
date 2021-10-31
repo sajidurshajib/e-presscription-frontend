@@ -12,3 +12,4 @@ export const Next = createContext()
 export const OnExamination = createContext()
 
 export const PatientInfo = createContext()
+export const Medicine = createContext()
