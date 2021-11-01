@@ -14,7 +14,7 @@ const HeartRate = ({ setData }) => {
                 <p>Heart rate:</p>
                 <input
                     value={heartRate.heartRate}
-                    onChange={(e) => setHeartRate({ heartRate: parseInt(e.target.value) })}
+                    onChange={(e) => setHeartRate({ heartRate: parseInt(e.target.value) || 0 })}
                     type="number"
                     required
                 />

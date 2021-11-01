@@ -14,7 +14,7 @@ const Respiratory = ({ setData }) => {
                 <p>Respiratory rate:</p>
                 <input
                     value={respiratory.respiratory}
-                    onChange={(e) => setRespiratory({ respiratory: parseInt(e.target.value) })}
+                    onChange={(e) => setRespiratory({ respiratory: parseInt(e.target.value) || 0 })}
                     type="number"
                     required
                 />

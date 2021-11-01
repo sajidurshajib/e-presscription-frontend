@@ -14,7 +14,7 @@ const Weight = ({ setData }) => {
                 <p>Weight : </p>
                 <input
                     value={weight.value}
-                    onChange={(e) => setWeight({ value: parseInt(e.target.value), type: weight.type })}
+                    onChange={(e) => setWeight({ value: parseInt(e.target.value) || 0, type: weight.type })}
                     type="number"
                     required
                 />

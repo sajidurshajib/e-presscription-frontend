@@ -15,7 +15,7 @@ const Rbs = ({ setData }) => {
                 <p>RBS : </p>
                 <input
                     value={rbs.rbs}
-                    onChange={(e) => setRbs({ rbs: parseInt(e.target.value) })}
+                    onChange={(e) => setRbs({ rbs: parseInt(e.target.value) || 0 })}
                     type="number"
                     required
                 />
