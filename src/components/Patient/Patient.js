@@ -7,7 +7,7 @@ const Patient = () => {
 
     const [name, setName] = useState(statePatient.patient.name || '')
     const [phone, setPhone] = useState(statePatient.patient.phone || '')
-    const [sex, setSex] = useState(statePatient.patient.sex || 'male')
+    const [sex, setSex] = useState(statePatient.patient.sex || 'not selected')
     const [age, setAge] = useState(statePatient.patient.age || '')
     const [address, setAddress] = useState(statePatient.patient.address || '')
 
@@ -30,6 +30,9 @@ const Patient = () => {
                 <input value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder="Patient name" />
                 <input value={age} onChange={(e) => setAge(parseInt(e.target.value))} type="number" placeholder="Age" />
                 <select value={sex} onChange={(e) => setSex(e.target.value)}>
+                    <option value="not selected" disabled>
+                        Sex
+                    </option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                 </select>
