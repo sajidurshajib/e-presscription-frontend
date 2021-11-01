@@ -1,23 +1,34 @@
-export const fieldState = { field: 'none' }
+import { EpGetStorage, EpSetStorage, EpDefStorage } from '../utils/EpLocalStorage'
+
+//Set state as default storage value
+export const fieldState = EpDefStorage('field', { field: 'none' })
 
 export const fieldReducer = (state, action) => {
     switch (action.type) {
         case 'chief':
-            return { field: 'chief' }
+            EpSetStorage('field', { field: 'chief' })
+            return JSON.parse(EpGetStorage('field'))
         case 'history':
-            return { field: 'history' }
+            EpSetStorage('field', { field: 'history' })
+            return JSON.parse(EpGetStorage('field'))
         case 'onexam':
-            return { field: 'onexam' }
+            EpSetStorage('field', { field: 'onexam' })
+            return JSON.parse(EpGetStorage('field'))
         case 'investigation':
-            return { field: 'investigation' }
+            EpSetStorage('field', { field: 'investigation' })
+            return JSON.parse(EpGetStorage('field'))
         case 'diagnosis':
-            return { field: 'diagnosis' }
+            EpSetStorage('field', { field: 'diagnosis' })
+            return JSON.parse(EpGetStorage('field'))
         case 'medicine':
-            return { field: 'medicine' }
+            EpSetStorage('field', { field: 'medicine' })
+            return JSON.parse(EpGetStorage('field'))
         case 'advice':
-            return { field: 'advice' }
+            EpSetStorage('field', { field: 'advice' })
+            return JSON.parse(EpGetStorage('field'))
         case 'next':
-            return { field: 'next' }
+            EpSetStorage('field', { field: 'next' })
+            return JSON.parse(EpGetStorage('field'))
         default:
             return state
     }
