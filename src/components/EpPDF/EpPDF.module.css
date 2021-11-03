@@ -1,0 +1,21 @@
+.EpPDF {
+    position: relative;
+    padding: 100px 0;
+    background: var(--light-grey);
+}
+.EpPDF > button {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    color: var(--white);
+    background: var(--primary);
+    border: none;
+    border-radius: 0 0 5px 5px;
+    padding: 5px 30px;
+    cursor: pointer;
+    transition: 200ms;
+}
+.EpPDF > button:hover {
+    background: var(--secondary);
+}
