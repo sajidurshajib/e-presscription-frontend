@@ -1,9 +1,9 @@
-import EpPreview from '../components/EpPreview/EpPreview'
+import EpPDF from '../components/EpPDF/EpPDF'
 
 const EPrescriptionPDF = () => {
     return (
         <div>
-            <EpPreview />
+            <EpPDF />
         </div>
     )
 }
