@@ -1,9 +1,12 @@
+import { PdfWrapped } from '../allContext'
 import EpPDF from '../components/EpPDF/EpPDF'
 
 const EPrescriptionPDF = () => {
     return (
         <div>
-            <EpPDF />
+            <PdfWrapped.Provider>
+                <EpPDF />
+            </PdfWrapped.Provider>
         </div>
     )
 }

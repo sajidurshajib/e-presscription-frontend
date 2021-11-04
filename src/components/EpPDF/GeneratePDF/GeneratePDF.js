@@ -50,8 +50,11 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                     </p>
                 </div>
 
+                {/* Middle body */}
                 <div className={classes.middleBody}>
+                    {/* Left part */}
                     <div className={classes.leftBody}>
+                        {/* Chief Complaints */}
                         <h4>C/C :</h4>
                         <ol>
                             <li>7 days fever.</li>
@@ -59,14 +62,29 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                             <li>Body Ache</li>
                         </ol>
 
+                        {/* History */}
+                        <div className={classes.history}>
+                            <h4>History</h4>
+                            <p>
+                                <b>Personal :</b>
+                                Smocker, Alcholholic
+                            </p>
+                            <p>
+                                <b>Professional :</b>
+                                Smocker, Alcholholic
+                            </p>
+                        </div>
+
+                        {/* On Examiation */}
                         <h4>O/E :</h4>
                         <ol>
-                            <li>Blood Pressure (BP) : 80 / 120 mm of Hg</li>
+                            <li>Blood Pressure (BP) : 120 / 80 mm of Hg</li>
                             <li>Pulse : 56 beats/min</li>
                             <li>Temp : 98 ° F</li>
                             <li>RBS : 70</li>
                         </ol>
 
+                        {/* Investigation */}
                         <h4>INV :</h4>
                         <ol>
                             <li>BUCCAL SWAB PROTEIN</li>
@@ -75,52 +93,56 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                             <li>PERICARDIAL FL.ADA</li>
                         </ol>
 
+                        {/* Probable Diagnosis */}
                         <h4>D/D :</h4>
                         <p className={classes.diagnosis}>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores voluptate impedit nihil
                             consectetur adipisci voluptatem quia quibusdam voluptas, itaque totam!
                         </p>
 
-                        <h4>C/D :</h4>
+                        {/* Confirmatory  */}
+                        <h4>Confirmatory Diagnosis :</h4>
                         <p className={classes.diagnosis}>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis accusamus nulla hic
                             consequuntur velit animi adipisci blanditiis voluptates minus corporis.
                         </p>
                     </div>
+                    {/* Right part */}
                     <div className={classes.rightBody}>
                         <div className={classes.medicine}>
                             <h3>Rx</h3>
                             <div className={classes.singleMedicine}>
-                                <span>Tab | Flexi | 100mg</span>
+                                <span>Tab - Flexi - 100mg</span>
                                 <p>1 + 0 + 1 | After Meal | 25 days</p>
                                 <p>Take it after half an hour of meal.</p>
                             </div>
 
                             <div className={classes.singleMedicine}>
-                                <span>Tab | Flexi | 100mg</span>
+                                <span>Tab - Flexi - 100mg</span>
                                 <p>1 + 0 + 1 | After Meal | 25 days</p>
                                 <p>Take it after half an hour of meal.</p>
                             </div>
 
                             <div className={classes.singleMedicine}>
-                                <span>Tab | Flexi | 100mg</span>
+                                <span>Tab - Flexi - 100mg</span>
                                 <p>1 + 0 + 1 | After Meal | 25 days</p>
                                 <p>Take it after half an hour of meal.</p>
                             </div>
 
                             <div className={classes.singleMedicine}>
-                                <span>Tab | Flexi | 100mg</span>
+                                <span>Tab - Flexi - 100mg</span>
                                 <p>1 + 0 + 1 | After Meal | 25 days</p>
                                 <p>Take it after half an hour of meal.</p>
                             </div>
 
                             <div className={classes.singleMedicine}>
-                                <span>Tab | Flexi | 100mg</span>
+                                <span>Tab - Flexi - 100mg</span>
                                 <p>1 + 0 + 1 | After Meal | 25 days</p>
                                 <p>Take it after half an hour of meal.</p>
                             </div>
                         </div>
 
+                        {/* Advice */}
                         <h4>Advice :</h4>
                         <ol>
                             <li>Blood Pressure (BP) : 80 / 120 mm of Hg</li>
@@ -128,9 +150,11 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                             <li>Temp : 98 ° F</li>
                             <li>RBS : 70</li>
                         </ol>
-
-                        <p className={classes.signature}>Dr. Signature</p>
                     </div>
+                </div>
+                <div className={classes.signature}>
+                    <span></span>
+                    <p className>Dr. Signature</p>
                 </div>
             </div>
         </div>

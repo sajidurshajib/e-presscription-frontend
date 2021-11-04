@@ -1,21 +1,37 @@
 .EpPDF {
     position: relative;
-    padding: 100px 0;
+    padding: 60px 0;
     background: var(--light-grey);
 }
-.EpPDF > button {
+.EpPDF .btnGroup {
     position: fixed;
     top: 0;
     left: 50%;
     transform: translate(-50%, 0);
+}
+.EpPDF > .btnGroup button {
     color: var(--white);
     background: var(--primary);
     border: none;
-    border-radius: 0 0 5px 5px;
+    border-radius: 0 0 5px 0;
     padding: 5px 30px;
     cursor: pointer;
     transition: 200ms;
 }
 .EpPDF > button:hover {
     background: var(--secondary);
+}
+.EpPDF > .btnGroup a {
+    color: var(--primary);
+    background: var(--white);
+    border: none;
+    border-top: 1px solid var(--white);
+    border-left: 2px solid var(--primary);
+    border-bottom: 2px solid var(--primary);
+    border-radius: 0 0 0 5px;
+    padding: 5px 30px;
+    cursor: pointer;
+    transition: 200ms;
+    text-decoration: none;
+    font-size: 12px;
 }

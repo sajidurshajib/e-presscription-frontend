@@ -13,3 +13,5 @@ export const OnExamination = createContext()
 
 export const PatientInfo = createContext()
 export const Medicine = createContext()
+
+export const PdfWrapped = createContext()
