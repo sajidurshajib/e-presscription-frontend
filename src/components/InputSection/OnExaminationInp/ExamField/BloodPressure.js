@@ -3,7 +3,7 @@ import { useState } from 'react'
 import classes from './ExamField.module.css'
 
 const BloodPressure = ({ setData }) => {
-    const [bloodPressure, setBloodPressure] = useState({ systolic: 0, diastolic: 0 })
+    const [bloodPressure, setBloodPressure] = useState({ diastolic: 0, systolic: 0 })
 
     useEffect(() => {
         if (bloodPressure.systolic !== 0 && bloodPressure.diastolic !== 0) {
@@ -16,6 +16,16 @@ const BloodPressure = ({ setData }) => {
             <div className={classes.wrap4}>
                 <p>Blood Pressure (BP) :</p>
                 <input
+                    value={bloodPressure.diastolic}
+                    onChange={(e) =>
+                        setBloodPressure({ systolic: bloodPressure.systolic, diastolic: parseInt(e.target.value) || 0 })
+                    }
+                    type="number"
+                    placeholder="Diastolic"
+                    required
+                />
+                <span>/</span>
+                <input
                     value={bloodPressure.systolic}
                     onChange={(e) =>
                         setBloodPressure({
@@ -27,16 +37,7 @@ const BloodPressure = ({ setData }) => {
                     placeholder="Systolic"
                     required
                 />
-                <span>/</span>
-                <input
-                    value={bloodPressure.diastolic}
-                    onChange={(e) =>
-                        setBloodPressure({ systolic: bloodPressure.systolic, diastolic: parseInt(e.target.value) || 0 })
-                    }
-                    type="number"
-                    placeholder="Diastolic"
-                    required
-                />
+
                 <p>mm of Hg</p>
             </div>
         </div>

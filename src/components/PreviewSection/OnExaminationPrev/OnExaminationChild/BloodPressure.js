@@ -4,7 +4,7 @@ const BloodPressure = ({ bp }) => {
             BP
             <span>
                 <b>
-                    {bp.systolic}/{bp.diastolic}
+                    {bp.diastolic}/{bp.systolic}
                 </b>{' '}
                 mm of Hg
             </span>
