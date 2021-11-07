@@ -8,6 +8,8 @@
     min-height: 100vh;
     background: var(--white);
     box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
 }
 
 .top {
@@ -95,13 +97,21 @@
 .leftBody ol li {
     font-size: 12px;
 }
-.leftBody .diagnosis {
-    font-size: 12px;
-    text-align: justify;
-    margin-right: 20px;
+.leftBody .coMorbidity {
     background: var(--light-grey);
     border-radius: 2px;
-    padding: 5px 10px;
+    padding: 5px;
+    margin-right: 10px;
+}
+.leftBody .diagnosis {
+    background: var(--light-grey);
+    border-radius: 2px;
+    padding: 5px 20px;
+    margin-right: 10px;
+}
+.leftBody .diagnosis li {
+    font-size: 12px;
+    padding-left: 10px;
 }
 
 .rightBody {
@@ -146,6 +156,7 @@
 .signature {
     display: grid;
     grid-template-columns: 70% 30%;
+    margin-bottom: 50px;
 }
 .signature p {
     margin-top: 100px;
@@ -153,4 +164,20 @@
     border-top: 1px solid var(--dark-blue);
     padding: 5px 35px;
     max-width: 80px;
+}
+
+.footer {
+    color: var(--white);
+    background: var(--primary);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+.footer p {
+    color: var(--white);
+    margin: 0;
+    text-align: center;
+    font-size: 12px;
+    padding: 5px;
 }
