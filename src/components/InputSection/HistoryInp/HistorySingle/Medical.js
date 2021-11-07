@@ -13,7 +13,7 @@ const Medical = () => {
         e.preventDefault()
         dispatchMedicalHistory({
             type: 'input',
-            payload: stateMedicalHistory.medical.length === 0 ? text : stateMedicalHistory.medical.concat(text),
+            payload: stateMedicalHistory.medical.length === 0 ? text : stateMedicalHistory.medical.concat('\n' + text),
         })
         setText('')
     }
