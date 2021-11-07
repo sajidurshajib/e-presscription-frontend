@@ -1,5 +1,5 @@
 import { useReducer } from 'react'
-import { PdfWrapped } from '../allContext'
+import { PdfWrapped, OnExamination } from '../allContext'
 import EpPDF from '../components/EpPDF/EpPDF'
 import { patientState, patientReducer } from '../reducer/PatientInfoReducer'
 import { adviceReducer, adviceState } from '../reducer/adviceReducer'
@@ -43,8 +43,6 @@ const EPrescriptionPDF = () => {
         dispatchPatient,
         stateChief,
         dispatchChief,
-        stateOnExamination,
-        dispatchOnExamination,
         stateInvestigation,
         dispatchInvestigation,
         stateDiagnosis,
@@ -72,7 +70,13 @@ const EPrescriptionPDF = () => {
     return (
         <div>
             <PdfWrapped.Provider value={value}>
-                <EpPDF />
+                <OnExamination.Provider
+                    value={{
+                        stateOnExamination,
+                        dispatchOnExamination,
+                    }}>
+                    <EpPDF />
+                </OnExamination.Provider>
             </PdfWrapped.Provider>
         </div>
     )

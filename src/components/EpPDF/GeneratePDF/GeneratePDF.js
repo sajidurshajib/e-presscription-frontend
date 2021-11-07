@@ -8,8 +8,8 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
     const {
         statePatient,
         stateChief,
-        stateOnExamination,
         stateInvestigation,
+        // stateOnExamination,
         stateDiagnosis,
         stateAdvice,
         stateMedicine,
@@ -126,7 +126,6 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                             <HistoryChildView st={stateVaccinationHistory.vaccination} lvl="Vaccination History" />
                         </div>
 
-                        {/* On Examiation */}
                         <h4>O/E :</h4>
                         <ol>
                             <li>Blood Pressure (BP) : 120 / 80 mm of Hg</li>
@@ -136,13 +135,18 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                         </ol>
 
                         {/* Investigation */}
-                        <h4>INV :</h4>
-                        <ol>
-                            <li>BUCCAL SWAB PROTEIN</li>
-                            <li>PLEURAL FLUID LDH</li>
-                            <li>SERUM HCO3</li>
-                            <li>PERICARDIAL FL.ADA</li>
-                        </ol>
+                        {stateInvestigation.inv.length !== 0 ? (
+                            <Fragment>
+                                <h4>INV :</h4>
+                                <ol>
+                                    {stateInvestigation.inv.length !== 0
+                                        ? stateInvestigation.inv.split('\n').map((v, i) => {
+                                              return <li key={i}>{v}</li>
+                                          })
+                                        : null}
+                                </ol>
+                            </Fragment>
+                        ) : null}
 
                         {/* Probable Diagnosis */}
                         {stateDiagnosis.probable.length !== 0 ? (
