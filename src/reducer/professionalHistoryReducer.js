@@ -1,7 +1,7 @@
 import { EpGetStorage, EpSetStorage, EpDefStorage } from '../utils/EpLocalStorage'
 
 //Set state as default storage value
-export const professionallHistoryState = EpDefStorage('professionalHistory', { professional: '' })
+export const professionalHistoryState = EpDefStorage('professionalHistory', { professional: '' })
 
 export const professionalHistoryReducer = (state, action) => {
     switch (action.type) {
