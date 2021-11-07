@@ -5,6 +5,7 @@ import classes from './HistoryPrevChild.module.css'
 const Family = () => {
     const [toggle, setToggle] = useState(true)
     const { stateFamilyHistory } = useContext(History)
+
     return (
         <div className={classes.HistoryPrev}>
             {stateFamilyHistory.family.length !== 0 ? (
