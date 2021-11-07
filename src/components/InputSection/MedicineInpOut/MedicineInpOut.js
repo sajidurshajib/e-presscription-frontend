@@ -1,6 +1,6 @@
 import { useReducer } from 'react'
 import { Medicine } from '../../../allContext'
-import { medicineReducer, medicineState } from '../../../reducer/MedicineReducer'
+import { medicineReducer, medicineState } from '../../../reducer/medicineReducer'
 import InputMedicine from './InputMedicine/InputMedicine'
 import classes from './MedicineInpOut.module.css'
 import PreviewMedicine from './PreviewMedicine/PreviewMedicine'
