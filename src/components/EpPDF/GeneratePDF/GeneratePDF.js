@@ -1,8 +1,28 @@
-import React from 'react'
+import React, { Fragment, useContext } from 'react'
+import { PdfWrapped } from '../../../allContext'
 // import boxLogo from '../../../assets/img/healthx-box.png'
 import classes from './Generate.module.css'
+import HistoryChildView from './HistoryChildView'
 
 export const GeneratePDF = React.forwardRef((props, ref) => {
+    const {
+        statePatient,
+        stateChief,
+        stateOnExamination,
+        stateInvestigation,
+        stateDiagnosis,
+        stateAdvice,
+        stateMedicine,
+        statePersonalHistory,
+        stateCoMorbidity,
+        stateProfessionalHistory,
+        stateFamilyHistory,
+        stateDrugHistory,
+        stateMedicalHistory,
+        stateVaccinationHistory,
+    } = useContext(PdfWrapped)
+
+    //Date
     const day = () => {
         let d = new Date().getDate()
         return d
@@ -36,13 +56,13 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                 {/* Patient */}
                 <div className={classes.patient}>
                     <p>
-                        <b>Name :</b> Jhon Wick
+                        <b>Name :</b> {statePatient.patient.name}
                     </p>
                     <p>
-                        <b>Age :</b> 39
+                        <b>Age :</b> {statePatient.patient.age}
                     </p>
                     <p>
-                        <b>Sex :</b> Male
+                        <b>Sex :</b> {statePatient.patient.sex}
                     </p>
                     <p className={classes.date}>
                         <b>Date :</b>
@@ -55,24 +75,55 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                     {/* Left part */}
                     <div className={classes.leftBody}>
                         {/* Chief Complaints */}
-                        <h4>C/C :</h4>
-                        <ol>
-                            <li>7 days fever.</li>
-                            <li>Dry Caugh</li>
-                            <li>Body Ache</li>
-                        </ol>
+                        {stateChief.cc.length !== 0 ? (
+                            <Fragment>
+                                <h4>C/C :</h4>
+                                <ol>
+                                    {stateChief.cc.length !== 0
+                                        ? stateChief.cc
+                                              .replace(/\n+$/, '')
+                                              .split('\n')
+                                              .map((v, i) => {
+                                                  return <li key={i}>{v}</li>
+                                              })
+                                        : null}
+                                </ol>
+                            </Fragment>
+                        ) : null}
 
                         {/* History */}
                         <div className={classes.history}>
                             <h4>History</h4>
-                            <p>
-                                <b>Personal :</b>
-                                Smocker, Alcholholic
-                            </p>
-                            <p>
-                                <b>Professional :</b>
-                                Smocker, Alcholholic
-                            </p>
+                            {/*Personal history*/}
+                            <HistoryChildView st={statePersonalHistory.personal} lvl="Personal History" />
+
+                            {/*Co-Morbidity*/}
+                            {stateCoMorbidity.coMorbidity.length !== 0 ? (
+                                <div className={classes.coMorbidity}>
+                                    {stateCoMorbidity.coMorbidity.map((v, i) => {
+                                        return (
+                                            <p key={i}>
+                                                <b>{v.title}</b> <span>{v.remark}</span>
+                                            </p>
+                                        )
+                                    })}
+                                </div>
+                            ) : null}
+
+                            {/*Professional History*/}
+                            <HistoryChildView st={stateProfessionalHistory.professional} lvl="Professional History" />
+
+                            {/*Family History*/}
+                            <HistoryChildView st={stateFamilyHistory.family} lvl="Family History" />
+
+                            {/*Drug History*/}
+                            <HistoryChildView st={stateDrugHistory.drug} lvl="Drug History" />
+
+                            {/*Medical History*/}
+                            <HistoryChildView st={stateMedicalHistory.medical} lvl="Medical History" />
+
+                            {/*Vaccination History*/}
+                            <HistoryChildView st={stateVaccinationHistory.vaccination} lvl="Vaccination History" />
                         </div>
 
                         {/* On Examiation */}
@@ -94,67 +145,75 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                         </ol>
 
                         {/* Probable Diagnosis */}
-                        <h4>D/D :</h4>
-                        <p className={classes.diagnosis}>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores voluptate impedit nihil
-                            consectetur adipisci voluptatem quia quibusdam voluptas, itaque totam!
-                        </p>
+                        {stateDiagnosis.probable.length !== 0 ? (
+                            <Fragment>
+                                <h4>D/D :</h4>
+                                <ol className={classes.diagnosis}>
+                                    {stateDiagnosis.probable.split('\n').map((v, i) => {
+                                        return <li key={i}>{v}</li>
+                                    })}
+                                </ol>
+                            </Fragment>
+                        ) : null}
 
                         {/* Confirmatory  */}
-                        <h4>Confirmatory Diagnosis :</h4>
-                        <p className={classes.diagnosis}>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis accusamus nulla hic
-                            consequuntur velit animi adipisci blanditiis voluptates minus corporis.
-                        </p>
+                        {stateDiagnosis.confirmatory.length !== 0 ? (
+                            <Fragment>
+                                <h4>Confirmatory Diagnosis :</h4>
+                                <ol className={classes.diagnosis}>
+                                    {stateDiagnosis.confirmatory.split('\n').map((v, i) => {
+                                        return <li key={i}>{v}</li>
+                                    })}
+                                </ol>
+                            </Fragment>
+                        ) : null}
                     </div>
                     {/* Right part */}
                     <div className={classes.rightBody}>
                         <div className={classes.medicine}>
                             <h3>Rx</h3>
-                            <div className={classes.singleMedicine}>
-                                <span>Tab - Flexi - 100mg</span>
-                                <p>1 + 0 + 1 | After Meal | 25 days</p>
-                                <p>Take it after half an hour of meal.</p>
-                            </div>
-
-                            <div className={classes.singleMedicine}>
-                                <span>Tab - Flexi - 100mg</span>
-                                <p>1 + 0 + 1 | After Meal | 25 days</p>
-                                <p>Take it after half an hour of meal.</p>
-                            </div>
-
-                            <div className={classes.singleMedicine}>
-                                <span>Tab - Flexi - 100mg</span>
-                                <p>1 + 0 + 1 | After Meal | 25 days</p>
-                                <p>Take it after half an hour of meal.</p>
-                            </div>
-
-                            <div className={classes.singleMedicine}>
-                                <span>Tab - Flexi - 100mg</span>
-                                <p>1 + 0 + 1 | After Meal | 25 days</p>
-                                <p>Take it after half an hour of meal.</p>
-                            </div>
-
-                            <div className={classes.singleMedicine}>
-                                <span>Tab - Flexi - 100mg</span>
-                                <p>1 + 0 + 1 | After Meal | 25 days</p>
-                                <p>Take it after half an hour of meal.</p>
-                            </div>
+                            {stateMedicine.medicine.length !== 0
+                                ? stateMedicine.medicine.map((v) => {
+                                      return (
+                                          <div key={v.id} className={classes.singleMedicine}>
+                                              <span>
+                                                  {v.form} - {v.name} - {v.strength}
+                                              </span>
+                                              <p>
+                                                  {v.doses} | {v.after ? 'After Meal' : 'Before Meal'} |{' '}
+                                                  {v.day > 1 ? v.day + ' days' : v.day + ' day'}
+                                              </p>
+                                              <p>{v.remark}</p>
+                                          </div>
+                                      )
+                                  })
+                                : null}
                         </div>
 
                         {/* Advice */}
-                        <h4>Advice :</h4>
-                        <ol>
-                            <li>Blood Pressure (BP) : 80 / 120 mm of Hg</li>
-                            <li>Pulse : 56 beats/min</li>
-                            <li>Temp : 98 ° F</li>
-                            <li>RBS : 70</li>
-                        </ol>
+                        {stateAdvice.adv.length !== 0 ? (
+                            <Fragment>
+                                <h4>Advice :</h4>
+                                <ol>
+                                    {stateAdvice.adv.length !== 0
+                                        ? stateAdvice.adv.split('\n').map((v, i) => {
+                                              return <li key={i}>{v}</li>
+                                          })
+                                        : null}
+                                </ol>
+                            </Fragment>
+                        ) : null}
                     </div>
                 </div>
                 <div className={classes.signature}>
                     <span></span>
-                    <p className>Dr. Signature</p>
+                    <p>Dr. Signature</p>
+                </div>
+
+                <div className={classes.footer}>
+                    <p>
+                        This e-prescription developed by <b>HEALTHx</b>
+                    </p>
                 </div>
             </div>
         </div>
