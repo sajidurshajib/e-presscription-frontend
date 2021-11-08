@@ -23,7 +23,7 @@ const Professional = () => {
 
     return (
         <div>
-            <TextField text={text} setText={setText} label="Personal History" />
+            <TextField text={text} setText={setText} label="Professional History" />
             {/* {professional.length !== 0 ? <Suggestion arr={arr} setText={setProfessional} /> : null} */}
             <button onClick={submit} className={classes.btn}>
                 Submit
