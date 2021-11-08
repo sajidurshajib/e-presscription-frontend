@@ -31,6 +31,22 @@
     font-weight: 300;
 }
 
+.OnExamUl {
+    list-style-type: none;
+    margin: 0;
+    padding: 5px 10px;
+}
+.OnExamUl li {
+    font-size: 12px;
+}
+.OnExamUl li div {
+    position: relative;
+}
+.OnExamUl li div span {
+    position: absolute;
+    left: 100px;
+}
+
 .topRight {
     text-align: right;
 }

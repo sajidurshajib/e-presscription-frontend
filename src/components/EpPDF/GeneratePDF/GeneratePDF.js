@@ -3,13 +3,13 @@ import { PdfWrapped } from '../../../allContext'
 // import boxLogo from '../../../assets/img/healthx-box.png'
 import classes from './Generate.module.css'
 import HistoryChildView from './HistoryChildView'
+import OnExam from './OnExam'
 
 export const GeneratePDF = React.forwardRef((props, ref) => {
     const {
         statePatient,
         stateChief,
         stateInvestigation,
-        // stateOnExamination,
         stateDiagnosis,
         stateAdvice,
         stateMedicine,
@@ -126,13 +126,8 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                             <HistoryChildView st={stateVaccinationHistory.vaccination} lvl="Vaccination History" />
                         </div>
 
-                        <h4>O/E :</h4>
-                        <ol>
-                            <li>Blood Pressure (BP) : 120 / 80 mm of Hg</li>
-                            <li>Pulse : 56 beats/min</li>
-                            <li>Temp : 98 ° F</li>
-                            <li>RBS : 70</li>
-                        </ol>
+                        {/*OnExamination*/}
+                        <OnExam />
 
                         {/* Investigation */}
                         {stateInvestigation.inv.length !== 0 ? (
