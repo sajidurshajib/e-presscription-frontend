@@ -9,7 +9,7 @@ export const adviceReducer = (state, action) => {
             EpSetStorage('advice', { adv: action.payload })
             return JSON.parse(EpGetStorage('advice'))
         case 'remove':
-            EpDefStorage('advice', { adv: '' })
+            EpSetStorage('advice', { adv: '' })
             return JSON.parse(EpGetStorage('advice'))
         default:
             return state

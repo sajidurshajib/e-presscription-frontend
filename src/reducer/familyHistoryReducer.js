@@ -9,7 +9,7 @@ export const familyHistoryReducer = (state, action) => {
             EpSetStorage('familyHistory', { family: action.payload })
             return JSON.parse(EpGetStorage('familyHistory'))
         case 'remove':
-            EpDefStorage('familyHistory', { family: '' })
+            EpSetStorage('familyHistory', { family: '' })
             return JSON.parse(EpGetStorage('familyHistory'))
         default:
             return state

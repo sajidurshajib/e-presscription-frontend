@@ -9,7 +9,7 @@ export const vaccinationHistoryReducer = (state, action) => {
             EpSetStorage('vaccinationHistory', { vaccination: action.payload })
             return JSON.parse(EpGetStorage('vaccinationHistory'))
         case 'remove':
-            EpDefStorage('vaccinationHistory', { vaccination: '' })
+            EpSetStorage('vaccinationHistory', { vaccination: '' })
             return JSON.parse(EpGetStorage('vaccinationHistory'))
         default:
             return state

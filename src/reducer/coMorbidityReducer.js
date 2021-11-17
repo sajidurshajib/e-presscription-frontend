@@ -9,7 +9,7 @@ export const coMorbidityReducer = (state, action) => {
             EpSetStorage('coMorbidity', { coMorbidity: action.payload })
             return JSON.parse(EpGetStorage('coMorbidity'))
         case 'remove':
-            EpDefStorage('coMorbidity', { coMorbidity: '' })
+            EpSetStorage('coMorbidity', { coMorbidity: '' })
             return JSON.parse(EpGetStorage('coMorbidity'))
         default:
             return state

@@ -9,7 +9,7 @@ export const onExaminationReducer = (state, action) => {
             EpSetStorage('onexam', { onexam: action.payload })
             return JSON.parse(EpGetStorage('onexam'))
         case 'remove':
-            EpDefStorage('onexam', { onexam: '' })
+            EpSetStorage('onexam', { onexam: '' })
             return JSON.parse(EpGetStorage('onexam'))
         default:
             return state

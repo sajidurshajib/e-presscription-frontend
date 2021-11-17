@@ -9,8 +9,8 @@ export const nextReducer = (state, action) => {
             EpSetStorage('next', { nxt: action.payload })
             return JSON.parse(EpGetStorage('next'))
         case 'remove':
-            EpDefStorage('next', { nxt: '' })
-            return JSON.parse(EpDefStorage('next'))
+            EpSetStorage('next', { nxt: '' })
+            return JSON.parse(EpGetStorage('next'))
         default:
             return state
     }

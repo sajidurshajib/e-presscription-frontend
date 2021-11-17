@@ -9,7 +9,7 @@ export const personalHistoryReducer = (state, action) => {
             EpSetStorage('presonalHistory', { personal: action.payload })
             return JSON.parse(EpGetStorage('presonalHistory'))
         case 'remove':
-            EpDefStorage('presonalHistory', { personal: '' })
+            EpSetStorage('presonalHistory', { personal: '' })
             return JSON.parse(EpGetStorage('presonalHistory'))
         default:
             return state

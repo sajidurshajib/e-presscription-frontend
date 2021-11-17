@@ -9,7 +9,7 @@ export const investigationReducer = (state, action) => {
             EpSetStorage('investigation', { inv: action.payload })
             return JSON.parse(EpGetStorage('investigation'))
         case 'remove':
-            EpDefStorage('investigation', { inv: [] })
+            EpSetStorage('investigation', { inv: [] })
             return JSON.parse(EpGetStorage('investigation'))
         default:
             return state

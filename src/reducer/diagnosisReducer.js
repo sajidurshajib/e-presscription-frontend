@@ -12,7 +12,7 @@ export const diagnosisReducer = (state, action) => {
             EpSetStorage('diagnosis', { probable: state.probable, confirmatory: action.payload })
             return JSON.parse(EpGetStorage('diagnosis'))
         case 'remove':
-            EpDefStorage('diagnosis', { probable: '', confirmatory: '' })
+            EpSetStorage('diagnosis', { probable: '', confirmatory: '' })
             return JSON.parse(EpGetStorage('diagnosis'))
         default:
             return state

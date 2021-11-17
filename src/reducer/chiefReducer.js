@@ -9,7 +9,7 @@ export const chiefReducer = (state, action) => {
             EpSetStorage('chiefcomplaints', { cc: action.payload })
             return JSON.parse(EpGetStorage('chiefcomplaints'))
         case 'remove':
-            EpDefStorage('chiefcomplaints', { cc: '' })
+            EpSetStorage('chiefcomplaints', { cc: '' })
             return JSON.parse(EpGetStorage('chiefcomplaints'))
         default:
             return state

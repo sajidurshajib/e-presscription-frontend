@@ -9,7 +9,7 @@ export const drugHistoryReducer = (state, action) => {
             EpSetStorage('drugHistory', { drug: action.payload })
             return JSON.parse(EpGetStorage('drugHistory'))
         case 'remove':
-            EpDefStorage('drugHistory', { drug: '' })
+            EpSetStorage('drugHistory', { drug: '' })
             return JSON.parse(EpGetStorage('drugHistory'))
         default:
             return state
