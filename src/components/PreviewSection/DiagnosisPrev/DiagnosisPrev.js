@@ -4,8 +4,12 @@ import classes from './DiagnosisPrev.module.css'
 
 const DiagnosisPrev = () => {
     const [toggle, setToggle] = useState(true)
+    const { stateDiagnosis, dispatchDiagnosis } = useContext(Diagnosis)
 
-    const { stateDiagnosis } = useContext(Diagnosis)
+    const del = (e) => {
+        e.preventDefault()
+        dispatchDiagnosis({ type: 'remove' })
+    }
 
     let prob = stateDiagnosis.probable.split('\n')
     let conf = stateDiagnosis.confirmatory.split('\n')
@@ -17,6 +21,9 @@ const DiagnosisPrev = () => {
                     Diagnosis
                 </h3>
             ) : null}
+            <button className={classes.del} onClick={(e) => del(e)}>
+                x
+            </button>
             {toggle ? (
                 <Fragment>
                     <div className={classes.diagnosis}>

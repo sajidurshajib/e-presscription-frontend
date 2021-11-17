@@ -4,7 +4,13 @@ import classes from './HistoryPrevChild.module.css'
 
 const Drug = () => {
     const [toggle, setToggle] = useState(true)
-    const { stateDrugHistory } = useContext(History)
+    const { stateDrugHistory, dispatchDrugHistory } = useContext(History)
+
+    const del = (e) => {
+        e.preventDefault()
+        dispatchDrugHistory({ type: 'remove' })
+    }
+
     return (
         <div className={classes.HistoryPrev}>
             {stateDrugHistory.drug.length !== 0 ? (
@@ -14,6 +20,9 @@ const Drug = () => {
                     Drug history
                 </h4>
             ) : null}
+            <button className={classes.del} onClick={(e) => del(e)}>
+                x
+            </button>
             {toggle ? (
                 <Fragment>
                     {stateDrugHistory.drug.length !== 0 ? (

@@ -4,7 +4,12 @@ import classes from './HistoryPrevChild.module.css'
 
 const Vaccination = () => {
     const [toggle, setToggle] = useState(true)
-    const { stateVaccinationHistory } = useContext(History)
+    const { stateVaccinationHistory, dispatchVaccinationHistory } = useContext(History)
+
+    const del = (e) => {
+        e.preventDefault()
+        dispatchVaccinationHistory({ type: 'remove' })
+    }
 
     return (
         <div className={classes.HistoryPrev}>
@@ -15,6 +20,9 @@ const Vaccination = () => {
                     Vaccination history
                 </h4>
             ) : null}
+            <button className={classes.del} onClick={(e) => del(e)}>
+                x
+            </button>
             {toggle ? (
                 <Fragment>
                     {stateVaccinationHistory.vaccination.length !== 0 ? (

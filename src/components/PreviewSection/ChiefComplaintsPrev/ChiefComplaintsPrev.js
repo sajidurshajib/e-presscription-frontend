@@ -1,14 +1,18 @@
 import { useContext } from 'react'
 import { useState } from 'react'
 import { ChiefComplaints } from '../../../allContext'
-import EditAndDelete from '../EditAndDelete/EditAndDelete'
+// import EditAndDelete from '../EditAndDelete/EditAndDelete'
 import classes from './ChiefComplaintsPrev.module.css'
 
 const ChiefComplaintsPrev = () => {
     const [toggle, setToggle] = useState(true)
-    const [editValue, setEditValue] = useState(null)
 
-    const { stateChief } = useContext(ChiefComplaints)
+    const { stateChief, dispatchChief } = useContext(ChiefComplaints)
+
+    const del = (e) => {
+        e.preventDefault()
+        dispatchChief({ type: 'remove' })
+    }
 
     return (
         <div className={classes.ChiefComplaintsPrev}>
@@ -17,7 +21,10 @@ const ChiefComplaintsPrev = () => {
                     Chief Complaints
                 </h3>
             ) : null}
-            {editValue !== null ? <EditAndDelete editValue={setEditValue} value={editValue} /> : null}
+            <button className={classes.del} onClick={(e) => del(e)}>
+                x
+            </button>
+            {/* {editValue !== null ? <EditAndDelete editValue={setEditValue} value={editValue} /> : null} */}
             {toggle ? (
                 <ul>
                     {stateChief.cc.length !== 0
@@ -25,11 +32,7 @@ const ChiefComplaintsPrev = () => {
                               .replace(/\n+$/, '')
                               .split('\n')
                               .map((v, i) => {
-                                  return (
-                                      <li key={i}>
-                                          {v} <span onClick={() => setEditValue({ v, i })}>Edit</span>
-                                      </li>
-                                  )
+                                  return <li key={i}>{v}</li>
                               })
                         : null}
                 </ul>

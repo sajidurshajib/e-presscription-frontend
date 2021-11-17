@@ -2,6 +2,25 @@
     margin-top: 25px;
     padding-left: 25px;
     border-left: 3px solid var(--primary);
+    position: relative;
+}
+.DiagnosisPrev .del {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    display: none;
+    border: none;
+    outline: 0;
+    border-radius: 50%;
+    color: var(--white);
+    background: var(--red);
+    font-size: 12px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+.DiagnosisPrev:hover .del {
+    display: block;
 }
 .DiagnosisPrev h3 {
     display: inline-block;

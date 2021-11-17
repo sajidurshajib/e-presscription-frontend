@@ -4,7 +4,12 @@ import classes from './HistoryPrevChild.module.css'
 
 const Family = () => {
     const [toggle, setToggle] = useState(true)
-    const { stateFamilyHistory } = useContext(History)
+    const { stateFamilyHistory, dispatchFamilyHistory } = useContext(History)
+
+    const del = (e) => {
+        e.preventDefault()
+        dispatchFamilyHistory({ type: 'remove' })
+    }
 
     return (
         <div className={classes.HistoryPrev}>
@@ -15,6 +20,9 @@ const Family = () => {
                     Family history
                 </h4>
             ) : null}
+            <button className={classes.del} onClick={(e) => del(e)}>
+                x
+            </button>
             {toggle ? (
                 <Fragment>
                     {stateFamilyHistory.family.length !== 0 ? (

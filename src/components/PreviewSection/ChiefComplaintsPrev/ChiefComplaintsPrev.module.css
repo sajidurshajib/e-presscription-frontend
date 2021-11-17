@@ -2,9 +2,12 @@
     margin-top: 25px;
     padding-left: 25px;
     border-left: 3px solid var(--primary);
+    position: relative;
 }
 .ChiefComplaintsPrev h3 {
+    position: relative;
     display: inline-block;
+    font-size: 16px;
     margin: 5px 0;
     color: var(--primary);
     cursor: pointer;
@@ -25,6 +28,25 @@
     top: 12px;
     right: -25px;
 }
+.ChiefComplaintsPrev .del {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    display: none;
+    border: none;
+    outline: 0;
+    border-radius: 50%;
+    color: var(--white);
+    background: var(--red);
+    font-size: 12px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+.ChiefComplaintsPrev:hover .del {
+    display: block;
+}
+
 .toggle::after {
     transform: rotate(180deg);
     top: 6px !important;
@@ -32,11 +54,11 @@
 
 .ChiefComplaintsPrev ul {
     list-style-type: none;
-    margin: 0;
+    margin: 5px 0;
     padding: 0 0 0 25px;
 }
 .ChiefComplaintsPrev ul li {
-    font-size: 14px;
+    font-size: 12px;
     position: relative;
 }
 .ChiefComplaintsPrev ul li::before {
@@ -50,7 +72,7 @@
     border-bottom: 2px solid var(--dark-blue);
     transform: rotate(315deg);
 }
-.ChiefComplaintsPrev ul li span {
+/* .ChiefComplaintsPrev ul li span {
     margin-left: 5px;
     font-size: 11px;
     color: var(--primary);
@@ -62,4 +84,4 @@
 .ChiefComplaintsPrev ul li:hover span {
     display: inline-block;
     cursor: pointer;
-}
+} */

@@ -4,8 +4,12 @@ import classes from './InvestigationPrev.module.css'
 
 const InvestigationPrev = () => {
     const [toggle, setToggle] = useState(true)
+    const { stateInvestigation, dispatchInvestigation } = useContext(Investigation)
 
-    const { stateInvestigation } = useContext(Investigation)
+    const del = (e) => {
+        e.preventDefault()
+        dispatchInvestigation({ type: 'remove' })
+    }
 
     return (
         <div className={classes.InvestigationPrev}>
@@ -14,6 +18,9 @@ const InvestigationPrev = () => {
                     Investigation
                 </h3>
             ) : null}
+            <button className={classes.del} onClick={(e) => del(e)}>
+                x
+            </button>
             {toggle ? (
                 <Fragment>
                     <ul>

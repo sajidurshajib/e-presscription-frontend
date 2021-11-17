@@ -4,7 +4,13 @@ import classes from './HistoryPrevChild.module.css'
 
 const Professional = () => {
     const [toggle, setToggle] = useState(true)
-    const { stateProfessionalHistory } = useContext(History)
+    const { stateProfessionalHistory, dispatchProfessionalHistory } = useContext(History)
+
+    const del = (e) => {
+        e.preventDefault()
+        dispatchProfessionalHistory({ type: 'remove' })
+    }
+
     return (
         <div className={classes.HistoryPrev}>
             {stateProfessionalHistory.professional.length !== 0 ? (
@@ -14,6 +20,9 @@ const Professional = () => {
                     Professional history
                 </h4>
             ) : null}
+            <button className={classes.del} onClick={(e) => del(e)}>
+                x
+            </button>
             {toggle ? (
                 <Fragment>
                     {stateProfessionalHistory.professional.length !== 0 ? (

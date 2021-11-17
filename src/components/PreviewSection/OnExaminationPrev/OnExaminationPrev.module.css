@@ -2,8 +2,29 @@
     margin-top: 25px;
     padding-left: 25px;
     border-left: 3px solid var(--primary);
+    position: relative;
 }
+.OnExaminationPrev .del {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    display: none;
+    border: none;
+    outline: 0;
+    border-radius: 50%;
+    color: var(--white);
+    background: var(--red);
+    font-size: 12px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+.OnExaminationPrev:hover .del {
+    display: block;
+}
+
 .OnExaminationPrev h3 {
+    font-size: 16px;
     display: inline-block;
     margin: 5px 0;
     color: var(--primary);
@@ -47,7 +68,7 @@
     position: absolute;
     width: 8px;
     height: 8px;
-    border: 1px solid var(--dark-blue);
+    border: 1px solid var(--primary);
     background: var(--white);
     top: 3px;
     left: -17px;
@@ -59,7 +80,7 @@
     position: absolute;
     width: 10px;
     height: 10px;
-    background: var(--dark-blue);
+    background: var(--primary);
     top: 6px;
     left: -14px;
 }

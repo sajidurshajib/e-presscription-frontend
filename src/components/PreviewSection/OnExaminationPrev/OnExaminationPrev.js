@@ -21,7 +21,12 @@ import classes from './OnExaminationPrev.module.css'
 
 const OnExaminationPrev = () => {
     const [toggle, setToggle] = useState(true)
-    const { stateOnExamination } = useContext(OnExamination)
+    const { stateOnExamination, dispatchOnExamination } = useContext(OnExamination)
+
+    const del = (e) => {
+        e.preventDefault()
+        dispatchOnExamination({ type: 'remove' })
+    }
 
     return (
         <div className={classes.OnExaminationPrev}>
@@ -30,6 +35,9 @@ const OnExaminationPrev = () => {
                     On-Examination
                 </h3>
             ) : null}
+            <button className={classes.del} onClick={(e) => del(e)}>
+                x
+            </button>
             {toggle ? (
                 <Fragment>
                     <ul>
