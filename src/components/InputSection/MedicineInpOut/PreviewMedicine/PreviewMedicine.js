@@ -23,26 +23,13 @@ const PreviewMedicine = () => {
                             <p>{v.remark}</p>
 
                             <div className={classes.btn}>
-                                <button>Edit</button>
-                                <button>Delete</button>
+                                {/* <button>Edit</button>
+                                <button>Delete</button> */}
                             </div>
                         </div>
                     </Fragment>
                 )
             })}
-
-            <div className={classes.medicine}>
-                <p>Tab | Flexi | 100mg</p>
-                <p>
-                    1 + 0 + 1 <span>|</span> After Meal <span>|</span> 25 days
-                </p>
-                <p>Take it after half an hour of meal.</p>
-
-                <div className={classes.btn}>
-                    <button>Edit</button>
-                    <button>Delete</button>
-                </div>
-            </div>
         </div>
     )
 }
