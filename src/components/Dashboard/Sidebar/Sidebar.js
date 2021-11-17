@@ -82,7 +82,12 @@ const Sidebar = () => {
                 </li>
             </ul>
             <Link to="/ep">
-                <button>Create Prescription</button>
+                <button
+                    onClick={() => {
+                        console.log(123)
+                    }}>
+                    Create Prescription
+                </button>
             </Link>
         </div>
     )
