@@ -52,10 +52,13 @@
     border-radius: 2px;
     font-size: 12px;
     cursor: pointer;
+}
+.deactive {
     color: var(--primary);
     background: var(--light);
 }
-.check > button:hover {
+.check > button:hover,
+.active {
     background: var(--primary);
     color: var(--white);
 }

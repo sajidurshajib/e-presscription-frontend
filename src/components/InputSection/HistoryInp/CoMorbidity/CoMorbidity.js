@@ -45,7 +45,11 @@ const CoMorbidity = () => {
                     <p>
                         Hypertension (HTN)<span>{htn.check ? '+' : null}</span>
                     </p>
-                    <button onClick={() => setHtn({ check: !htn.check, remark: htn.remark })}>+/-</button>
+                    <button
+                        onClick={() => setHtn({ check: !htn.check, remark: htn.remark })}
+                        className={htn.check ? classes.active : classes.deactive}>
+                        +/-
+                    </button>
                     {htn.check ? (
                         <input onChange={(e) => setHtn({ check: htn.check, remark: e.target.value })} type="text" />
                     ) : null}
@@ -54,7 +58,11 @@ const CoMorbidity = () => {
                     <p>
                         Diabetes (DM)<span>{dm.check ? '+' : null}</span>
                     </p>
-                    <button onClick={() => setDm({ check: !dm.check, remark: dm.remark })}>+/-</button>
+                    <button
+                        onClick={() => setDm({ check: !dm.check, remark: dm.remark })}
+                        className={dm.check ? classes.active : classes.deactive}>
+                        +/-
+                    </button>
                     {dm.check ? (
                         <input onChange={(e) => setDm({ check: dm.check, remark: e.target.value })} type="text" />
                     ) : null}
@@ -63,7 +71,11 @@ const CoMorbidity = () => {
                     <p>
                         Tuberculosis (TB)<span>{tb.check ? '+' : null}</span>
                     </p>
-                    <button onClick={() => setTb({ check: !tb.check, remark: tb.remark })}>+/-</button>
+                    <button
+                        onClick={() => setTb({ check: !tb.check, remark: tb.remark })}
+                        className={tb.check ? classes.active : classes.deactive}>
+                        +/-
+                    </button>
                     {tb.check ? (
                         <input onChange={(e) => setTb({ check: tb.check, remark: e.target.value })} type="text" />
                     ) : null}
@@ -72,7 +84,11 @@ const CoMorbidity = () => {
                     <p>
                         Asthma<span>{asm.check ? '+' : null}</span>
                     </p>
-                    <button onClick={() => setAsm({ check: !asm.check, remark: asm.remark })}>+/-</button>
+                    <button
+                        onClick={() => setAsm({ check: !asm.check, remark: asm.remark })}
+                        className={asm.check ? classes.active : classes.deactive}>
+                        +/-
+                    </button>
                     {asm.check ? (
                         <input onChange={(e) => setAsm({ check: asm.check, remark: e.target.value })} type="text" />
                     ) : null}

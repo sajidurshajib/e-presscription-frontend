@@ -1,3 +1,20 @@
+.AdvicePrev {
+    position: relative;
+}
+.AdvicePrev .del {
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    color: var(--red);
+    background: var(--white);
+    border: 1px solid var(--red);
+    font-size: 12px;
+    cursor: pointer;
+}
+.AdvicePrev .del:hover {
+    background: var(--red);
+    color: var(--white);
+}
 .AdvicePrev ol {
     padding-left: 20px;
     font-size: 12px;

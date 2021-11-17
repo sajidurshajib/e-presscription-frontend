@@ -13,9 +13,9 @@
     top: 0;
     width: 0;
     height: 0;
-    border-top: 15px solid var(--secondary);
+    border-top: 15px solid var(--primary);
     border-right: 12px solid transparent;
     border-bottom: 15px solid transparent;
-    border-left: 12px solid var(--secondary);
+    border-left: 12px solid var(--primary);
     z-index: -100;
 }

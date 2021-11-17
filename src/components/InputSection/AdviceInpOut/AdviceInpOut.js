@@ -63,7 +63,7 @@ const AdviceInpOut = () => {
                 {lastLine(text) ? <Suggestion arr={advice} setText={concatSet} /> : null}
                 <button onClick={adviceSubmit}>Submit</button>
 
-                <AdvicePrev advice={stateAdvice.adv} />
+                <AdvicePrev advice={stateAdvice.adv} dispatchAdv={dispatchAdvice} />
             </div>
         </div>
     )

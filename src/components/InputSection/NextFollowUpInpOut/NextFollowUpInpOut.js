@@ -28,6 +28,11 @@ const NextFollowUpInpOut = () => {
         dispatchNext({ type: 'input', payload: n })
     }
 
+    const del = (e) => {
+        e.preventDefault()
+        dispatchNext({ type: 'remove' })
+    }
+
     return (
         <div className={classes.NextFollowUpInpOut}>
             <h3>Next Follow up</h3>
@@ -38,6 +43,8 @@ const NextFollowUpInpOut = () => {
                 <InputNumber label="Months" setNum={setMonths} />
             </div>
             <button onClick={submitNext}>Set</button>
+            <button onClick={(e) => del(e)}>Clear All</button>
+            <br />
             {stateNext.nxt.length !== 0 ? <p className={classes.nextP}>{stateNext.nxt}</p> : null}
         </div>
     )

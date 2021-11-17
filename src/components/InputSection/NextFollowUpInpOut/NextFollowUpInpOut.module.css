@@ -9,7 +9,8 @@
     gap: 5px;
 }
 .NextFollowUpInpOut button {
-    display: block;
+    display: inline-block;
+    margin-right: 20px;
     border: none;
     background: var(--primary);
     color: var(--white);
@@ -24,12 +25,12 @@
 }
 
 .nextP {
+    display: inline-block;
     font-size: 14px;
     font-weight: 500;
     color: var(--primary);
     border: 1px solid var(--primary);
     padding: 5px 15px;
-    display: inline-block;
     border-radius: 4px;
     margin-top: 30px;
 }
