@@ -1,0 +1,21 @@
+.SubmitEP > a > button {
+    border: none;
+    border-radius: 50px;
+    background: var(--primary);
+    color: var(--white);
+    padding: 5px 25px;
+    font-size: 12px;
+    font-weight: 500;
+    display: block;
+    margin: 25px 0 10px 32px;
+    cursor: pointer;
+    transition: 200ms;
+}
+.SubmitEP > a {
+    color: var(--white);
+    text-decoration: none;
+}
+.SubmitEP > a > button:hover {
+    transform: scale(1.1);
+    background: var(--secondary);
+}

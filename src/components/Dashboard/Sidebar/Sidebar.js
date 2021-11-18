@@ -10,11 +10,11 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useContext } from 'react'
-import { Link } from 'react-router-dom'
 import { FieldContext } from '../../../allContext'
 import docImg from '../../../assets/img/docstock.jpg'
 import epLogo from '../../../assets/img/logo.png'
 import classes from './Sidebar.module.css'
+import SubmitEP from './SubmitEP/SubmitEP'
 
 const Sidebar = () => {
     const { state, dispatch } = useContext(FieldContext)
@@ -81,14 +81,7 @@ const Sidebar = () => {
                     Next Follow up
                 </li>
             </ul>
-            <Link to="/ep">
-                <button
-                    onClick={() => {
-                        console.log(123)
-                    }}>
-                    Create Prescription
-                </button>
-            </Link>
+            <SubmitEP />
         </div>
     )
 }
