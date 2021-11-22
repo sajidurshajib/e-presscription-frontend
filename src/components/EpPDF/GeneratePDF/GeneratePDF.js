@@ -42,13 +42,16 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                 <div className={classes.top}>
                     <div className={classes.topLeft}>
                         <h3>Dr. Rashadul Hasan</h3>
-                        <p>Medicine Specialist</p>
-                        <p>MBBS, FRCS</p>
+                        <p>MBBS (DU), DMU, GPOC</p>
+                        <p>Post Graduation Training-Medicine</p>
+                        <p>Medical officer - PMBP</p>
+                        <p>Resident Doctor - HEALTHx</p>
+                        <p>BMDC Reg No - A - 96255</p>
                     </div>
                     <div className={classes.topRight}>
                         {/* <img src={boxLogo} alt="Box Logo" /> */}
-                        <h3>Chamber</h3>
-                        <p>152/2 Block L</p>
+                        <h3>Chamber Address</h3>
+                        <p>South Banasree Project</p>
                         <p>Dhaka</p>
                     </div>
                 </div>

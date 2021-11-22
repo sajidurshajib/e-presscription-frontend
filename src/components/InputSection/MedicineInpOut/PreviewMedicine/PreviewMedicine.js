@@ -3,12 +3,20 @@ import { Medicine } from '../../../../allContext'
 import classes from './PreviewMedicine.module.css'
 
 const PreviewMedicine = () => {
-    const { stateMedicine } = useContext(Medicine)
+    const { stateMedicine, dispatchMedicine } = useContext(Medicine)
+
+    const del = (e) => {
+        e.preventDefault()
+        dispatchMedicine({ type: 'remove' })
+    }
 
     return (
         <div className={classes.PreviewMedicine}>
             <h4>Preview Medicine</h4>
 
+            <button className={classes.del} onClick={(e) => del(e)}>
+                x
+            </button>
             {stateMedicine.medicine.map((v, i) => {
                 return (
                     <Fragment key={i}>

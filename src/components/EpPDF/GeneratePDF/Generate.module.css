@@ -26,7 +26,7 @@
 .topLeft > p {
     margin-top: 0;
     margin-bottom: 3px;
-    font-size: 14px;
+    font-size: 12px;
     color: var(--dark-blue);
     font-weight: 300;
 }
@@ -57,7 +57,7 @@
 .topRight > p {
     margin-top: 0;
     margin-bottom: 3px;
-    font-size: 14px;
+    font-size: 12px;
     color: var(--dark-blue);
     font-weight: 300;
 }

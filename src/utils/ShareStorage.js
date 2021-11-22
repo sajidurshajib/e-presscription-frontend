@@ -1,21 +1,17 @@
-// const bifrostCors = require('bifrost-cors')
-import bifrostCors from 'bifrost-cors'
+export function allStorage() {
+    var values = [],
+        keys = Object.keys(localStorage),
+        i = keys.length
 
-export async function TakeStorage() {
-    const as = new bifrostCors('http://localhost:3000', false)
+    while (i--) {
+        localStorage.getItem(keys[i])
+        values.push(localStorage.getItem(keys[i]))
+    }
 
-    let bc = await as.getLocalStorage('auth')
+    values.forEach((item, index) => {
+        if (typeof JSON.parse(item).authSite !== 'undefined') {
+        }
+    })
 
-    console.log(bc)
-
-    as.getLocalStorage('auth')
-        .then((value) => {
-            console.log('Inside abc')
-            console.log(value)
-            return value
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-    console.log('done')
+    return values
 }

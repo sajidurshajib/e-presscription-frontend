@@ -1,6 +1,28 @@
+.PreviewMedicine {
+    position: relative;
+}
 .PreviewMedicine h4 {
     margin-left: 30px;
     color: var(--primary);
+}
+
+.PreviewMedicine .del {
+    position: absolute;
+    top: 5px;
+    right: 200px;
+    display: none;
+    border: none;
+    outline: 0;
+    border-radius: 50%;
+    color: var(--white);
+    background: var(--red);
+    font-size: 12px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+.PreviewMedicine:hover .del {
+    display: block;
 }
 .medicine {
     /* border: 1px solid var(--primary); */
@@ -14,6 +36,8 @@
     width: 65%;
     position: relative;
     transition: 200ms;
+    color: var(--white);
+    background: var(--primary);
 }
 .medicine:hover {
     box-shadow: 2px 1px 10px var(--grey2);
@@ -21,6 +45,7 @@
 .medicine p {
     font-size: 12px;
     margin: 2px 0;
+    color: var(--white);
 }
 .medicine p span {
     margin: 0 10px;
