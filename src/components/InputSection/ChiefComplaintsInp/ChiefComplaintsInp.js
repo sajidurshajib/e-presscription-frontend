@@ -6,7 +6,7 @@ import Suggestion from '../../ReUsable/Suggestion/Suggestion'
 import TextField from '../../ReUsable/TextField/TextField'
 import ToolTip from '../../ReUsable/ToolTip/ToolTip'
 import classes from './ChiefComplaintsInp.module.css'
-
+import { base_url } from '../../../config'
 const ChiefComplaintsInp = () => {
     const { stateChief, dispatchChief } = useContext(ChiefComplaints)
 
@@ -24,7 +24,7 @@ const ChiefComplaintsInp = () => {
     useEffect(() => {
         const funFetch = async () => {
             try {
-                const response = await fetch(`/ccs?search=${lastLine(text)}&page_size=10`)
+                const response = await fetch(`${base_url}/ccs?search=${lastLine(text)}&page_size=10`)
                 if (response.ok) {
                     const data = await response.json()
                     const formatedData = data.map(({ cc, id }) => ({ name: cc, id }))
