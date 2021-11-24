@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import { base_url } from '../../../../config'
 import { EpGetStorage } from '../../../../utils/EpLocalStorage'
 import classes from './SubmitEP.module.css'
-base_url
 const SubmitEP = () => {
     // Patient info
     const patient = EpGetStorage('patient')
