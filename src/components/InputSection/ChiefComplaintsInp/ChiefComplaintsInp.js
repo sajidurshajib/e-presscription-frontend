@@ -24,7 +24,9 @@ const ChiefComplaintsInp = () => {
     useEffect(() => {
         const funFetch = async () => {
             try {
-                const response = await fetch(`/ccs?search=${lastLine(text)}&page_size=10`)
+                const response = await fetch(
+                    `https://epapidev.healthx.com.bd//ccs?search=${lastLine(text)}&page_size=10`
+                )
                 if (response.ok) {
                     const data = await response.json()
                     const formatedData = data.map(({ cc, id }) => ({ name: cc, id }))

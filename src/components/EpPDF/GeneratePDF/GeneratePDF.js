@@ -52,7 +52,9 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                         {/* <img src={boxLogo} alt="Box Logo" /> */}
                         <h3>Chamber Address</h3>
                         <p>South Banasree Project</p>
+                        <p>House: G - 63, Road: 9/6</p>
                         <p>Dhaka</p>
+                        <p>Contact no: 01571016461</p>
                     </div>
                 </div>
 
