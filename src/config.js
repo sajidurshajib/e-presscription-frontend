@@ -1,1 +1,1 @@
-export const base_url = 'https://epapidev.healthx.com.bd/'
+export const base_url = 'https://epapidev.healthx.com.bd'
