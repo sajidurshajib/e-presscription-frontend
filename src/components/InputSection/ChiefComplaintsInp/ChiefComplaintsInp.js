@@ -24,7 +24,6 @@ const ChiefComplaintsInp = () => {
     useEffect(() => {
         const funFetch = async () => {
             try {
-                console.log(`Should send request to ${base_url}/ccs?search=${lastLine(text)}&page_size=10`)
                 const response = await fetch(`${base_url}/ccs?search=${lastLine(text)}&page_size=10`)
                 if (response.ok) {
                     const data = await response.json()

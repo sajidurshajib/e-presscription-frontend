@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useContext } from 'react'
 import { Investigation } from '../../../allContext'
+import { base_url } from '../../../config'
 import { lastLine } from '../../../utils/Lines'
 import Suggestion from '../../ReUsable/Suggestion/Suggestion'
 import TextField from '../../ReUsable/TextField/TextField'
@@ -22,7 +23,7 @@ const InvestigationInp = () => {
     useEffect(() => {
         const funFetch = async () => {
             try {
-                const response = await fetch(`/tests?search=${lastLine(text)}&page_size=10`)
+                const response = await fetch(`${base_url}/tests?search=${lastLine(text)}&page_size=10`)
                 if (response.ok) {
                     const data = await response.json()
                     setTests(data)

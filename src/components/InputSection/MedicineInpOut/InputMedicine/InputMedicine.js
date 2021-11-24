@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from 'react'
 import { Medicine } from '../../../../allContext'
+import { base_url } from '../../../../config'
 import DropDown from '../../../ReUsable/DropDown/DropDown'
 import InputField from '../../../ReUsable/InputField/InputField'
 import InputNumber from '../../../ReUsable/InputNumber/InputNumber'
@@ -35,7 +36,7 @@ const InputMedicine = () => {
         //Fetch from Api
         const funFetch = async () => {
             try {
-                const response = await fetch(`/medicines?search=${medicine}&page_size=10`)
+                const response = await fetch(`${base_url}/medicines?search=${medicine}&page_size=10`)
                 if (response.ok) {
                     const data = await response.json()
                     setArr(data)
