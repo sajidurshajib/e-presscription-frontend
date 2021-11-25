@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
+import { base_url } from '../../../../config'
 import { EpGetStorage } from '../../../../utils/EpLocalStorage'
 import classes from './SubmitEP.module.css'
-
 const SubmitEP = () => {
     // Patient info
     const patient = EpGetStorage('patient')
@@ -52,7 +52,7 @@ const SubmitEP = () => {
     //Need if else log
     const submit = async () => {
         // Prescription Data
-        let prescriptionsResponse = await fetch('prescriptions/', {
+        let prescriptionsResponse = await fetch(`${base_url}/prescriptions/`, {
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
@@ -371,7 +371,7 @@ const SubmitEP = () => {
                     }
                 }
 
-                let onExaminationResponse = await fetch(`prescriptions/${prescription.id}/details`, {
+                let onExaminationResponse = await fetch(`${base_url}/prescriptions/${prescription.id}/details`, {
                     headers: {
                         Accept: 'application/json',
                         'Content-Type': 'application/json',
