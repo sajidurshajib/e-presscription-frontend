@@ -1,4 +1,5 @@
-.SubmitEP > a > button {
+.SubmitEP > a > button,
+.SubmitEP > button {
     border: none;
     border-radius: 50px;
     background: var(--primary);
@@ -11,11 +12,13 @@
     cursor: pointer;
     transition: 200ms;
 }
-.SubmitEP > a {
+.SubmitEP > a,
+.SubmitEP > button {
     color: var(--white);
     text-decoration: none;
 }
-.SubmitEP > a > button:hover {
+.SubmitEP > a > button:hover,
+.SubmitEP > button:hover {
     transform: scale(1.1);
     background: var(--secondary);
 }

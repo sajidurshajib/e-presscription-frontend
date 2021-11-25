@@ -1,11 +1,32 @@
-import React, { Fragment, useContext } from 'react'
-import { PdfWrapped } from '../../../allContext'
+import React, { Fragment, useContext, useState, useEffect } from 'react'
+import { Auth, PdfWrapped } from '../../../allContext'
 // import boxLogo from '../../../assets/img/healthx-box.png'
 import classes from './Generate.module.css'
 import HistoryChildView from './HistoryChildView'
 import OnExam from './OnExam'
 
 export const GeneratePDF = React.forwardRef((props, ref) => {
+    const { stateAuth, dispatchAuth } = useContext(Auth)
+    const [profile, setProfile] = useState('')
+
+    useEffect(() => {
+        let funFetch = async () => {
+            let logFetch = await fetch('me/', {
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${stateAuth.token}`,
+                },
+                dataType: 'json',
+                method: 'GET',
+            })
+
+            let log = await logFetch.json()
+            setProfile(log)
+        }
+        funFetch()
+    }, [stateAuth])
+
     const {
         statePatient,
         stateChief,
@@ -41,7 +62,7 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                 {/* Top field */}
                 <div className={classes.top}>
                     <div className={classes.topLeft}>
-                        <h3>Dr. Rashadul Hasan</h3>
+                        <h3>{profile?.user?.name}</h3>
                         <p>MBBS (DU), DMU, GPOC</p>
                         <p>Post Graduation Training-Medicine</p>
                         <p>Medical officer - PMBP</p>

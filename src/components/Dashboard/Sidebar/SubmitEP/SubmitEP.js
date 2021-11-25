@@ -391,7 +391,7 @@ const SubmitEP = () => {
 
     return (
         <div className={classes.SubmitEP}>
-            <Link to="/ep">
+            <Link to="/ep" target="_blank">
                 <button onClick={submit}>Create Prescription</button>
             </Link>
         </div>
