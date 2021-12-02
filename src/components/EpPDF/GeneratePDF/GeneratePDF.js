@@ -56,6 +56,7 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
         let y = new Date().getFullYear()
         return y
     }
+    console.log(profile)
     return (
         <div className={classes.wrapper}>
             <div className={classes.Generate} ref={ref}>
@@ -63,19 +64,16 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                 <div className={classes.top}>
                     <div className={classes.topLeft}>
                         <h3>{profile?.user?.name}</h3>
-                        <p>MBBS (DU), DMU, GPOC</p>
-                        <p>Post Graduation Training-Medicine</p>
-                        <p>Medical officer - PMBP</p>
-                        <p>Resident Doctor - HEALTHx</p>
-                        <p>BMDC Reg No - A - 96255</p>
+                        {profile.prescription_header_left?.split('\n')?.map((v, i) => {
+                            return <p key={i}>{v}</p>
+                        })}
                     </div>
                     <div className={classes.topRight}>
                         {/* <img src={boxLogo} alt="Box Logo" /> */}
                         <h3>Chamber Address</h3>
-                        <p>South Banasree Project</p>
-                        <p>House: G - 63, Road: 9/6</p>
-                        <p>Dhaka</p>
-                        <p>Contact no: 01571016461</p>
+                        {profile.prescription_header_right?.split('\n')?.map((v, i) => {
+                            return <p key={i}>{v}</p>
+                        })}
                     </div>
                 </div>
 
