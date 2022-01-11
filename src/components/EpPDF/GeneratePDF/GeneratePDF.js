@@ -1,17 +1,19 @@
 import React, { Fragment, useContext, useState, useEffect } from 'react'
+import env from 'react-dotenv'
 import { Auth, PdfWrapped } from '../../../allContext'
-// import boxLogo from '../../../assets/img/healthx-box.png'
 import classes from './Generate.module.css'
 import HistoryChildView from './HistoryChildView'
 import OnExam from './OnExam'
 
 export const GeneratePDF = React.forwardRef((props, ref) => {
-    const { stateAuth, dispatchAuth } = useContext(Auth)
+    const { stateAuth } = useContext(Auth)
     const [profile, setProfile] = useState('')
+
+    const api = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_API : env.REACT_APP_API
 
     useEffect(() => {
         let funFetch = async () => {
-            let logFetch = await fetch('me/', {
+            let logFetch = await fetch(`${api}/me`, {
                 headers: {
                     Accept: 'application/json',
                     'Content-Type': 'application/json',
@@ -25,7 +27,7 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
             setProfile(log)
         }
         funFetch()
-    }, [stateAuth])
+    }, [stateAuth, api])
 
     const {
         statePatient,
@@ -56,7 +58,7 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
         let y = new Date().getFullYear()
         return y
     }
-    console.log(profile)
+
     return (
         <div className={classes.wrapper}>
             <div className={classes.Generate} ref={ref}>

@@ -1,8 +1,11 @@
+import env from 'react-dotenv'
 import { Link } from 'react-router-dom'
-import { base_url } from '../../../../config'
 import { EpGetStorage } from '../../../../utils/EpLocalStorage'
 import classes from './SubmitEP.module.css'
+
 const SubmitEP = () => {
+    const api = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_API : env.REACT_APP_API
+
     // Patient info
     const patient = EpGetStorage('patient')
     const patientObj = JSON.parse(patient)
@@ -47,12 +50,10 @@ const SubmitEP = () => {
     const onExam = EpGetStorage('onexam')
     const onExamObj = JSON.parse(onExam)
 
-    console.log(onExamObj.onexam)
-
     //Need if else log
     const submit = async () => {
         // Prescription Data
-        let prescriptionsResponse = await fetch(`${base_url}/prescriptions/`, {
+        let prescriptionsResponse = await fetch(`${api}/prescriptions/`, {
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
@@ -71,7 +72,7 @@ const SubmitEP = () => {
         let prescription = await prescriptionsResponse.json()
 
         // Chief Complaints Data
-        // let ccResponse = await fetch(`prescriptions/${prescription.id}/chief-complaints`, {
+        // let ccResponse = await fetch(`${api}/prescriptions/${prescription.id}/chief-complaints`, {
         //     headers: {
         //         Accept: 'application/json',
         //         'Content-Type': 'application/json',
@@ -86,7 +87,7 @@ const SubmitEP = () => {
 
         //Investigation
         // if (invObj.inv.length !== 0) {
-        //     let investigationResponse = await fetch(`prescriptions/${prescription.id}/tests`, {
+        //     let investigationResponse = await fetch(`${api}/prescriptions/${prescription.id}/tests`, {
         //         headers: {
         //             Accept: 'application/json',
         //             'Content-Type': 'application/json',
@@ -103,7 +104,7 @@ const SubmitEP = () => {
 
         //Medicine
         // mdcnObj.medicine.map(async (v, i) => {
-        //     let medicineResponse = await fetch(`prescriptions/${prescription.id}/medicines`, {
+        //     let medicineResponse = await fetch(`${api}/prescriptions/${prescription.id}/medicines`, {
         //         headers: {
         //             Accept: 'application/json',
         //             'Content-Type': 'application/json',
@@ -128,7 +129,7 @@ const SubmitEP = () => {
         // })
 
         //Advice
-        // let adviceResponse = await fetch(`prescriptions/${prescription.id}/advices`, {
+        // let adviceResponse = await fetch(`${api}/prescriptions/${prescription.id}/advices`, {
         //     headers: {
         //         Accept: 'application/json',
         //         'Content-Type': 'application/json',
@@ -147,7 +148,7 @@ const SubmitEP = () => {
         //     .replace(/\n+$/, '')
         //     .split('\n')
         //     .map(async (v, i) => {
-        //         let personalResponse = await fetch(`prescriptions/${prescription.id}/details`, {
+        //         let personalResponse = await fetch(`${api}/prescriptions/${prescription.id}/details`, {
         //             headers: {
         //                 Accept: 'application/json',
         //                 'Content-Type': 'application/json',
@@ -170,7 +171,7 @@ const SubmitEP = () => {
         //     .replace(/\n+$/, '')
         //     .split('\n')
         //     .map(async (v, i) => {
-        //         let professionalResponse = await fetch(`prescriptions/${prescription.id}/details`, {
+        //         let professionalResponse = await fetch(`${api}/prescriptions/${prescription.id}/details`, {
         //             headers: {
         //                 Accept: 'application/json',
         //                 'Content-Type': 'application/json',
@@ -193,7 +194,7 @@ const SubmitEP = () => {
         //     .replace(/\n+$/, '')
         //     .split('\n')
         //     .map(async (v, i) => {
-        //         let familyResponse = await fetch(`prescriptions/${prescription.id}/details`, {
+        //         let familyResponse = await fetch(`${api}/prescriptions/${prescription.id}/details`, {
         //             headers: {
         //                 Accept: 'application/json',
         //                 'Content-Type': 'application/json',
@@ -216,7 +217,7 @@ const SubmitEP = () => {
         //     .replace(/\n+$/, '')
         //     .split('\n')
         //     .map(async (v, i) => {
-        //         let drugResponse = await fetch(`prescriptions/${prescription.id}/details`, {
+        //         let drugResponse = await fetch(`${api}/prescriptions/${prescription.id}/details`, {
         //             headers: {
         //                 Accept: 'application/json',
         //                 'Content-Type': 'application/json',
@@ -239,7 +240,7 @@ const SubmitEP = () => {
         //     .replace(/\n+$/, '')
         //     .split('\n')
         //     .map(async (v, i) => {
-        //         let medicalResponse = await fetch(`prescriptions/${prescription.id}/details`, {
+        //         let medicalResponse = await fetch(`${api}/prescriptions/${prescription.id}/details`, {
         //             headers: {
         //                 Accept: 'application/json',
         //                 'Content-Type': 'application/json',
@@ -262,7 +263,7 @@ const SubmitEP = () => {
         //     .replace(/\n+$/, '')
         //     .split('\n')
         //     .map(async (v, i) => {
-        //         let vaccinationResponse = await fetch(`prescriptions/${prescription.id}/details`, {
+        //         let vaccinationResponse = await fetch(`${api}/prescriptions/${prescription.id}/details`, {
         //             headers: {
         //                 Accept: 'application/json',
         //                 'Content-Type': 'application/json',
@@ -290,7 +291,7 @@ const SubmitEP = () => {
 
         // if (cmbdtObj.coMorbidity.length !== 0) {
         //     cmbdtObj.coMorbidity.map(async (v, i) => {
-        //         let cmbdtResponse = await fetch(`prescriptions/${prescription.id}/details`, {
+        //         let cmbdtResponse = await fetch(`${api}/prescriptions/${prescription.id}/details`, {
         //             headers: {
         //                 Accept: 'application/json',
         //                 'Content-Type': 'application/json',
@@ -310,7 +311,7 @@ const SubmitEP = () => {
         // }
 
         //Next follow-up
-        // let nextResponse = await fetch(`prescriptions/${prescription.id}`, {
+        // let nextResponse = await fetch(`${api}/prescriptions/${prescription.id}`, {
         //     headers: {
         //         Accept: 'application/json',
         //         'Content-Type': 'application/json',
@@ -371,7 +372,7 @@ const SubmitEP = () => {
                     }
                 }
 
-                let onExaminationResponse = await fetch(`${base_url}/prescriptions/${prescription.id}/details`, {
+                let onExaminationResponse = await fetch(`${api}/prescriptions/${prescription.id}/details`, {
                     headers: {
                         Accept: 'application/json',
                         'Content-Type': 'application/json',

@@ -1,14 +1,17 @@
 import { useState, useEffect } from 'react'
 import { useContext } from 'react'
+import env from 'react-dotenv'
 import { ChiefComplaints } from '../../../allContext'
 import { lastLine } from '../../../utils/Lines'
 import Suggestion from '../../ReUsable/Suggestion/Suggestion'
 import TextField from '../../ReUsable/TextField/TextField'
 import ToolTip from '../../ReUsable/ToolTip/ToolTip'
 import classes from './ChiefComplaintsInp.module.css'
-import { base_url } from '../../../config'
+
 const ChiefComplaintsInp = () => {
     const { stateChief, dispatchChief } = useContext(ChiefComplaints)
+
+    const api = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_API : env.REACT_APP_API
 
     const [text, setText] = useState('')
     const [cc, setCc] = useState([])
@@ -24,7 +27,7 @@ const ChiefComplaintsInp = () => {
     useEffect(() => {
         const funFetch = async () => {
             try {
-                const response = await fetch(`${base_url}/ccs?search=${lastLine(text)}&page_size=10`)
+                const response = await fetch(`${api}/ccs?search=${lastLine(text)}&page_size=10`)
                 if (response.ok) {
                     const data = await response.json()
                     const formatedData = data.map(({ cc, id }) => ({ name: cc, id }))
@@ -35,7 +38,7 @@ const ChiefComplaintsInp = () => {
         if (lastLine(text)) {
             funFetch()
         }
-    }, [text, setCc])
+    }, [text, setCc, api])
 
     const submit = (e) => {
         e.preventDefault()

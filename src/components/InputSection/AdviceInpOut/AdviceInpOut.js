@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react'
+import env from 'react-dotenv'
 import { Advice } from '../../../allContext'
-import { base_url } from '../../../config'
 import { lastLine } from '../../../utils/Lines'
 import Suggestion from '../../ReUsable/Suggestion/Suggestion'
 import TextField from '../../ReUsable/TextField/TextField'
@@ -14,6 +14,8 @@ const AdviceInpOut = () => {
 
     const { stateAdvice, dispatchAdvice } = useContext(Advice)
 
+    const api = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_API : env.REACT_APP_API
+
     const concatSet = (conc) => {
         let lastIndex = text.lastIndexOf('\n')
         let str = text.substring(0, lastIndex + 1)
@@ -25,7 +27,7 @@ const AdviceInpOut = () => {
     useEffect(() => {
         const funFetch = async () => {
             try {
-                const response = await fetch(`${base_url}/advices?search=${lastLine(text)}&page_size=10`)
+                const response = await fetch(`${api}/advices?search=${lastLine(text)}&page_size=10`)
                 if (response.ok) {
                     const data = await response.json()
                     const formatedData = data.map(({ advice, id }) => ({ name: advice, id }))
@@ -36,7 +38,7 @@ const AdviceInpOut = () => {
         if (lastLine(text)) {
             funFetch()
         }
-    }, [text, setAdvice])
+    }, [text, setAdvice, api])
 
     const adviceSubmit = (e) => {
         e.preventDefault()

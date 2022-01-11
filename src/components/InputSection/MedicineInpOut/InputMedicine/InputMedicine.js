@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react'
+import env from 'react-dotenv'
 import { Medicine } from '../../../../allContext'
-import { base_url } from '../../../../config'
 import DropDown from '../../../ReUsable/DropDown/DropDown'
 import InputField from '../../../ReUsable/InputField/InputField'
 import InputNumber from '../../../ReUsable/InputNumber/InputNumber'
@@ -9,6 +9,8 @@ import classes from './InputMedicine.module.css'
 
 const InputMedicine = () => {
     const { stateMedicine, dispatchMedicine } = useContext(Medicine)
+
+    const api = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_API : env.REACT_APP_API
 
     const option = [
         { name: 'After Meal', value: true },
@@ -36,7 +38,7 @@ const InputMedicine = () => {
         //Fetch from Api
         const funFetch = async () => {
             try {
-                const response = await fetch(`${base_url}/medicines?search=${medicine}&page_size=10`)
+                const response = await fetch(`${api}/medicines?search=${medicine}&page_size=10`)
                 if (response.ok) {
                     const data = await response.json()
                     setArr(data)
@@ -56,7 +58,7 @@ const InputMedicine = () => {
             setGeneric(medicineObj.generic)
             setMedicineObj({ ...medicineObj, name: '' })
         }
-    }, [medicineObj, medicine])
+    }, [medicineObj, medicine, api])
 
     const submit = (e) => {
         e.preventDefault()

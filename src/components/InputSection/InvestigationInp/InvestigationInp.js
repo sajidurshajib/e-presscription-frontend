@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useContext } from 'react'
+import env from 'react-dotenv'
 import { Investigation } from '../../../allContext'
-import { base_url } from '../../../config'
 import { lastLine } from '../../../utils/Lines'
 import Suggestion from '../../ReUsable/Suggestion/Suggestion'
 import TextField from '../../ReUsable/TextField/TextField'
@@ -9,6 +9,8 @@ import classes from './InvestigationInp.module.css'
 
 const InvestigationInp = () => {
     const { stateInvestigation, dispatchInvestigation } = useContext(Investigation)
+
+    const api = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_API : env.REACT_APP_API
 
     const [text, setText] = useState('')
     const [tests, setTests] = useState('')
@@ -23,7 +25,7 @@ const InvestigationInp = () => {
     useEffect(() => {
         const funFetch = async () => {
             try {
-                const response = await fetch(`${base_url}/tests?search=${lastLine(text)}&page_size=10`)
+                const response = await fetch(`${api}/tests?search=${lastLine(text)}&page_size=10`)
                 if (response.ok) {
                     const data = await response.json()
                     setTests(data)
@@ -33,7 +35,7 @@ const InvestigationInp = () => {
         if (text !== '') {
             funFetch()
         }
-    }, [text, setTests])
+    }, [text, setTests, api])
 
     const submit = (e) => {
         e.preventDefault()
