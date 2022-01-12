@@ -6,7 +6,7 @@ import { Auth } from '../allContext'
 const ProtectedRoute = ({ component: Component, ...rest }) => {
     const { stateAuth } = useContext(Auth)
 
-    const api = process.env.NODE_ENV === 'production' ? process.env.DOC_SITE : env.DOC_SITE
+    const api = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_DOC_SITE : env.REACT_APP_DOC_SITE
 
     return (
         <Route
