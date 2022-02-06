@@ -4,7 +4,7 @@
     "parser": "babel-eslint",
     "rules": {
         "no-console": "warn",
-        "prettier/prettier": ["warn", { "printWidth": 120 }],
+        "prettier/prettier": ["warn", { "printWidth": 120, "useTabs": false }],
         "react/react-in-jsx-scope": "off"
     }
 }

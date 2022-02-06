@@ -22,10 +22,10 @@ const PreviewMedicine = () => {
                     <Fragment key={i}>
                         <div className={classes.medicine}>
                             <p>
-                                {v.form} | {v.name} | {v.strength}
+                                {v.form}. {v.name} {v.strength}
                             </p>
                             <p>
-                                {v.doses} <span>|</span> After Meal <span>|</span> {v.day}{' '}
+                                {v.doses} <span>-</span> After Meal <span>-</span> {v.day}{' '}
                                 {v.day === 1 ? 'day' : 'days'}
                             </p>
                             <p>{v.remark}</p>
