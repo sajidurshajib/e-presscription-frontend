@@ -1,4 +1,6 @@
-import { useReducer } from 'react'
+import { faArrowsAltV } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useReducer, useState } from 'react'
 import { ChiefComplaints, History, Investigation, Diagnosis, Advice, Next, OnExamination } from '../../allContext'
 import { adviceState, adviceReducer } from '../../reducer/adviceReducer'
 import { chiefState, chiefReducer } from '../../reducer/chiefReducer'
@@ -55,32 +57,48 @@ const Body = () => {
         dispatchCoMorbidity,
     }
 
+    const [swap, setSwap] = useState(true)
+
     return (
         <div className={classes.Body}>
-            <ChiefComplaints.Provider value={{ stateChief, dispatchChief }}>
-                <Investigation.Provider value={{ stateInvestigation, dispatchInvestigation }}>
-                    <Diagnosis.Provider value={{ stateDiagnosis, dispatchDiagnosis }}>
-                        <OnExamination.Provider value={{ stateOnExamination, dispatchOnExamination }}>
-                            <History.Provider value={history}>
-                                {/* {Context Wrapper} */}
-                                <div>
-                                    <PreviewSection />
-                                </div>
-                                {/* Context only for Input Field */}
-                                <Advice.Provider value={{ stateAdvice, dispatchAdvice }}>
-                                    <Next.Provider value={{ stateNext, dispatchNext }}>
-                                        <div>
-                                            <InputSection />
-                                        </div>
-                                    </Next.Provider>
-                                </Advice.Provider>
-                                {/* Context only for Input Field */}
-                                {/* {Context Wrapper} */}
-                            </History.Provider>
-                        </OnExamination.Provider>
-                    </Diagnosis.Provider>
-                </Investigation.Provider>
-            </ChiefComplaints.Provider>
+            <button onClick={(e) => setSwap(!swap)}>
+                <FontAwesomeIcon icon={faArrowsAltV} />
+            </button>
+            <div className={classes.Wrapper}>
+                <ChiefComplaints.Provider value={{ stateChief, dispatchChief }}>
+                    <Investigation.Provider value={{ stateInvestigation, dispatchInvestigation }}>
+                        <Diagnosis.Provider value={{ stateDiagnosis, dispatchDiagnosis }}>
+                            <OnExamination.Provider value={{ stateOnExamination, dispatchOnExamination }}>
+                                <History.Provider value={history}>
+                                    <Advice.Provider value={{ stateAdvice, dispatchAdvice }}>
+                                        <Next.Provider value={{ stateNext, dispatchNext }}>
+                                            {swap ? (
+                                                <>
+                                                    <div>
+                                                        <InputSection />
+                                                    </div>
+                                                    <div>
+                                                        <PreviewSection />
+                                                    </div>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <div>
+                                                        <PreviewSection />
+                                                    </div>
+                                                    <div>
+                                                        <InputSection />
+                                                    </div>
+                                                </>
+                                            )}
+                                        </Next.Provider>
+                                    </Advice.Provider>
+                                </History.Provider>
+                            </OnExamination.Provider>
+                        </Diagnosis.Provider>
+                    </Investigation.Provider>
+                </ChiefComplaints.Provider>
+            </div>
         </div>
     )
 }
