@@ -1,12 +1,46 @@
 .Body {
+    position: relative;
+}
+.Body > button {
+    position: absolute;
+    top: 40vh;
+    left: 40%;
+    border: none;
+    outline: 0;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    color: var(--white);
+    background: var(--primary);
+    border-radius: 50px;
+    padding: 5px;
+    width: 40px;
+    height: 40px;
+    margin: 0 0 0 -20px;
+    z-index: 100;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 200ms;
+}
+.Body > button > svg {
+    transform: rotate(90deg);
+    font-size: 22px;
+    line-height: 28px;
+}
+.Body > button:hover {
+    transform: rotate(360deg);
+}
+.Wrapper {
     display: grid;
     grid-template-columns: minmax(0, 40%) minmax(0, 60%);
     height: 100vh;
 }
-.Body > div {
+.Wrapper > div {
     overflow-y: auto;
 }
-.Body > div:first-child {
+.Wrapper > div:first-child {
     border-right: 1px solid var(--light-grey);
     height: 100vh;
     overflow-y: auto;
