@@ -26,9 +26,9 @@ const InputMedicine = () => {
     const [strength, setStrength] = useState('')
     const [generic, setGeneric] = useState('')
 
-    const [morning, setMorning] = useState('')
-    const [evening, setEvening] = useState('')
-    const [night, setNight] = useState('')
+    const [morning, setMorning] = useState(0)
+    const [evening, setEvening] = useState(0)
+    const [night, setNight] = useState(0)
     const [after, setAfter] = useState(true)
 
     const [day, setDay] = useState('')
@@ -72,7 +72,7 @@ const InputMedicine = () => {
                     form,
                     strength,
                     generic,
-                    doses: morning + '+' + evening + '+' + night,
+                    doses: morning + ' + ' + evening + ' + ' + night,
                     after,
                     day,
                     remark,
@@ -84,9 +84,9 @@ const InputMedicine = () => {
         setForm('')
         setStrength('')
         setGeneric('')
-        setMorning('')
-        setEvening('')
-        setNight('')
+        setMorning(0)
+        setEvening(0)
+        setNight(0)
         setAfter(true)
         setDay('')
         setRemark('')
