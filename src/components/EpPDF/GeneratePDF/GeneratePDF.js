@@ -1,7 +1,7 @@
 import React, { Fragment, useContext, useState, useEffect } from 'react'
 import env from 'react-dotenv'
 import { Auth, PdfWrapped } from '../../../allContext'
-import healthxCircle from '../../../assets/img/healthx-circle.jpeg'
+// import healthxCircle from '../../../assets/img/healthx-circle.jpeg'
 import classes from './Generate.module.css'
 import HistoryChildView from './HistoryChildView'
 import OnExam from './OnExam'
@@ -230,15 +230,14 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                             </Fragment>
                         ) : null}
                     </div>
-                </div>
-                <div className={classes.signature}>
-                    <div>
-                        <img src={healthxCircle} alt="" />
-                    </div>
-                    <div>
-                        {profile.prescription_header_left?.split('\n')?.map((v, i) => {
-                            return <p key={i}>{v}</p>
-                        })}
+                    <div></div>
+                    <div className={classes.signature}>
+                        <div>{/* <img src={healthxCircle} alt="" /> */}</div>
+                        <div>
+                            {profile.prescription_header_left?.split('\n')?.map((v, i) => {
+                                return <p key={i}>{v}</p>
+                            })}
+                        </div>
                     </div>
                 </div>
 
