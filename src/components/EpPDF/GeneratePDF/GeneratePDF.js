@@ -1,6 +1,7 @@
 import React, { Fragment, useContext, useState, useEffect } from 'react'
 import env from 'react-dotenv'
 import { Auth, PdfWrapped } from '../../../allContext'
+import midLogo from '../../../assets/img/HEALTHx-logo.png'
 // import healthxCircle from '../../../assets/img/healthx-circle.jpeg'
 import classes from './Generate.module.css'
 import HistoryChildView from './HistoryChildView'
