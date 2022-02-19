@@ -1,7 +1,7 @@
 import React, { Fragment, useContext, useState, useEffect } from 'react'
 import env from 'react-dotenv'
 import { Auth, PdfWrapped } from '../../../allContext'
-import midLogo from '../../../assets/img/HEALTHx-logo.png'
+// import midLogo from '../../../assets/img/HEALTHx-logo.png'
 // import healthxCircle from '../../../assets/img/healthx-circle.jpeg'
 import classes from './Generate.module.css'
 import HistoryChildView from './HistoryChildView'
@@ -87,7 +87,15 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                         <b>Name :</b> {statePatient.patient.name}
                     </p>
                     <p>
-                        <b>Age :</b> {statePatient.patient.age}
+                        <b>Age :</b>{' '}
+                        {statePatient.patient.year.length !== 0 && statePatient.patient.year !== 0
+                            ? statePatient.patient.year + ' year' + (statePatient.patient.year === 1 ? '' : 's')
+                            : null}{' '}
+                        {statePatient.patient.month.length !== 0 && statePatient.patient.month !== 0
+                            ? statePatient.patient.month +
+                              ' month' +
+                              (statePatient.patient.month.length !== 0 && statePatient.patient.month === 1 ? '' : 's')
+                            : null}
                     </p>
                     <p>
                         <b>Sex :</b> {statePatient.patient.sex}
