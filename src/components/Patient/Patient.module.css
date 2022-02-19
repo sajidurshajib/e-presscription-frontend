@@ -19,9 +19,16 @@ select {
 }
 .wrap1 {
     display: grid;
-    grid-template-columns: minmax(0, 60%) minmax(0, 20%) minmax(0, 20%);
+    grid-template-columns: minmax(0, 50%) auto minmax(0, 25%) minmax(0, 25%);
     gap: 10px;
     margin-bottom: 5px;
+}
+.wrap1 > label {
+    color: var(--dark-grey);
+    font-size: 12px;
+    line-height: 26px;
+    width: 100%;
+    text-align: right;
 }
 .wrap2 {
     display: grid;
