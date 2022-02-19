@@ -32,6 +32,6 @@ select {
 }
 .wrap2 {
     display: grid;
-    grid-template-columns: minmax(0, 40%) minmax(0, 60%);
+    grid-template-columns: minmax(0, 20%) minmax(0, 40%) minmax(0, 40%);
     gap: 10px;
 }
