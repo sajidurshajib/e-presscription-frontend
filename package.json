@@ -19,7 +19,7 @@
     },
     "scripts": {
         "start": "react-dotenv && react-scripts start",
-        "start2": "react-dotenv && PORT=3002 react-scripts start",
+        "start4": "react-dotenv && PORT=3004 react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
