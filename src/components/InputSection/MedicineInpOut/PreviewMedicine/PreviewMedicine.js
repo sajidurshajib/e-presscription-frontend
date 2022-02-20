@@ -25,7 +25,7 @@ const PreviewMedicine = () => {
                                 {v.form}. {v.name} {v.strength}
                             </p>
                             <p>
-                                {v.doses} <span>-</span> After Meal <span>-</span> {v.day}{' '}
+                                {v.doses} <span>-</span> {v.after ? 'After Meal' : 'Before Meal'} <span>-</span> {v.day}{' '}
                                 {v.day === 1 ? 'day' : 'days'}
                             </p>
                             <p>{v.remark}</p>
