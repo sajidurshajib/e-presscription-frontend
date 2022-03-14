@@ -215,7 +215,7 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                                                   {v.form} - {v.name} - {v.strength}
                                               </span>
                                               <p>
-                                                  {v.doses} | {v.after ? 'After Meal' : 'Before Meal'} |{' '}
+                                                  {v.doses} | {v.after === true ? 'After Meal' : 'Before Meal'} |{' '}
                                                   {v.day > 1 ? v.day + ' days' : v.day + ' day'}
                                               </p>
                                               <p>{v.remark}</p>
