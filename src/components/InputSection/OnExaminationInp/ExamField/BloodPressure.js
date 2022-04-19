@@ -16,6 +16,7 @@ const BloodPressure = ({ setData }) => {
             <div className={classes.wrap4}>
                 <p>Blood Pressure (BP) :</p>
                 <input
+                    className={classes.onExam}
                     value={bloodPressure.diastolic}
                     onChange={(e) =>
                         setBloodPressure({ systolic: bloodPressure.systolic, diastolic: parseInt(e.target.value) || 0 })
@@ -26,6 +27,7 @@ const BloodPressure = ({ setData }) => {
                 />
                 <span>/</span>
                 <input
+                    className={classes.onExam}
                     value={bloodPressure.systolic}
                     onChange={(e) =>
                         setBloodPressure({

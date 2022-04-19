@@ -13,6 +13,7 @@ const HeartRate = ({ setData }) => {
             <div className={classes.wrap2}>
                 <p>Heart rate:</p>
                 <input
+                    className={classes.onExam}
                     value={heartRate.heartRate}
                     onChange={(e) => setHeartRate({ heartRate: parseInt(e.target.value) || 0 })}
                     type="number"

@@ -13,12 +13,14 @@ const Cyanois = ({ setData }) => {
             <div className={classes.wrap1}>
                 <p>Cyanosis : </p>
                 <select
+                    className={classes.selectExam}
                     value={cyanosis.sign}
                     onChange={(e) => setCyanosis({ sign: e.target.value, remark: cyanosis.remark })}>
                     <option value="-">-</option>
                     <option value="+">+</option>
                 </select>
                 <input
+                    className={classes.onExam}
                     value={cyanosis.remark}
                     onChange={(e) => setCyanosis({ sign: cyanosis.sign, remark: e.target.value })}
                     type="text"

@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { useContext } from 'react'
-import env from 'react-dotenv'
 import { Investigation } from '../../../allContext'
 import { lastLine } from '../../../utils/Lines'
 import Suggestion from '../../ReUsable/Suggestion/Suggestion'
@@ -10,10 +9,10 @@ import classes from './InvestigationInp.module.css'
 const InvestigationInp = () => {
     const { stateInvestigation, dispatchInvestigation } = useContext(Investigation)
 
-    const api = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_API : env.REACT_APP_API
+    const apiV1 = process.env.REACT_APP_API_V1
 
     const [text, setText] = useState('')
-    const [tests, setTests] = useState('')
+    const [inv, setInv] = useState('')
 
     const concatSet = (conc) => {
         let lastIndex = text.lastIndexOf('\n')
@@ -25,17 +24,18 @@ const InvestigationInp = () => {
     useEffect(() => {
         const funFetch = async () => {
             try {
-                const response = await fetch(`${api}/tests?search=${lastLine(text)}&page_size=10`)
+                const response = await fetch(`${apiV1}/investigations/?search_str=${lastLine(text)}&skip=0&limit=10`)
                 if (response.ok) {
                     const data = await response.json()
-                    setTests(data)
+                    const formatedData = data.map(({ investigation, id }) => ({ name: investigation, id }))
+                    setInv(formatedData)
                 }
             } catch (err) {}
         }
         if (text !== '') {
             funFetch()
         }
-    }, [text, setTests, api])
+    }, [text, setInv, apiV1])
 
     const submit = (e) => {
         e.preventDefault()
@@ -52,7 +52,7 @@ const InvestigationInp = () => {
     return (
         <div className={classes.InvestigationInp}>
             <TextField text={text} setText={setText} label="Investigation" />
-            {lastLine(text) ? <Suggestion arr={tests} setText={concatSet} /> : null}
+            {lastLine(text) && lastLine(text) !== inv[0]?.name ? <Suggestion arr={inv} setText={concatSet} /> : null}
             <button onClick={submit}>Submit</button>
         </div>
     )

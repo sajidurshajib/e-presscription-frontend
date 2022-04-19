@@ -14,6 +14,7 @@ const Rbs = ({ setData }) => {
             <div className={classes.wrap2}>
                 <p>RBS : </p>
                 <input
+                    className={classes.onExam}
                     value={rbs.rbs}
                     onChange={(e) => setRbs({ rbs: parseInt(e.target.value) || 0 })}
                     type="number"

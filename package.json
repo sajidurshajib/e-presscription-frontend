@@ -24,7 +24,6 @@
         "test": "react-scripts test",
         "eject": "react-scripts eject"
     },
-    "proxy": "https://epapidev.healthx.com.bd",
     "eslintConfig": {
         "extends": [
             "react-app",
@@ -56,6 +55,7 @@
     },
     "react-dotenv": {
         "whitelist": [
+            "REACT_APP_API_V1",
             "REACT_APP_API",
             "REACT_APP_DOC_SITE"
         ]

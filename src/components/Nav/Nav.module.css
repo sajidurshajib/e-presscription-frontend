@@ -3,7 +3,10 @@
     border-bottom: 1px solid var(--light-grey);
     width: 100%;
     display: grid;
-    grid-template-columns: minmax(0, 5%) minmax(0, 95%);
+    grid-template-columns: minmax(0, 40%) minmax(0, 60%);
+}
+.alignLeft {
+    display: inline-block;
 }
 .alignLeft svg {
     color: var(--light-grey);
@@ -15,33 +18,63 @@
     color: var(--secondary);
 }
 
-.Nav img {
-    width: 150px;
-    padding: 10px 0 0 60px;
+.patient {
+    display: inline-block;
+    margin: 0 0 0 35px;
+    position: relative;
+    cursor: pointer;
 }
-.Nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    float: right;
-    margin-right: 50px;
+
+.patient svg {
+    font-size: 26px;
+    position: absolute;
+    margin: -15px 0 0 0;
 }
-.Nav ul li {
-    float: left;
-    margin: 10px 15px;
-}
-.Nav ul li a {
+.add {
     color: var(--primary);
-    box-sizing: border-box;
-    padding: 7px 5px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-size: 14px;
+    position: relative;
+    top: -17px;
+}
+.add::after {
+    content: 'Please add your patient here!';
+    position: absolute;
+    font-size: 12px;
     font-weight: 600;
-}
-.Nav ul li svg {
-    margin-right: 5px;
+    top: -16px;
+    right: -250px;
     color: var(--primary);
-    font-size: 16px;
+    background: var(--white);
+    border: 1px solid var(--primary);
+    padding: 5px 10px;
+    border-radius: 2px;
+    animation: pop 2s infinite;
+}
+
+.ok > div {
+    color: var(--primary);
+    position: relative;
+    display: inline-block;
+}
+.ok > div > p {
+    display: inline;
+    position: relative;
+    top: -15px;
+    left: 45px;
+    font-size: 12px;
+    color: var(--white);
+    background: var(--primary);
+    padding: 5px 10px;
+    border-radius: 2px;
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
 }

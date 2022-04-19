@@ -14,6 +14,7 @@ const Pulse = ({ setData }) => {
             <div className={classes.wrap2}>
                 <p>Pulse :</p>
                 <input
+                    className={classes.onExam}
                     value={pulse.pulse}
                     onChange={(e) => setPulse({ pulse: parseInt(e.target.value) })}
                     type="number"

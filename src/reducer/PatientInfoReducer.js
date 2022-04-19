@@ -1,7 +1,7 @@
 import { EpGetStorage, EpSetStorage, EpDefStorage } from '../utils/EpLocalStorage'
 
 //Set state as default storage value
-export const patientState = EpDefStorage('patient', { patient: '' })
+export const patientState = EpDefStorage('patient', { patient: { name: '' } })
 
 export const patientReducer = (state, action) => {
     switch (action.type) {

@@ -13,12 +13,14 @@ const Jaundice = ({ setData }) => {
             <div className={classes.wrap1}>
                 <p>Jaundice : </p>
                 <select
+                    className={classes.selectExam}
                     value={jaundice.sign}
                     onChange={(e) => setJaundice({ sign: e.target.value, remark: jaundice.remark })}>
                     <option value="-">-</option>
                     <option value="+">+</option>
                 </select>
                 <input
+                    className={classes.onExam}
                     value={jaundice.remark}
                     onChange={(e) => setJaundice({ sign: jaundice.sign, remark: e.target.value })}
                     type="text"

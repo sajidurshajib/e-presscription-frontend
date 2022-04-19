@@ -10,7 +10,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useContext } from 'react'
-import { FieldContext } from '../../../allContext'
+import { Auth, FieldContext, UserInfo } from '../../../allContext'
 import docImg from '../../../assets/img/docstock.jpg'
 import epLogo from '../../../assets/img/logo.png'
 import classes from './Sidebar.module.css'
@@ -18,6 +18,7 @@ import SubmitEP from './SubmitEP/SubmitEP'
 
 const Sidebar = () => {
     const { state, dispatch } = useContext(FieldContext)
+    const { stateUser } = useContext(UserInfo)
 
     return (
         <div className={classes.Sidebar}>
@@ -26,7 +27,7 @@ const Sidebar = () => {
             </div>
             <div className={classes.doc}>
                 <div className={classes.docImg} style={{ backgroundImage: 'url(' + docImg + ')' }}></div>
-                <h3>Dr. Rashadul Islam</h3>
+                <h3>{stateUser.info.name}</h3>
                 <p>Medicine Specialist</p>
                 <hr />
             </div>

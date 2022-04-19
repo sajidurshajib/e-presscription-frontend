@@ -1,37 +1,94 @@
 .Patient {
-    display: block;
-    z-index: 100;
-    padding: 5px;
-}
-.Patient > div > input {
-    padding: 5px;
-    background: var(--light-grey);
-}
-.Patient > div > select {
-    padding-left: 5px;
-    font-size: 12px;
-    color: var(--dark-grey);
-    background: var(--light-grey);
-}
-.Patient > div > input:valid,
-select {
-    border: none;
-}
-.wrap1 {
-    display: grid;
-    grid-template-columns: minmax(0, 50%) auto minmax(0, 25%) minmax(0, 25%);
-    gap: 10px;
-    margin-bottom: 5px;
-}
-.wrap1 > label {
-    color: var(--dark-grey);
-    font-size: 12px;
-    line-height: 26px;
+    position: absolute;
+    height: 100%;
     width: 100%;
-    text-align: right;
+    top: 0;
+    left: 0;
+    z-index: initial;
 }
-.wrap2 {
+.Patient::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 110vh;
+    background: var(--dark-blue);
+    opacity: 0.3;
+    z-index: 150;
+}
+.Patient form {
+    position: absolute;
+    top: 30%;
+    width: 40%;
+    z-index: 2000;
+    background: var(--white);
+    transform: translate(70%, -35%);
+    padding: 40px 20px;
+    border-radius: 4px;
+}
+.Patient > form > h2 {
+    text-align: center;
+}
+.Patient > form > span {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: var(--white);
+    background: var(--grey2);
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    line-height: 20px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.Patient > form > span:hover {
+    background: var(--red);
+}
+.Wrapper {
+    padding: 0 50px;
+}
+.Wrapper input {
+    padding: 7px 10px;
+    font-size: 14px;
+    margin: 7px 0;
+    border: 1px solid var(--grey2);
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    background: var(--light);
+}
+.Wrapper input:focus {
+    outline: 0;
+}
+.Wrapper > button {
+    display: block;
+    width: 100%;
+    background: var(--primary);
+    cursor: pointer;
+    border: none;
+    color: var(--white);
+    padding: 10px;
+    border-radius: 2px;
+}
+.Wrapper > button:focus {
+    outline: 0;
+}
+
+.Two {
     display: grid;
-    grid-template-columns: minmax(0, 20%) minmax(0, 40%) minmax(0, 40%);
+    grid-template-columns: repeat(2, minmax(0, 50%));
     gap: 10px;
+}
+.Wrapper select {
+    border-radius: 4px;
+    border: 1px solid var(--grey2);
+    background: var(--light);
+    padding: 2px 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin: 7px 0;
+}
+.Wrapper select:focus {
+    outline: 0;
 }

@@ -15,12 +15,16 @@ const Temp = ({ setData }) => {
             <div className={classes.wrap3}>
                 <p>Temp : </p>
                 <input
+                    className={classes.onExam}
                     value={temp.value}
                     onChange={(e) => setTemp({ value: parseInt(e.target.value) || 0, type: temp.type })}
                     type="number"
                     required
                 />
-                <select value={temp.type} onChange={(e) => setTemp({ value: temp.value, type: e.target.value })}>
+                <select
+                    className={classes.selectExam}
+                    value={temp.type}
+                    onChange={(e) => setTemp({ value: temp.value, type: e.target.value })}>
                     <option value="F"> &deg; F </option>
                     <option value="C"> &deg; C </option>
                 </select>

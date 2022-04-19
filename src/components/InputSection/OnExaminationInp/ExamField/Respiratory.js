@@ -13,6 +13,7 @@ const Respiratory = ({ setData }) => {
             <div className={classes.wrap2}>
                 <p>Respiratory rate:</p>
                 <input
+                    className={classes.onExam}
                     value={respiratory.respiratory}
                     onChange={(e) => setRespiratory({ respiratory: parseInt(e.target.value) || 0 })}
                     type="number"

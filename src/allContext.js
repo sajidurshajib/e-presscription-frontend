@@ -17,3 +17,4 @@ export const Medicine = createContext()
 export const PdfWrapped = createContext()
 
 export const Auth = createContext()
+export const UserInfo = createContext()

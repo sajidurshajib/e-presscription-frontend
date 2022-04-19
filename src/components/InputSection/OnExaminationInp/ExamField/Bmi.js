@@ -13,6 +13,7 @@ const Bmi = ({ setData }) => {
             <div className={classes.wrap}>
                 <p>BMI :</p>
                 <input
+                    className={classes.onExam}
                     value={bmi.bmi}
                     onChange={(e) => setBmi({ bmi: e.target.value })}
                     type="text"

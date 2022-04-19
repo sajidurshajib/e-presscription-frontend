@@ -18,6 +18,7 @@ const Height = ({ setData }) => {
             <div className={classes.wrap5}>
                 <p>Height : </p>
                 <input
+                    className={classes.onExam}
                     value={height.feet}
                     onChange={(e) => setHeight({ feet: parseInt(e.target.value), inch: height.inch })}
                     type="number"
@@ -25,6 +26,7 @@ const Height = ({ setData }) => {
                 />
                 <p>Feet</p>
                 <input
+                    className={classes.onExam}
                     value={height.inch}
                     onChange={(e) => setHeight({ feet: height.feet, inch: parseInt(e.target.value) })}
                     type="number"

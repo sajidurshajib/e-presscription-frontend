@@ -43,7 +43,7 @@
     gap: 5px;
 }
 
-input {
+input.onExam {
     box-sizing: border-box;
     appearance: none;
     border: none;
@@ -52,32 +52,32 @@ input {
     padding: 0 5px;
     font-size: 12px;
 }
-input:focus {
+input.onExam:focus {
     outline: 0;
 }
-input::placeholder {
+input.onExam::placeholder {
     font-size: 12px;
 }
-input[type='text'] {
+input.onExam[type='text'] {
     border: none;
     border-bottom: 2px solid var(--grey2);
 }
-input[type='text']:hover,
-input[type='text']:valid {
+input.onExam[type='text']:hover,
+input.onExam[type='text']:valid {
     border-bottom: 2px solid var(--primary);
 }
 
-input[type='number'] {
+input.onExam[type='number'] {
     border: none;
     border-bottom: 2px solid var(--grey2);
     padding-left: 25px;
 }
-input[type='number']:hover,
-input[type='number']:valid {
+input.onExam[type='number']:hover,
+input.onExam[type='number']:valid {
     border-bottom: 2px solid var(--primary);
 }
 
-select {
+select.selectExam {
     border: none;
     background: var(--light);
     border-bottom: 2px solid var(--primary);
@@ -93,9 +93,9 @@ select {
     padding-left: 40%;
     position: relative;
 }
-select:focus {
+select.selectExam:focus {
     outline: 0;
 }
-option {
+select.selectExam > option {
     cursor: pointer;
 }

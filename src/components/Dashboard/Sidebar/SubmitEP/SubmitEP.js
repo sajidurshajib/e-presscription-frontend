@@ -4,7 +4,7 @@ import { EpGetStorage } from '../../../../utils/EpLocalStorage'
 import classes from './SubmitEP.module.css'
 
 const SubmitEP = () => {
-    const api = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_API : env.REACT_APP_API
+    const api = process.env.REACT_APP_API
 
     // Patient info
     const patient = EpGetStorage('patient')

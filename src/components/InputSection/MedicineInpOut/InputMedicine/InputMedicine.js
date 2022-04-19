@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext } from 'react'
-import env from 'react-dotenv'
 import { Medicine } from '../../../../allContext'
 import DropDown from '../../../ReUsable/DropDown/DropDown'
 import InputField from '../../../ReUsable/InputField/InputField'
@@ -10,7 +9,7 @@ import classes from './InputMedicine.module.css'
 const InputMedicine = () => {
     const { stateMedicine, dispatchMedicine } = useContext(Medicine)
 
-    const api = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_API : env.REACT_APP_API
+    const apiV1 = process.env.REACT_APP_API_V1
 
     const option = [
         { name: 'After Meal', value: true },
@@ -38,7 +37,7 @@ const InputMedicine = () => {
         //Fetch from Api
         const funFetch = async () => {
             try {
-                const response = await fetch(`${api}/medicines?search=${medicine}&page_size=10`)
+                const response = await fetch(`${apiV1}/medicines/?search_medicine=${medicine}&skip=0&limit=10`)
                 if (response.ok) {
                     const data = await response.json()
                     setArr(data)
@@ -58,7 +57,7 @@ const InputMedicine = () => {
             setGeneric(medicineObj.generic)
             setMedicineObj({ ...medicineObj, name: '' })
         }
-    }, [medicineObj, medicine, api])
+    }, [medicineObj, medicine, apiV1])
 
     const submit = (e) => {
         e.preventDefault()

@@ -13,12 +13,13 @@ const Weight = ({ setData }) => {
             <div className={classes.wrap3}>
                 <p>Weight : </p>
                 <input
+                    className={classes.onExam}
                     value={weight.value}
                     onChange={(e) => setWeight({ value: parseInt(e.target.value) || 0, type: weight.type })}
                     type="number"
                     required
                 />
-                <select>
+                <select className={classes.selectExam}>
                     <option value="kg"> kg </option>
                     <option value="lbs"> lbs </option>
                 </select>

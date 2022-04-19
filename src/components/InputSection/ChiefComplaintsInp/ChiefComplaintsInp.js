@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { useContext } from 'react'
-import env from 'react-dotenv'
 import { ChiefComplaints } from '../../../allContext'
 import { lastLine } from '../../../utils/Lines'
 import Suggestion from '../../ReUsable/Suggestion/Suggestion'
@@ -11,7 +10,7 @@ import classes from './ChiefComplaintsInp.module.css'
 const ChiefComplaintsInp = () => {
     const { stateChief, dispatchChief } = useContext(ChiefComplaints)
 
-    const api = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_API : env.REACT_APP_API
+    const apiV1 = process.env.REACT_APP_API_V1
 
     const [text, setText] = useState('')
     const [cc, setCc] = useState([])
@@ -27,7 +26,7 @@ const ChiefComplaintsInp = () => {
     useEffect(() => {
         const funFetch = async () => {
             try {
-                const response = await fetch(`${api}/ccs?search=${lastLine(text)}&page_size=10`)
+                const response = await fetch(`${apiV1}/chief-complaints/?search_str=${lastLine(text)}&skip=0&limit=10`)
                 if (response.ok) {
                     const data = await response.json()
                     const formatedData = data.map(({ cc, id }) => ({ name: cc, id }))
@@ -38,7 +37,7 @@ const ChiefComplaintsInp = () => {
         if (lastLine(text)) {
             funFetch()
         }
-    }, [text, setCc, api])
+    }, [text, setCc, apiV1])
 
     const submit = (e) => {
         e.preventDefault()
@@ -49,15 +48,14 @@ const ChiefComplaintsInp = () => {
         setText('')
     }
 
-    // Return
     return (
         <div className={classes.ChiefComplaintsInp}>
             <TextField text={text} setText={setText} label="Chief Complaints" />
             <div className={classes.tool}>
-                <ToolTip tip="Chief Complaints lorem ipsu dolor sit amet" />
+                <ToolTip tip="Chief Complaints" />
             </div>
 
-            {lastLine(text) ? <Suggestion arr={cc} setText={concatSet} /> : null}
+            {lastLine(text) && cc[0]?.name !== lastLine(text) ? <Suggestion arr={cc} setText={concatSet} /> : null}
             <button onClick={submit}>Submit</button>
         </div>
     )

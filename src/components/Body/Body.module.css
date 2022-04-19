@@ -45,3 +45,14 @@
     height: 100vh;
     overflow-y: auto;
 }
+.clearAll {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    color: var(--white);
+    background: var(--primary);
+    font-size: 14px;
+    padding: 7px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+}

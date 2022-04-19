@@ -12,7 +12,13 @@ const Lungs = ({ setData }) => {
         <div className={classes.ExamField}>
             <div className={classes.wrap}>
                 <p>Lungs :</p>
-                <input value={lungs.lungs} onChange={(e) => setLungs({ lungs: e.target.value })} type="text" required />
+                <input
+                    className={classes.onExam}
+                    value={lungs.lungs}
+                    onChange={(e) => setLungs({ lungs: e.target.value })}
+                    type="text"
+                    required
+                />
             </div>
         </div>
     )

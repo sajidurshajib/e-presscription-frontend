@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext } from 'react'
-import env from 'react-dotenv'
 import { Advice } from '../../../allContext'
 import { lastLine } from '../../../utils/Lines'
 import Suggestion from '../../ReUsable/Suggestion/Suggestion'
@@ -14,7 +13,7 @@ const AdviceInpOut = () => {
 
     const { stateAdvice, dispatchAdvice } = useContext(Advice)
 
-    const api = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_API : env.REACT_APP_API
+    const apiV1 = process.env.REACT_APP_API_V1
 
     const concatSet = (conc) => {
         let lastIndex = text.lastIndexOf('\n')
@@ -27,7 +26,7 @@ const AdviceInpOut = () => {
     useEffect(() => {
         const funFetch = async () => {
             try {
-                const response = await fetch(`${api}/advices?search=${lastLine(text)}&page_size=10`)
+                const response = await fetch(`${apiV1}/advices/?search_str=${lastLine(text)}&skip=0&limit=10`)
                 if (response.ok) {
                     const data = await response.json()
                     const formatedData = data.map(({ advice, id }) => ({ name: advice, id }))
@@ -38,7 +37,7 @@ const AdviceInpOut = () => {
         if (lastLine(text)) {
             funFetch()
         }
-    }, [text, setAdvice, api])
+    }, [text, setAdvice, apiV1])
 
     const adviceSubmit = (e) => {
         e.preventDefault()
@@ -63,7 +62,9 @@ const AdviceInpOut = () => {
                     <ToolTip tip="Chief Complaints lorem ipsu dolor sit amet" />
                 </div>
 
-                {lastLine(text) ? <Suggestion arr={advice} setText={concatSet} /> : null}
+                {lastLine(text) && lastLine(text) !== advice[0]?.name ? (
+                    <Suggestion arr={advice} setText={concatSet} />
+                ) : null}
                 <button onClick={adviceSubmit}>Submit</button>
 
                 <AdvicePrev advice={stateAdvice.adv} dispatchAdv={dispatchAdvice} />

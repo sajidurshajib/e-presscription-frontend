@@ -12,7 +12,13 @@ const Heart = ({ setData }) => {
         <div className={classes.ExamField}>
             <div className={classes.wrap}>
                 <p>Heart :</p>
-                <input value={heart.heart} onChange={(e) => setHeart({ heart: e.target.value })} type="text" required />
+                <input
+                    className={classes.onExam}
+                    value={heart.heart}
+                    onChange={(e) => setHeart({ heart: e.target.value })}
+                    type="text"
+                    required
+                />
             </div>
         </div>
     )

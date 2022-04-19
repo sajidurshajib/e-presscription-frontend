@@ -13,12 +13,14 @@ const Oedema = ({ setData }) => {
             <div className={classes.wrap1}>
                 <p>Oedema : </p>
                 <select
+                    className={classes.selectExam}
                     value={oedema.sign}
                     onChange={(e) => setOedema({ sign: e.target.value, remark: oedema.remark })}>
                     <option value="-">-</option>
                     <option value="+">+</option>
                 </select>
                 <input
+                    className={classes.onExam}
                     value={oedema.remark}
                     onChange={(e) => setOedema({ sign: oedema.sign, remark: e.target.value })}
                     type="text"

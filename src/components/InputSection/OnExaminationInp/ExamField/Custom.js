@@ -13,6 +13,7 @@ const Custom = ({ setData }) => {
             <div className={classes.wrap}>
                 <p>Custom :</p>
                 <input
+                    className={classes.onExam}
                     value={custom.custom}
                     onChange={(e) => setCustom({ custom: e.target.value })}
                     type="text"

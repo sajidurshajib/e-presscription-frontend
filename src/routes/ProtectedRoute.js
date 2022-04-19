@@ -1,20 +1,54 @@
-import { useContext } from 'react'
-import env from 'react-dotenv'
+import { useContext, useEffect } from 'react'
 import { Route } from 'react-router-dom'
-import { Auth } from '../allContext'
+import { Auth, UserInfo } from '../allContext'
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
-    const { stateAuth } = useContext(Auth)
+    const { stateAuth, dispatchAuth } = useContext(Auth)
+    const { dispatchUser } = useContext(UserInfo)
 
-    const api = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_DOC_SITE : env.REACT_APP_DOC_SITE
+    const apiV1 = process.env.REACT_APP_API_V1
 
-    return (
-        <Route
-            {...rest}
-            render={(props) =>
-                stateAuth.token.length !== 0 ? <Component {...rest} {...props} /> : window.location.remove(`${api}`)
+    // stateAuth rerender this component
+    let token = stateAuth?.token
+
+    useEffect(() => {
+        let authFunc = async () => {
+            let authFetch = await fetch(`${apiV1}/doctors/auth`, {
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+                method: 'GET',
+            })
+
+            let authJson = await authFetch.json()
+
+            if (authFetch.ok) {
+                dispatchAuth({ type: 'auth', payload: token })
+                dispatchUser({ type: 'set', payload: authJson })
+            } else {
+                dispatchAuth({ type: 'remove' })
+                dispatchUser({ type: 'remove' })
             }
-        />
+        }
+        // execute the function
+        try {
+            authFunc()
+        } catch (e) {
+            dispatchAuth({ type: 'remove' })
+            dispatchUser({ type: 'remove' })
+        }
+    }, [apiV1, dispatchAuth, dispatchUser, token])
+    //(window.location.href = `${apiDoc}`)
+    return (
+        <div>
+            {stateAuth?.auth === true ? (
+                <Route {...rest} render={(props) => <Component {...rest} {...props} />} />
+            ) : (
+                <div>yo</div>
+            )}
+        </div>
     )
 }
 export default ProtectedRoute

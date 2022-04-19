@@ -1,6 +1,6 @@
-import { faAlignLeft } from '@fortawesome/free-solid-svg-icons'
+import { faAlignLeft, faUserPlus, faUser } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useContext, useReducer } from 'react'
+import { useContext, useReducer, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { SidebarContext, PatientInfo } from '../../allContext'
 import epLogo from '../../assets/img/logo.png'
@@ -15,20 +15,38 @@ const Nav = () => {
     let h = state.expand ? 'hide' : 'unhide'
 
     const [statePatient, dispatchPatient] = useReducer(patientReducer, patientState)
+    const [modal, setModal] = useState(false)
+
     return (
         <div className={classes.Nav}>
-            {/* e-prescription logo */}
-            {location.pathname === '/' ? (
-                <span className={classes.alignLeft} onClick={() => dispatch({ type: h })}>
-                    <FontAwesomeIcon icon={faAlignLeft} />
-                </span>
-            ) : (
-                <Link to="/">
-                    <img src={epLogo} alt="" />
-                </Link>
-            )}
             <PatientInfo.Provider value={{ statePatient, dispatchPatient }}>
-                <Patient />
+                <div className={classes.left}>
+                    {location.pathname === '/' ? (
+                        <div className={classes.alignLeft} onClick={() => dispatch({ type: h })}>
+                            <FontAwesomeIcon icon={faAlignLeft} />
+                        </div>
+                    ) : (
+                        <Link to="/">
+                            <img src={epLogo} alt="" />
+                        </Link>
+                    )}
+                    <div
+                        className={`${classes.patient} ${
+                            statePatient.patient.name.length !== 0 ? classes.ok : classes.add
+                        }`}
+                        onClick={(e) => setModal(!modal)}>
+                        {statePatient.patient.name.length !== 0 ? (
+                            <div>
+                                <FontAwesomeIcon icon={faUser} />
+                                <p>{statePatient.patient.name}</p>
+                            </div>
+                        ) : (
+                            <FontAwesomeIcon icon={faUserPlus} />
+                        )}
+                    </div>
+                </div>
+
+                {modal ? <Patient cross={setModal} /> : null}
             </PatientInfo.Provider>
         </div>
     )

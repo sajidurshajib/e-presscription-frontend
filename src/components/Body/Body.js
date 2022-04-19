@@ -57,7 +57,25 @@ const Body = () => {
         dispatchCoMorbidity,
     }
 
-    const [swap, setSwap] = useState(true)
+    const [swap, setSwap] = useState(false)
+
+    const allClear = () => {
+        dispatchChief({ type: 'remove' })
+        dispatchInvestigation({ type: 'remove' })
+        dispatchDiagnosis({ type: 'remove' })
+        dispatchAdvice({ type: 'remove' })
+        dispatchNext({ type: 'remove' })
+
+        dispatchPersonalHistory({ type: 'remove' })
+        dispatchProfessionalHistory({ type: 'remove' })
+        dispatchFamilyHistory({ type: 'remove' })
+        dispatchDrugHistory({ type: 'remove' })
+        dispatchMedicalHistory({ type: 'remove' })
+        dispatchVaccinationHistory({ type: 'remove' })
+        dispatchCoMorbidity({ type: 'remove' })
+
+        dispatchOnExamination({ type: 'remove' })
+    }
 
     return (
         <div className={classes.Body}>
@@ -79,6 +97,9 @@ const Body = () => {
                                                     </div>
                                                     <div>
                                                         <PreviewSection />
+                                                        <span className={classes.clearAll} onClick={(e) => allClear()}>
+                                                            Clear all
+                                                        </span>
                                                     </div>
                                                 </>
                                             ) : (
@@ -88,6 +109,9 @@ const Body = () => {
                                                     </div>
                                                     <div>
                                                         <InputSection />
+                                                        <span className={classes.clearAll} onClick={(e) => allClear()}>
+                                                            Clear all
+                                                        </span>
                                                     </div>
                                                 </>
                                             )}
