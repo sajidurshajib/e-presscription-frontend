@@ -1,4 +1,4 @@
-import { faAlignLeft, faUserPlus, faUser } from '@fortawesome/free-solid-svg-icons'
+import { faAlignLeft, faUserPlus, faUser, faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useContext, useReducer, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
@@ -37,11 +37,19 @@ const Nav = () => {
                         onClick={(e) => setModal(!modal)}>
                         {statePatient.patient.name.length !== 0 ? (
                             <div>
-                                <FontAwesomeIcon icon={faUser} />
-                                <p>{statePatient.patient.name}</p>
+                                <FontAwesomeIcon icon={faUserCircle} />
+                                <p>
+                                    {statePatient.patient.name} ({statePatient.patient.sex})
+                                    <span>{statePatient.patient.phone}</span>
+                                </p>
+                                <p>
+                                    <span>Age: dummy</span>
+                                    <span>Address: {statePatient.patient.division}</span>
+                                </p>
                             </div>
                         ) : (
-                            <FontAwesomeIcon icon={faUserPlus} />
+                            ''
+                            // <FontAwesomeIcon icon={faUserPlus} />
                         )}
                     </div>
                 </div>

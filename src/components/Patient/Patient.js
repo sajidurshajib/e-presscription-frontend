@@ -1,31 +1,46 @@
 import { useContext, useState, useEffect } from 'react'
-import { PatientInfo } from '../../allContext'
+import { PatientInfo, Auth } from '../../allContext'
 import classes from './Patient.module.css'
+import PatientSearch from './PatientSearch/PatientSearch'
 
 const Patient = ({ cross }) => {
     const { statePatient, dispatchPatient } = useContext(PatientInfo)
+    const { stateAuth } = useContext(Auth)
 
     const [name, setName] = useState(statePatient.patient.name || '')
     const [phone, setPhone] = useState(statePatient.patient.phone || '')
     const [sex, setSex] = useState(statePatient.patient.sex || 'not selected')
 
-    const [year, setYear] = useState(statePatient.patient.year || '')
-    const [month, setMonth] = useState(statePatient.patient.month || '')
-    const [address, setAddress] = useState(statePatient.patient.address || '')
+    const [year, setYear] = useState(statePatient.patient.dob || '')
+    const [month, setMonth] = useState(statePatient.patient.dob || '')
+    const [address, setAddress] = useState(statePatient.patient.division || '')
+
+    const [searchResult, setSearchResult] = useState([])
+
+    const apiV1 = process.env.REACT_APP_API_V1
+    const token = stateAuth.token
 
     useEffect(() => {
-        dispatchPatient({
-            type: 'input',
-            payload: {
-                name,
-                year,
-                month,
-                phone,
-                sex,
-                address,
-            },
-        })
-    }, [name, phone, sex, year, month, address, dispatchPatient])
+        const search = async () => {
+            let patientFetch = await fetch(`${apiV1}/ep/patient-search?name=${name}&skip=0&limit=10`, {
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+                method: 'GET',
+            })
+
+            let patientJson = await patientFetch.json()
+
+            if (patientFetch.ok) {
+                setSearchResult(patientJson)
+            }
+        }
+        try {
+            search()
+        } catch (e) {}
+    }, [name, token, apiV1])
 
     return (
         <div className={classes.Patient}>
@@ -40,6 +55,11 @@ const Patient = ({ cross }) => {
                         type="text"
                         placeholder="Patient name"
                     />
+                    {/* Patient search modal */}
+                    {(name.length !== 0) & (statePatient.patient.name !== name) ? (
+                        <PatientSearch arr={searchResult} setPatient={dispatchPatient} cross={cross} />
+                    ) : null}
+
                     <div className={classes.Two}>
                         <input
                             value={phone}

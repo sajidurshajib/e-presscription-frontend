@@ -1,0 +1,32 @@
+.PatientSearch{
+    position: relative;
+}
+.PatientSearch > ul{
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: -5px;
+    z-index: 2000;   
+    width: 100%;
+    border: 1px solid var(--light);
+    border-radius: 0 0 5px 5px;
+    background: var(--white);
+    box-shadow: 1px 3px 5px var(--grey2);
+}
+.PatientSearch > ul > li{
+    color: var(--dark);
+    list-style-type: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.PatientSearch > ul > li:hover{
+    background: var(--light);
+}
+
+.PatientSearch > ul > li>span{
+    color: var(--grey);
+    font-size: 12px;
+    display: block;
+}

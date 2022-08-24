@@ -1,6 +1,7 @@
 import { useContext, useEffect } from 'react'
 import { Route } from 'react-router-dom'
 import { Auth, UserInfo } from '../allContext'
+import LandingPage from '../pages/LandingPage'
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
     const { stateAuth, dispatchAuth } = useContext(Auth)
@@ -46,7 +47,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
             {stateAuth?.auth === true ? (
                 <Route {...rest} render={(props) => <Component {...rest} {...props} />} />
             ) : (
-                <div>yo</div>
+                <LandingPage />
             )}
         </div>
     )

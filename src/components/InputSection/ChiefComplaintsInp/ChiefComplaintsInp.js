@@ -29,7 +29,7 @@ const ChiefComplaintsInp = () => {
                 const response = await fetch(`${apiV1}/chief-complaints/?search_str=${lastLine(text)}&skip=0&limit=10`)
                 if (response.ok) {
                     const data = await response.json()
-                    const formatedData = data.map(({ cc, id }) => ({ name: cc, id }))
+                    const formatedData = data.map(({ chief_complaints, id }) => ({ name: chief_complaints, id }))
                     setCc(formatedData)
                 }
             } catch (err) {}
