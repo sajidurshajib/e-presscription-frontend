@@ -1,7 +1,7 @@
 import { EpGetStorage, EpSetStorage, EpDefStorage } from '../utils/EpLocalStorage'
 
 //Set state as default storage value
-export const fieldState = EpDefStorage('field', { field: 'none' })
+export const fieldState = EpDefStorage('field', { field: 'chief' })
 
 export const fieldReducer = (state, action) => {
     switch (action.type) {

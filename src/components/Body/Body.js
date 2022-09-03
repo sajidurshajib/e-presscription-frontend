@@ -2,12 +2,14 @@ import { faArrowsAltV } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useReducer, useState } from 'react'
 import { ChiefComplaints, History, Investigation, Diagnosis, Advice, Next, OnExamination } from '../../allContext'
+import { patientState, patientReducer } from '../../reducer/PatientInfoReducer'
 import { adviceState, adviceReducer } from '../../reducer/adviceReducer'
 import { chiefState, chiefReducer } from '../../reducer/chiefReducer'
 import { coMorbidityReducer, coMorbidityState } from '../../reducer/coMorbidityReducer'
 import { diagnosisReducer, diagnosisState } from '../../reducer/diagnosisReducer'
 import { drugHistoryReducer, drugHistoryState } from '../../reducer/drugHistoryReducer'
 import { familyHistoryReducer, familyHistoryState } from '../../reducer/familyHistoryReducer'
+import { fieldState, fieldReducer } from '../../reducer/fieldReducer'
 import { investigationReducer, investigationState } from '../../reducer/investigationReducer'
 import { medicalHistoryReducer, medicalHistoryState } from '../../reducer/medicalHistoryReducer'
 import { nextReducer, nextState } from '../../reducer/nextReducer'
@@ -20,6 +22,8 @@ import PreviewSection from '../PreviewSection/PreviewSection'
 import classes from './Body.module.css'
 
 const Body = () => {
+    const [statePatientInfo, dispatchPatientInfo] = useReducer(patientReducer, patientState)
+
     const [stateChief, dispatchChief] = useReducer(chiefReducer, chiefState)
     const [stateInvestigation, dispatchInvestigation] = useReducer(investigationReducer, investigationState)
     const [stateDiagnosis, dispatchDiagnosis] = useReducer(diagnosisReducer, diagnosisState)
@@ -39,6 +43,8 @@ const Body = () => {
     )
     const [stateCoMorbidity, dispatchCoMorbidity] = useReducer(coMorbidityReducer, coMorbidityState)
     const [stateOnExamination, dispatchOnExamination] = useReducer(onExaminationReducer, onExaminationState)
+
+    const [stateField, dispatchField] = useReducer(fieldReducer, fieldState)
 
     const history = {
         statePersonalHistory,
@@ -60,6 +66,8 @@ const Body = () => {
     const [swap, setSwap] = useState(false)
 
     const allClear = () => {
+        dispatchPatientInfo({ type: 'remove' })
+
         dispatchChief({ type: 'remove' })
         dispatchInvestigation({ type: 'remove' })
         dispatchDiagnosis({ type: 'remove' })
@@ -75,6 +83,9 @@ const Body = () => {
         dispatchCoMorbidity({ type: 'remove' })
 
         dispatchOnExamination({ type: 'remove' })
+
+        dispatchField({ type: 'chief' })
+        window.location.reload()
     }
 
     return (

@@ -11,7 +11,9 @@ export const patientReducer = (state, action) => {
             EpSetStorage('patient', { patient: action.payload })
             return JSON.parse(EpGetStorage('patient'))
         case 'remove':
-            EpDefStorage('patient', { patient: '' })
+            EpSetStorage('patient', {
+                patient: { id: 0, name: '', phone: '', sex: 'not selected', year: '', month: '', address: '' },
+            })
             return JSON.parse(EpGetStorage('patient'))
         default:
             return state

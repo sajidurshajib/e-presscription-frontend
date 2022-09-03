@@ -11,7 +11,7 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
     const { stateAuth } = useContext(Auth)
     const [profile, setProfile] = useState('')
 
-    const api = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_API : env.REACT_APP_API
+    const api = process.env.REACT_APP_API
 
     useEffect(() => {
         let funFetch = async () => {
@@ -88,14 +88,6 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                     </p>
                     <p>
                         <b>Age :</b>{' '}
-                        {statePatient.patient.year.length !== 0 && statePatient.patient.year !== 0
-                            ? statePatient.patient.year + ' year' + (statePatient.patient.year === 1 ? '' : 's')
-                            : null}{' '}
-                        {statePatient.patient.month.length !== 0 && statePatient.patient.month !== 0
-                            ? statePatient.patient.month +
-                              ' month' +
-                              (statePatient.patient.month.length !== 0 && statePatient.patient.month === 1 ? '' : 's')
-                            : null}
                     </p>
                     <p>
                         <b>Sex :</b> {statePatient.patient.sex}

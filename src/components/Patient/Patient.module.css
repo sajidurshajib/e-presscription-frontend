@@ -23,7 +23,9 @@
     background: var(--white);
     transform: translate(70%, -35%);
     padding: 40px 20px;
-    border-radius: 4px;
+    border-radius: 5px;
+    box-shadow: 1px 5px 15px var(--dark);
+    transition: 300ms;
 }
 .Patient > form > h2 {
     text-align: center;
@@ -52,7 +54,7 @@
     padding: 7px 10px;
     font-size: 14px;
     margin: 7px 0;
-    border: 1px solid var(--grey2);
+    border: 1px solid var(--primary);
     border-radius: 4px;
     width: 100%;
     box-sizing: border-box;
