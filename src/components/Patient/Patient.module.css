@@ -54,13 +54,15 @@
     padding: 7px 10px;
     font-size: 14px;
     margin: 7px 0;
-    border: 1px solid var(--primary);
+    border: 1px solid var(--light);
     border-radius: 4px;
     width: 100%;
     box-sizing: border-box;
     background: var(--light);
+    color: var(--dark);
 }
 .Wrapper input:focus {
+    border: 1px solid var(--primary);
     outline: 0;
 }
 .Wrapper > button {
@@ -84,13 +86,15 @@
 }
 .Wrapper select {
     border-radius: 4px;
-    border: 1px solid var(--grey2);
+    border: 1px solid var(--light);
     background: var(--light);
     padding: 2px 10px;
     box-sizing: border-box;
     cursor: pointer;
     margin: 7px 0;
+    color: var(--dark);
 }
 .Wrapper select:focus {
     outline: 0;
+    border: 1px solid var(--primary);
 }

@@ -7,6 +7,7 @@ const Patient = ({ cross }) => {
     const { statePatient, dispatchPatient } = useContext(PatientInfo)
     const { stateAuth } = useContext(Auth)
 
+    const [cause, setCause] = useState('')
     const [name, setName] = useState(statePatient.patient.name || '')
     const [phone, setPhone] = useState(statePatient.patient.phone || '')
     const [sex, setSex] = useState(statePatient.patient.sex || 'not selected')
@@ -49,6 +50,12 @@ const Patient = ({ cross }) => {
                 <h2>Patient Information</h2>
 
                 <div className={classes.Wrapper}>
+                    <input
+                        type="text"
+                        value={cause}
+                        onChange={(e) => setCause(e.target.value)}
+                        placeholder="Cause of consultation"
+                    />
                     <input
                         value={name}
                         onChange={(e) => setName(e.target.value)}

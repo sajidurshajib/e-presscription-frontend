@@ -1,4 +1,4 @@
-import { faAlignLeft, faUserPlus, faUser, faUserCircle } from '@fortawesome/free-solid-svg-icons'
+import { faAlignLeft, faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useContext, useReducer, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
