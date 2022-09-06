@@ -5,19 +5,15 @@
 .ChiefComplaintsInp button {
     display: block;
     border: none;
-    background: var(--primary);
+    border-radius: 4px;
+    background-image: linear-gradient(to top, var(--primary), var(--secondary));
     color: var(--white);
     border-radius: 2px;
     padding: 7px 20px;
-    transition: 300ms;
+    transition: 200ms;
     margin-top: 15px;
 }
 .ChiefComplaintsInp button:hover {
     cursor: pointer;
-    background: var(--secondary);
-}
-.tool {
-    position: absolute;
-    right: 20px;
-    top: 60px;
+    background-image: linear-gradient(to top, var(--secondary), var(--primary));
 }

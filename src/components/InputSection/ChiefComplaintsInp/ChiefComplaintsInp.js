@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useContext } from 'react'
 import { ChiefComplaints } from '../../../allContext'
+import { fetchChiefComplaints } from '../../../api/inputSection'
 import { lastLine } from '../../../utils/Lines'
 import Suggestion from '../../ReUsable/Suggestion/Suggestion'
 import TextField from '../../ReUsable/TextField/TextField'
@@ -24,18 +25,12 @@ const ChiefComplaintsInp = () => {
 
     // Fetch
     useEffect(() => {
-        const funFetch = async () => {
-            try {
-                const response = await fetch(`${apiV1}/chief-complaints/?search_str=${lastLine(text)}&skip=0&limit=10`)
-                if (response.ok) {
-                    const data = await response.json()
-                    const formatedData = data.map(({ chief_complaints, id }) => ({ name: chief_complaints, id }))
-                    setCc(formatedData)
-                }
-            } catch (err) {}
-        }
         if (lastLine(text)) {
-            funFetch()
+            let apiEndPoint = `${apiV1}/chief-complaints/?search_str=${lastLine(text)}&skip=0&limit=10`
+            fetchChiefComplaints(apiEndPoint).then((data) => {
+                const formatedData = data.map(({ chief_complaints, id }) => ({ name: chief_complaints, id }))
+                setCc(formatedData)
+            })
         }
     }, [text, setCc, apiV1])
 
@@ -51,9 +46,6 @@ const ChiefComplaintsInp = () => {
     return (
         <div className={classes.ChiefComplaintsInp}>
             <TextField text={text} setText={setText} label="Chief Complaints" />
-            <div className={classes.tool}>
-                <ToolTip tip="Chief Complaints" />
-            </div>
 
             {lastLine(text) && cc[0]?.name !== lastLine(text) ? <Suggestion arr={cc} setText={concatSet} /> : null}
             <button onClick={submit}>Submit</button>
