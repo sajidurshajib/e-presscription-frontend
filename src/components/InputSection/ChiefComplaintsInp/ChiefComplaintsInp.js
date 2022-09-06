@@ -5,7 +5,6 @@ import { searchChiefComplaints } from '../../../api/inputSection'
 import { lastLine } from '../../../utils/Lines'
 import Suggestion from '../../ReUsable/Suggestion/Suggestion'
 import TextField from '../../ReUsable/TextField/TextField'
-import ToolTip from '../../ReUsable/ToolTip/ToolTip'
 import classes from './ChiefComplaintsInp.module.css'
 
 const ChiefComplaintsInp = () => {

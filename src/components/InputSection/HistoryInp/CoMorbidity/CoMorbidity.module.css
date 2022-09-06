@@ -48,11 +48,12 @@
 }
 .check > button {
     display: inline-block;
-    width: 50px;
+    width: 60px;
     border: 1px solid var(--primary);
     border-radius: 2px;
     font-size: 12px;
     cursor: pointer;
+    padding: 5px;
 }
 .deactive {
     color: var(--primary);
@@ -67,4 +68,11 @@
 .check > input {
     font-size: 12px;
     padding: 5px;
+    border: 1px solid var(--grey2);
+    background: var(--light);
+    padding: 10px;
+}
+.check > input:focus, .check > input:hover{
+    outline: 0;
+    border: 1px solid var(--secondary);
 }
