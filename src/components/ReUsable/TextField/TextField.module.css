@@ -1,21 +1,23 @@
 .TextField {
     overflow: hidden;
 }
-.TextField form {
+.TextField > form {
     position: relative;
     margin: 30px 0 0 0;
+    max-width: 560px;
+    min-width: 400px;
 }
-.TextField form label {
+.TextField > form > label {
     position: absolute;
-    left: 0;
-    top: 5px;
-    padding: 0 5px;
+    left: 5px;
+    top: 10px;
+    padding: 0 3px;
     color: var(--grey);
-    font-size: 16px;
-    transition: 200ms;
+    font-size: 14px;
+    transition: 150ms;
     pointer-events: none;
 }
-.TextField form textarea {
+.TextField > form > textarea {
     box-sizing: border-box;
     padding: 10px;
     border: none;
@@ -24,6 +26,7 @@
     resize: none;
     width: 100%;
     position: relative;
+    border-radius: 4px;
 }
 .TextField textarea + span {
     height: 2px;
@@ -40,7 +43,7 @@
     height: 3px;
     width: 100%;
     background: var(--primary);
-    transition: 200ms;
+    transition: 150ms;
 }
 .TextField textarea:focus {
     outline: 0;
