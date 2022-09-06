@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useContext } from 'react'
 import { ChiefComplaints } from '../../../allContext'
-import { fetchChiefComplaints } from '../../../api/inputSection'
+import { searchChiefComplaints } from '../../../api/inputSection'
 import { lastLine } from '../../../utils/Lines'
 import Suggestion from '../../ReUsable/Suggestion/Suggestion'
 import TextField from '../../ReUsable/TextField/TextField'
@@ -27,7 +27,7 @@ const ChiefComplaintsInp = () => {
     useEffect(() => {
         if (lastLine(text)) {
             let apiEndPoint = `${apiV1}/chief-complaints/?search_str=${lastLine(text)}&skip=0&limit=10`
-            fetchChiefComplaints(apiEndPoint).then((data) => {
+            searchChiefComplaints(apiEndPoint).then((data) => {
                 const formatedData = data.map(({ chief_complaints, id }) => ({ name: chief_complaints, id }))
                 setCc(formatedData)
             })

@@ -29,15 +29,15 @@
 .btn {
     display: block;
     border: none;
-    background: var(--primary);
+    background-image: linear-gradient(to top, var(--primary), var(--secondary));
     color: var(--white);
-    border-radius: 2px;
+    border-radius: 4px;
     padding: 5px 15px;
-    transition: 300ms;
+    transition: 200ms;
     margin-top: 15px;
 }
 .wrap > button:hover,
 .btn:hover {
     cursor: pointer;
-    background: var(--secondary);
+    background-image: linear-gradient(to top, var(--secondary), var(--primary));
 }

@@ -10,17 +10,18 @@
 }
 .CoMorbidity > .wrapper > button {
     display: inline-block;
-    border: 1px solid var(--primary);
-    border-radius: 2px;
+    border: none;
+    border-radius: 4px;
     font-size: 12px;
     padding: 7px 20px;
     margin-left: 10px;
     cursor: pointer;
     color: var(--light);
-    background: var(--primary);
+    background-image: linear-gradient(to top, var(--primary), var(--secondary));
+    transition: 200ms;
 }
 .CoMorbidity > .wrapper > button:hover {
-    background: var(--secondary);
+    background-image: linear-gradient(to top, var(--secondary), var(--primary));
     color: var(--white);
 }
 
@@ -60,6 +61,7 @@
 .check > button:hover,
 .active {
     background: var(--primary);
+    background-image: linear-gradient(to top, var(--primary), var(--secondary));
     color: var(--white);
 }
 .check > input {

@@ -1,3 +1,3 @@
-import { fetchChiefComplaints } from './chiefComplaints'
+import { searchChiefComplaints } from './chiefComplaints'
 
-export { fetchChiefComplaints }
+export { searchChiefComplaints }

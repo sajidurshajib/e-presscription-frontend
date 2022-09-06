@@ -1,4 +1,4 @@
-const fetchChiefComplaints = async (api) => {
+const searchChiefComplaints = async (api) => {
     try {
         const response = await fetch(`${api}`)
         if (response.ok) {
@@ -10,4 +10,4 @@ const fetchChiefComplaints = async (api) => {
     }
 }
 
-export { fetchChiefComplaints }
+export { searchChiefComplaints }
