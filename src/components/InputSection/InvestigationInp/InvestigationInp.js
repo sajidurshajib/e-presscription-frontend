@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useContext } from 'react'
 import { Investigation } from '../../../allContext'
+import { getFromAPI } from '../../../api'
 import { lastLine } from '../../../utils/Lines'
 import Suggestion from '../../ReUsable/Suggestion/Suggestion'
 import TextField from '../../ReUsable/TextField/TextField'
@@ -21,19 +22,15 @@ const InvestigationInp = () => {
         setText(a)
     }
 
+    // Fetch
     useEffect(() => {
-        const funFetch = async () => {
-            try {
-                const response = await fetch(`${apiV1}/investigations/?search_str=${lastLine(text)}&skip=0&limit=10`)
-                if (response.ok) {
-                    const data = await response.json()
+        if (text !== '') {
+            getFromAPI(`${apiV1}/investigations/?search_str=${lastLine(text)}&skip=0&limit=10`)
+                .then((data) => {
                     const formatedData = data.map(({ investigation, id }) => ({ name: investigation, id }))
                     setInv(formatedData)
-                }
-            } catch (err) {}
-        }
-        if (text !== '') {
-            funFetch()
+                })
+                .catch((e) => {})
         }
     }, [text, setInv, apiV1])
 

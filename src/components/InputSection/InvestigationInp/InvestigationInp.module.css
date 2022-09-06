@@ -2,12 +2,15 @@
     padding: 30px;
 }
 
-.InvestigationInp button {
+.InvestigationInp > button {
     color: var(--white);
-    background: var(--primary);
-    padding: 10px 30px;
+    background-image: linear-gradient(to top, var(--primary), var(--secondary));
+    padding: 7px 20px;
     border: none;
-    border-radius: 2px;
+    border-radius: 4px;
     cursor: pointer;
     margin-top: 10px;
+}
+.InvestigationInp > button:hover{
+    background-image: linear-gradient(to top, var(--secondary), var(--primary));
 }

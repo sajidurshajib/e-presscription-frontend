@@ -8,7 +8,6 @@
     border-radius: 4px;
     background-image: linear-gradient(to top, var(--primary), var(--secondary));
     color: var(--white);
-    border-radius: 2px;
     padding: 7px 20px;
     transition: 200ms;
     margin-top: 15px;
