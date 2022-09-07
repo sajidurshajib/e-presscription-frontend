@@ -6,23 +6,17 @@
     width: 80%;
 }
 
-.AdviceInpOut button {
+.AdviceInpOut > .wrap > button {
     display: block;
     border: none;
-    background: var(--primary);
+    background-image: linear-gradient(to top, var(--primary), var(--secondary));
     color: var(--white);
     border-radius: 2px;
     padding: 7px 20px;
-    transition: 300ms;
+    transition: 200ms;
     margin-top: 15px;
 }
-.AdviceInpOut button:hover {
+.AdviceInpOut > .wrap > button:hover {
     cursor: pointer;
-    background: var(--secondary);
-}
-
-.tool {
-    position: absolute;
-    right: 90px;
-    top: 70px;
+    background-image: linear-gradient(to top, var(--secondary), var(--primary));
 }

@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext } from 'react'
 import { Advice } from '../../../allContext'
+import { getFromAPI } from '../../../api'
 import { lastLine } from '../../../utils/Lines'
 import Suggestion from '../../ReUsable/Suggestion/Suggestion'
 import TextField from '../../ReUsable/TextField/TextField'
-import ToolTip from '../../ReUsable/ToolTip/ToolTip'
 import classes from './AdviceInpOut.module.css'
 import AdvicePrev from './AdvicePrev/AdvicePrev'
 
@@ -24,18 +24,11 @@ const AdviceInpOut = () => {
 
     // Fetch
     useEffect(() => {
-        const funFetch = async () => {
-            try {
-                const response = await fetch(`${apiV1}/advices/?search_str=${lastLine(text)}&skip=0&limit=10`)
-                if (response.ok) {
-                    const data = await response.json()
-                    const formatedData = data.map(({ advice, id }) => ({ name: advice, id }))
-                    setAdvice(formatedData)
-                }
-            } catch (err) {}
-        }
         if (lastLine(text)) {
-            funFetch()
+            getFromAPI(`${apiV1}/advices/?search_str=${lastLine(text)}&skip=0&limit=10`).then((data) => {
+                const formatedData = data.map(({ advice, id }) => ({ name: advice, id }))
+                setAdvice(formatedData)
+            })
         }
     }, [text, setAdvice, apiV1])
 
@@ -58,9 +51,6 @@ const AdviceInpOut = () => {
         <div className={classes.AdviceInpOut}>
             <div className={classes.wrap}>
                 <TextField text={text} setText={setText} label="Advice" />
-                <div className={classes.tool}>
-                    <ToolTip tip="Chief Complaints lorem ipsu dolor sit amet" />
-                </div>
 
                 {lastLine(text) && lastLine(text) !== advice[0]?.name ? (
                     <Suggestion arr={advice} setText={concatSet} />
