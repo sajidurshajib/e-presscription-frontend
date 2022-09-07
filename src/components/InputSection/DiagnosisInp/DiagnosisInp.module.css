@@ -4,15 +4,15 @@
 .DiagnosisInp button {
     display: block;
     border: none;
-    background: var(--primary);
+    background-image: linear-gradient(to top, var(--primary), var(--secondary));
     color: var(--white);
-    border-radius: 2px;
+    border-radius: 4px;
     padding: 7px 20px;
-    transition: 300ms;
+    transition: 200ms;
     margin-top: 15px;
     margin-bottom: 30px;
 }
 .DiagnosisInp button:hover {
     cursor: pointer;
-    background: var(--secondary);
+    background-image: linear-gradient(to top, var(--secondary), var(--primary));
 }
