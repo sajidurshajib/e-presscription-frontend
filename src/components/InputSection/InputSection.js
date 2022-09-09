@@ -10,6 +10,7 @@ import InvestigationInp from './InvestigationInp/InvestigationInp'
 import MedicineInpOut from './MedicineInpOut/MedicineInpOut'
 import NextFollowUpInpOut from './NextFollowUpInpOut/NextFollowUpInpOut'
 import OnExaminationInp from './OnExaminationInp/OnExaminationInp'
+import ReferInp from './ReferInp/ReferInp'
 
 const InputSection = () => {
     const { state } = useContext(FieldContext)
@@ -24,6 +25,7 @@ const InputSection = () => {
             {state.field === 'medicine' ? <MedicineInpOut /> : null}
             {state.field === 'advice' ? <AdviceInpOut /> : null}
             {state.field === 'next' ? <NextFollowUpInpOut /> : null}
+            {state.field === 'refer' ? <ReferInp /> : null}
             {/* <Submit /> */}
         </div>
     )

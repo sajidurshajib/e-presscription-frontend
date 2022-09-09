@@ -7,6 +7,7 @@ import {
     faCalendarAlt,
     faUserCheck,
     faPills,
+    faUserCircle,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useContext } from 'react'
@@ -80,6 +81,12 @@ const Sidebar = () => {
                     className={state.field === 'next' ? classes.active : null}>
                     <FontAwesomeIcon icon={faCalendarAlt} />
                     Next Follow up
+                </li>
+                <li
+                    onClick={() => dispatch({ type: 'refer' })}
+                    className={state.field === 'refer' ? classes.active : null}>
+                    <FontAwesomeIcon icon={faUserCircle} />
+                    Refer
                 </li>
             </ul>
             <SubmitEP />

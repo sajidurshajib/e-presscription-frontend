@@ -29,6 +29,9 @@ export const fieldReducer = (state, action) => {
         case 'next':
             EpSetStorage('field', { field: 'next' })
             return JSON.parse(EpGetStorage('field'))
+        case 'refer':
+            EpSetStorage('field', { field: 'refer' })
+            return JSON.parse(EpGetStorage('field'))
         default:
             return state
     }
