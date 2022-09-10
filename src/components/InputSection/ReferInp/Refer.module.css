@@ -1,0 +1,19 @@
+.Refer{
+    padding: 30px;
+}
+.Refer button {
+    display: inline-block;
+    margin-right: 5px;
+    border: none;
+    border-radius: 4px;
+    background-image: linear-gradient(to top, var(--primary), var(--secondary));
+    color: var(--white);
+    padding: 7px 20px;
+    transition: 200ms;
+    margin-top: 15px;
+    min-width: 100px;
+}
+.Refer button:hover {
+    cursor: pointer;
+    background-image: linear-gradient(to top, var(--secondary), var(--primary));
+}
