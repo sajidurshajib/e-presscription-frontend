@@ -5,6 +5,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { SidebarContext, PatientInfo } from '../../allContext'
 import epLogo from '../../assets/img/logo.png'
 import { patientState, patientReducer } from '../../reducer/PatientInfoReducer'
+import { dob } from '../../utils/DateOfBirth'
 import Patient from '../Patient/Patient'
 import classes from './Nav.module.css'
 
@@ -16,6 +17,8 @@ const Nav = () => {
 
     const [statePatient, dispatchPatient] = useReducer(patientReducer, patientState)
     const [modal, setModal] = useState(false)
+
+    const [y, m, d] = dob(statePatient.patient.dob)
 
     return (
         <div className={classes.Nav}>
@@ -43,7 +46,9 @@ const Nav = () => {
                                     <span>{statePatient.patient.phone}</span>
                                 </p>
                                 <p>
-                                    <span>Age: dummy</span>
+                                    <span>
+                                        Age: {y} years {m} months
+                                    </span>
                                     <span>Address: {statePatient.patient.division}</span>
                                 </p>
                             </div>

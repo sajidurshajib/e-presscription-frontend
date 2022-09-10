@@ -1,5 +1,6 @@
 import { useContext, useState, useEffect } from 'react'
 import { PatientInfo, Auth } from '../../allContext'
+import { dob } from '../../utils/DateOfBirth'
 import classes from './Patient.module.css'
 import PatientSearch from './PatientSearch/PatientSearch'
 
@@ -7,7 +8,7 @@ const Patient = ({ cross }) => {
     const { statePatient, dispatchPatient } = useContext(PatientInfo)
     const { stateAuth } = useContext(Auth)
 
-    const [cause, setCause] = useState('')
+    const [cause, setCause] = useState(statePatient.patient.cause_of_consultation || '')
     const [name, setName] = useState(statePatient.patient.name || '')
     const [phone, setPhone] = useState(statePatient.patient.phone || '')
     const [sex, setSex] = useState(statePatient.patient.sex || 'not selected')
@@ -37,11 +38,22 @@ const Patient = ({ cross }) => {
             if (patientFetch.ok) {
                 setSearchResult(patientJson)
             }
+
+            // setPhone(statePatient.patient.phone)
+            // setAddress(statePatient.patient.division)
+
+            if (statePatient.patient.dob) {
+                const [y, m, d] = dob(statePatient.patient.dob)
+                setYear(y)
+                setMonth(m)
+            }
         }
         try {
             search()
         } catch (e) {}
-    }, [name, token, apiV1])
+    }, [name, token, apiV1, statePatient.patient.dob])
+
+    const [y, m, d] = dob(statePatient.patient.dob)
 
     return (
         <div className={classes.Patient}>
