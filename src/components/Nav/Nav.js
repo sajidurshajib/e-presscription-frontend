@@ -18,7 +18,7 @@ const Nav = () => {
     const [statePatient, dispatchPatient] = useReducer(patientReducer, patientState)
     const [modal, setModal] = useState(false)
 
-    const [y, m, d] = dob(statePatient.patient.dob)
+    const [y, m] = dob(statePatient.patient.dob)
 
     return (
         <div className={classes.Nav}>

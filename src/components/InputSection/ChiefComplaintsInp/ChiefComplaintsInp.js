@@ -42,6 +42,7 @@ const ChiefComplaintsInp = () => {
             payload: stateChief.cc.length === 0 ? text : stateChief.cc.concat('\n' + text),
         })
         setText('')
+        window.location.reload()
     }
 
     return (
