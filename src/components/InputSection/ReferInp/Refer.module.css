@@ -17,3 +17,15 @@
     cursor: pointer;
     background-image: linear-gradient(to top, var(--secondary), var(--primary));
 }
+.Refer > h3{
+    margin-bottom: 0;
+}
+.detail{
+    font-size: 14px;
+    margin-top: 5px;
+    color: var(--primary);
+    font-weight: 600;
+}
+.detail > span{
+    color: var(--dark);
+}

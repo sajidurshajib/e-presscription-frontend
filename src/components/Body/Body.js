@@ -1,7 +1,16 @@
 import { faArrowsAltV } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useReducer, useState } from 'react'
-import { ChiefComplaints, History, Investigation, Diagnosis, Advice, Next, OnExamination } from '../../allContext'
+import {
+    ChiefComplaints,
+    History,
+    Investigation,
+    Diagnosis,
+    Advice,
+    Next,
+    OnExamination,
+    Refer,
+} from '../../allContext'
 import { patientState, patientReducer } from '../../reducer/PatientInfoReducer'
 import { adviceState, adviceReducer } from '../../reducer/adviceReducer'
 import { chiefState, chiefReducer } from '../../reducer/chiefReducer'
@@ -16,6 +25,7 @@ import { nextReducer, nextState } from '../../reducer/nextReducer'
 import { onExaminationReducer, onExaminationState } from '../../reducer/onExaminationReducer'
 import { personalHistoryReducer, personalHistoryState } from '../../reducer/personalHistoryReducer'
 import { professionalHistoryReducer, professionalHistoryState } from '../../reducer/professionalHistoryReducer'
+import { referReducer, referState } from '../../reducer/referReducer'
 import { vaccinationHistoryReducer, vaccinationHistoryState } from '../../reducer/vaccinationHistoryReducer'
 import InputSection from '../InputSection/InputSection'
 import PreviewSection from '../PreviewSection/PreviewSection'
@@ -43,6 +53,7 @@ const Body = () => {
     )
     const [stateCoMorbidity, dispatchCoMorbidity] = useReducer(coMorbidityReducer, coMorbidityState)
     const [stateOnExamination, dispatchOnExamination] = useReducer(onExaminationReducer, onExaminationState)
+    const [stateRefer, dispatchRefer] = useReducer(referReducer, referState)
 
     const [stateField, dispatchField] = useReducer(fieldReducer, fieldState)
 
@@ -73,6 +84,7 @@ const Body = () => {
         dispatchDiagnosis({ type: 'remove' })
         dispatchAdvice({ type: 'remove' })
         dispatchNext({ type: 'remove' })
+        dispatchRefer({ type: 'remove' })
 
         dispatchPersonalHistory({ type: 'remove' })
         dispatchProfessionalHistory({ type: 'remove' })
@@ -101,31 +113,37 @@ const Body = () => {
                                 <History.Provider value={history}>
                                     <Advice.Provider value={{ stateAdvice, dispatchAdvice }}>
                                         <Next.Provider value={{ stateNext, dispatchNext }}>
-                                            {swap ? (
-                                                <>
-                                                    <div>
-                                                        <InputSection />
-                                                    </div>
-                                                    <div>
-                                                        <PreviewSection />
-                                                        <span className={classes.clearAll} onClick={(e) => allClear()}>
-                                                            Clear all
-                                                        </span>
-                                                    </div>
-                                                </>
-                                            ) : (
-                                                <>
-                                                    <div>
-                                                        <PreviewSection />
-                                                    </div>
-                                                    <div>
-                                                        <InputSection />
-                                                        <span className={classes.clearAll} onClick={(e) => allClear()}>
-                                                            Clear all
-                                                        </span>
-                                                    </div>
-                                                </>
-                                            )}
+                                            <Refer.Provider value={{ stateRefer, dispatchRefer }}>
+                                                {swap ? (
+                                                    <>
+                                                        <div>
+                                                            <InputSection />
+                                                        </div>
+                                                        <div>
+                                                            <PreviewSection />
+                                                            <span
+                                                                className={classes.clearAll}
+                                                                onClick={(e) => allClear()}>
+                                                                Clear all
+                                                            </span>
+                                                        </div>
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <div>
+                                                            <PreviewSection />
+                                                        </div>
+                                                        <div>
+                                                            <InputSection />
+                                                            <span
+                                                                className={classes.clearAll}
+                                                                onClick={(e) => allClear()}>
+                                                                Clear all
+                                                            </span>
+                                                        </div>
+                                                    </>
+                                                )}
+                                            </Refer.Provider>
                                         </Next.Provider>
                                     </Advice.Provider>
                                 </History.Provider>

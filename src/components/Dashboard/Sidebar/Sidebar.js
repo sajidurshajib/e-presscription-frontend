@@ -11,7 +11,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useContext } from 'react'
-import { Auth, FieldContext, UserInfo } from '../../../allContext'
+import { FieldContext, UserInfo } from '../../../allContext'
 import docImg from '../../../assets/img/docstock.jpg'
 import epLogo from '../../../assets/img/logo.png'
 import classes from './Sidebar.module.css'

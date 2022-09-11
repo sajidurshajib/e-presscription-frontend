@@ -43,6 +43,7 @@ const AdviceInpOut = () => {
                         : text.replace(/\n*$/, ''),
             })
             setText('')
+            window.location.reload()
         }
     }
 

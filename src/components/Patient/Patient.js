@@ -53,7 +53,7 @@ const Patient = ({ cross }) => {
         } catch (e) {}
     }, [name, token, apiV1, statePatient.patient.dob])
 
-    const [y, m, d] = dob(statePatient.patient.dob)
+    // const [y, m, d] = dob(statePatient.patient.dob)
 
     return (
         <div className={classes.Patient}>

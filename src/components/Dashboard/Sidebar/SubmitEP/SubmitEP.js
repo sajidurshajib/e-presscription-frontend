@@ -1,20 +1,35 @@
-// import { Link } from 'react-router-dom'
-// import { EpGetStorage } from '../../../../utils/EpLocalStorage'
-import { useReducer } from 'react'
+import { useReducer, useState } from 'react'
+import { adviceReducer, adviceState } from '../../../../reducer/adviceReducer'
 import { chiefState, chiefReducer } from '../../../../reducer/chiefReducer'
+import { referState, referReducer } from '../../../../reducer/referReducer'
 import classes from './SubmitEP.module.css'
 
 const SubmitEP = () => {
-    const [stateChiefComplaints, dispatchChiefComplaints] = useReducer(chiefReducer, chiefState)
+    const [epCreated, setEpCreated] = useState({ status: false, data: {} })
+    const [stateChiefComplaints] = useReducer(chiefReducer, chiefState)
+    const [stateAdvice] = useReducer(adviceReducer, adviceState)
+    const [stateRefer] = useReducer(referReducer, referState)
 
     const apiV1 = process.env.REACT_APP_API_V1
 
-    let ccList = [
-        ...stateChiefComplaints.cc.split('\n').map((cc) => ({
-            chief_complaints: cc,
-        })),
-    ]
-    console.log(ccList)
+    // chief complaints array
+    let ccList = []
+    if (stateChiefComplaints.cc.length !== 0) {
+        ccList = [
+            ...stateChiefComplaints.cc.split('\n').map((cc) => ({
+                chief_complaints: cc,
+            })),
+        ]
+    }
+
+    // advice array
+    let adviceList = []
+    if (stateAdvice.adv.length !== 0) {
+        adviceList = [...stateAdvice.adv.split('\n').map((adv) => ({ advice: adv }))]
+    }
+
+    // refer
+    let referDetail = stateRefer
 
     const submit = async (e) => {
         e.preventDefault()
@@ -30,19 +45,20 @@ const SubmitEP = () => {
                 doctor_id: 1,
                 patient_id: 1,
                 chief_complaints: [...ccList],
+                advices: [...adviceList],
+                refer: { detail: referDetail.detail },
             }),
         })
         if (epSubmitByFetch.ok) {
             const data = await epSubmitByFetch.json()
-            console.log(data)
+            await setEpCreated({ status: true, data: data })
         }
     }
-
+    if (epCreated.status === true) {
+        // alert('Prescription created.')
+    }
     return (
         <div className={classes.SubmitEP}>
-            {/* <Link to="/ep" target="_blank">
-                <button>Create Prescription</button>
-            </Link> */}
             <button onClick={(e) => submit(e)}>Create Prescription</button>
         </div>
     )
