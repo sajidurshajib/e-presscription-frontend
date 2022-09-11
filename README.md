@@ -2,7 +2,18 @@
 
 `.env` file -
 
+
 ```
-API='https://epapidev.healthx.com.bd'
-DOC_SITE='https://devdoc.healthx.com.bd'
+REACT_APP_API_V1=https://ec.healthxbd.com/api/v1
+REACT_APP_DOC_SITE=https://doc.healthxbd.com
+
+```
+
+
+
+```
+
+REACT_APP_API_V1=https://devec.healthxbd.com/api/v1
+REACT_APP_DOC_SITE=https://devdoc.healthxbd.com
+
 ```
