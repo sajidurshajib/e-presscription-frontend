@@ -18,8 +18,8 @@
         "web-vitals": "^1.1.2"
     },
     "scripts": {
-        "start": "react-dotenv && react-scripts start",
-        "start4": "react-dotenv && PORT=3004 react-scripts start",
+        "start": "react-scripts start",
+        "start4": "PORT=3004 react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
@@ -52,12 +52,5 @@
         "eslint-plugin-react": "^7.25.1",
         "eslint-plugin-react-hooks": "^4.2.0",
         "prettier": "^2.3.2"
-    },
-    "react-dotenv": {
-        "whitelist": [
-            "REACT_APP_API_V1",
-            "REACT_APP_API",
-            "REACT_APP_DOC_SITE"
-        ]
     }
 }

@@ -35,7 +35,7 @@ const AuthCheck = () => {
             }
         }
         redirectFunc()
-    })
+    }, [apiV1, dispatchAuth, dispatchUser, history, token])
 
     return <div className={classes.AuthCheck}></div>
 }
