@@ -1,7 +1,9 @@
 import { useReducer, useState } from 'react'
+import { patientState, patientReducer } from '../../../../reducer/PatientInfoReducer'
 import { adviceReducer, adviceState } from '../../../../reducer/adviceReducer'
 import { chiefState, chiefReducer } from '../../../../reducer/chiefReducer'
 import { referState, referReducer } from '../../../../reducer/referReducer'
+import { userState, userReducer } from '../../../../reducer/userReducer'
 import classes from './SubmitEP.module.css'
 
 const SubmitEP = () => {
@@ -9,6 +11,8 @@ const SubmitEP = () => {
     const [stateChiefComplaints] = useReducer(chiefReducer, chiefState)
     const [stateAdvice] = useReducer(adviceReducer, adviceState)
     const [stateRefer] = useReducer(referReducer, referState)
+    const [stateUser] = useReducer(userReducer, userState)
+    const [statePatient] = useReducer(patientReducer, patientState)
 
     const apiV1 = process.env.REACT_APP_API_V1
 
@@ -42,8 +46,8 @@ const SubmitEP = () => {
             origin: '*',
             method: 'POST',
             body: JSON.stringify({
-                doctor_id: 1,
-                patient_id: 1,
+                doctor_id: stateUser.info.id,
+                patient_id: statePatient.patient.id,
                 chief_complaints: [...ccList],
                 advices: [...adviceList],
                 refer: { detail: referDetail.detail },
@@ -60,6 +64,11 @@ const SubmitEP = () => {
     return (
         <div className={classes.SubmitEP}>
             <button onClick={(e) => submit(e)}>Create Prescription</button>
+            {epCreated.status === true ? (
+                <button className={classes.viewBtn}>
+                    <a href={`/ep/hxep${epCreated.data.id}`}>View Prescription</a>
+                </button>
+            ) : null}
         </div>
     )
 }

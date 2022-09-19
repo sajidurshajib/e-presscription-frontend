@@ -10,7 +10,7 @@ import {
     faUserCircle,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { FieldContext, UserInfo } from '../../../allContext'
 import docImg from '../../../assets/img/docstock.jpg'
 import epLogo from '../../../assets/img/logo.png'
@@ -21,6 +21,32 @@ const Sidebar = () => {
     const { state, dispatch } = useContext(FieldContext)
     const { stateUser } = useContext(UserInfo)
 
+    const [details, setDetails] = useState({})
+
+    const apiV1 = process.env.REACT_APP_API_V1
+
+    useEffect(() => {
+        const detailFunc = async () => {
+            const detailFetch = await fetch(`${apiV1}/doctors/detail/${stateUser.info.id}`, {
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                dataType: 'json',
+                origin: '*',
+                method: 'GET',
+            })
+
+            if (detailFetch.ok) {
+                const detailJson = await detailFetch.json()
+                setDetails(detailJson)
+            }
+        }
+        try {
+            detailFunc()
+        } catch (e) {}
+    }, [apiV1, stateUser])
+
     return (
         <div className={classes.Sidebar}>
             <div className={classes.epLogo}>
@@ -29,7 +55,7 @@ const Sidebar = () => {
             <div className={classes.doc}>
                 <div className={classes.docImg} style={{ backgroundImage: 'url(' + docImg + ')' }}></div>
                 <h3>{stateUser.info.name}</h3>
-                <p>Medicine Specialist</p>
+                <p>{details?.specialities && details?.specialities[0].speciality}</p>
                 <hr />
             </div>
 
