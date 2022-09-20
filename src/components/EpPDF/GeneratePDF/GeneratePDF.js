@@ -89,6 +89,21 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                                 </ol>
                             </Fragment>
                         ) : null}
+
+                        {/* Diagnosis */}
+
+                        {ep?.diagnosis?.length !== 0 ? (
+                            <Fragment>
+                                <h4>D/D :</h4>
+                                <ol className={classes.diagnosis}>
+                                    {ep?.diagnosis && ep?.diagnosis.map((v, i) => <li key={i}>{v.diagnosis}</li>)}
+                                </ol>
+                                <h4>Confirmatory Diagnosis :</h4>
+                                <ol className={classes.diagnosis}>
+                                    {ep?.diagnosis && ep?.diagnosis.map((v, i) => <li key={i}>{v.diagnosis}</li>)}
+                                </ol>
+                            </Fragment>
+                        ) : null}
                     </div>
                     {/* Right part */}
                     <div className={classes.rightBody}>

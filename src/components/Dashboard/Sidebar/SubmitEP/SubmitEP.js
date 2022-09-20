@@ -2,6 +2,7 @@ import { useReducer, useState } from 'react'
 import { patientState, patientReducer } from '../../../../reducer/PatientInfoReducer'
 import { adviceReducer, adviceState } from '../../../../reducer/adviceReducer'
 import { chiefState, chiefReducer } from '../../../../reducer/chiefReducer'
+import { diagnosisState, diagnosisReducer } from '../../../../reducer/diagnosisReducer'
 import { referState, referReducer } from '../../../../reducer/referReducer'
 import { userState, userReducer } from '../../../../reducer/userReducer'
 import classes from './SubmitEP.module.css'
@@ -13,6 +14,7 @@ const SubmitEP = () => {
     const [stateRefer] = useReducer(referReducer, referState)
     const [stateUser] = useReducer(userReducer, userState)
     const [statePatient] = useReducer(patientReducer, patientState)
+    const [stateDiagnosis] = useReducer(diagnosisReducer, diagnosisState)
 
     const apiV1 = process.env.REACT_APP_API_V1
 
@@ -49,6 +51,16 @@ const SubmitEP = () => {
                 doctor_id: stateUser.info.id,
                 patient_id: statePatient.patient.id,
                 chief_complaints: [...ccList],
+                diagnosis: [
+                    {
+                        diagnosis_type: 'probable',
+                        diagnosis: stateDiagnosis.probable,
+                    },
+                    {
+                        diagnosis_type: 'confirmatory',
+                        diagnosis: stateDiagnosis.confirmatory,
+                    },
+                ],
                 advices: [...adviceList],
                 refer: { detail: referDetail.detail },
             }),
