@@ -6,6 +6,7 @@ import { diagnosisState, diagnosisReducer } from '../../../../reducer/diagnosisR
 import { drugHistoryState, drugHistoryReducer } from '../../../../reducer/drugHistoryReducer'
 import { familyHistoryState, familyHistoryReducer } from '../../../../reducer/familyHistoryReducer'
 import { medicalHistoryState, medicalHistoryReducer } from '../../../../reducer/medicalHistoryReducer'
+import { nextState, nextReducer } from '../../../../reducer/nextReducer'
 import { personalHistoryState, personalHistoryReducer } from '../../../../reducer/personalHistoryReducer'
 import { professionalHistoryState, professionalHistoryReducer } from '../../../../reducer/professionalHistoryReducer'
 import { referState, referReducer } from '../../../../reducer/referReducer'
@@ -27,6 +28,7 @@ const SubmitEP = () => {
     const [stateMedicalHistory] = useReducer(medicalHistoryReducer, medicalHistoryState)
     const [stateVaccinationHistory] = useReducer(vaccinationHistoryReducer, vaccinationHistoryState)
     const [stateDiagnosis] = useReducer(diagnosisReducer, diagnosisState)
+    const [stateNextFollowup] = useReducer(nextReducer, nextState)
 
     const apiV1 = process.env.REACT_APP_API_V1
 
@@ -94,6 +96,9 @@ const SubmitEP = () => {
     // refer
     let referDetail = stateRefer
 
+    // next
+    let nextFollowUp = stateNextFollowup.nxt === '' ? null : { date: stateNextFollowup.nxt }
+
     const submit = async (e) => {
         e.preventDefault()
         const epSubmitByFetch = await fetch(`${apiV1}/ep`, {
@@ -122,6 +127,7 @@ const SubmitEP = () => {
                 ],
                 advices: [...adviceList],
                 refer: { detail: referDetail.detail },
+                followup: nextFollowUp,
             }),
         })
         if (epSubmitByFetch.ok) {
