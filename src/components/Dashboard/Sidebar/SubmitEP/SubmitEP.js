@@ -8,6 +8,7 @@ import { drugHistoryState, drugHistoryReducer } from '../../../../reducer/drugHi
 import { familyHistoryState, familyHistoryReducer } from '../../../../reducer/familyHistoryReducer'
 import { investigationState, investigationReducer } from '../../../../reducer/investigationReducer'
 import { medicalHistoryState, medicalHistoryReducer } from '../../../../reducer/medicalHistoryReducer'
+import { medicineState, medicineReducer } from '../../../../reducer/medicineReducer'
 import { nextState, nextReducer } from '../../../../reducer/nextReducer'
 import { personalHistoryState, personalHistoryReducer } from '../../../../reducer/personalHistoryReducer'
 import { professionalHistoryState, professionalHistoryReducer } from '../../../../reducer/professionalHistoryReducer'
@@ -92,13 +93,18 @@ const SubmitEP = () => {
     }
 
     // co morbidity
-    let comorbidity = stateCoMorbidity.coMorbidity.map((v, i) => ({ cm_type: v.name, remarks: v.remark }))
+    let comorbidity = []
+    if (stateCoMorbidity.coMorbidity.length !== 0) {
+        stateCoMorbidity.coMorbidity.map((v, i) => ({ cm_type: v.name, remarks: v.remark }))
+    }
 
     // investigation
     let investigations = []
     if (stateInvestigation.inv.length !== 0) {
         investigations = [...stateInvestigation.inv.split('\n').map((v) => ({ investigation: v }))]
     }
+
+    // console.log(medicineState)
 
     // advice array
     let adviceList = []

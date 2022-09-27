@@ -1,5 +1,6 @@
-import { useState, useEffect, useContext } from 'react'
-import { Medicine } from '../../../../allContext'
+import { useState, useEffect, useReducer } from 'react'
+// import { Medicine } from '../../../../allContext'
+import { medicineReducer, medicineState } from '../../../../reducer/medicineReducer'
 import DropDown from '../../../ReUsable/DropDown/DropDown'
 import InputField from '../../../ReUsable/InputField/InputField'
 import InputNumber from '../../../ReUsable/InputNumber/InputNumber'
@@ -7,13 +8,15 @@ import SuggestionMedicine from '../Suggestion/SuggestionMedicine'
 import classes from './InputMedicine.module.css'
 
 const InputMedicine = () => {
-    const { stateMedicine, dispatchMedicine } = useContext(Medicine)
+    const [stateMedicine, dispatchMedicine] = useReducer(medicineReducer, medicineState)
+    // const { stateMedicine, dispatchMedicine } = useContext(Medicine)
 
     const apiV1 = process.env.REACT_APP_API_V1
 
     const option = [
-        { name: 'After Meal', value: true },
-        { name: 'Before Meal', value: false },
+        { name: 'After Meal', value: 'after' },
+        { name: 'Before Meal', value: 'before' },
+        { name: 'None', value: '' },
     ]
 
     const [arr, setArr] = useState([])
@@ -28,10 +31,11 @@ const InputMedicine = () => {
     const [morning, setMorning] = useState(0)
     const [evening, setEvening] = useState(0)
     const [night, setNight] = useState(0)
-    const [after, setAfter] = useState(true)
 
-    const [day, setDay] = useState('')
+    const [after, setAfter] = useState('')
+    const [day, setDay] = useState(0)
     const [remark, setRemark] = useState('')
+    const [doses, setDoses] = useState('')
 
     useEffect(() => {
         //Fetch from Api
@@ -57,7 +61,25 @@ const InputMedicine = () => {
             setGeneric(medicineObj.generic)
             setMedicineObj({ ...medicineObj, name: '' })
         }
-    }, [medicineObj, medicine, apiV1])
+
+        // doses
+        let dosesString = ''
+        if (
+            (isNaN(morning) === true || morning === 0) &&
+            (isNaN(evening) === true || evening === 0) &&
+            (isNaN(night) === true || night === 0)
+        ) {
+            dosesString = ''
+        } else {
+            dosesString =
+                (isNaN(morning) ? 0 : morning) +
+                ' + ' +
+                (isNaN(evening) ? 0 : evening) +
+                ' + ' +
+                (isNaN(night) ? 0 : night)
+        }
+        setDoses(dosesString)
+    }, [medicineObj, medicine, apiV1, morning, evening, night])
 
     const submit = (e) => {
         e.preventDefault()
@@ -71,9 +93,9 @@ const InputMedicine = () => {
                     form,
                     strength,
                     generic,
-                    doses: morning + ' + ' + evening + ' + ' + night,
+                    doses: doses,
                     after,
-                    day,
+                    day: isNaN(day) ? 0 : day,
                     remark,
                 },
             ],
@@ -109,8 +131,8 @@ const InputMedicine = () => {
                     </div>
                     <div className={classes.timeWrap}>
                         <InputNumber num={morning} setNum={setMorning} label="Morning" negetive={false} step={'0.1'} />
-                        <InputNumber num={evening} setNum={setEvening} label="Evening" negetive={false} />
-                        <InputNumber num={night} setNum={setNight} label="Night" negetive={false} />
+                        <InputNumber num={evening} setNum={setEvening} label="Evening" negetive={false} step={'0.1'} />
+                        <InputNumber num={night} setNum={setNight} label="Night" negetive={false} step={'0.1'} />
                         <DropDown drop={after} setDrop={setAfter} arr={option} />
                         <InputNumber text={day} setNum={setDay} label="Day" negetive={false} />
                     </div>
