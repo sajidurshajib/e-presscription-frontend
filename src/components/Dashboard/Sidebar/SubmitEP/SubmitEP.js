@@ -2,6 +2,7 @@ import { useReducer, useState } from 'react'
 import { patientState, patientReducer } from '../../../../reducer/PatientInfoReducer'
 import { adviceReducer, adviceState } from '../../../../reducer/adviceReducer'
 import { chiefState, chiefReducer } from '../../../../reducer/chiefReducer'
+import { coMorbidityState, coMorbidityReducer } from '../../../../reducer/coMorbidityReducer'
 import { diagnosisState, diagnosisReducer } from '../../../../reducer/diagnosisReducer'
 import { drugHistoryState, drugHistoryReducer } from '../../../../reducer/drugHistoryReducer'
 import { familyHistoryState, familyHistoryReducer } from '../../../../reducer/familyHistoryReducer'
@@ -29,6 +30,7 @@ const SubmitEP = () => {
     const [stateVaccinationHistory] = useReducer(vaccinationHistoryReducer, vaccinationHistoryState)
     const [stateDiagnosis] = useReducer(diagnosisReducer, diagnosisState)
     const [stateNextFollowup] = useReducer(nextReducer, nextState)
+    const [stateCoMorbidity] = useReducer(coMorbidityReducer, coMorbidityState)
 
     const apiV1 = process.env.REACT_APP_API_V1
 
@@ -87,6 +89,9 @@ const SubmitEP = () => {
         })
     }
 
+    // co morbidity
+    let comorbidity = stateCoMorbidity.coMorbidity.map((v, i) => ({ cm_type: v.name, remarks: v.remark }))
+
     // advice array
     let adviceList = []
     if (stateAdvice.adv.length !== 0) {
@@ -114,7 +119,7 @@ const SubmitEP = () => {
                 patient_id: statePatient.patient.id,
                 chief_complaints: [...ccList],
                 histories: [...history],
-
+                co_morbidities: comorbidity,
                 diagnosis: [
                     {
                         diagnosis_type: 'probable',
