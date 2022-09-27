@@ -1,14 +1,16 @@
-import { useState, useEffect } from 'react'
-import { useContext } from 'react'
-import { Investigation } from '../../../allContext'
+import { useState, useEffect, useReducer } from 'react'
+// import { useContext } from 'react'
+// import { Investigation } from '../../../allContext'
 import { getFromAPI } from '../../../api'
+import { investigationReducer, investigationState } from '../../../reducer/investigationReducer'
 import { lastLine } from '../../../utils/Lines'
 import Suggestion from '../../ReUsable/Suggestion/Suggestion'
 import TextField from '../../ReUsable/TextField/TextField'
 import classes from './InvestigationInp.module.css'
 
 const InvestigationInp = () => {
-    const { stateInvestigation, dispatchInvestigation } = useContext(Investigation)
+    const [stateInvestigation, dispatchInvestigation] = useReducer(investigationReducer, investigationState)
+    // const { stateInvestigation, dispatchInvestigation } = useContext(Investigation)
 
     const apiV1 = process.env.REACT_APP_API_V1
 
@@ -44,6 +46,7 @@ const InvestigationInp = () => {
                     : text.replace(/\n*$/, ''),
         })
         setText('')
+        window.location.reload()
     }
 
     return (
