@@ -1,6 +1,5 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
-import { useEffect } from 'react/cjs/react.development'
 import { Auth, UserInfo } from '../../allContext'
 import classes from './AuthCheck.module.css'
 
