@@ -108,11 +108,11 @@ const InputMedicine = () => {
                         <InputField text={generic} setText={setGeneric} label="Generic name" />
                     </div>
                     <div className={classes.timeWrap}>
-                        <InputNumber num={morning} setNum={setMorning} label="Morning" />
-                        <InputNumber num={evening} setNum={setEvening} label="Evening" />
-                        <InputNumber num={night} setNum={setNight} label="Night" />
+                        <InputNumber num={morning} setNum={setMorning} label="Morning" negetive={false} step={'0.1'} />
+                        <InputNumber num={evening} setNum={setEvening} label="Evening" negetive={false} />
+                        <InputNumber num={night} setNum={setNight} label="Night" negetive={false} />
                         <DropDown drop={after} setDrop={setAfter} arr={option} />
-                        <InputNumber text={day} setNum={setDay} label="Day" />
+                        <InputNumber text={day} setNum={setDay} label="Day" negetive={false} />
                     </div>
                 </div>
                 <InputField text={remark} setText={setRemark} label="Remark" />
