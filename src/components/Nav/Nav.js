@@ -18,7 +18,13 @@ const Nav = () => {
     const [statePatient, dispatchPatient] = useReducer(patientReducer, patientState)
     const [modal, setModal] = useState(false)
 
-    const [y, m] = dob(statePatient.patient.dob)
+    let y = ''
+    let m = ''
+    if (statePatient.patient.dob && statePatient.patient.dob.length !== 0) {
+        let [year, month] = dob(statePatient.patient.dob)
+        y = year
+        m = month
+    }
 
     return (
         <div className={classes.Nav}>
@@ -47,7 +53,10 @@ const Nav = () => {
                                 </p>
                                 <p>
                                     <span>
-                                        Age: {y} years {m} months
+                                        Age:
+                                        {statePatient.patient.dob && statePatient.patient.dob.length !== 0
+                                            ? '--'
+                                            : `${y} years ${m} months`}
                                     </span>
                                     <span>Address: {statePatient.patient.division}</span>
                                 </p>
