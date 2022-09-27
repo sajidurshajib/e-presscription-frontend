@@ -44,7 +44,7 @@ const Nav = () => {
                             statePatient.patient.name.length !== 0 ? classes.ok : classes.add
                         }`}
                         onClick={(e) => setModal(!modal)}>
-                        {statePatient.patient.name.length !== 0 ? (
+                        {statePatient.patient.name && statePatient.patient.name.length !== 0 ? (
                             <div>
                                 <FontAwesomeIcon icon={faUserCircle} />
                                 <p>
