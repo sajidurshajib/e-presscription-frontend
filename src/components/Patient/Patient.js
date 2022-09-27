@@ -41,8 +41,7 @@ const Patient = ({ cross }) => {
 
             // setPhone(statePatient.patient.phone)
             // setAddress(statePatient.patient.division)
-
-            if (statePatient.patient.dob) {
+            if (statePatient.patient.dob && statePatient.patient.dob.length !== 0) {
                 const [y, m, d] = dob(statePatient.patient.dob)
                 setYear(y)
                 setMonth(m)
