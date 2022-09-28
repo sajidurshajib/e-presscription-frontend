@@ -65,6 +65,11 @@
     border: 1px solid var(--primary);
     outline: 0;
 }
+.Wrapper > input:nth-child(1){
+    border: 1px solid var(--primary);
+    transform: scale(1.05);
+    transition: 300ms;
+}
 .Wrapper > button {
     display: block;
     width: 100%;

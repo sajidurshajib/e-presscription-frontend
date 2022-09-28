@@ -37,6 +37,8 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
         // stateMedicalHistory,
         // stateVaccinationHistory,
     } = useContext(PdfWrapped)
+
+    console.log(ep)
     return (
         <div className={classes.wrapper}>
             <div className={classes.Generate} ref={ref}>
@@ -91,6 +93,18 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                         ) : null}
 
                         {/* history  */}
+                        {ep.histories && ep.histories.length !== 0 ? (
+                            <Fragment>
+                                <h4>History</h4>
+
+                                <p>Personal: </p>
+                                {ep.histories
+                                    .filter((v) => v.history_type === 'personal')
+                                    .map((v, i) => (
+                                        <span>{v.history_type}</span>
+                                    ))}
+                            </Fragment>
+                        ) : null}
 
                         {/* Diagnosis */}
 

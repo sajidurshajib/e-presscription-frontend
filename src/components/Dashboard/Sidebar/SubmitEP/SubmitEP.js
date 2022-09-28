@@ -1,6 +1,7 @@
 import { useReducer, useState } from 'react'
 import { patientState, patientReducer } from '../../../../reducer/PatientInfoReducer'
 import { adviceReducer, adviceState } from '../../../../reducer/adviceReducer'
+import { consultationState, consultationReducer } from '../../../../reducer/causeOfConsultation'
 import { chiefState, chiefReducer } from '../../../../reducer/chiefReducer'
 import { coMorbidityState, coMorbidityReducer } from '../../../../reducer/coMorbidityReducer'
 import { diagnosisState, diagnosisReducer } from '../../../../reducer/diagnosisReducer'
@@ -19,6 +20,7 @@ import classes from './SubmitEP.module.css'
 
 const SubmitEP = () => {
     const [epCreated, setEpCreated] = useState({ status: false, data: {} })
+    const [stateConsultation] = useReducer(consultationReducer, consultationState)
     const [stateChiefComplaints] = useReducer(chiefReducer, chiefState)
     const [stateAdvice] = useReducer(adviceReducer, adviceState)
     const [stateRefer] = useReducer(referReducer, referState)
@@ -129,6 +131,7 @@ const SubmitEP = () => {
             origin: '*',
             method: 'POST',
             body: JSON.stringify({
+                cause_of_consultation: stateConsultation.consultation,
                 doctor_id: stateUser.info.id,
                 patient_id: statePatient.patient.id,
                 chief_complaints: [...ccList],

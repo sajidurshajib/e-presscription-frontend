@@ -77,8 +77,11 @@
     color: var(--grey);
     display: block;
     font-size: 12px;
+    /* margin-bottom: 5px; */
 }
-
+.ok p > span{
+    margin-bottom: 2px;
+}
 @keyframes pop {
     0% {
         transform: scale(1);

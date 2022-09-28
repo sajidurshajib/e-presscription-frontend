@@ -54,9 +54,9 @@ const Nav = () => {
                                 <p>
                                     <span>
                                         Age:
-                                        {statePatient.patient.dob && statePatient.patient.dob.length !== 0
+                                        {statePatient.patient.dob && statePatient.patient.dob.length === 0
                                             ? '--'
-                                            : `${y} years ${m} months`}
+                                            : ` ${y} years ${m} months`}
                                     </span>
                                     <span>Address: {statePatient.patient.division}</span>
                                 </p>
