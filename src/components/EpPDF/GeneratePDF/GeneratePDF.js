@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { PdfWrapped } from '../../../allContext'
 import { getFromAPI } from '../../../api/get'
 import classes from './Generate.module.css'
+import HistoryChildView from './HistoryChildView'
 
 // import HistoryChildView from './HistoryChildView'
 // import OnExam from './OnExam'
@@ -38,7 +39,15 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
         // stateVaccinationHistory,
     } = useContext(PdfWrapped)
 
+    let personalHistory = ep.histories && ep.histories.filter((data) => data.history_type === 'personal')
+    let professionalHistory = ep.histories && ep.histories.filter((data) => data.history_type === 'professional')
+    let familyHistory = ep.histories && ep.histories.filter((data) => data.history_type === 'family')
+    let drugHistory = ep.histories && ep.histories.filter((data) => data.history_type === 'drug')
+    let medicalHistory = ep.histories && ep.histories.filter((data) => data.history_type === 'medical')
+    let vaccinationHistory = ep.histories && ep.histories.filter((data) => data.history_type === 'vaccination')
+
     console.log(ep)
+
     return (
         <div className={classes.wrapper}>
             <div className={classes.Generate} ref={ref}>
@@ -96,13 +105,12 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                         {ep.histories && ep.histories.length !== 0 ? (
                             <Fragment>
                                 <h4>History</h4>
-
-                                <p>Personal: </p>
-                                {ep.histories
-                                    .filter((v) => v.history_type === 'personal')
-                                    .map((v, i) => (
-                                        <span>{v.history_type}</span>
-                                    ))}
+                                <HistoryChildView data={personalHistory} title={'Personal history'} />
+                                <HistoryChildView data={professionalHistory} title={'Professional history'} />
+                                <HistoryChildView data={familyHistory} title={'Family history'} />
+                                <HistoryChildView data={drugHistory} title={'Drug history'} />
+                                <HistoryChildView data={medicalHistory} title={'Medical history'} />
+                                <HistoryChildView data={vaccinationHistory} title={'Vaccination history'} />
                             </Fragment>
                         ) : null}
 
@@ -110,20 +118,32 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
 
                         {ep?.diagnosis?.length !== 0 ? (
                             <Fragment>
-                                <h4>D/D :</h4>
-                                <ol className={classes.diagnosis}>
-                                    {ep?.diagnosis &&
-                                        ep?.diagnosis
-                                            .filter((v) => v.diagnosis_type === 'probable')
-                                            .map((v, i) => <li key={i}>{v.diagnosis}</li>)}
-                                </ol>
-                                <h4>Confirmatory Diagnosis :</h4>
-                                <ol className={classes.diagnosis}>
-                                    {ep?.diagnosis &&
-                                        ep?.diagnosis
-                                            .filter((v) => v.diagnosis_type === 'confirmatory')
-                                            .map((v, i) => <li key={i}>{v.diagnosis}</li>)}
-                                </ol>
+                                {ep.diagnosis && ep.diagnosis[0].diagnosis.length !== 0 ? <h4>D/D :</h4> : null}
+                                <div className={classes.diagnosis}>
+                                    <ol>
+                                        {ep?.diagnosis &&
+                                            ep?.diagnosis
+                                                .filter((v) => v.diagnosis_type === 'probable')
+                                                .filter((space) => space.diagnosis.length !== 0)
+                                                .map((v, i) =>
+                                                    v.diagnosis.split('\n').map((v, i) => <li key={i}>{v}</li>)
+                                                )}
+                                    </ol>
+                                </div>
+                                {ep.diagnosis && ep.diagnosis[1].diagnosis.length !== 0 ? (
+                                    <h4>Confirmatory Diagnosis :</h4>
+                                ) : null}
+                                <div className={classes.diagnosis}>
+                                    <ol>
+                                        {ep?.diagnosis &&
+                                            ep?.diagnosis
+                                                .filter((v) => v.diagnosis_type === 'confirmatory')
+                                                .filter((space) => space.diagnosis.length !== 0)
+                                                .map((v, i) =>
+                                                    v.diagnosis.split('\n').map((v, i) => <li key={i}>{v}</li>)
+                                                )}
+                                    </ol>
+                                </div>
                             </Fragment>
                         ) : null}
                     </div>

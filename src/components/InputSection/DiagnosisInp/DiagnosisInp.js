@@ -31,6 +31,8 @@ const DiagnosisInp = () => {
                     : confirm.replace(/\n*$/, ''),
         })
         setConfirm('')
+
+        window.location.reload()
     }
 
     return (

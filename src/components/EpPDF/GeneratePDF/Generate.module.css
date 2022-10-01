@@ -127,13 +127,21 @@
 .leftBody .diagnosis {
     background: var(--light-grey);
     border-radius: 2px;
-    padding: 5px 20px;
+    /* padding: 5px 20px; */
     margin-right: 10px;
 }
+
 .leftBody .diagnosis li {
     font-size: 12px;
     padding-left: 10px;
 }
+.leftBody .diagnosis ol >li:first-child{
+    padding-top: 10px;
+}
+.leftBody .diagnosis ol >li:last-child{
+    padding-bottom: 10px;
+}
+
 
 .rightBody {
     padding-left: 30px;
