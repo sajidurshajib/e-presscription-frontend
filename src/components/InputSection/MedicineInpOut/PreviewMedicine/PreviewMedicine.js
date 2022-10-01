@@ -8,6 +8,7 @@ const PreviewMedicine = () => {
     const del = (e) => {
         e.preventDefault()
         dispatchMedicine({ type: 'remove' })
+        window.location.reload()
     }
 
     return (

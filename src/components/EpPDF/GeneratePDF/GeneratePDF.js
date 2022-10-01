@@ -114,6 +114,17 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                             </Fragment>
                         ) : null}
 
+                        {/* Investigation */}
+                        {ep.investigations && ep.investigations.length !== 0 ? (
+                            <>
+                                <h4>INV:</h4>
+                                <ol>
+                                    {ep.investigations &&
+                                        ep.investigations.map((v, i) => <li key={i}>{v.investigation}</li>)}
+                                </ol>
+                            </>
+                        ) : null}
+
                         {/* Diagnosis */}
 
                         {ep?.diagnosis?.length !== 0 ? (

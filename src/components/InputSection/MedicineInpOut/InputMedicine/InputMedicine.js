@@ -111,6 +111,8 @@ const InputMedicine = () => {
         setAfter(true)
         setDay('')
         setRemark('')
+
+        window.location.reload()
     }
 
     return (
