@@ -23,15 +23,14 @@ const OnExaminationInp = () => {
     const { dispatchOnExamination } = useContext(OnExamination)
 
     let oe = {}
-    // const [onExamination, setOnExamination] = useState(oe)
 
     const setDataFun = (obj) => {
-        // setOnExamination({ ...onExamination, ...obj })
         oe = { ...oe, ...obj }
     }
 
     const submit = () => {
-        dispatchOnExamination({ type: 'input', payload: oe })
+        // dispatchOnExamination({ type: 'input', payload: oe })
+        console.log(oe)
     }
 
     return (
