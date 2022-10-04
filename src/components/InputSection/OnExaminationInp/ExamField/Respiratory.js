@@ -2,20 +2,25 @@ import { useState, useEffect } from 'react'
 import classes from './ExamField.module.css'
 
 const Respiratory = ({ setData }) => {
-    const [respiratory, setRespiratory] = useState({ respiratory: 0 })
+    const [respiratory, setRespiratory] = useState({ key: 'respiratory', unit: 'beats/min', slot_int1: 0 })
     useEffect(() => {
-        if (respiratory.respiratory !== 0) {
-            setData(respiratory)
+        if (respiratory.slot_int1 !== 0 && respiratory.slot_int1 !== '') {
+            setData({ respiratory })
         }
     }, [respiratory, setData])
+
+    if (respiratory.slot_int1 === 0) {
+        setRespiratory({ ...respiratory, slot_int1: '' })
+    }
+
     return (
         <div className={classes.ExamField}>
             <div className={classes.wrap2}>
                 <p>Respiratory rate:</p>
                 <input
                     className={classes.onExam}
-                    value={respiratory.respiratory}
-                    onChange={(e) => setRespiratory({ respiratory: parseInt(e.target.value) || 0 })}
+                    value={respiratory.slot_int1}
+                    onChange={(e) => setRespiratory({ ...respiratory, slot_int1: parseInt(e.target.value) })}
                     type="number"
                     required
                 />

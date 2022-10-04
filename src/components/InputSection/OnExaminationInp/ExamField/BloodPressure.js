@@ -18,7 +18,7 @@ import classes from './ExamField.module.css'
 //   }
 
 const BloodPressure = ({ setData }) => {
-    const [bloodPressure, setBloodPressure] = useState({
+    const [bp, setBp] = useState({
         key: 'bp',
         unit: 'mm of Hg',
         slot_int1: 0,
@@ -26,10 +26,18 @@ const BloodPressure = ({ setData }) => {
     })
 
     useEffect(() => {
-        if (bloodPressure.slot_int1 !== 0 && bloodPressure.slot_int2 !== 0) {
-            setData({ bloodPressure })
+        if (bp.slot_int1 !== 0 && bp.slot_int2 !== 0 && bp.slot_int1 !== '' && bp.slot_int2 !== '') {
+            setData({ bp })
         }
-    }, [bloodPressure, setData])
+    }, [bp, setData])
+
+    if (bp.slot_int1 === 0) {
+        setBp({ ...bp, slot_int1: '' })
+    }
+
+    if (bp.slot_int2 === 0) {
+        setBp({ ...bp, slot_int2: '' })
+    }
 
     return (
         <div className={classes.ExamField}>
@@ -37,11 +45,11 @@ const BloodPressure = ({ setData }) => {
                 <p>Blood Pressure (BP) :</p>
                 <input
                     className={classes.onExam}
-                    value={bloodPressure.systolic}
+                    value={bp.slot_int1}
                     onChange={(e) =>
-                        setBloodPressure({
-                            ...bloodPressure,
-                            slot_int1: parseInt(e.target.value) || 0,
+                        setBp({
+                            ...bp,
+                            slot_int1: parseInt(e.target.value),
                         })
                     }
                     type="number"
@@ -53,8 +61,8 @@ const BloodPressure = ({ setData }) => {
                 <span>/</span>
                 <input
                     className={classes.onExam}
-                    value={bloodPressure.diastolic}
-                    onChange={(e) => setBloodPressure({ ...bloodPressure, slot_int2: parseInt(e.target.value) || 0 })}
+                    value={bp.slot_int2}
+                    onChange={(e) => setBp({ ...bp, slot_int2: parseInt(e.target.value) })}
                     type="number"
                     placeholder="Diastolic"
                     min={0}
