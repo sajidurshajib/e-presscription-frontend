@@ -1,5 +1,6 @@
-import { Fragment, useState, useContext } from 'react'
-import { OnExamination } from '../../../allContext'
+import { Fragment, useState, useContext, useReducer } from 'react'
+// import { OnExamination } from '../../../allContext'
+import { onExaminationReducer, onExaminationState } from '../../../reducer/onExaminationReducer'
 import Anaemia from './ExamField/Anaemia'
 import BloodPressure from './ExamField/BloodPressure'
 import Bmi from './ExamField/Bmi'
@@ -20,7 +21,9 @@ import classes from './OnExaminationInp.module.css'
 
 const OnExaminationInp = () => {
     const [more, setMore] = useState(false)
-    const { dispatchOnExamination } = useContext(OnExamination)
+    // const { dispatchOnExamination } = useContext(OnExamination)
+
+    const [stateOnEaminations, dispatchOnExamination] = useReducer(onExaminationReducer, onExaminationState)
 
     let oe = {}
 
@@ -30,7 +33,13 @@ const OnExaminationInp = () => {
 
     const submit = () => {
         // dispatchOnExamination({ type: 'input', payload: oe })
-        console.log(oe)
+        // console.log(oe)
+        let dataArray = []
+        for (let key in oe) {
+            dataArray.push(oe[key])
+        }
+        // console.log(dataArray)
+        dispatchOnExamination({ type: 'input', payload: dataArray })
     }
 
     return (

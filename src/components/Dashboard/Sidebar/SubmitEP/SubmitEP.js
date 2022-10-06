@@ -11,6 +11,7 @@ import { investigationState, investigationReducer } from '../../../../reducer/in
 import { medicalHistoryState, medicalHistoryReducer } from '../../../../reducer/medicalHistoryReducer'
 import { medicineState, medicineReducer } from '../../../../reducer/medicineReducer'
 import { nextState, nextReducer } from '../../../../reducer/nextReducer'
+import { onExaminationReducer, onExaminationState } from '../../../../reducer/onExaminationReducer'
 import { personalHistoryState, personalHistoryReducer } from '../../../../reducer/personalHistoryReducer'
 import { professionalHistoryState, professionalHistoryReducer } from '../../../../reducer/professionalHistoryReducer'
 import { referState, referReducer } from '../../../../reducer/referReducer'
@@ -36,6 +37,7 @@ const SubmitEP = () => {
     const [stateNextFollowup] = useReducer(nextReducer, nextState)
     const [stateCoMorbidity] = useReducer(coMorbidityReducer, coMorbidityState)
     const [stateInvestigation] = useReducer(investigationReducer, investigationState)
+    const [stateOnExaminations] = useReducer(onExaminationReducer, onExaminationState)
 
     const apiV1 = process.env.REACT_APP_API_V1
 
@@ -100,6 +102,10 @@ const SubmitEP = () => {
         stateCoMorbidity.coMorbidity.map((v, i) => ({ cm_type: v.name, remarks: v.remark }))
     }
 
+    // onexamination
+    let onexaminations = [...stateOnExaminations.onexam]
+    console.log(onexaminations)
+
     // investigation
     let investigations = []
     if (stateInvestigation.inv.length !== 0) {
@@ -137,6 +143,7 @@ const SubmitEP = () => {
                 chief_complaints: [...ccList],
                 histories: [...history],
                 co_morbidities: comorbidity,
+                on_examinations: onexaminations,
                 investigations: [...investigations],
                 diagnosis: [
                     {

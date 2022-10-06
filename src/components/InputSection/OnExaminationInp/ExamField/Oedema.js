@@ -2,27 +2,25 @@ import { useState, useEffect } from 'react'
 import classes from './ExamField.module.css'
 
 const Oedema = ({ setData }) => {
-    const [oedema, setOedema] = useState({ sign: '-', remark: '' })
+    const [oedema, setOedema] = useState({ key: 'oedema', unit: '', slot_str7: '' })
+    const [plus, setPlus] = useState('-')
     useEffect(() => {
-        if (oedema.sign === '+') {
+        if (plus === '+') {
             setData({ oedema })
         }
-    }, [oedema, setData])
+    }, [plus, oedema, setData])
     return (
         <div className={classes.ExamField}>
             <div className={classes.wrap1}>
                 <p>Oedema : </p>
-                <select
-                    className={classes.selectExam}
-                    value={oedema.sign}
-                    onChange={(e) => setOedema({ sign: e.target.value, remark: oedema.remark })}>
+                <select className={classes.selectExam} value={plus} onChange={(e) => setPlus(e.target.value)}>
                     <option value="-">-</option>
                     <option value="+">+</option>
                 </select>
                 <input
                     className={classes.onExam}
                     value={oedema.remark}
-                    onChange={(e) => setOedema({ sign: oedema.sign, remark: e.target.value })}
+                    onChange={(e) => setOedema({ ...oedema, slot_str7: e.target.value })}
                     type="text"
                     placeholder="Remark"
                     required
