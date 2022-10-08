@@ -125,6 +125,9 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                             </Fragment>
                         ) : null}
 
+                        {/* on exam  */}
+                        <OnExam />
+
                         {/* Investigation */}
                         {ep.investigations && ep.investigations.length !== 0 ? (
                             <>
@@ -135,7 +138,6 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                                 </ol>
                             </>
                         ) : null}
-                        <OnExam />
                         {/* Diagnosis */}
 
                         {ep?.diagnosis?.length !== 0 ? (
@@ -171,6 +173,21 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                     </div>
                     {/* Right part */}
                     <div className={classes.rightBody}>
+                        {ep?.medicines?.length !== 0 ? (
+                            <Fragment>
+                                <h3>Rx</h3>
+                                {ep?.medicines?.map((v, i) => (
+                                    <div className={classes.singleMedicine} key={i}>
+                                        <p>{v.name}</p>
+                                        <p>
+                                            {v.doses} {v.before_after !== '' ? '|' : null} {v.before_after}{' '}
+                                            {v.days !== 0 ? '|' : null} {v.days}
+                                        </p>
+                                    </div>
+                                ))}
+                            </Fragment>
+                        ) : null}
+
                         {/* Advice */}
                         {ep?.advices?.length !== 0 ? (
                             <Fragment>
@@ -183,8 +200,25 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                             </Fragment>
                         ) : null}
 
-                        {/* refer */}
-                        {/* <p>Refer to {ep?.refer[0]?.detail}</p> */}
+                        {/* follow up  */}
+                        {ep?.followup?.length !== 0 ? (
+                            <Fragment>
+                                <h4>Next followup :</h4>
+                                <p className={classes.follow}>{ep?.followup && ep?.followup[0].date}</p>
+                            </Fragment>
+                        ) : null}
+
+                        {/* refer  */}
+                        {ep?.refer?.length !== 0 ? (
+                            <Fragment>
+                                <h4>Refer:</h4>
+                                <p className={classes.refer}>
+                                    <span>Refer to :</span>
+                                    {ep?.refer && ep?.refer[0].detail}
+                                </p>
+                            </Fragment>
+                        ) : null}
+
                         <p className={classes.refer}>{/* Refer to: <span>{ep?.refer[0]?.detail}</span> */}</p>
                     </div>
                     <div></div>

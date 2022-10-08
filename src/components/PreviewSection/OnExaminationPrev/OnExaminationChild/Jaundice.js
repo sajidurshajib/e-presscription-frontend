@@ -5,7 +5,10 @@ const Jaundice = ({ arr }) => {
             {jaundice.length !== 0 ? (
                 <li>
                     <div>
-                        Jaundice <span>{jaundice[0].slot_str7}</span>
+                        Jaundice{' '}
+                        <span>
+                            <b>(+)</b> {jaundice[0].slot_str7}
+                        </span>
                     </div>
                 </li>
             ) : null}

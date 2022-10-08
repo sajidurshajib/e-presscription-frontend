@@ -5,7 +5,10 @@ const Anaemia = ({ arr }) => {
             {anaemia.length !== 0 ? (
                 <li>
                     <div>
-                        Anaemia <span>{anaemia[0].slot_str7}</span>
+                        Anaemia{' '}
+                        <span>
+                            <b>(+)</b> {anaemia[0].slot_str7}
+                        </span>
                     </div>
                 </li>
             ) : null}

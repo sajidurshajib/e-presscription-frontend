@@ -5,7 +5,10 @@ const Cyanosis = ({ arr }) => {
             {cyanosis.length !== 0 ? (
                 <li>
                     <div>
-                        Cyanosis <span>{cyanosis[0].slot_str7}</span>
+                        Cyanosis{' '}
+                        <span>
+                            <b>(+)</b> {cyanosis[0].slot_str7}
+                        </span>
                     </div>
                 </li>
             ) : null}

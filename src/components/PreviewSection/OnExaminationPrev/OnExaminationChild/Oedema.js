@@ -5,7 +5,10 @@ const Oedema = ({ arr }) => {
             {oedema.length !== 0 ? (
                 <li>
                     <div>
-                        Oedema <span>{oedema[0].slot_str7}</span>
+                        Oedema{' '}
+                        <span>
+                            <b>(+)</b> {oedema[0].slot_str7}
+                        </span>
                     </div>
                 </li>
             ) : null}

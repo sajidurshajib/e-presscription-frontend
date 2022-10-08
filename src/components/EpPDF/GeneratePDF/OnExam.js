@@ -24,7 +24,8 @@ const OnExam = () => {
 
     return (
         <div>
-            <h4>O/E :</h4>
+            {stateOnExamination.onexam.length !== 0 ? <h4>O/E :</h4> : null}
+
             <Fragment>
                 <ul className={classes.OnExamUl}>
                     {/* Blood Pressure preview */}
