@@ -26,8 +26,14 @@ const PreviewMedicine = () => {
                                 {v.form}. {v.name} {v.strength}
                             </p>
                             <p>
-                                {v.doses} <span>-</span> {v.after === true ? 'After Meal' : 'Before Meal'}{' '}
-                                <span>-</span> {v.day} {v.day === 1 ? 'day' : 'days'}
+                                {v.doses} <span>{v.after !== '' ? '-' : null}</span>{' '}
+                                {v.after === 'before' ? 'Before meal' : '' || v.after === 'after' ? 'After meal' : ''}{' '}
+                                <span>{v.day !== 0 ? '-' : null}</span>
+                                {v.day !== 0 ? (
+                                    <>
+                                        {v.day} {v.day === 1 ? 'day' : 'days'}
+                                    </>
+                                ) : null}
                             </p>
                             <p>{v.remark}</p>
 

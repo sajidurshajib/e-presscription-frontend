@@ -32,6 +32,8 @@ const NextFollowUpInpOut = () => {
         } else {
             setStateNextFollowup({ type: 'input', payload: dateString })
         }
+
+        window.location.reload()
     }
 
     const del = (e) => {

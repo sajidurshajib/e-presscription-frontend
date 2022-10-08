@@ -104,7 +104,6 @@ const SubmitEP = () => {
 
     // onexamination
     let onexaminations = [...stateOnExaminations.onexam]
-    console.log(onexaminations)
 
     // investigation
     let investigations = []
@@ -112,7 +111,19 @@ const SubmitEP = () => {
         investigations = [...stateInvestigation.inv.split('\n').map((v) => ({ investigation: v }))]
     }
 
-    // console.log(medicineState)
+    let all_medicines = [
+        ...medicineState.medicine.map((v, i) => ({
+            name: v.name,
+            generic: v.generic,
+            pharmaceuticals: v.pharma,
+            form: v.form,
+            strength: v.strength,
+            doses: v.doses,
+            before_after: v.after,
+            days: v.day,
+            remarks: v.remark,
+        })),
+    ]
 
     // advice array
     let adviceList = []
@@ -155,6 +166,7 @@ const SubmitEP = () => {
                         diagnosis: stateDiagnosis.confirmatory,
                     },
                 ],
+                medicines: [...all_medicines],
                 advices: [...adviceList],
                 refer: { detail: referDetail.detail },
                 followup: nextFollowUp,

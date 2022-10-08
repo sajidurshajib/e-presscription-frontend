@@ -2,11 +2,11 @@ import React, { Fragment, useContext, useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { PdfWrapped } from '../../../allContext'
 import { getFromAPI } from '../../../api/get'
+import { dob } from '../../../utils/DateOfBirth'
 import classes from './Generate.module.css'
 import HistoryChildView from './HistoryChildView'
-
 // import HistoryChildView from './HistoryChildView'
-// import OnExam from './OnExam'
+import OnExam from './OnExam'
 
 export const GeneratePDF = React.forwardRef((props, ref) => {
     const { hxepid } = useParams()
@@ -39,14 +39,20 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
         // stateVaccinationHistory,
     } = useContext(PdfWrapped)
 
+    let y = ''
+    let m = ''
+    if (statePatient.patient.dob && statePatient.patient.dob.length !== 0) {
+        let [year, month] = dob(statePatient.patient.dob)
+        y = year
+        m = month
+    }
+
     let personalHistory = ep.histories && ep.histories.filter((data) => data.history_type === 'personal')
     let professionalHistory = ep.histories && ep.histories.filter((data) => data.history_type === 'professional')
     let familyHistory = ep.histories && ep.histories.filter((data) => data.history_type === 'family')
     let drugHistory = ep.histories && ep.histories.filter((data) => data.history_type === 'drug')
     let medicalHistory = ep.histories && ep.histories.filter((data) => data.history_type === 'medical')
     let vaccinationHistory = ep.histories && ep.histories.filter((data) => data.history_type === 'vaccination')
-
-    console.log(ep)
 
     return (
         <div className={classes.wrapper}>
@@ -74,7 +80,12 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                         <b>Name :</b> {statePatient.patient.name}
                     </p>
                     <p>
-                        <b>Age :</b>{' '}
+                        <b>
+                            Age :
+                            {statePatient.patient.dob && statePatient.patient.dob.length === 0
+                                ? '--'
+                                : ` ${y} years ${m} months`}
+                        </b>{' '}
                     </p>
                     <p>
                         <b>Sex :</b> {statePatient.patient.sex}
@@ -124,7 +135,7 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                                 </ol>
                             </>
                         ) : null}
-
+                        <OnExam />
                         {/* Diagnosis */}
 
                         {ep?.diagnosis?.length !== 0 ? (

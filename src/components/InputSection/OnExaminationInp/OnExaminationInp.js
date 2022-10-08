@@ -35,11 +35,15 @@ const OnExaminationInp = () => {
         // dispatchOnExamination({ type: 'input', payload: oe })
         // console.log(oe)
         let dataArray = []
+        // dataArray.push(...stateOnEaminations.onexam)
         for (let key in oe) {
+            // jus replace previews data
             dataArray.push(oe[key])
         }
         // console.log(dataArray)
         dispatchOnExamination({ type: 'input', payload: dataArray })
+
+        window.location.reload()
     }
 
     return (

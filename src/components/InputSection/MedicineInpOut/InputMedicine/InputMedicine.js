@@ -27,10 +27,11 @@ const InputMedicine = () => {
     const [form, setForm] = useState('')
     const [strength, setStrength] = useState('')
     const [generic, setGeneric] = useState('')
+    const [pharma, setPharma] = useState('')
 
-    const [morning, setMorning] = useState(0)
-    const [evening, setEvening] = useState(0)
-    const [night, setNight] = useState(0)
+    const [morning, setMorning] = useState(NaN)
+    const [evening, setEvening] = useState(NaN)
+    const [night, setNight] = useState(NaN)
 
     const [after, setAfter] = useState('')
     const [day, setDay] = useState(0)
@@ -59,6 +60,7 @@ const InputMedicine = () => {
             setForm(medicineObj.form)
             setStrength(medicineObj.strength)
             setGeneric(medicineObj.generic)
+            setPharma(medicineObj.pharmaceuticals)
             setMedicineObj({ ...medicineObj, name: '' })
         }
 
@@ -80,9 +82,11 @@ const InputMedicine = () => {
         }
         setDoses(dosesString)
     }, [medicineObj, medicine, apiV1, morning, evening, night])
+    console.log(pharma)
 
     const submit = (e) => {
         e.preventDefault()
+
         dispatchMedicine({
             type: 'input',
             payload: [
@@ -93,6 +97,7 @@ const InputMedicine = () => {
                     form,
                     strength,
                     generic,
+                    pharma,
                     doses: doses,
                     after,
                     day: isNaN(day) ? 0 : day,
@@ -108,7 +113,7 @@ const InputMedicine = () => {
         setMorning(0)
         setEvening(0)
         setNight(0)
-        setAfter(true)
+        setAfter('')
         setDay('')
         setRemark('')
 

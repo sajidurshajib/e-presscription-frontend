@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import classes from './ExamField.module.css'
 
 const Respiratory = ({ setData }) => {
-    const [respiratory, setRespiratory] = useState({ key: 'respiratory', unit: 'beats/min', slot_int1: 0 })
+    const [respiratory, setRespiratory] = useState({ key: 'respiratory', unit: 'breaths/min', slot_int1: 0 })
     useEffect(() => {
         if (respiratory.slot_int1 !== 0 && respiratory.slot_int1 !== '') {
             setData({ respiratory })
