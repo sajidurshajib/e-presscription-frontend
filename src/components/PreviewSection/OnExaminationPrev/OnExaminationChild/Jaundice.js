@@ -1,7 +1,17 @@
-const Jaundice = ({ jaundice }) => {
+const Jaundice = ({ arr }) => {
+    let jaundice = arr.filter((v) => v.key === 'jaundice')
     return (
         <div>
-            Jaundice <span>{jaundice.remark}</span>
+            {jaundice.length !== 0 ? (
+                <li>
+                    <div>
+                        Jaundice{' '}
+                        <span>
+                            <b>(+)</b> {jaundice[0].slot_str7}
+                        </span>
+                    </div>
+                </li>
+            ) : null}
         </div>
     )
 }

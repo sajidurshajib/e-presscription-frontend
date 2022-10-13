@@ -2,14 +2,42 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import classes from './ExamField.module.css'
 
+// {
+//     "key": "string",
+//     "unit": "string",
+//     "slot_bool": true,
+//     "slot_int1": 0,
+//     "slot_int2": 0,
+//     "slot_int3": 0,
+//     "slot_flt4": 0,
+//     "slot_flt5": 0,
+//     "slot_flt6": 0,
+//     "slot_str7": "string",
+//     "slot_str8": "string",
+//     "slot_str9": "string"
+//   }
+
 const BloodPressure = ({ setData }) => {
-    const [bloodPressure, setBloodPressure] = useState({ diastolic: 0, systolic: 0 })
+    const [bp, setBp] = useState({
+        key: 'bp',
+        unit: 'mm of Hg',
+        slot_int1: 0,
+        slot_int2: 0,
+    })
 
     useEffect(() => {
-        if (bloodPressure.systolic !== 0 && bloodPressure.diastolic !== 0) {
-            setData({ bloodPressure })
+        if (bp.slot_int1 !== 0 && bp.slot_int2 !== 0 && bp.slot_int1 !== '' && bp.slot_int2 !== '') {
+            setData({ bp })
         }
-    }, [bloodPressure, setData])
+    }, [bp, setData])
+
+    if (bp.slot_int1 === 0) {
+        setBp({ ...bp, slot_int1: '' })
+    }
+
+    if (bp.slot_int2 === 0) {
+        setBp({ ...bp, slot_int2: '' })
+    }
 
     return (
         <div className={classes.ExamField}>
@@ -17,26 +45,28 @@ const BloodPressure = ({ setData }) => {
                 <p>Blood Pressure (BP) :</p>
                 <input
                     className={classes.onExam}
-                    value={bloodPressure.diastolic}
+                    value={bp.slot_int1}
                     onChange={(e) =>
-                        setBloodPressure({ systolic: bloodPressure.systolic, diastolic: parseInt(e.target.value) || 0 })
+                        setBp({
+                            ...bp,
+                            slot_int1: parseInt(e.target.value),
+                        })
                     }
                     type="number"
-                    placeholder="Diastolic"
+                    placeholder="Systolic"
+                    min={0}
+                    max={300}
                     required
                 />
                 <span>/</span>
                 <input
                     className={classes.onExam}
-                    value={bloodPressure.systolic}
-                    onChange={(e) =>
-                        setBloodPressure({
-                            systolic: parseInt(e.target.value) || 0,
-                            diastolic: bloodPressure.diastolic,
-                        })
-                    }
+                    value={bp.slot_int2}
+                    onChange={(e) => setBp({ ...bp, slot_int2: parseInt(e.target.value) })}
                     type="number"
-                    placeholder="Systolic"
+                    placeholder="Diastolic"
+                    min={0}
+                    max={300}
                     required
                 />
 

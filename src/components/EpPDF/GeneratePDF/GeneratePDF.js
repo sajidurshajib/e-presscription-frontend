@@ -1,16 +1,20 @@
 import React, { Fragment, useContext, useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { PdfWrapped } from '../../../allContext'
-import { getFromAPI } from '../../../api/get'
+import { Auth } from '../../../allContext'
+import { getFromAPI, getWithAuthToken } from '../../../api/get'
+import { dob } from '../../../utils/DateOfBirth'
 import classes from './Generate.module.css'
-
+import HistoryChildView from './HistoryChildView'
 // import HistoryChildView from './HistoryChildView'
-// import OnExam from './OnExam'
+import OnExam from './OnExam'
 
 export const GeneratePDF = React.forwardRef((props, ref) => {
     const { hxepid } = useParams()
     const [ep, setEp] = useState({})
     const [profile, setProfile] = useState('')
+    const [headerData, setHeaderData] = useState([])
+    const { stateAuth } = useContext(Auth)
 
     const apiV1 = process.env.REACT_APP_API_V1
 
@@ -20,38 +24,47 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
         getFromAPI(endpoint)
             .then((data) => setEp(data))
             .catch((e) => {})
-    }, [apiV1, hxepid])
 
-    const {
-        statePatient,
-        // stateChief,
-        // stateInvestigation,
-        // stateDiagnosis,
-        // stateAdvice,
-        // stateMedicine,
-        // statePersonalHistory,
-        // stateCoMorbidity,
-        // stateProfessionalHistory,
-        // stateFamilyHistory,
-        // stateDrugHistory,
-        // stateMedicalHistory,
-        // stateVaccinationHistory,
-    } = useContext(PdfWrapped)
+        getWithAuthToken(`${apiV1}/ep/doctor-ep-header/`, stateAuth.token)
+            .then((data) => setHeaderData(data))
+            .catch((e) => {})
+    }, [apiV1, hxepid, stateAuth])
+
+    const { statePatient } = useContext(PdfWrapped)
+
+    let y = ''
+    let m = ''
+    if (statePatient.patient.dob && statePatient.patient.dob.length !== 0) {
+        let [year, month] = dob(statePatient.patient.dob)
+        y = year
+        m = month
+    }
+
+    let leftHeader = headerData.filter((v) => v.header_side === 'left')
+    let rightHeader = headerData.filter((v) => v.header_side === 'right')
+
+    let personalHistory = ep.histories && ep.histories.filter((data) => data.history_type === 'personal')
+    let professionalHistory = ep.histories && ep.histories.filter((data) => data.history_type === 'professional')
+    let familyHistory = ep.histories && ep.histories.filter((data) => data.history_type === 'family')
+    let drugHistory = ep.histories && ep.histories.filter((data) => data.history_type === 'drug')
+    let medicalHistory = ep.histories && ep.histories.filter((data) => data.history_type === 'medical')
+    let vaccinationHistory = ep.histories && ep.histories.filter((data) => data.history_type === 'vaccination')
+
     return (
         <div className={classes.wrapper}>
             <div className={classes.Generate} ref={ref}>
                 {/* Top field */}
                 <div className={classes.top}>
                     <div className={classes.topLeft}>
-                        <h3>{profile?.user?.name}</h3>
-                        {profile.prescription_header_left?.split('\n')?.map((v, i) => {
+                        <h3>{leftHeader[0]?.heading}</h3>
+                        {leftHeader[0]?.body.split('\n')?.map((v, i) => {
                             return <p key={i}>{v}</p>
                         })}
                     </div>
                     <div className={classes.topRight}>
                         {/* <img src={boxLogo} alt="Box Logo" /> */}
-                        <h3>Chamber Address {hxepid.slice(4)}</h3>
-                        {profile.prescription_header_right?.split('\n')?.map((v, i) => {
+                        <h3>{rightHeader[0]?.heading}</h3>
+                        {rightHeader[0]?.body.split('\n')?.map((v, i) => {
                             return <p key={i}>{v}</p>
                         })}
                     </div>
@@ -63,7 +76,12 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                         <b>Name :</b> {statePatient.patient.name}
                     </p>
                     <p>
-                        <b>Age :</b>{' '}
+                        <b>
+                            Age :
+                            {statePatient.patient.dob && statePatient.patient.dob.length === 0
+                                ? '--'
+                                : ` ${y} years ${m} months`}
+                        </b>{' '}
                     </p>
                     <p>
                         <b>Sex :</b> {statePatient.patient.sex}
@@ -89,9 +107,83 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                                 </ol>
                             </Fragment>
                         ) : null}
+
+                        {/* history  */}
+                        {ep.histories && ep.histories.length !== 0 ? (
+                            <Fragment>
+                                <h4>History</h4>
+                                <HistoryChildView data={personalHistory} title={'Personal history'} />
+                                <HistoryChildView data={professionalHistory} title={'Professional history'} />
+                                <HistoryChildView data={familyHistory} title={'Family history'} />
+                                <HistoryChildView data={drugHistory} title={'Drug history'} />
+                                <HistoryChildView data={medicalHistory} title={'Medical history'} />
+                                <HistoryChildView data={vaccinationHistory} title={'Vaccination history'} />
+                            </Fragment>
+                        ) : null}
+
+                        {/* on exam  */}
+                        <OnExam />
+
+                        {/* Investigation */}
+                        {ep.investigations && ep.investigations.length !== 0 ? (
+                            <>
+                                <h4>INV:</h4>
+                                <ol>
+                                    {ep.investigations &&
+                                        ep.investigations.map((v, i) => <li key={i}>{v.investigation}</li>)}
+                                </ol>
+                            </>
+                        ) : null}
+                        {/* Diagnosis */}
+
+                        {ep?.diagnosis?.length !== 0 ? (
+                            <Fragment>
+                                {ep.diagnosis && ep.diagnosis[0].diagnosis.length !== 0 ? <h4>D/D :</h4> : null}
+                                <div className={classes.diagnosis}>
+                                    <ol>
+                                        {ep?.diagnosis &&
+                                            ep?.diagnosis
+                                                .filter((v) => v.diagnosis_type === 'probable')
+                                                .filter((space) => space.diagnosis.length !== 0)
+                                                .map((v, i) =>
+                                                    v.diagnosis.split('\n').map((v, i) => <li key={i}>{v}</li>)
+                                                )}
+                                    </ol>
+                                </div>
+                                {ep.diagnosis && ep.diagnosis[1].diagnosis.length !== 0 ? (
+                                    <h4>Confirmatory Diagnosis :</h4>
+                                ) : null}
+                                <div className={classes.diagnosis}>
+                                    <ol>
+                                        {ep?.diagnosis &&
+                                            ep?.diagnosis
+                                                .filter((v) => v.diagnosis_type === 'confirmatory')
+                                                .filter((space) => space.diagnosis.length !== 0)
+                                                .map((v, i) =>
+                                                    v.diagnosis.split('\n').map((v, i) => <li key={i}>{v}</li>)
+                                                )}
+                                    </ol>
+                                </div>
+                            </Fragment>
+                        ) : null}
                     </div>
                     {/* Right part */}
                     <div className={classes.rightBody}>
+                        {ep?.medicines?.length !== 0 ? (
+                            <Fragment>
+                                <h3>Rx</h3>
+                                {ep?.medicines?.map((v, i) => (
+                                    <div className={classes.singleMedicine} key={i}>
+                                        <p>{v.name}</p>
+                                        <p>
+                                            {v.doses} {v.before_after !== '' ? '|' : null} {v.before_after}{' '}
+                                            {v.days !== 0 ? '|' : null} {v.days}
+                                        </p>
+                                    </div>
+                                ))}
+                            </Fragment>
+                        ) : null}
+
                         {/* Advice */}
                         {ep?.advices?.length !== 0 ? (
                             <Fragment>
@@ -104,8 +196,25 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                             </Fragment>
                         ) : null}
 
-                        {/* refer */}
-                        {/* <p>Refer to {ep?.refer[0]?.detail}</p> */}
+                        {/* follow up  */}
+                        {ep?.followup?.length !== 0 ? (
+                            <Fragment>
+                                <h4>Next followup :</h4>
+                                <p className={classes.follow}>{ep?.followup && ep?.followup[0].date}</p>
+                            </Fragment>
+                        ) : null}
+
+                        {/* refer  */}
+                        {ep?.refer?.length !== 0 ? (
+                            <Fragment>
+                                <h4>Refer:</h4>
+                                <p className={classes.refer}>
+                                    <span>Refer to :</span>
+                                    {ep?.refer && ep?.refer[0].detail}
+                                </p>
+                            </Fragment>
+                        ) : null}
+
                         <p className={classes.refer}>{/* Refer to: <span>{ep?.refer[0]?.detail}</span> */}</p>
                     </div>
                     <div></div>

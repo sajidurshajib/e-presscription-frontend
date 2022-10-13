@@ -1,5 +1,6 @@
-import { Fragment, useState, useContext } from 'react'
-import { OnExamination } from '../../../allContext'
+import { Fragment, useState, useContext, useReducer } from 'react'
+// import { OnExamination } from '../../../allContext'
+import { onExaminationReducer, onExaminationState } from '../../../reducer/onExaminationReducer'
 import Anaemia from './ExamField/Anaemia'
 import BloodPressure from './ExamField/BloodPressure'
 import Bmi from './ExamField/Bmi'
@@ -20,18 +21,29 @@ import classes from './OnExaminationInp.module.css'
 
 const OnExaminationInp = () => {
     const [more, setMore] = useState(false)
-    const { dispatchOnExamination } = useContext(OnExamination)
+    // const { dispatchOnExamination } = useContext(OnExamination)
+
+    const [stateOnEaminations, dispatchOnExamination] = useReducer(onExaminationReducer, onExaminationState)
 
     let oe = {}
-    // const [onExamination, setOnExamination] = useState(oe)
 
     const setDataFun = (obj) => {
-        // setOnExamination({ ...onExamination, ...obj })
         oe = { ...oe, ...obj }
     }
 
     const submit = () => {
-        dispatchOnExamination({ type: 'input', payload: oe })
+        // dispatchOnExamination({ type: 'input', payload: oe })
+        // console.log(oe)
+        let dataArray = []
+        // dataArray.push(...stateOnEaminations.onexam)
+        for (let key in oe) {
+            // jus replace previews data
+            dataArray.push(oe[key])
+        }
+        // console.log(dataArray)
+        dispatchOnExamination({ type: 'input', payload: dataArray })
+
+        window.location.reload()
     }
 
     return (

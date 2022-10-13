@@ -1,10 +1,17 @@
-const Pulse = ({ pulse }) => {
+const Pulse = ({ arr }) => {
+    let pulse = arr.filter((v) => v.key === 'pulse')
     return (
         <div>
-            Pulse{' '}
-            <span>
-                <b>{pulse}</b> beats/min
-            </span>
+            {pulse.length !== 0 ? (
+                <li>
+                    <div>
+                        Pulse{' '}
+                        <span>
+                            <b>{pulse[0].slot_int1}</b> {pulse[0].unit}
+                        </span>
+                    </div>
+                </li>
+            ) : null}
         </div>
     )
 }

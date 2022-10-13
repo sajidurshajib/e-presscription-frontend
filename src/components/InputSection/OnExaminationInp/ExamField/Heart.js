@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react'
 import classes from './ExamField.module.css'
 
 const Heart = ({ setData }) => {
-    const [heart, setHeart] = useState({ heart: '' })
+    const [heart, setHeart] = useState({ key: 'heart', unit: '', slot_str7: '' })
     useEffect(() => {
-        if (heart.heart.length !== 0) {
-            setData(heart)
+        if (heart.slot_str7.length !== 0) {
+            setData({ heart })
         }
     }, [heart, setData])
     return (
@@ -14,8 +14,8 @@ const Heart = ({ setData }) => {
                 <p>Heart :</p>
                 <input
                     className={classes.onExam}
-                    value={heart.heart}
-                    onChange={(e) => setHeart({ heart: e.target.value })}
+                    value={heart.slot_str7}
+                    onChange={(e) => setHeart({ ...heart, slot_str7: e.target.value })}
                     type="text"
                     required
                 />

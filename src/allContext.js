@@ -3,6 +3,7 @@ import { createContext } from 'react'
 export const FieldContext = createContext()
 export const SidebarContext = createContext()
 
+export const CauseOfConsultation = createContext()
 export const ChiefComplaints = createContext()
 export const History = createContext()
 export const Investigation = createContext()

@@ -2,12 +2,17 @@ import { useState, useEffect } from 'react'
 import classes from './ExamField.module.css'
 
 const Rbs = ({ setData }) => {
-    const [rbs, setRbs] = useState({ rbs: 0 })
+    const [rbs, setRbs] = useState({ key: 'rbs', unit: 'mmol/L', slot_flt4: 0 })
+
     useEffect(() => {
-        if (rbs.rbs !== 0) {
-            setData(rbs)
+        if (rbs.slot_flt4 !== 0 && rbs.slot_flt4 !== '') {
+            setData({ rbs })
         }
     }, [rbs, setData])
+
+    if (rbs.slot_flt4 === 0) {
+        setRbs({ ...rbs, slot_flt4: '' })
+    }
 
     return (
         <div className={classes.ExamField}>
@@ -15,9 +20,10 @@ const Rbs = ({ setData }) => {
                 <p>RBS : </p>
                 <input
                     className={classes.onExam}
-                    value={rbs.rbs}
-                    onChange={(e) => setRbs({ rbs: parseInt(e.target.value) || 0 })}
+                    value={rbs.slot_flt4}
+                    onChange={(e) => setRbs({ ...rbs, slot_flt4: parseFloat(e.target.value) })}
                     type="number"
+                    step="0.01"
                     required
                 />
                 <p>mmol/L</p>

@@ -42,116 +42,41 @@ const OnExaminationPrev = () => {
                 <Fragment>
                     <ul>
                         {/* Blood Pressure preview */}
-                        {!undef(stateOnExamination.onexam.bloodPressure) ? (
-                            <li>
-                                <BloodPressure bp={stateOnExamination.onexam.bloodPressure} />
-                            </li>
+                        {stateOnExamination.onexam.length !== 0 ? (
+                            <BloodPressure arr={stateOnExamination.onexam} />
                         ) : null}
-
                         {/* Pulse preview */}
-                        {!undef(stateOnExamination.onexam.pulse) ? (
-                            <li>
-                                <Pulse pulse={stateOnExamination.onexam.pulse} />
-                            </li>
-                        ) : null}
-
+                        {stateOnExamination.onexam.length !== 0 ? <Pulse arr={stateOnExamination.onexam} /> : null}
                         {/* Temp preview */}
-                        {!undef(stateOnExamination.onexam.temp) ? (
-                            <li>
-                                <Temp temp={stateOnExamination.onexam.temp} />
-                            </li>
-                        ) : null}
-
+                        {stateOnExamination.onexam.length !== 0 ? <Temp arr={stateOnExamination.onexam} /> : null}
                         {/* RBS preview */}
-                        {!undef(stateOnExamination.onexam.rbs) ? (
-                            <li>
-                                <Rbs rbs={stateOnExamination.onexam.rbs} />
-                            </li>
-                        ) : null}
-
+                        {stateOnExamination.onexam.length !== 0 ? <Rbs arr={stateOnExamination.onexam} /> : null}
                         {/* Heart preview */}
-                        {!undef(stateOnExamination.onexam.heart) ? (
-                            <li>
-                                <Heart heart={stateOnExamination.onexam.heart} />
-                            </li>
-                        ) : null}
-
+                        {stateOnExamination.onexam.length !== 0 ? <Heart arr={stateOnExamination.onexam} /> : null}
                         {/* Lungs preview */}
-                        {!undef(stateOnExamination.onexam.lungs) ? (
-                            <li>
-                                <Lungs lungs={stateOnExamination.onexam.lungs} />
-                            </li>
-                        ) : null}
-
+                        {stateOnExamination.onexam.length !== 0 ? <Lungs arr={stateOnExamination.onexam} /> : null}
                         {/* Weight preview */}
-                        {!undef(stateOnExamination.onexam.weight) ? (
-                            <li>
-                                <Weight weight={stateOnExamination.onexam.weight} />
-                            </li>
-                        ) : null}
-
+                        {stateOnExamination.onexam.length !== 0 ? <Weight arr={stateOnExamination.onexam} /> : null}
                         {/* Anaemia preview */}
-                        {!undef(stateOnExamination.onexam.anaemia) ? (
-                            <li>
-                                <Anaemia anaemia={stateOnExamination.onexam.anaemia} />
-                            </li>
-                        ) : null}
-
+                        {stateOnExamination.onexam.length !== 0 ? <Anaemia arr={stateOnExamination.onexam} /> : null}
                         {/* Jaundice preview */}
-                        {!undef(stateOnExamination.onexam.jaundice) ? (
-                            <li>
-                                <Jaundice jaundice={stateOnExamination.onexam.jaundice} />
-                            </li>
-                        ) : null}
-
+                        {stateOnExamination.onexam.length !== 0 ? <Jaundice arr={stateOnExamination.onexam} /> : null}
                         {/* Cyanosis preview */}
-                        {!undef(stateOnExamination.onexam.cyanosis) ? (
-                            <li>
-                                <Cyanosis cyanosis={stateOnExamination.onexam.cyanosis} />
-                            </li>
-                        ) : null}
-
+                        {stateOnExamination.onexam.length !== 0 ? <Cyanosis arr={stateOnExamination.onexam} /> : null}
                         {/* HeartRate preview */}
-                        {!undef(stateOnExamination.onexam.heartRate) ? (
-                            <li>
-                                <HeartRate heartRate={stateOnExamination.onexam.heartRate} />
-                            </li>
-                        ) : null}
-
+                        {stateOnExamination.onexam.length !== 0 ? <HeartRate arr={stateOnExamination.onexam} /> : null}
                         {/* Respiratory preview */}
-                        {!undef(stateOnExamination.onexam.respiratory) ? (
-                            <li>
-                                <Respiratory respiratory={stateOnExamination.onexam.respiratory} />
-                            </li>
+                        {stateOnExamination.onexam.length !== 0 ? (
+                            <Respiratory arr={stateOnExamination.onexam} />
                         ) : null}
-
                         {/* Oedema preview */}
-                        {!undef(stateOnExamination.onexam.oedema) ? (
-                            <li>
-                                <Oedema oedema={stateOnExamination.onexam.oedema} />
-                            </li>
-                        ) : null}
-
+                        {stateOnExamination.onexam.length !== 0 ? <Oedema arr={stateOnExamination.onexam} /> : null}
                         {/* Height preview */}
-                        {!undef(stateOnExamination.onexam.height) ? (
-                            <li>
-                                <Height height={stateOnExamination.onexam.height} />
-                            </li>
-                        ) : null}
-
+                        {stateOnExamination.onexam.length !== 0 ? <Height arr={stateOnExamination.onexam} /> : null}
                         {/* BMI preview */}
-                        {!undef(stateOnExamination.onexam.bmi) ? (
-                            <li>
-                                <Bmi bmi={stateOnExamination.onexam.bmi} />
-                            </li>
-                        ) : null}
-
+                        {stateOnExamination.onexam.length !== 0 ? <Bmi arr={stateOnExamination.onexam} /> : null}
                         {/* Custom preview */}
-                        {!undef(stateOnExamination.onexam.custom) ? (
-                            <li>
-                                <Custom custom={stateOnExamination.onexam.custom} />
-                            </li>
-                        ) : null}
+                        {stateOnExamination.onexam.length !== 0 ? <Custom arr={stateOnExamination.onexam} /> : null}
                     </ul>
                 </Fragment>
             ) : null}

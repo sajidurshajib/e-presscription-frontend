@@ -2,6 +2,7 @@ import { faArrowsAltV } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useReducer, useState } from 'react'
 import {
+    CauseOfConsultation,
     ChiefComplaints,
     History,
     Investigation,
@@ -13,6 +14,7 @@ import {
 } from '../../allContext'
 import { patientState, patientReducer } from '../../reducer/PatientInfoReducer'
 import { adviceState, adviceReducer } from '../../reducer/adviceReducer'
+import { consultationReducer, consultationState } from '../../reducer/causeOfConsultation'
 import { chiefState, chiefReducer } from '../../reducer/chiefReducer'
 import { coMorbidityReducer, coMorbidityState } from '../../reducer/coMorbidityReducer'
 import { diagnosisReducer, diagnosisState } from '../../reducer/diagnosisReducer'
@@ -21,6 +23,7 @@ import { familyHistoryReducer, familyHistoryState } from '../../reducer/familyHi
 import { fieldState, fieldReducer } from '../../reducer/fieldReducer'
 import { investigationReducer, investigationState } from '../../reducer/investigationReducer'
 import { medicalHistoryReducer, medicalHistoryState } from '../../reducer/medicalHistoryReducer'
+import { medicineReducer, medicineState } from '../../reducer/medicineReducer'
 import { nextReducer, nextState } from '../../reducer/nextReducer'
 import { onExaminationReducer, onExaminationState } from '../../reducer/onExaminationReducer'
 import { personalHistoryReducer, personalHistoryState } from '../../reducer/personalHistoryReducer'
@@ -34,6 +37,7 @@ import classes from './Body.module.css'
 const Body = () => {
     const [statePatientInfo, dispatchPatientInfo] = useReducer(patientReducer, patientState)
 
+    const [stateConsultation, dispatchConsultation] = useReducer(consultationReducer, consultationState)
     const [stateChief, dispatchChief] = useReducer(chiefReducer, chiefState)
     const [stateInvestigation, dispatchInvestigation] = useReducer(investigationReducer, investigationState)
     const [stateDiagnosis, dispatchDiagnosis] = useReducer(diagnosisReducer, diagnosisState)
@@ -56,6 +60,7 @@ const Body = () => {
     const [stateRefer, dispatchRefer] = useReducer(referReducer, referState)
 
     const [stateField, dispatchField] = useReducer(fieldReducer, fieldState)
+    const [stateMedicine, dispatchMedicine] = useReducer(medicineReducer, medicineState)
 
     const history = {
         statePersonalHistory,
@@ -94,8 +99,11 @@ const Body = () => {
         dispatchVaccinationHistory({ type: 'remove' })
         dispatchCoMorbidity({ type: 'remove' })
 
+        dispatchMedicine({ type: 'remove' })
+
         dispatchOnExamination({ type: 'remove' })
 
+        dispatchConsultation({ type: 'remove' })
         dispatchField({ type: 'chief' })
         window.location.reload()
     }
@@ -106,51 +114,53 @@ const Body = () => {
                 <FontAwesomeIcon icon={faArrowsAltV} />
             </button>
             <div className={classes.Wrapper}>
-                <ChiefComplaints.Provider value={{ stateChief, dispatchChief }}>
-                    <Investigation.Provider value={{ stateInvestigation, dispatchInvestigation }}>
-                        <Diagnosis.Provider value={{ stateDiagnosis, dispatchDiagnosis }}>
-                            <OnExamination.Provider value={{ stateOnExamination, dispatchOnExamination }}>
-                                <History.Provider value={history}>
-                                    <Advice.Provider value={{ stateAdvice, dispatchAdvice }}>
-                                        <Next.Provider value={{ stateNext, dispatchNext }}>
-                                            <Refer.Provider value={{ stateRefer, dispatchRefer }}>
-                                                {swap ? (
-                                                    <>
-                                                        <div>
-                                                            <InputSection />
-                                                        </div>
-                                                        <div>
-                                                            <PreviewSection />
-                                                            <span
-                                                                className={classes.clearAll}
-                                                                onClick={(e) => allClear()}>
-                                                                Clear all
-                                                            </span>
-                                                        </div>
-                                                    </>
-                                                ) : (
-                                                    <>
-                                                        <div>
-                                                            <PreviewSection />
-                                                        </div>
-                                                        <div>
-                                                            <InputSection />
-                                                            <span
-                                                                className={classes.clearAll}
-                                                                onClick={(e) => allClear()}>
-                                                                Clear all
-                                                            </span>
-                                                        </div>
-                                                    </>
-                                                )}
-                                            </Refer.Provider>
-                                        </Next.Provider>
-                                    </Advice.Provider>
-                                </History.Provider>
-                            </OnExamination.Provider>
-                        </Diagnosis.Provider>
-                    </Investigation.Provider>
-                </ChiefComplaints.Provider>
+                <CauseOfConsultation.Provider value={{ stateConsultation, dispatchConsultation }}>
+                    <ChiefComplaints.Provider value={{ stateChief, dispatchChief }}>
+                        <Investigation.Provider value={{ stateInvestigation, dispatchInvestigation }}>
+                            <Diagnosis.Provider value={{ stateDiagnosis, dispatchDiagnosis }}>
+                                <OnExamination.Provider value={{ stateOnExamination, dispatchOnExamination }}>
+                                    <History.Provider value={history}>
+                                        <Advice.Provider value={{ stateAdvice, dispatchAdvice }}>
+                                            <Next.Provider value={{ stateNext, dispatchNext }}>
+                                                <Refer.Provider value={{ stateRefer, dispatchRefer }}>
+                                                    {swap ? (
+                                                        <>
+                                                            <div>
+                                                                <InputSection />
+                                                            </div>
+                                                            <div>
+                                                                <PreviewSection />
+                                                                <span
+                                                                    className={classes.clearAll}
+                                                                    onClick={(e) => allClear()}>
+                                                                    Clear all
+                                                                </span>
+                                                            </div>
+                                                        </>
+                                                    ) : (
+                                                        <>
+                                                            <div>
+                                                                <PreviewSection />
+                                                            </div>
+                                                            <div>
+                                                                <InputSection />
+                                                                <span
+                                                                    className={classes.clearAll}
+                                                                    onClick={(e) => allClear()}>
+                                                                    Clear all
+                                                                </span>
+                                                            </div>
+                                                        </>
+                                                    )}
+                                                </Refer.Provider>
+                                            </Next.Provider>
+                                        </Advice.Provider>
+                                    </History.Provider>
+                                </OnExamination.Provider>
+                            </Diagnosis.Provider>
+                        </Investigation.Provider>
+                    </ChiefComplaints.Provider>
+                </CauseOfConsultation.Provider>
             </div>
         </div>
     )

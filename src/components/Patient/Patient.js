@@ -1,5 +1,7 @@
-import { useContext, useState, useEffect } from 'react'
+import { useContext, useState, useEffect, useReducer } from 'react'
 import { PatientInfo, Auth } from '../../allContext'
+import { getWithAuthToken } from '../../api/get'
+import { consultationReducer, consultationState } from '../../reducer/causeOfConsultation'
 import { dob } from '../../utils/DateOfBirth'
 import classes from './Patient.module.css'
 import PatientSearch from './PatientSearch/PatientSearch'
@@ -8,7 +10,9 @@ const Patient = ({ cross }) => {
     const { statePatient, dispatchPatient } = useContext(PatientInfo)
     const { stateAuth } = useContext(Auth)
 
-    const [cause, setCause] = useState(statePatient.patient.cause_of_consultation || '')
+    const [stateConsultation, dispatchConsultation] = useReducer(consultationReducer, consultationState)
+
+    // const [cause, setCause] = useState(statePatient.patient.cause_of_consultation || '')
     const [name, setName] = useState(statePatient.patient.name || '')
     const [phone, setPhone] = useState(statePatient.patient.phone || '')
     const [sex, setSex] = useState(statePatient.patient.sex || 'not selected')
@@ -23,37 +27,20 @@ const Patient = ({ cross }) => {
     const token = stateAuth.token
 
     useEffect(() => {
-        const search = async () => {
-            let patientFetch = await fetch(`${apiV1}/ep/patient-search?name=${name}&skip=0&limit=10`, {
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
-                },
-                method: 'GET',
+        getWithAuthToken(`${apiV1}/ep/patient-search?name=${name}&skip=0&limit=10`, token)
+            .then((data) => {
+                setSearchResult(data)
+
+                setPhone(statePatient.patient.phone)
+                setAddress(statePatient.patient.division)
+                if (statePatient.patient.dob && statePatient.patient.dob.length !== 0) {
+                    const [y, m, d] = dob(statePatient.patient.dob)
+                    setYear(y)
+                    setMonth(m)
+                }
             })
-
-            let patientJson = await patientFetch.json()
-
-            if (patientFetch.ok) {
-                setSearchResult(patientJson)
-            }
-
-            // setPhone(statePatient.patient.phone)
-            // setAddress(statePatient.patient.division)
-
-            if (statePatient.patient.dob) {
-                const [y, m, d] = dob(statePatient.patient.dob)
-                setYear(y)
-                setMonth(m)
-            }
-        }
-        try {
-            search()
-        } catch (e) {}
-    }, [name, token, apiV1, statePatient.patient.dob])
-
-    // const [y, m, d] = dob(statePatient.patient.dob)
+            .catch((e) => {})
+    }, [name, token, apiV1, statePatient.patient.dob, statePatient])
 
     return (
         <div className={classes.Patient}>
@@ -63,12 +50,6 @@ const Patient = ({ cross }) => {
 
                 <div className={classes.Wrapper}>
                     <input
-                        type="text"
-                        value={cause}
-                        onChange={(e) => setCause(e.target.value)}
-                        placeholder="Cause of consultation"
-                    />
-                    <input
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         type="text"
@@ -76,8 +57,15 @@ const Patient = ({ cross }) => {
                     />
                     {/* Patient search modal */}
                     {(name.length !== 0) & (statePatient.patient.name !== name) ? (
-                        <PatientSearch arr={searchResult} setPatient={dispatchPatient} cross={cross} />
+                        <PatientSearch arr={searchResult} setPatient={dispatchPatient} setName={setName} />
                     ) : null}
+
+                    <input
+                        type="text"
+                        value={stateConsultation.consultation}
+                        onChange={(e) => dispatchConsultation({ type: 'input', payload: e.target.value })}
+                        placeholder="Cause of consultation"
+                    />
 
                     <div className={classes.Two}>
                         <input

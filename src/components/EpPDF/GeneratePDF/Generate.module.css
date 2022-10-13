@@ -127,13 +127,21 @@
 .leftBody .diagnosis {
     background: var(--light-grey);
     border-radius: 2px;
-    padding: 5px 20px;
+    /* padding: 5px 20px; */
     margin-right: 10px;
 }
+
 .leftBody .diagnosis li {
     font-size: 12px;
     padding-left: 10px;
 }
+.leftBody .diagnosis ol >li:first-child{
+    padding-top: 10px;
+}
+.leftBody .diagnosis ol >li:last-child{
+    padding-bottom: 10px;
+}
+
 
 .rightBody {
     padding-left: 30px;
@@ -151,12 +159,14 @@
 .rightBody ol li {
     font-size: 12px;
 }
-.singleMedicine {
-    margin-left: 12px;
-}
+
 .singleMedicine p {
     font-size: 12px;
-    margin: 5px 40px;
+    margin: 5px;
+}
+.singleMedicine p:nth-child(1){
+    font-size:14px;
+    font-weight: 500;
 }
 .singleMedicine span {
     font-size: 14px;
@@ -179,10 +189,19 @@
     font-weight:500;
     color: var(--primary);
 }
-.refer > span{
+.refer{
+    font-size: 12px;
     color: var(--dark);
+    margin: 0;
+}
+.refer > span{
+    color: var(--primary);
 }
 
+.follow{
+    font-size: 12px;
+    margin: 0;
+}
 .signature {
     display: grid;
     grid-template-columns: 50% 50%;

@@ -1,0 +1,30 @@
+.wrapper{
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.box {
+    background: var(--white);
+    width: 700px;
+    box-shadow: 0 5px 20px var(--grey2);
+    border-radius: 5px;
+    text-align: center;
+}
+.formWrapper> select, .formWrapper > input, .formWrapper > textarea, .formWrapper > button {
+    width: 70%;
+    margin-left: 15%;
+    display: block;
+    box-sizing: border-box;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid var(--light);
+}
+.formWrapper> select:focus, .formWrapper > input:focus, .formWrapper > textarea:focus, .formWrapper > button:focus{
+    outline: 0;
+}
+.formWrapper > select > option{
+    color: grey;
+    padding: 10px;
+}

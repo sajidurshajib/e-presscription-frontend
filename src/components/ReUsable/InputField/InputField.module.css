@@ -3,13 +3,16 @@
     overflow: hidden;
     margin-bottom: 25px;
 }
-.InputField input {
+.InputField > input {
     border: none;
     outline: 0;
+    font-size: 14px;
     box-sizing: border-box;
     padding: 25px 10px 5px 10px;
     width: 100%;
     background: var(--light);
+    color: var(--dark);
+    border-radius: 4px;
 }
 .InputField label {
     position: absolute;
@@ -27,19 +30,19 @@
     width: 100%;
     height: 3px;
     background: var(--primary);
-    transition: 500ms;
+    transition: 200ms;
 }
 .InputField label span {
     position: absolute;
     left: 10px;
     bottom: 5px;
-    font-size: 14px;
+    font-size: 18px;
     transition: 200ms;
     color: var(--grey);
 }
 .InputField input:focus + label span,
 .InputField input:valid + label span {
-    bottom: 22px;
+    bottom: 28px;
     font-size: 12px;
 }
 .InputField input:focus + label::after {

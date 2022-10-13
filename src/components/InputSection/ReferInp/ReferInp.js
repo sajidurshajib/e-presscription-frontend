@@ -17,10 +17,14 @@ const ReferInp = () => {
         <div className={classes.Refer}>
             <TextField label={'Refer'} text={refer} setText={setRefer} />
             <button onClick={submit}>Submit</button>
-            <h3>Preview</h3>
-            <p className={classes.detail}>
-                Refer to: <span>{stateRefer.detail}</span>
-            </p>
+            {stateRefer.detail && stateRefer.detail.length !== 0 ? (
+                <>
+                    <h3>Preview</h3>
+                    <p className={classes.detail}>
+                        Refer to: <span>{stateRefer.detail}</span>
+                    </p>
+                </>
+            ) : null}
         </div>
     )
 }

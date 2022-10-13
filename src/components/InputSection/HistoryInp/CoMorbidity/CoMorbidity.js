@@ -1,14 +1,17 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, useReducer } from 'react'
 import { History } from '../../../../allContext'
+import { coMorbidityReducer, coMorbidityState } from '../../../../reducer/coMorbidityReducer'
 import classes from './CoMorbidity.module.css'
 
 const CoMorbidity = () => {
+    const [stateCoMorbidity, dispatchCoMorbidity] = useReducer(coMorbidityReducer, coMorbidityState)
+
     const [htn, setHtn] = useState({ check: false, title: '', remark: '' })
     const [dm, setDm] = useState({ check: false, title: '', remark: '' })
     const [tb, setTb] = useState({ check: false, title: '', remark: '' })
     const [asm, setAsm] = useState({ check: false, title: '', remark: '' })
 
-    const { dispatchCoMorbidity } = useContext(History)
+    // const { dispatchCoMorbidity } = useContext(History)
 
     const res = [
         htn.check ? { name: 'htn', title: 'Hypertension (HTN)', remark: htn.remark } : null,
@@ -33,6 +36,8 @@ const CoMorbidity = () => {
         setDm({ check: false, title: '', remark: '' })
         setTb({ check: false, title: '', remark: '' })
         setAsm({ check: false, title: '', remark: '' })
+
+        window.location.reload()
     }
 
     return (

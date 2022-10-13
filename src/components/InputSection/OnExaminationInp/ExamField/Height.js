@@ -2,16 +2,14 @@ import { useState, useEffect } from 'react'
 import classes from './ExamField.module.css'
 
 const Height = ({ setData }) => {
-    const [height, setHeight] = useState({ feet: 0, inch: 0 })
-    const m = (height.feet * 12 + height.inch) / 39.37
-
-    const meter = Math.floor(m * 100) / 100
+    const [feet, setFeet] = useState(0)
+    const [inch, setInch] = useState(0)
 
     useEffect(() => {
-        if (height.feet !== 0 && height.inch !== 0) {
-            setData({ height })
+        if (feet !== 0 && inch !== 0) {
+            setData({ height: { key: 'height', unit: 'inch', slot_int1: feet * 12 + inch } })
         }
-    }, [height, setData])
+    }, [feet, inch, setData])
 
     return (
         <div className={classes.ExamField}>
@@ -19,21 +17,22 @@ const Height = ({ setData }) => {
                 <p>Height : </p>
                 <input
                     className={classes.onExam}
-                    value={height.feet}
-                    onChange={(e) => setHeight({ feet: parseInt(e.target.value), inch: height.inch })}
+                    value={feet}
+                    onChange={(e) => setFeet(parseInt(e.target.value))}
                     type="number"
+                    min={0}
                     required
                 />
                 <p>Feet</p>
                 <input
                     className={classes.onExam}
-                    value={height.inch}
-                    onChange={(e) => setHeight({ feet: height.feet, inch: parseInt(e.target.value) })}
+                    value={inch}
+                    onChange={(e) => setInch(parseInt(e.target.value))}
                     type="number"
+                    min={0}
                     required
                 />
                 <p>Inch</p>
-                <p>{meter ? '= ' + meter.toFixed(2) + ' Meter' : null}</p>
             </div>
         </div>
     )

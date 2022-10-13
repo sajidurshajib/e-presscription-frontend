@@ -1,7 +1,17 @@
-const Oedema = ({ oedema }) => {
+const Oedema = ({ arr }) => {
+    let oedema = arr.filter((v) => v.key === 'oedema')
     return (
         <div>
-            Oedema <span>{oedema.remark}</span>
+            {oedema.length !== 0 ? (
+                <li>
+                    <div>
+                        Oedema{' '}
+                        <span>
+                            <b>(+)</b> {oedema[0].slot_str7}
+                        </span>
+                    </div>
+                </li>
+            ) : null}
         </div>
     )
 }

@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react'
 import classes from './ExamField.module.css'
 
 const Custom = ({ setData }) => {
-    const [custom, setCustom] = useState({ custom: '' })
+    const [custom, setCustom] = useState({ key: 'custom', unit: '', slot_str7: '' })
     useEffect(() => {
-        if (custom.custom.length) {
-            setData(custom)
+        if (custom.slot_str7.length) {
+            setData({ custom })
         }
     }, [custom, setData])
     return (
@@ -14,8 +14,8 @@ const Custom = ({ setData }) => {
                 <p>Custom :</p>
                 <input
                     className={classes.onExam}
-                    value={custom.custom}
-                    onChange={(e) => setCustom({ custom: e.target.value })}
+                    value={custom.slot_str7}
+                    onChange={(e) => setCustom({ ...custom, slot_str7: e.target.value })}
                     type="text"
                     required
                 />

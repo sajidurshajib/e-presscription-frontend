@@ -1,21 +1,15 @@
-const HistoryChildView = ({ st, lvl }) => {
+const HistoryChildView = ({ data, title }) => {
     return (
         <div>
-            {st.length !== 0 ? (
+            {data.length !== 0 ? (
                 <p>
-                    <b>{lvl} :</b>
-                    {st
-                        .replace(/\n+$/, '')
-                        .split('\n')
-                        .map((v, i, arr) => {
-                            return (
-                                <span key={i}>
-                                    {' '}
-                                    {v}
-                                    {arr.length - 1 === i ? '' : ', '}
-                                </span>
-                            )
-                        })}
+                    <b>{title} : </b>
+                    {data.map((v, i, array) => (
+                        <span key={i}>
+                            {v.history}
+                            {array.length !== i + 1 ? ', ' : null}
+                        </span>
+                    ))}
                 </p>
             ) : null}
         </div>

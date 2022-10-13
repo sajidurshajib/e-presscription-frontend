@@ -1,10 +1,17 @@
-const Temp = ({ temp }) => {
+const Temp = ({ arr }) => {
+    let temp = arr.filter((v) => v.key === 'temp')
     return (
         <div>
-            Temp{' '}
-            <span>
-                <b>{temp.value}</b> &deg; {temp.type}
-            </span>
+            {temp.length !== 0 ? (
+                <li>
+                    <div>
+                        Temp{' '}
+                        <span>
+                            <b>{temp[0].slot_int1}</b> &deg; {temp[0].unit}
+                        </span>
+                    </div>
+                </li>
+            ) : null}
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import classes from './PatientSearch.module.css'
 
-const PatientSearch = ({ arr, setPatient, cross }) => {
+const PatientSearch = ({ arr, setPatient, setName }) => {
     return (
         <div className={classes.PatientSearch}>
             <ul>
@@ -8,9 +8,9 @@ const PatientSearch = ({ arr, setPatient, cross }) => {
                     return (
                         <li
                             key={i}
-                            onClick={() => {
-                                setPatient({ type: 'input', payload: v })
-                                cross()
+                            onClick={async () => {
+                                await setPatient({ type: 'input', payload: v })
+                                setName(v.name)
                             }}>
                             {v.name} <span>{v.phone}</span>
                         </li>
