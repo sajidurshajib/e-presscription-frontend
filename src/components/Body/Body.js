@@ -23,6 +23,7 @@ import { familyHistoryReducer, familyHistoryState } from '../../reducer/familyHi
 import { fieldState, fieldReducer } from '../../reducer/fieldReducer'
 import { investigationReducer, investigationState } from '../../reducer/investigationReducer'
 import { medicalHistoryReducer, medicalHistoryState } from '../../reducer/medicalHistoryReducer'
+import { medicineReducer, medicineState } from '../../reducer/medicineReducer'
 import { nextReducer, nextState } from '../../reducer/nextReducer'
 import { onExaminationReducer, onExaminationState } from '../../reducer/onExaminationReducer'
 import { personalHistoryReducer, personalHistoryState } from '../../reducer/personalHistoryReducer'
@@ -59,6 +60,7 @@ const Body = () => {
     const [stateRefer, dispatchRefer] = useReducer(referReducer, referState)
 
     const [stateField, dispatchField] = useReducer(fieldReducer, fieldState)
+    const [stateMedicine, dispatchMedicine] = useReducer(medicineReducer, medicineState)
 
     const history = {
         statePersonalHistory,
@@ -96,6 +98,8 @@ const Body = () => {
         dispatchMedicalHistory({ type: 'remove' })
         dispatchVaccinationHistory({ type: 'remove' })
         dispatchCoMorbidity({ type: 'remove' })
+
+        dispatchMedicine({ type: 'remove' })
 
         dispatchOnExamination({ type: 'remove' })
 

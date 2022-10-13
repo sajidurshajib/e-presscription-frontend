@@ -1,7 +1,8 @@
 import React, { Fragment, useContext, useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { PdfWrapped } from '../../../allContext'
-import { getFromAPI } from '../../../api/get'
+import { Auth } from '../../../allContext'
+import { getFromAPI, getWithAuthToken } from '../../../api/get'
 import { dob } from '../../../utils/DateOfBirth'
 import classes from './Generate.module.css'
 import HistoryChildView from './HistoryChildView'
@@ -12,6 +13,8 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
     const { hxepid } = useParams()
     const [ep, setEp] = useState({})
     const [profile, setProfile] = useState('')
+    const [headerData, setHeaderData] = useState([])
+    const { stateAuth } = useContext(Auth)
 
     const apiV1 = process.env.REACT_APP_API_V1
 
@@ -21,23 +24,13 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
         getFromAPI(endpoint)
             .then((data) => setEp(data))
             .catch((e) => {})
-    }, [apiV1, hxepid])
 
-    const {
-        statePatient,
-        // stateChief,
-        // stateInvestigation,
-        // stateDiagnosis,
-        // stateAdvice,
-        // stateMedicine,
-        // statePersonalHistory,
-        // stateCoMorbidity,
-        // stateProfessionalHistory,
-        // stateFamilyHistory,
-        // stateDrugHistory,
-        // stateMedicalHistory,
-        // stateVaccinationHistory,
-    } = useContext(PdfWrapped)
+        getWithAuthToken(`${apiV1}/ep/doctor-ep-header/`, stateAuth.token)
+            .then((data) => setHeaderData(data))
+            .catch((e) => {})
+    }, [apiV1, hxepid, stateAuth])
+
+    const { statePatient } = useContext(PdfWrapped)
 
     let y = ''
     let m = ''
@@ -46,6 +39,9 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
         y = year
         m = month
     }
+
+    let leftHeader = headerData.filter((v) => v.header_side === 'left')
+    let rightHeader = headerData.filter((v) => v.header_side === 'right')
 
     let personalHistory = ep.histories && ep.histories.filter((data) => data.history_type === 'personal')
     let professionalHistory = ep.histories && ep.histories.filter((data) => data.history_type === 'professional')
@@ -60,15 +56,15 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                 {/* Top field */}
                 <div className={classes.top}>
                     <div className={classes.topLeft}>
-                        <h3>{profile?.user?.name}</h3>
-                        {profile.prescription_header_left?.split('\n')?.map((v, i) => {
+                        <h3>{leftHeader[0]?.heading}</h3>
+                        {leftHeader[0]?.body.split('\n')?.map((v, i) => {
                             return <p key={i}>{v}</p>
                         })}
                     </div>
                     <div className={classes.topRight}>
                         {/* <img src={boxLogo} alt="Box Logo" /> */}
-                        <h3>Chamber Address {hxepid.slice(4)}</h3>
-                        {profile.prescription_header_right?.split('\n')?.map((v, i) => {
+                        <h3>{rightHeader[0]?.heading}</h3>
+                        {rightHeader[0]?.body.split('\n')?.map((v, i) => {
                             return <p key={i}>{v}</p>
                         })}
                     </div>
