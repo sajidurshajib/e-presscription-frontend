@@ -56,7 +56,6 @@
     "react-dotenv": {
         "whitelist": [
             "REACT_APP_API_V1",
-            "REACT_APP_API",
             "REACT_APP_DOC_SITE"
         ]
     }
