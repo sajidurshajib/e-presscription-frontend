@@ -147,7 +147,7 @@ const Body = () => {
                                                                 <span
                                                                     className={classes.clearAll}
                                                                     onClick={(e) => allClear()}>
-                                                                    Clear all
+                                                                    Refresh
                                                                 </span>
                                                             </div>
                                                         </>
