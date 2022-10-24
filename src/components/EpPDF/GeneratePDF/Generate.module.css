@@ -190,8 +190,8 @@
     font-size:12px;
     font-weight: 500;
 }
-.singleMedicine p:nth-child(2){
-    padding-left:20px;
+.singleMedicine p:nth-child(2), .singleMedicine p:nth-child(3){
+    padding-left:35px;
 }
 .singleMedicine span {
     font-size: 14px;
