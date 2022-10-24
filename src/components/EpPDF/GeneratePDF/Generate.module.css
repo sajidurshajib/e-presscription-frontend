@@ -39,6 +39,7 @@
 }
 .OnExamUl li {
     font-size: 12px;
+    position: relative;
 }
 .OnExamUl li div {
     position: relative;
@@ -46,6 +47,27 @@
 .OnExamUl li div span {
     position: absolute;
     left: 100px;
+}
+.OnExamUl li::before{
+    content: '';
+    position: absolute;
+    z-index: 10;
+    left: -15px;
+    top: 4px;
+    width: 7px;
+    height: 7px;
+    border: 1px solid var(--primary);
+}
+.OnExamUl li::after{
+    content: '';
+    position: absolute;
+    z-index: 5;
+    left: -12px;
+    top: 6px;
+    width: 7px;
+    height: 7px;
+    border: 1px solid var(--primary);
+    background-color: var(--primary);
 }
 
 .topRight {
@@ -165,8 +187,11 @@
     margin: 5px;
 }
 .singleMedicine p:nth-child(1){
-    font-size:14px;
+    font-size:12px;
     font-weight: 500;
+}
+.singleMedicine p:nth-child(2){
+    padding-left:20px;
 }
 .singleMedicine span {
     font-size: 14px;

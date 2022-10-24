@@ -174,10 +174,14 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                                 <h3>Rx</h3>
                                 {ep?.medicines?.map((v, i) => (
                                     <div className={classes.singleMedicine} key={i}>
-                                        <p>{v.name}</p>
                                         <p>
-                                            {v.doses} {v.before_after !== '' ? '|' : null} {v.before_after}{' '}
-                                            {v.days !== 0 ? '|' : null} {v.days}
+                                            {v.form}
+                                            {' . '}
+                                            {v.name} {v.strength}
+                                        </p>
+                                        <p>
+                                            {v.doses} {v.before_after !== '' ? '.....' : null} {v.before_after}{' '}
+                                            {v.days !== 0 ? '.....' : null} {v.days} {v.days !== null ? 'days' : null}
                                         </p>
                                     </div>
                                 ))}
@@ -207,9 +211,9 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
                         {/* refer  */}
                         {ep?.refer?.length !== 0 ? (
                             <Fragment>
-                                <h4>Refer:</h4>
+                                <h4>Reffer:</h4>
                                 <p className={classes.refer}>
-                                    <span>Refer to :</span>
+                                    <span>Reffer to :</span>
                                     {ep?.refer && ep?.refer[0].detail}
                                 </p>
                             </Fragment>

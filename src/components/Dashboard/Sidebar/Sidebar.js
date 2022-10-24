@@ -112,7 +112,7 @@ const Sidebar = () => {
                     onClick={() => dispatch({ type: 'refer' })}
                     className={state.field === 'refer' ? classes.active : null}>
                     <FontAwesomeIcon icon={faUserCircle} />
-                    Refer
+                    Reffer
                 </li>
             </ul>
             <SubmitEP />
