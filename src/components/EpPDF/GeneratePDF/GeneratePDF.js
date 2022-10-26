@@ -40,8 +40,8 @@ export const GeneratePDF = React.forwardRef((props, ref) => {
         m = month
     }
 
-    let leftHeader = headerData.filter((v) => v.header_side === 'left')
-    let rightHeader = headerData.filter((v) => v.header_side === 'right')
+    let leftHeader = headerData?.filter((v) => v.header_side === 'left')
+    let rightHeader = headerData?.filter((v) => v.header_side === 'right')
 
     let personalHistory = ep.histories && ep.histories.filter((data) => data.history_type === 'personal')
     let professionalHistory = ep.histories && ep.histories.filter((data) => data.history_type === 'professional')
