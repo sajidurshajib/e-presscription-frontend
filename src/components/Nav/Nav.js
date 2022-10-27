@@ -30,6 +30,7 @@ const Nav = () => {
         <div className={classes.Nav}>
             <PatientInfo.Provider value={{ statePatient, dispatchPatient }}>
                 <div className={classes.left}>
+                    {/* header logo and menu icon  */}
                     {location.pathname === '/' ? (
                         <div className={classes.alignLeft} onClick={() => dispatch({ type: h })}>
                             <FontAwesomeIcon icon={faAlignLeft} />
@@ -39,6 +40,8 @@ const Nav = () => {
                             <img src={epLogo} alt="" />
                         </Link>
                     )}
+
+                    {/* add class have text content  */}
                     <div
                         className={`${classes.patient} ${
                             statePatient.patient.name.length !== 0 ? classes.ok : classes.add
