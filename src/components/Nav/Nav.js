@@ -66,7 +66,7 @@ const Nav = () => {
                             </div>
                         ) : (
                             ''
-                            // <FontAwesomeIcon icon={faUserPlus} />
+                            // <FontAwesomeIcon icon={faUserPlus} /> Do not needed now
                         )}
                     </div>
                 </div>
