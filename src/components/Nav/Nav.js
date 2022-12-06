@@ -42,7 +42,7 @@ const Nav = () => {
                     )}
 
                     {/* add class have text content  */}
-                    <div
+                    {/* <div
                         className={`${classes.patient} ${
                             statePatient.patient.name.length !== 0 ? classes.ok : classes.add
                         }`}
@@ -68,7 +68,7 @@ const Nav = () => {
                             ''
                             // <FontAwesomeIcon icon={faUserPlus} /> Do not needed now
                         )}
-                    </div>
+                    </div> */}
                 </div>
 
                 {modal ? <Patient cross={setModal} /> : null}
